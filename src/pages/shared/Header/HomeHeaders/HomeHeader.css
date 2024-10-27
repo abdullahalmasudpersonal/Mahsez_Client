@@ -1,0 +1,154 @@
+/* ------------- Header All Catagore--------- */
+.header-catagore{
+
+}
+.header-catagore-ul {
+    position: relative;
+    list-style-type: none;
+    padding: 0;
+    width: 270px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    border-radius: 0 0 5px 5px;
+    z-index: 10;
+}
+
+.header-catagore ul li {
+    background-color: rgb(255, 255, 255);
+    padding: 0 15px;
+}
+.islamic-child-catagore ul li {
+    padding-left: 10px !important;
+}
+.header-catagore ul li a {
+    font-weight: 600;
+}
+
+.catagore-list-apdding {
+    width: 240px;
+    padding: 12.5px 0px;
+    color: gray;
+}
+
+.catagore-list-apdding:not(.underCatagoreSports) {
+    border-bottom: 1px solid rgb(230, 229, 229);
+}
+
+.catagore-list-apdding:hover {
+    color: orange;
+    transition: .3s;
+}
+.child-catagore-list-apdding{
+    color: gray;
+}
+.child-catagore-list-apdding:hover{
+    color: orange;
+    transition: .3s;
+}
+.product-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    color: rgb(112, 112, 112);
+}
+
+.catagore-faChevronRight {
+    position: absolute;
+    z-index: 1;
+    right: 15px;
+    font-size: 13px;
+}
+.child-catagore-faChevronRight {
+    position: absolute;
+    z-index: 1;
+    right: 8px;
+    font-size: 13px;
+}
+
+@media screen and (max-width:1399px) {
+    .header-catagore-ul {
+        width: 240px;
+    }
+
+    .catagore-list-apdding {
+        width: 210px;
+    }
+}
+
+@media screen and (max-width:1199px) {
+    .header-catagore-ul {
+        width: 200px;
+    }
+
+    .catagore-list-apdding {
+        width: 170px;
+    }
+}
+
+@media screen and (max-width:930px) {
+    .header-catagore {
+        display: none;
+    }
+
+}
+
+/* ------------- Islamic -------------- */
+.islamic-child-catagore {
+    position: absolute;
+    display: none;
+    z-index: 1;
+    left: 270px;
+    bottom: 0px;
+    color: gray;
+    font-weight: 600;
+    border-radius: 3px !important;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.islamic-child-catagore ul li{
+    padding: auto 0 !important;
+}
+.islamic-child-in-child-catagore {
+    position: absolute;
+    display: none;
+    z-index: 1;
+    left: 230.5px;
+    bottom: 0px;
+    color: gray;
+    font-weight: 600;
+    border-radius: 3px !important;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+@media screen and (max-width:1399px) {
+    .islamic-child-catagore {
+        left: 240px;
+    }
+}
+
+@media screen and (max-width:1199px) {
+    .islamic-child-catagore {
+        left: 200px;
+    }
+}
+
+.islamic-child-catagore ul li {
+    width: 230px;
+    list-style-type: none;
+    padding: 10px 10px 10px 20px;
+    color: gray;
+}
+
+.islamic-child-catagore ul li:hover {
+    background-color: rgb(221, 221, 223);
+    color: orange;
+    transition: .5s;
+}
+
+.header-catagore ul li:hover .islamic-child-catagore {
+    display: block;
+    z-index: 1;
+}
+.islamic-child-catagore ul li:hover .islamic-child-in-child-catagore{
+    display: block;
+    z-index: 1;
+}

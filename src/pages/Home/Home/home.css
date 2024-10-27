@@ -1,0 +1,29 @@
+.home-bg{
+    background: #fafcff;
+    width: 100%;
+}
+.home-div-responsive{
+    padding: 0;
+}
+@media screen and (max-width:1399px) {
+    .home-div-responsive{
+        padding: 0 10px;
+    }
+}
+@media screen and (max-width:500px) {
+    .home-div-responsive{
+        padding: 0 7px;
+    }
+}
+/* -------------------- start home responsiv featured categore---------------------- */
+@media screen and (max-width:500px) {
+    .pc-responsive-featured-category{
+        display: none;
+    }
+}
+@media screen and (min-width:500px) {
+    .mobile-responsive-featured-category{
+        display: none;
+    }
+}
+/* -------------------- end home responsiv featured categore---------------------- */
