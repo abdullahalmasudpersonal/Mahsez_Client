@@ -5,13 +5,22 @@ import App from "./App.tsx";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.ts";
 import { BrowserRouter } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { Toaster } from "sonner";
 
+const queryClient = new QueryClient();
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
+  <HelmetProvider>
     <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
+      <QueryClientProvider client={queryClient}>
+        <Provider store={store}>
+          <StrictMode>
+            <App />
+          </StrictMode>
+          <Toaster />
+        </Provider>
+      </QueryClientProvider>
     </BrowserRouter>
-  </StrictMode>
+  </HelmetProvider>
 );
