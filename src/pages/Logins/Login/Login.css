@@ -1,0 +1,16 @@
+.pass-reset-btn {
+  margin: 10px;
+  color: gray;
+}
+.pass-reset-btn:hover {
+  cursor: pointer;
+  color: rgb(255, 0, 0);
+}
+.login-pass-show {
+  margin-left: -48px;
+  cursor: pointer;
+  color: rgb(0, 6, 59);
+}
+.login-pass-show:hover {
+  color: rgb(9, 0, 142);
+}

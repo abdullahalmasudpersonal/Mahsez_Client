@@ -1,0 +1,302 @@
+/* -------header-bg-color ----------- */
+.header-bg-color {
+    background-color: rgb(240, 247, 255);
+}
+
+/* ---------- Header Part 1 -------------- */
+.header-shadow {
+    transition: .4s;
+    background-color: rgb(229, 241, 253);
+    box-shadow: rgba(182, 182, 182, 0.281) 0px 1px 0px;
+}
+
+.header-p1-ul {
+    display: flex;
+}
+
+.header-p1-ul li {
+    padding: 15px;
+    font-weight: bold;
+    color: rgb(107, 94, 94);
+}
+
+.mobile-collapse-close-btn {
+    width: 100%;
+    border: none;
+    background-color: red;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+.adminPendingOrderHomeBtn{
+    border: none;
+    background-color: rgb(202, 78, 0);
+    padding: 5px 10px;
+    border-radius: 3px;
+    color: white;
+    outline: none;
+}
+.adminPendingOrderHomeBtn>span{
+    background-color: rgb(53, 14, 182);
+}
+
+@media screen and (min-width:8px) and (max-width:930px) {
+    .responsive-header {
+        display: none !important;
+    }
+
+    .header-part2 {
+        display: none !important;
+    }
+}
+
+@media screen and (min-width:931px) {
+    .header-small-screen {
+        display: none;
+    }
+
+    .header2-part-2 {
+        display: none !important;
+    }
+
+}
+
+/* ----------- header part 2 ------------- */
+.header-part2 {
+    background-color: rgb(255, 145, 0);
+}
+
+.header-part2-dev {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+.header2-catagories {
+    background-color: rgb(28, 28, 31);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    padding: 10px;
+    width: 270px;
+    cursor: pointer;
+}
+
+@media screen and (max-width:1399px) {
+    .header2-catagories {
+        width: 240px;
+    }
+
+    .search-ber {
+        width: 500px !important;
+    }
+}
+
+@media screen and (max-width:1199px) {
+    .search-ber {
+        width: 400px !important;
+    }
+
+    .header2-catagories {
+        width: 200px;
+    }
+
+    .header2-lust-part {
+        width: 180px !important;
+    }
+
+}
+
+.header2-catagories:hover {
+    color: orange;
+    transition: .3s;
+}
+
+.caretdowncircle {
+    border: .1rem solid white;
+    border-radius: 50%;
+    padding: 1.5px 4px;
+}
+
+.header2-catagories .caretdowncircle:hover {
+    border: .1rem solid orange;
+}
+
+.header2-catagories h6 {
+    margin-top: .4rem;
+}
+
+.header2-lust-part {
+    width: 280px;
+    display: flex;
+    justify-content: right;
+}
+
+.top-right-btn {
+    border-radius: 50px;
+    padding: 6px;
+    font-size: 17px;
+    color: rgb(255, 166, 33);
+}
+
+.heart-cart {
+    border-radius: 50px;
+    background-color: rgb(255, 255, 255);
+    padding: 9px;
+    font-size: 17px;
+    color: gray;
+}
+
+.heart-cart:hover {
+    cursor: pointer;
+    color: rgb(255, 136, 0);
+    -webkit-box-shadow: 0px 1px 11px 3px rgba(255, 252, 255, 1);
+    -moz-box-shadow: 0px 1px 11px 3px rgba(255, 252, 255, 1);
+    box-shadow: 0px 1px 11px 3px rgba(255, 252, 255, 1);
+    transition: .4s;
+}
+
+.shopping-cart {
+    border-radius: 50px;
+    background-color: rgb(255, 255, 255);
+    padding: 9px;
+    font-size: 15px;
+    color: gray;
+}
+
+.shopping-cart:hover {
+    cursor: pointer;
+    color: rgb(255, 136, 0);
+    -webkit-box-shadow: 0px 1px 11px 3px rgba(255, 252, 255, 1);
+    -moz-box-shadow: 0px 1px 11px 3px rgba(255, 252, 255, 1);
+    box-shadow: 0px 1px 11px 3px rgba(255, 252, 255, 1);
+    transition: .4s;
+}
+
+.cart-quantity-badge {
+    background-color: rgb(85, 41, 0);
+    color: rgb(255, 255, 255);
+}
+
+/* -------------header2 part2------------------- */
+.searchBerDev {
+    position: relative;
+}
+
+.search-ber {
+    border-radius: 3px 0 0 3px;
+    height: 36px;
+    width: 600px;
+    border: none;
+    outline: none;
+    padding: 15px;
+}
+
+.header2-part-2-search {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(240, 247, 255);
+    padding-bottom: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.header2-part2-search-ber {
+    border-radius: 3px 0px 0px 3px;
+    border: none;
+    height: 35px;
+    width: 100%;
+    padding-left: 10px;
+    outline: none;
+    background: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.header2-part-2-search-icon-pc {
+    padding: 10px 25px;
+    background-color: rgba(0, 15, 66, 0.774);
+    color: rgb(219, 219, 219);
+    border-radius: 0 5px 5px 0;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    cursor: pointer;
+}
+
+.header2-part-2-search-icon-mobile {
+    padding: 9.5px 25px;
+    background-color: rgba(0, 15, 66, 0.774);
+    color: rgb(219, 219, 219);
+    border-radius: 0 5px 5px 0;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+/* ----------- start - search-ber-result ------------------ */
+.searchBerSuggestDev {
+    min-height: 0px;
+    width: 666px;
+    background: rgb(251, 251, 251);
+    position: absolute;
+    top: 36px;
+    z-index: 10;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: block;
+}
+.searchBerSuggestRemove{
+    display: none;
+}
+
+.searchBerSuggestDev>P {
+    padding: 3px 15px;
+    font-weight: 600;
+    color: rgb(81, 81, 81);
+}
+.searchBerSuggestDev>p:hover{
+    cursor: pointer;
+    background-color: rgb(230, 236, 238);
+}
+.searchBerSuggestDev>p:first-child {
+    margin-top: 15px;
+}
+
+.searchBerSuggestDev>p:last-child {
+    margin-bottom: 15px !important;
+}
+
+@media screen and (max-width:1399px) {
+    .searchBerSuggestDev {
+        width: 566px;
+    }
+}
+
+@media screen and (max-width:1199px) {
+    .searchBerSuggestDev {
+        width: 466px;
+    }
+}
+
+/* ----------- end - search-ber-result ------------------ */
+
+/* -----------websiteservicenotyet--------------- */
+@media screen and (min-width:501px) {
+    .websiteservicenotyet {
+        display: none;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .websiteservicenotyet {
+        padding: 0 60px;
+        background-color: red;
+        color: white;
+        font-weight: 900;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    .websiteservicenotyet p {
+        margin: 0;
+    }
+}

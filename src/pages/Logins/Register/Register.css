@@ -1,0 +1,55 @@
+.register {
+    min-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-dev {
+    width: 400px;
+    min-height: 400px;
+    padding: 20px;
+    border-radius: 2px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.register-form-dev {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.register-dev input {
+    width: 300px;
+    padding: 7px;
+    margin: 10px;
+    border: none;
+    outline: none;
+}
+
+.register-dev input:not(.reg-submit-input) {
+    border-bottom: 1px solid gray;
+}
+
+.reg-submit-input {
+    background-color: rgb(214, 214, 214);
+    border: none;
+    border-radius: 2px;
+    transition: .3s;
+    color: rgb(0, 0, 0);
+
+}
+
+.reg-submit-input:hover {
+    background: rgb(146, 146, 146);
+}
+
+@media screen and (max-width:600px) {
+    .register-dev {
+        width: 270px;
+        height: 400px;
+    }
+    .register-dev input {
+        width: 230px;
+    }
+}
