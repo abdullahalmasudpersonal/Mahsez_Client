@@ -1,0 +1,309 @@
+
+.blog{
+    max-width: 400px;
+    max-height: 500px;
+    border-radius: 3px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    background-color: white;
+}
+.blog img{
+    border-radius: 3px 3px 0 0;
+}
+@media screen and (max-width:1250px) {
+    .blog{
+        max-width: 380px;
+        max-height: 480px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+@media screen and (max-width:1200px) {
+    .blog{
+        max-width: 360px;
+        max-height: 460px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+@media screen and (max-width:1120px) {
+    .blog{
+        max-width: 340px;
+        max-height: 440px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+@media screen and (max-width:1120px) {
+    .blog{
+        max-width: 340px;
+        max-height: 440px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+@media screen and (max-width:1050px) {
+    .blog{
+        max-width: 330px;
+        max-height: 430px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+ @media screen and (max-width:1020px) {
+    .blog{
+        max-width: 310px;
+        max-height: 440px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+ @media screen and (max-width:1020px) {
+    .blog{
+        max-width: 310px;
+        max-height: 440px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+ @media screen and (max-width:970px) {
+    .blog{
+        max-width: 300px;
+        max-height: 440px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+ @media screen and (max-width:940px) {
+    .blog{
+        max-width: 280px;
+        max-height: 440px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+/* 2 coloum ar jonno */
+ @media screen and (max-width:870px) {
+    .blog{
+        max-width: 380px;
+        max-height: 480px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+ @media screen and (max-width:790px) {
+    .blog{
+        max-width: 350px;
+        max-height: 480px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+ @media screen and (max-width:730px) {
+    .blog{
+        max-width: 330px;
+        max-height: 480px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+ @media screen and (max-width:690px) {
+    .blog{
+        max-width: 300px;
+        max-height: 480px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+ @media screen and (max-width:630px) {
+    .blog{
+        max-width: 280px;
+        max-height: 480px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+ @media screen and (max-width:580px) {
+    .blog{
+        max-width: 400px;
+        max-height: 500px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+ @media screen and (max-width:430px) {
+    .blog{
+        max-width: 380px;
+        max-height: 500px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+ @media screen and (max-width:410px) {
+    .blog{
+        max-width: 370px;
+        max-height: 500px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+ @media screen and (max-width:395px) {
+    .blog{
+        max-width: 360px;
+        max-height: 500px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+ @media screen and (max-width:380px) {
+    .blog{
+        max-width: 350px;
+        max-height: 500px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+ @media screen and (max-width:370px) {
+    .blog{
+        max-width: 340px;
+        max-height: 500px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+ @media screen and (max-width:360px) {
+    .blog{
+        max-width: 330px;
+        max-height: 500px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+ @media screen and (max-width:350px) {
+    .blog{
+        max-width: 320px;
+        max-height: 500px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+ @media screen and (max-width:340px) {
+    .blog{
+        max-width: 310px;
+        max-height: 500px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+ @media screen and (max-width:330px) {
+    .blog{
+        max-width: 300px;
+        max-height: 500px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+ @media screen and (max-width:320px) {
+    .blog{
+        max-width: 290px;
+        max-height: 500px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+ @media screen and (max-width:310px) {
+    .blog{
+        max-width: 280px;
+        max-height: 500px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}
+ @media screen and (max-width:300px) {
+    .blog{
+        max-width: 270px;
+        max-height: 500px;
+        border-radius: 3px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    .blog img{
+        border-radius: 3px 3px 0 0;
+    }
+}

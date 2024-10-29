@@ -14,6 +14,11 @@ import {
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 // import profileImg from "../../../../Assets/img/profile/profile.png";
 import { Link } from "react-router-dom";
+import {
+  logout,
+  selectCurrentUser,
+} from "../../../../redux/features/auth/authSlice";
+import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
 // import { useAuthState } from 'react-firebase-hooks/auth';
 // import auth from '../../../../firebase.init';
 // import MobileSideber from '../MobileSideber/MobileSideber';
@@ -24,15 +29,18 @@ import { Link } from "react-router-dom";
 // import { Context } from '../../../../Context/AppContext';
 
 const Header = () => {
+  const user = useAppSelector(selectCurrentUser);
+  console.log(user, "users");
   // const [user] = useAuthState(auth);
   // const [admin] = useAdmin(user);
   // const {cart, products } = useContext(Context);
   //   const navigate = useNavigate();
-  //   const logout = () => {
-  //     // signOut(auth);
-  //     navigate("/");
-  //     localStorage.removeItem("accessToken");
-  //   };
+  const dispatch = useAppDispatch();
+  const handleLogout = () => {
+    dispatch(logout());
+
+    // navigate("/");
+  };
 
   /*     const countPendingOrder = allOrder.filter(status => status.status === 'Pending').length; */
 
@@ -80,14 +88,15 @@ const Header = () => {
               <Link to="/blogs" style={{ textDecoration: "none" }}>
                 <li>BLOGS</li>
               </Link>
-              {/* {
-                                user ?
-                                    <li style={{ cursor: 'pointer' }} onClick={logout}>SIGN OUT</li>
-                                    :
-                                    <Link to='/login' style={{ textDecoration: 'none' }}>
-                                        <li>SIGN IN</li>
-                                    </Link>
-                            } */}
+              {user ? (
+                <li style={{ cursor: "pointer" }} onClick={handleLogout}>
+                  SIGN OUT
+                </li>
+              ) : (
+                <Link to="/login" style={{ textDecoration: "none" }}>
+                  <li>SIGN INss</li>
+                </Link>
+              )}
             </ul>
           </div>
           <div className="d-flex justify-content-center align-items-center">
@@ -103,7 +112,7 @@ const Header = () => {
               />
             </div>
             <div>
-              <p className="m-0">Call us now : (+88) 01737-906772</p>
+              <p className="m-0">Call us now : (+88) 01737-90677211</p>
               <p className="m-0">Email : m.mahsez@gmail.com</p>
             </div>
           </div>

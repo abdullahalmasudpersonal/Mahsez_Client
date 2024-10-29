@@ -1,6 +1,6 @@
 import "./Header.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../../Assets/img/logo/mahsez (2).png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,9 +13,19 @@ import {
   faShoppingCart,
   faUserAlt,
 } from "@fortawesome/free-solid-svg-icons";
+import {
+  logout,
+  selectCurrentUser,
+} from "../../../../redux/features/auth/authSlice";
+import profileImg from "../../../../Assets/img/profile/profile.png";
+import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
 
 const Navber = () => {
+  const dispatch = useAppDispatch();
+  const user = useAppSelector(selectCurrentUser);
   const [shadow, setShadow] = useState(false);
+  const navigate = useNavigate();
+
   const changeShadow = () => {
     if (window.scrollY >= 80) {
       setShadow(true);
@@ -24,6 +34,12 @@ const Navber = () => {
     }
   };
   window.addEventListener("scroll", changeShadow);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/");
+  };
+
   return (
     <>
       {/* ---------Part 1 ----------- */}
@@ -55,19 +71,15 @@ const Navber = () => {
                 <li>BLOGS</li>
               </Link>
 
-              <Link to="/login" style={{ textDecoration: "none" }}>
-                <li>SIGN IN</li>
-              </Link>
-
-              {/*   {user ? (
-              <li style={{ cursor: "pointer" }} onClick={logout}>
-                SIGN OUT
-              </li>
-            ) : (
-              <Link to="/login" style={{ textDecoration: "none" }}>
-                <li>SIGN IN</li>
-              </Link>
-            )} */}
+              {user ? (
+                <li style={{ cursor: "pointer" }} onClick={handleLogout}>
+                  SIGN OUT
+                </li>
+              ) : (
+                <Link to="/login" style={{ textDecoration: "none" }}>
+                  <li>SIGN IN</li>
+                </Link>
+              )}
             </ul>
           </div>
           <div className="d-flex justify-content-center align-items-center">
@@ -207,7 +219,7 @@ const Navber = () => {
                 {/*  {cart.map(products=> <>{products.quantity}</>)} */}
               </span>
             </Link>
-            {/* {user ? (
+            {user ? (
               <Link to="/dashboard" className="ms-3">
                 <img width="32px" src={profileImg} alt="" />
               </Link>
@@ -215,10 +227,7 @@ const Navber = () => {
               <Link to="/login" className="ms-3">
                 <FontAwesomeIcon className="shopping-cart" icon={faUserAlt} />
               </Link>
-            )} */}
-            <Link to="/login" className="ms-3">
-              <FontAwesomeIcon className="shopping-cart" icon={faUserAlt} />
-            </Link>
+            )}
           </div>
         </div>
       </div>

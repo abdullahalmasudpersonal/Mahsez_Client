@@ -1,0 +1,23 @@
+.notfound {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+}
+
+
+@media screen and (max-width: 480px) {
+   .notfound img{
+       height: 200px;
+   }
+}
+@media screen and (min-width: 481px) and (max-width: 680px) {
+   .notfound img{
+       height: 300px;
+   }
+}
+@media screen and (min-width: 681px) and (max-width: 880px) {
+   .notfound img{
+       height: 400px;
+   }
+}
