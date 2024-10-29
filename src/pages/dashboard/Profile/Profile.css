@@ -1,0 +1,102 @@
+.profile-top-part{
+  display: flex;
+  justify-content: space-between;
+}
+.profile-edit-btn{
+  border: 1px solid rgb(182, 182, 182);
+  border-radius: 4px;
+  padding: 0 10px;
+  background-color: white;
+  transition: .3s;
+}
+.profile-edit-btn:hover{
+  background-color: rgb(236, 235, 235);
+}
+/* ---------- start profile edit part------------ */
+.my-profile{
+  display: flex;
+  padding: 50px;
+}
+.my-profile-img{
+    display: grid;
+}
+.my-profile-img img{
+    border-radius: 50%;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+/* user profile img */
+.custom-file-input {
+    margin: auto;
+    width: 112px;
+    margin-top: 10px;
+  }
+  .custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .custom-file-input::before {
+    content: 'Upload Photo';
+    color: rgb(255, 255, 255);
+    display: inline-block;
+     background: -webkit-linear-gradient(top, #ff9100, #db8018); 
+    border-radius: 3px;
+     padding: 5px 12px; 
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 10pt;
+  }
+   .custom-file-input:active::before {
+    background: -webkit-linear-gradient(top, #ff7b00, #db6618); 
+  } 
+/* end user profile img */
+.edit-user-profile-info{
+  margin-left: 50px;
+  margin-top: 0px;
+}
+.edit-user-profile-info label{
+  margin-bottom: 3px;
+  margin-top: 10px;
+}
+.edit-user-profile-info input{
+  width: 280px;
+  height: 32px;
+  padding: 7px;
+  font-size: 15px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(203, 129, 38);
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+.change-profile-save{
+  width: 120px;
+  background-color: rgb(255, 136, 0);
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-weight: 600;
+  color: white;
+}
+.change-profile-save:hover{
+background-color: #ff6804;
+}
+@media screen and (max-width:900px) {
+    .my-profile{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        padding: 10px;
+    }
+    .my-profile-img{
+        margin: auto auto 20px auto;
+    }
+    .edit-user-profile-info{
+      margin: auto;
+    }
+}
+@media screen and (max-width:330px){
+  .edit-user-profile-info input{
+    width: 250px;
+  }
+}

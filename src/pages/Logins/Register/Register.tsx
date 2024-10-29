@@ -1,7 +1,7 @@
 // import React from 'react';
 // import auth from '../../../firebase.init';
 import { Link } from "react-router-dom";
-import PageTitle from "../../shared/PageTitle/PageTitle";
+// import PageTitle from "../../shared/PageTitle/PageTitle";
 import "./Register.css";
 // import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 // import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -48,7 +48,7 @@ const Register = () => {
 
   return (
     <div className="container-xxl my-5 ">
-      <PageTitle pageTitle="Registration" />
+      {/* <PageTitle pageTitle="Registration" /> */}
       <div className="register">
         <div className="register-dev">
           <h4 className="text-center pt-4" style={{ fontFamily: "Algerian" }}>

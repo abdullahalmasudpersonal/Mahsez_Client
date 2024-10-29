@@ -5,17 +5,19 @@ import UseHomeFeaturedCategory from "../../../Hooks/UseHomeFeaturedCategory/UseH
 import HomeFCategore from "./HomeFCategore/HomeFCategore";
 
 const HomeFeaturedCategory = () => {
-  const [homeFCategory] = UseHomeFeaturedCategory([]);
+  const [homeFCategory] = UseHomeFeaturedCategory();
 
   return (
     <div className="my-2">
       <h5 className="homefeaturedCategore-title">FEATURED CATEGORIES</h5>
       <hr style={{ marginTop: "10px" }}></hr>
+
       <div className="homefeaturedCategore homefeaturedCategore-pc">
-        {homeFCategory.map((homeFCategore: any) => (
+        {homeFCategory?.map((homeFCategore: any) => (
           <HomeFCategore key={homeFCategore} homeFCategore={homeFCategore} />
         ))}
       </div>
+
       <div className="homefeaturedCategore homefeaturedCategore-mobile">
         {homeFCategory.slice(0, 8).map((homeFCategore) => (
           <HomeFCategore key={homeFCategore} homeFCategore={homeFCategore} />
