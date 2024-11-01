@@ -1,0 +1,10 @@
+
+.responsive-nested-page{
+    padding: 0;
+}
+
+@media screen and (max-width:1399px) {
+    .responsive-nested-page {
+        padding: 0 5px;
+    }
+}

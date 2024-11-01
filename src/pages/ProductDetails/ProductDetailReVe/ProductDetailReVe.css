@@ -1,0 +1,58 @@
+.productDetailReVe {
+    border-radius: 3px;
+    background-clip: border-box;
+}
+
+.productDetailReVe-head {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding-left: 0;
+    border-bottom: .5px solid rgb(233, 233, 233);
+    border-radius: 3px 3px 0 0;
+    background-clip: border-box;
+}
+
+.productDetailReVe-head>li {
+    padding: 12px 0px;
+    font-weight: 600;
+    font-size: 17px;
+    text-decoration: none;
+}
+
+.productDetailReVe-head>li:not(:last-child) {
+    border-right: .5px solid rgb(223, 222, 222);
+}
+
+.productDetailReVe-head>li>a {
+    text-decoration: none;
+    padding: 30px;
+    color: rgb(44, 43, 43);
+}
+
+/*  .productDetailReVe-head>li:not(:first-child){
+    padding-left:30px;
+}  */
+.productDetailReVe-head>li.active {
+    background: rgb(255, 141, 65);
+}
+.productDetailReVe-content{
+    padding: 25px 0;
+}
+
+
+/*--------------- attar-detail  second-part end ---------------- */
+@media screen and (max-width:500px) {
+    .productDetailReVe-head {
+        display: block;
+        text-align: center;
+    }
+
+    .productDetailReVe-head>li:not(:last-child) {
+        border-bottom: .5px solid rgb(233, 233, 233);
+    }
+
+    .attar-detail-desWR-head li a {
+        padding: 12px 90px;
+    }
+}

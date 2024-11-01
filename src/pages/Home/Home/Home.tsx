@@ -1,32 +1,18 @@
-// import { useState } from 'react';
-// import Banner from '../Banner/Banner';
-import "./home.css";
-// import HomeFeaturedCategory from '../HomeFeaturedCategory/HomeFeaturedCategory';
-// import HomeBlogs from '../HomeBlogs/HomeBlogs';
-// import NewArrivals from '../NewArrivals/NewArrivals';
-import PageTitle from "../../shared/PageTitle/PageTitle";
 import HomeHeaders from "../../shared/Header/HomeHeaders/HomeHeaders";
+import PageTitle from "../../shared/PageTitle/PageTitle";
 import Banner from "../Banner/Banner";
-import HomeFeaturedCategory from "../HomeFeaturedCategory/HomeFeaturedCategory";
-import NewArrivals from "../NewArrivals/NewArrivals";
-import HomeProductOnes from "../HomeProductOnes/HomeProductOnes/HomeProductOnes";
 import Banner2 from "../Banner/Banner2";
-import HomeProductTwos from "../HomeProductTwos/HomeProductTwos/HomeProductTwos";
-import HomeFeaturedProducts from "../HomeFeaturedProducts/HomeFeaturedProducts/HomeFeaturedProducts";
-// import HomeFeaturedProducts from '../HomeFeaturedProducts/HomeFeaturedProducts/HomeFeaturedProducts';
-// import HomeProductOnes from '../HomeProductOnes/HomeProductOnes/HomeProductOnes';
-// import HomeProductTwos from '../HomeProductTwos/HomeProductTwos/HomeProductTwos';
-// import HomeHeader from '../../Shared/Header/HomeHeaders/HomeHeader';
-// import HomeHeaders from '../../Shared/Header/HomeHeaders/HomeHeaders';
-const Home = () => {
-  // const [selected, setSelected] = useState("males");
-  // const changeHandler = e => {
-  //     setSelected(e.target.value);
-  // };
+import HomeFeaturedCategory from "../HomeFeaturedCategory/HomeFeaturedCategory";
+import HomeFeaturedProducts from "../homeFeaturedProducts/HomeFeaturedProducts";
+import HomeProductOnes from "../HomeProductOnes/HomeProductOnes";
+import HomeProductTwos from "../HomeProductTwos/HomeProductTwos";
+import NewArrivals from "../newArrivals/NewArrivals";
+import "./home.css";
 
+const Home = () => {
   return (
     <div className="home-bg pb-5 px-0">
-      <PageTitle pageTitle="" />
+      <PageTitle pageTitle="Home" />
       <div className="container-xxl d-flex p-0">
         {/*    <HomeHeader/> */}
         <HomeHeaders />

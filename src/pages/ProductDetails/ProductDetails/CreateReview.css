@@ -1,0 +1,67 @@
+.review-btn {
+    cursor: pointer;
+    transition: .3s;
+}
+
+.review-btn:hover {
+    color: rgb(255, 149, 0);
+}
+
+.review-btn:active {
+    color: rgb(89, 0, 255);
+}
+
+.review-main {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 20px;
+    min-height: 400px;
+    padding: 30px;
+    font-family: Georgia, serif;
+}
+
+.review-dev1 {
+    width: 100%;
+}
+
+.review-dev2 {
+    width: 100%;
+}
+
+.review-dev2>select {
+    width: 350px;
+    height: 35px;
+    padding: 5px;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+.review-dev2>input {
+    width: 350px;
+    height: 35px;
+    padding: 5px;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+.review-dev2>textarea {
+    width: 350px;
+    height: 120px;
+    padding: 5px;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+.submit-review-btn {
+    padding: 6px 16px;
+    border: none;
+    border-radius: 2px;
+    font-size: 15px;
+    color: rgb(240, 252, 255);
+    background: rgb(255, 128, 0);
+    transition: .4s;
+}
+
+.submit-review-btn:hover {
+    background: rgb(255, 81, 0);
+}

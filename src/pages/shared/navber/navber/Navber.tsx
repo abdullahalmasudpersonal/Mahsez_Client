@@ -26,6 +26,8 @@ const Navber = () => {
   const [shadow, setShadow] = useState(false);
   const navigate = useNavigate();
 
+  const cartLength = useAppSelector((state) => state.shopping.cart.length);
+
   const changeShadow = () => {
     if (window.scrollY >= 80) {
       setShadow(true);
@@ -215,7 +217,7 @@ const Navber = () => {
                 icon={faShoppingCart}
               />
               <span className="position-absolute translate-middle badge rounded-pill cart-quantity-badge py-1 px-2 mt-1 ">
-                {/* {cart.length} */}
+                {/* {cart.length} */} {cartLength}
                 {/*  {cart.map(products=> <>{products.quantity}</>)} */}
               </span>
             </Link>

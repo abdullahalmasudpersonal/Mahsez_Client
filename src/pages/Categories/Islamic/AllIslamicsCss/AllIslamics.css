@@ -1,0 +1,47 @@
+.cartlength{
+    position:fixed;
+    right: 20px;
+    padding: 20px;
+    background-color: pink;
+}
+.islamics-attars {
+    width: 100%;
+}
+
+.islamics-attars-dev {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 15px;
+}
+
+@media screen and (max-width:1150px) {
+    .islamics-attars-dev {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: auto;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .islamics-attars-dev {
+        display: grid;
+        padding: 15px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: auto;
+    }
+}
+@media screen and (max-width:600px) {
+    .islamics-attars-dev {
+        display: grid;
+        padding: 15px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: auto;
+    }
+}
+
+
+@media screen and (max-width:930px) {
+    .islamics-attars {
+        margin-left: 0;
+    }
+}

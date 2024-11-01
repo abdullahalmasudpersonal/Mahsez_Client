@@ -1,0 +1,21 @@
+export type TProduct = {
+  _id: string;
+  productId: string;
+  mainCategory?: string;
+  category?: string;
+  subCategory?: string;
+  name: string;
+  brand?: string;
+  availableQuantity?: number;
+  stockStatus?: "In Stock" | "Out Of Stock";
+  price: number;
+  regularPrice: number;
+  offerPrice?: number;
+  size?: string;
+  features?: string;
+  features2?: string[];
+  description?: string;
+  description2?: string[];
+  image?: string[];
+  prodCreator: string;
+};

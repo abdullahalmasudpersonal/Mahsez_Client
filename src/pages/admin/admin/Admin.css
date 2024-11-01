@@ -1,0 +1,10 @@
+.admin-bg-color {
+  background-image: linear-gradient(
+    rgb(237, 247, 252),
+    rgb(237, 241, 255),
+    rgb(247, 238, 255)
+  );
+}
+.admin-dev1-bg-color {
+  background-color: white;
+}

@@ -7,8 +7,16 @@ import { Link, Outlet } from "react-router-dom";
 // import UseAdmin from '../../../Hooks/UseAdmin/UseAdmin';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { logout } from "../../../redux/features/auth/authSlice";
+import { useAppDispatch } from "../../../redux/hooks";
+import { useGetMyProfileQuery } from "../../../redux/features/user/userApi";
 
 const Dashboard = () => {
+  const dispatch = useAppDispatch();
+  const { data: userData } = useGetMyProfileQuery({});
+  const { role } = userData?.data?.user || {};
+  const admin = role === "admin";
+
   // const [user] = useAuthState(auth);
   // const user = useAppSelector(selectCurrentUser);
   // const [admin] = UseAdmin(user);
@@ -17,6 +25,11 @@ const Dashboard = () => {
   //   signOut(auth);
   //   navigate('/');
   //   localStorage.removeItem('accessToken');
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
   // }
 
   return (
@@ -55,11 +68,11 @@ const Dashboard = () => {
               <Link to="/dashboard/myOrders">
                 <button>My Orders</button>
               </Link> */}
-              {/* {admin && (
+              {admin && (
                 <Link to="/admin">
                   <button>Admin Panel</button>
                 </Link>
-              )} */}
+              )}
               {/* <Link to="/shopping_Cart">
                 <button>View Cart</button>
               </Link> */}
@@ -67,7 +80,7 @@ const Dashboard = () => {
               <button>Transactions</button>
               <button>Your Messages</button>
               <button>Accounts Settings</button>
-              {/* <button onClick={logout}>Logout</button> */}
+              <button onClick={handleLogout}>Logout</button>
             </div>
             <Outlet />
           </div>

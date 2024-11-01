@@ -1,0 +1,185 @@
+/*----------------- attar detail start---------- */
+.productDetail {
+    width: 100vw;
+    overflow: hidden;
+}
+/*----------------- attar detail end---------- */
+
+/* ------------- attar-detail  first-part dev1 start */
+.productDetailDev{
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: 45% 50%;
+    grid-gap: 2%;
+}
+
+/* ------------------------------------------------- */
+.attar-detail-first-part-dev1-p {
+    display: block;
+    padding: 4px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    color: rgb(100, 100, 100);
+    border: 1px solid rgb(184, 184, 184);
+    margin: 25px 0;
+    transition: .4s;
+    font-size: 13px;
+}
+
+.attar-detail-first-part-dev1-p:hover {
+    color: white;
+    background-color: rgb(110, 111, 112);
+}
+
+/* ------------- attar-detail  first-part dev1 end---------- */
+.pro-detail-casual .thumbs {
+    padding: 0;
+    margin: 0;
+}
+
+.pro-detail-casual .thumbs .thumb {
+    border: 1px solid gray !important;
+    border-radius: 3px;
+}
+
+.pro-detail-casual .thumbs .selected {
+    border: 1px solid rgb(255, 119, 0) !important;
+    border-radius: 3px;
+}
+
+.pro-detail-casual .thumb:hover {
+    border: 1px solid rgb(255, 119, 0) !important;
+    border-radius: 3px;
+}
+
+.pro-detail-casual .control-dots {
+    display: none;
+}
+
+
+/* ------------- attar-detail  first-part dev-2 start ------------*/
+
+
+.attar-detail-dev-table {
+    border-bottom: 1px solid rgb(224, 224, 224);
+}
+
+.attar-detail-table td {
+    padding: 2px 0;
+    font-size: 14px;
+    color: gray;
+}
+
+.attar-detail-quantity-counter {
+    display: flex;
+}
+
+.attar-detail-quantity-counter-p {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding: 7px;
+    width: 60px;
+    border: 1px solid rgb(207, 207, 207);
+    margin: 0;
+}
+
+.attar-detail-quantity-counter-dev {
+    font-size: 12px;
+    border-style: solid;
+    color: rgb(173, 173, 173);
+    border-color: rgb(207, 207, 207);
+    border-width: 1px 1px 1px 0px;
+}
+
+.attar-detail-quantity-counter-dev button {
+    border: none;
+    background: none;
+}
+
+.outOfStock-btn {
+    padding: 7px 28px;
+    border-radius: 3px;
+    font-weight: 700;
+    color: gray;
+    border: none;
+    background: rgb(231, 233, 234);
+
+}
+
+.add-to-cart {
+    background: none;
+    border: none;
+    padding: 7px 28px;
+    border-radius: 3px;
+    color: white;
+    background-color: rgb(255, 129, 26);
+    transition: .4s;
+}
+
+.add-to-cart:hover {
+    color: white;
+    background-color: rgb(255, 94, 0);
+}
+
+.add-to-cart-disabled {
+    background: none;
+    border: none;
+    padding: 7px 28px;
+    border-radius: 3px;
+    color: white;
+    background-color: rgb(255, 183, 124);
+    transition: .4s;
+}
+
+/* ------------- attar-detail  first-part dev-2 end ---------- */
+
+/*--------------- attar-detail  second-part start ---------------- */
+.attar-detail-d-w-r {
+    display: block;
+    max-width: 100% !important;
+    border: 1px solid rgb(184, 184, 184);
+}
+
+.attar-detail-d-w-r-head {
+    background-color: aliceblue;
+}
+
+.attar-detail-d-w-r-head li {
+    padding: 10px 20px;
+    border: none;
+    background: none;
+    font-weight: 600;
+    color: rgb(77, 77, 77);
+}
+
+.attar-detail-d-w-r-head li:hover {
+    background: rgba(255, 128, 23, 0.863);
+}
+
+/*--------------- attar-detail  second-part end ---------------- */
+
+
+#exTab1 .nav-pills>li>a {
+    border-radius: 0;
+}
+
+/* change border radius for the tab , apply corners on top*/
+
+#exTab3 .nav-pills>li>a {
+    border-radius: 4px 4px 0 0;
+}
+
+#exTab3 .tab-content {
+    color: white;
+    background-color: #428bca;
+    padding: 5px 15px;
+}
+
+@media screen and (max-width:700px) {
+    .productDetailDev{
+        display: grid;
+        grid-template-columns: auto;
+    }
+}
+

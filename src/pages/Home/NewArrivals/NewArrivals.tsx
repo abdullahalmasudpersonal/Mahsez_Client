@@ -1,20 +1,21 @@
 import "./NewArrivals.css";
-import HomeProduct from "../HomeProduct/HomeProduct";
-import UseProducts from "../../../Hooks/UseProducts/UseProducts";
+import { useGetProdcutsQuery } from "../../../redux/features/product/productApi";
+import HomeProduct from "../homeProduct/HomeProduct";
+import "../home/HomeProducts.css";
+import { TProduct } from "../../interface/product.Interface";
 
 const NewArrivals = () => {
-  const [products] = UseProducts();
-
+  const { data: productDta } = useGetProdcutsQuery({});
   return (
     <div className="mb-2">
       <h5 className="homefeaturedCategore-title">NEW ARRIVALS</h5>
       <hr style={{ marginTop: "10px" }}></hr>
       <div className="homeProducts newArrival-dev">
-        {products
+        {productDta?.data
           .slice(0 - 6)
           .reverse()
-          .map((product) => (
-            <HomeProduct key={product._id} product={product} />
+          .map((product: TProduct) => (
+            <HomeProduct key={product._id} {...product} />
           ))}
       </div>
     </div>
