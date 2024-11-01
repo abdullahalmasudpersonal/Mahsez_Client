@@ -2,33 +2,39 @@ import "./HomeProduct.css";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { TProduct } from "../../interface/product.Interface";
 
-const HomeProduct = ({ product }) => {
+const HomeProduct = (product: TProduct) => {
   const navigate = useNavigate();
+
   const {
     _id,
-    brand,
+    // brand,
     name,
-    image1,
-    availableQuantity,
-    ragularPrice,
+    // availableQuantity,
     offerPrice,
-    weight1,
+    // weight1,
+    regularPrice,
+    image,
   } = product;
 
-  const navigateToProductDetails = (_id) => {
+  const navigateToProductDetails = (_id: string) => {
     navigate(`/categore/products/${_id}`);
   };
 
   return (
     <div className="homeProduct">
       <div className="homeProductImg">
-        <img
-          src={image1}
-          alt=""
-          className="img-fluid"
-          style={{ borderRadius: "2px 2px 0 0" }}
-        />
+        {image && image.length > 0 ? (
+          <img
+            src={image[0]}
+            alt=""
+            className="img-fluid"
+            style={{ borderRadius: "2px 2px 0 0" }}
+          />
+        ) : (
+          <p>No image available</p>
+        )}
       </div>
       <div className="px-2 pt-2">
         <h6
@@ -91,7 +97,7 @@ const HomeProduct = ({ product }) => {
                   textDecoration: "line-through 1px",
                 }}
               >
-                ৳ {ragularPrice}.00
+                ৳ {regularPrice}.00
               </span>
             </p>
           ) : (
@@ -106,7 +112,7 @@ const HomeProduct = ({ product }) => {
                 >
                   ৳
                 </span>
-                {ragularPrice}.00
+                {regularPrice}.00
               </span>
             </p>
           )}

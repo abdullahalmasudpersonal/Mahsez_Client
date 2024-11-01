@@ -13,19 +13,30 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import counterReducer from "./features/counter/counterSlice";
+import shoppingCartResucer from "./features/shoppingCart/shoppingCartSlice";
 
 const parsistConfig = {
   key: "auth",
   storage,
 };
 
+const shoppingPersistConfig = {
+  key: "shoppingCart",
+  storage,
+};
+
 const parsistedAuthReducer = persistReducer(parsistConfig, authReducer);
+const persistedShoppingCartReducer = persistReducer(
+  shoppingPersistConfig,
+  shoppingCartResucer
+);
 
 export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
     auth: parsistedAuthReducer,
     counter: counterReducer,
+    shopping: persistedShoppingCartReducer,
   },
   middleware: (getDefaultMiddlewares) =>
     getDefaultMiddlewares({

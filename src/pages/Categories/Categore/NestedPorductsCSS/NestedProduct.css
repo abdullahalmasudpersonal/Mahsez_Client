@@ -1,0 +1,133 @@
+.nestedProduct {
+    max-width: 245px;
+    height: 400px;
+    background: white;
+    border-radius: 2px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    position: relative;
+    transition: .3s;
+    overflow: hidden;
+}
+
+.nestedProduct:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.nestedProductImg {
+    max-width: 245px;
+    max-height: 245px;
+    overflow: hidden;
+}
+
+.nestedProductImg>img {
+    transition: .5s;
+}
+
+.nestedProductImg>img:hover {
+    overflow: hidden;
+    transform: scale(1.1);
+}
+
+.nestedProductName {
+    font-family: serif;
+    font-weight: 600;
+    cursor: pointer;
+    color: rgb(71, 71, 71);
+    transition: .2s;
+}
+
+.nestedProductName:hover {
+    color: rgb(255, 119, 0);
+}
+
+.nestedProductReview {
+    position: absolute;
+    bottom: 75px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.nestedProductPrice {
+    position: absolute;
+    bottom: 19px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.nestedProductPrice>p {
+    color: rgb(255, 132, 0);
+}
+
+/* nestedProductOutOfCart Out of cart */
+.nestedProductOutOfCart {
+    position: absolute;
+    bottom: 10px;
+    padding: 0 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.nestedProductOutOfCart>button {
+    width: 100%;
+    border: none;
+    padding: 5px;
+    background: rgb(180, 180, 180);
+    color: rgb(255, 255, 255);
+    font-family: serif;
+    font-weight: 600;
+    transition: .3s;
+}
+
+/* nestedProductAddCart Add to cart */
+.nestedProductAddCart {
+    position: absolute;
+    bottom: 10px;
+    padding: 0 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.nestedProductAddCart>button {
+    width: 100%;
+    border: none;
+    padding: 5px;
+    background: rgb(255, 140, 0);
+    color: white;
+    font-family: serif;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.nestedProductAddCart>button:hover {
+    background: rgb(255, 111, 0);
+    color: rgb(244, 247, 255);
+}
+
+@media screen and (max-width:450px) {
+    .nestedProduct {
+        height: 380px;
+    }
+}
+
+@media screen and (max-width:420px) {
+    .nestedProduct {
+        height: 370px;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .nestedProduct {
+        height: 360px;
+    }
+}
+
+@media screen and (max-width:310px) {
+    .nestedProduct {
+        height: 340px;
+    }
+}

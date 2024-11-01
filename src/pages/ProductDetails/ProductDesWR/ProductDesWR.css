@@ -1,0 +1,48 @@
+/*--------------- attar-desWR ---------------- */
+.attar-detail-desWR{
+    border: .5px solid rgb(233, 233, 233);
+    border-radius: 3px;
+    background-clip: border-box; 
+}
+
+.attar-detail-desWR-head {
+    background-color: rgb(249, 252, 255);
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding-left: 0;
+    border-bottom: .5px solid rgb(233, 233, 233);
+    border-radius: 3px 3px 0 0;
+    background-clip: border-box; 
+}
+.attar-detail-desWR-head li {
+    padding: 12px 0px;
+    font-weight: 600;
+    text-decoration: none;
+    border-right: .5px solid rgb(223, 222, 222);
+}
+.attar-detail-desWR-head li a{
+    padding: 12px 30px;
+    text-decoration: none;
+    color: rgb(87, 87, 87);
+}
+.nav-tabs li.active {
+    background: rgba(255, 102, 0, 0.863);
+}
+/* ----------- attar-detail-desWR-content --------- */
+.attar-detail-desWR-content{
+    padding: 20px;
+}
+/*--------------- attar-detail  second-part end ---------------- */
+@media screen and (max-width:500px) {
+    .attar-detail-desWR-head{
+        display: block;
+        text-align: center;
+    }
+    .attar-detail-desWR-head li:not(:last-child){
+        border-bottom: .5px solid rgb(233, 233, 233);
+    }
+    .attar-detail-desWR-head li a{
+        padding: 12px 90px;
+    }
+}

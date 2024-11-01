@@ -1,0 +1,65 @@
+
+.nestedSidebarItem{
+    padding: .60em 1em;
+    display: block;
+    transition: background-color .15s;
+    border-top: 1px solid rgb(228, 228, 228);
+  }
+  .nestedSidebarItem:hover{
+    color: rgb(255, 102, 0) !important;
+    background-color: aliceblue;
+    transition: .3s;
+  }
+  
+  .nestedSidebarTitle{
+    display: flex;
+    justify-content: space-between;
+  }
+  .nestedSidebarTitleName{
+    width: 90%;
+    color: gray;
+  }
+  .nestedSidebarTitle :hover{
+   color: rgb(255, 94, 0);
+  }
+  .nestedSidebarTitle div i{
+    display: inline-block;
+    width: 1.5em;
+  }
+  .nestedSidebarTitle .nestedToggleBtn{
+    cursor: pointer;
+    transition: transform .3s;
+  }
+  .nestedSidebarItem.nestedOpen > .nestedSidebarTitle .nestedToggleBtn{
+    transform: rotate(90deg);
+  }
+  .nestedSidebarContent{
+    height: 0;
+    overflow: hidden;
+  }
+  .nestedSidebarItem.nestedOpen > .nestedSidebarContent{
+    height: auto;
+  }
+  
+  .nestedSidebarItem.nestedPlain{
+    color: #575757;
+    text-decoration: none;
+  }
+  .nestedSidebarItem.nestedPlain:hover{
+    text-decoration: underline;
+  }
+  .nestedSidebarItem.nestedPlain i{
+    display: inline-block;
+    width: 1.7em;
+  }
+
+  @media screen and (max-width:1399px) {
+    .nestedSidebarTitle div{
+      width: 178px !important;
+    }
+  }
+  @media screen and (max-width:1199px) {
+    .nestedSidebarTitle div{
+      width: 138px !important;
+    }
+  }

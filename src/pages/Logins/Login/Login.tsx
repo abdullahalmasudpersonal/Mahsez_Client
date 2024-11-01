@@ -1,16 +1,13 @@
 import { useState } from "react";
 import "./Login.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
+import { useAppDispatch } from "../../../redux/hooks";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { useLoginMutation } from "../../../redux/features/auth/authApi";
 import { verifyToken } from "../../../utils/verifyToken";
-import {
-  selectCurrentUser,
-  setUser,
-  TUser,
-} from "../../../redux/features/auth/authSlice";
+import { setUser, TUser } from "../../../redux/features/auth/authSlice";
+import PageTitle from "../../shared/PageTitle/PageTitle";
 
 type FormValues = {
   email: string;
@@ -21,18 +18,11 @@ const Login = () => {
   const { register, handleSubmit } = useForm<FormValues>();
   const [passVisible, setPassVisible] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [login] = useLoginMutation();
-
-  // const token = useAppSelector(selectCurrentUser);
-
-  // const location = useLocation();
-  // const from = location.state?.from?.pathname || "/";
-
-  // if (token) {
-  //   navigate(from, { replace: true });
-  // }
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const onFinish: SubmitHandler<FormValues> = async (data) => {
     try {
@@ -46,6 +36,9 @@ const Login = () => {
       dispatch(setUser({ user: user, token: res.data.accessToken }));
       const toastId = toast.loading("Logging in...");
       toast.success("Logged in successfully!", { id: toastId, duration: 2000 });
+
+      navigate(from, { replace: true });
+
       // navigate(`/${user.role}/dashboard`);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
@@ -62,7 +55,7 @@ const Login = () => {
 
   return (
     <div className="container-xxl my-5 ">
-      {/* <PageTitle pageTitle="Login ||" /> */}
+      <PageTitle pageTitle="Login" />
       <div className="register">
         <div className="register-dev">
           <h4 className="text-center pt-4" style={{ fontFamily: "Algerian" }}>
