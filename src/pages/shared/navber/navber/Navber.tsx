@@ -1,7 +1,7 @@
 import "./Header.css";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../../../Assets/img/logo/mahsez (2).png";
+import logo from "../../../../assets/img/logo/mahsez.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAlignJustify,
@@ -17,7 +17,7 @@ import {
   logout,
   selectCurrentUser,
 } from "../../../../redux/features/auth/authSlice";
-import profileImg from "../../../../Assets/img/profile/profile.png";
+import profileImg from "../../../../assets/img/profile/profile.png";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
 
 const Navber = () => {

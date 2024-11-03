@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Header.css";
-import logo from "../../../../Assets/img/logo/mahsez (2).png";
+import logo from "../../../../assets/img/logo/mahsez.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAlignJustify,
@@ -12,7 +12,7 @@ import {
   faClose,
 } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
-// import profileImg from "../../../../Assets/img/profile/profile.png";
+// import profileImg from "../../../../assets/img/profile/profile.png";
 import { Link } from "react-router-dom";
 import {
   logout,

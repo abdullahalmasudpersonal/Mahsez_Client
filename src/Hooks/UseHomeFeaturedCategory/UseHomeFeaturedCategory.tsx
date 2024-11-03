@@ -1,18 +1,22 @@
 import { useEffect, useState } from "react";
 
-type CategoryType = {
-  id: number;
+interface Category {
+  _id: string;
   categoryName: string;
   image: string;
-};
-const UseHomeFeaturedCategory = () => {
-  const [homeFCategory, setHomeFCategory] = useState<CategoryType[]>([]);
+}
+
+const UseHomeFeaturedCategory = (): [
+  Category[],
+  React.Dispatch<React.SetStateAction<Category[]>>
+] => {
+  const [homeFCategory, setHomeFCategory] = useState<Category[]>([]);
   useEffect(() => {
     fetch(`HFCategory.json`)
       .then((res) => res.json())
       .then((data) => setHomeFCategory(data));
   }, []);
-  return [homeFCategory, setHomeFCategory] as const;
+  return [homeFCategory, setHomeFCategory];
 };
 
 export default UseHomeFeaturedCategory;

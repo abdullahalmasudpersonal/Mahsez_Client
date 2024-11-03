@@ -6,6 +6,7 @@ import { TProduct } from "../../interface/product.Interface";
 
 const NewArrivals = () => {
   const { data: productDta } = useGetProdcutsQuery({});
+  console.log(productDta, "p[ordds");
   return (
     <div className="mb-2">
       <h5 className="homefeaturedCategore-title">NEW ARRIVALS</h5>

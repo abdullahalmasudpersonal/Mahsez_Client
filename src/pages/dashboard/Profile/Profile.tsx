@@ -1,5 +1,5 @@
 import "./Profile.css";
-import profile from "../../../Assets/img/profile/profile.png";
+import profile from "../../../assets/img/profile/profile.png";
 import { useForm } from "react-hook-form";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,13 +7,11 @@ import { useGetMyProfileQuery } from "../../../redux/features/user/userApi";
 import PageTitle from "../../shared/PageTitle/PageTitle";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { useAppSelector } from "../../../redux/hooks";
-import { selectCurrentUser } from "../../../redux/features/auth/authSlice";
 
 const Profile = () => {
   const { data: userData } = useGetMyProfileQuery({});
-  const { id, email, name } = userData?.data || {};
-  const { register, handleSubmit, reset } = useForm();
+  const { email, name } = userData?.data || {};
+  const { register } = useForm();
 
   // const [user] = useAuthState(auth);
   const [edit, setEdit] = useState(false);

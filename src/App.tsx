@@ -1,11 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import "./index.css";
+
 import Footer from "./pages/shared/Footer/Footer";
 import Navber from "./pages/shared/navber/navber/Navber";
 import Login from "./pages/Logins/Login/Login";
 import Register from "./pages/Logins/Register/Register";
 import Dashboard from "./pages/dashboard/dashboard/Dashboard";
-import Profile from "./pages/dashboard/Profile/Profile";
+import Profile from "./pages/dashboard/profile/Profile";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import TermsCondition from "./pages/Terms&Condition/Terms&Condition";
@@ -24,6 +25,9 @@ import HomeAdmin from "./pages/admin/homeAdmin/HomeAdmin";
 //  import Home from "./pages/Home/Home/Home";
 // import Categore from "./pages/Categories/Categore/Categore/Categore";
 // import ProductDetails from "./pages/ProductDetails/ProductDetails/ProductDetails";
+//////////////// ant design & react-quill css /////////////////////////////
+import "antd/dist/reset.css";
+import "react-quill/dist/quill.snow.css";
 
 function App() {
   return (

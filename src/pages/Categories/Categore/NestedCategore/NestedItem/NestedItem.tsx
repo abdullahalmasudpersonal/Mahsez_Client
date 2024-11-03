@@ -2,7 +2,17 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./NestedItem.css";
 
-const NestedItem = ({ item }) => {
+interface Child {
+  title: string;
+  path: string;
+  childrens?: Child[];
+}
+
+interface NestedItemProps {
+  item: Child; // or Category depending on your structure
+}
+
+const NestedItem = ({ item }: NestedItemProps) => {
   const [nestedOpen, setNestedOpen] = useState(false);
 
   if (item.childrens) {

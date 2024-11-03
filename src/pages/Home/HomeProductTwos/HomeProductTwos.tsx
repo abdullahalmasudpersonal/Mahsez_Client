@@ -1,19 +1,18 @@
-import UseProducts from "../../../Hooks/UseProducts/UseProducts";
+import { useGetProdcutsQuery } from "../../../redux/features/product/productApi";
+import { TProduct } from "../../interface/product.Interface";
 import HomeProduct from "../homeProduct/HomeProduct";
 
 const HomeProductTwos = () => {
-  const [products] = UseProducts();
+  const { data: productDta } = useGetProdcutsQuery({});
 
   return (
     <div>
       <h5 className="homefeaturedCategore-title">BESTSELLING PRODUCTS</h5>
       <hr style={{ marginTop: "10px" }}></hr>
       <div className="homeProducts">
-        {products /* .filter(categore => categore.category === 'attar') */
-          .slice(0, 12)
-          .map((product) => (
-            <HomeProduct key={product._id} product={product} />
-          ))}
+        {productDta?.data?.slice(0, 12).map((product: TProduct) => (
+          <HomeProduct key={product._id} {...product} />
+        ))}
       </div>
     </div>
   );

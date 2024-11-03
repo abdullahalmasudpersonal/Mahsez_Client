@@ -4,11 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import PageTitle from "../shared/PageTitle/PageTitle";
 import { useGetMyProfileQuery } from "../../redux/features/user/userApi";
-import District from "./District";
 
 const CheckOut = () => {
   const { data: userData } = useGetMyProfileQuery({});
-  const { id, email, name } = userData?.data || {};
+  const { email } = userData?.data || {};
 
   console.log(userData, email);
   return (

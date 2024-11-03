@@ -1,10 +1,6 @@
 import "./Dashboard.css";
-import profileImg from "../../../Assets/img/profile/profile.png";
-// import { useAuthState } from 'react-firebase-hooks/auth';
-// import auth from '../../../firebase.init';
+import profileImg from "../../../assets/img/profile/profile.png";
 import { Link, Outlet } from "react-router-dom";
-// import { signOut } from 'firebase/auth';
-// import UseAdmin from '../../../Hooks/UseAdmin/UseAdmin';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { logout } from "../../../redux/features/auth/authSlice";

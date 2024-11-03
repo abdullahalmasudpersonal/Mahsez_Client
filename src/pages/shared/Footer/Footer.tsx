@@ -1,9 +1,9 @@
 import "./Footer.css";
-import img from "../../../Assets/img/logo/mahsez (2).png";
-import bkash from "../../../Assets/img/payment/bkash.png";
-import nagod from "../../../Assets/img/payment/nagod.png";
-import rocket from "../../../Assets/img/payment/rocket.png";
-import sureCash from "../../../Assets/img/payment/sureCash.png";
+import img from "../../../assets/img/logo/mahsez.png";
+import bkash from "../../../assets/img/payment/bkash.png";
+import nagod from "../../../assets/img/payment/nagod.png";
+import rocket from "../../../assets/img/payment/rocket.png";
+import sureCash from "../../../assets/img/payment/sureCash.png";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
