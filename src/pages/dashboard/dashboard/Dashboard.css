@@ -1,39 +1,39 @@
-.dashboard{
+.dashboard {
   display: grid;
   grid-template-columns: 270px auto;
   grid-gap: 20px;
 }
-@media screen and (max-width:1399px) {
-  .dashboard{
+@media screen and (max-width: 1399px) {
+  .dashboard {
     margin: auto 10px;
   }
 }
-@media screen and (max-width:650px) {
-  .dashboard{
+@media screen and (max-width: 650px) {
+  .dashboard {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 20px;
   }
-  .dashboard-dev1{
+  .dashboard-dev1 {
     margin: auto;
   }
-
 }
-.dashboard-dev1{
+.dashboard-dev1 {
   min-height: 80vh;
   width: 270px;
   border-radius: 5px;
   padding: 15px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   background-color: white;
 }
-.dashboard-dev1 img{
+.dashboard-dev1 img {
   display: flex;
   padding-top: 10px;
   padding-bottom: 2px;
   margin: auto;
 }
-.dashboard-dev1 button{
+.dashboard-dev1 button {
   width: 100%;
   height: 39px;
   border-radius: 4px;
@@ -42,62 +42,29 @@
   font-weight: bold;
   background-color: rgb(255, 136, 39);
   border: none;
-  transition-duration: .3s;
+  transition-duration: 0.3s;
 }
-.dashboard-dev1 button:hover{
+.dashboard-dev1 button:hover {
   background-color: rgb(255, 102, 0);
 }
-.dashboard-dev2{
+.dashboard-dev2 {
   min-height: 80vh;
   width: 100%;
   border-radius: 5px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   background-color: white;
 }
-@media screen and (max-width:370px){
-  .dashboard-dev1{
+@media screen and (max-width: 370px) {
+  .dashboard-dev1 {
     max-width: 300px !important;
   }
 }
-@media screen and (max-width:330px){
-  .dashboard-dev1{
+@media screen and (max-width: 330px) {
+  .dashboard-dev1 {
     max-width: 280px !important;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* .main-pro-pic {
   font-size: 50px;

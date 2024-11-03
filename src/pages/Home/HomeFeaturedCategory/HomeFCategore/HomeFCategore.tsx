@@ -1,7 +1,15 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import "./HomeFCategore.css";
 
-const HomeFCategore = ({ homeFCategore }: any) => {
+interface Category {
+  _id: string;
+  categoryName: string;
+  image: string;
+}
+interface HomeFCategoreProps {
+  homeFCategore: Category;
+}
+
+const HomeFCategore: React.FC<HomeFCategoreProps> = ({ homeFCategore }) => {
   const { categoryName, image } = homeFCategore;
 
   return (

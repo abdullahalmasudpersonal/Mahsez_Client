@@ -68,7 +68,7 @@ input[type="number"] {
   border-radius: 4px;
   outline: none;
 }
-.checkout-user-info > div > select > {
+.checkout-user-info > div > select {
   height: 200px !important;
 }
 
