@@ -114,7 +114,7 @@ const ProductDetails = () => {
           </p>
 
           <p className="product-dev-p pt-2">
-            {price ? (
+            {offerPrice ? (
               <h4>
                 <span
                   style={{
@@ -140,18 +140,34 @@ const ProductDetails = () => {
                 </span>
               </h4>
             ) : (
-              <span>
+              <h4>
                 <span
                   style={{
-                    fontSize: "15px",
+                    fontSize: "14px",
                     fontFamily: "Optima",
                     fontWeight: "bold",
                   }}
                 >
                   ৳
                 </span>
-                {regularPrice}.00
-              </span>
+                <span>{price}.00 &nbsp;</span>
+
+                {regularPrice ? (
+                  <span
+                    style={{
+                      fontSize: "13px",
+                      fontFamily: "Optima",
+                      fontWeight: "bold",
+                      color: "gray",
+                      textDecoration: "line-through 1px",
+                    }}
+                  >
+                    ৳ {regularPrice}.00
+                  </span>
+                ) : (
+                  ""
+                )}
+              </h4>
             )}
           </p>
 

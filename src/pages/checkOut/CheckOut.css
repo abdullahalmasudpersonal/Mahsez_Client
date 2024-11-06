@@ -29,50 +29,29 @@ input[type="number"] {
   font-size: large;
 }
 
-/* checkout-user-info */
-.checkout-user-info {
-  width: 400px;
-  min-width: 280px;
-  height: 100%;
-  border-radius: 4px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
-  background-color: white;
+/* checkout-user-data */
+.checkout-user-data div p {
+  font-size: 14px;
+  margin-bottom: 3px;
 }
-
-.checkout-user-info h5 span {
-  background-color: rgb(166, 177, 192);
-  padding: 3px 12px;
-  border-radius: 50px;
-  color: white;
-}
-
-.checkout-user-info div {
-  margin-bottom: 15px;
-}
-
-.checkout-user-info > div > input {
+.checkout-user-data > div > input {
   width: 100%;
   height: 35px;
-  margin-top: 2px;
+  margin-bottom: 15px;
   border: 0.5px solid gray;
   border-radius: 4px;
   outline: none;
   padding: 5px;
 }
-
-.checkout-user-info > div > select {
+.checkout-user-data > div > select {
   width: 100%;
   height: 35px;
-  margin-top: 2px;
+  margin-bottom: 15px;
   border: 0.5px solid gray;
   border-radius: 4px;
   outline: none;
 }
-.checkout-user-info > div > select {
-  height: 200px !important;
-}
-
-.checkout-user-info textarea {
+.checkout-user-data textarea {
   width: 100%;
   height: 100px;
   margin-top: 2px;
