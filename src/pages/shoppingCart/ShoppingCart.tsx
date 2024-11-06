@@ -19,8 +19,6 @@ const ShoppingCart: React.FC = () => {
   const cart = useAppSelector((state) => state.shopping.cart);
   const { data: products } = useGetProdcutsQuery({});
 
-  console.log(products?.data);
-
   const cartDetails = cart.map((cartItem) => {
     const product = products?.data.find(
       (item: TProduct) => item._id === cartItem._id
@@ -30,14 +28,6 @@ const ShoppingCart: React.FC = () => {
       ...product,
     };
   });
-
-  // const cartDetails = cart.map((cartItem) => {
-  //   const product = products.find((p) => p._id === cartItem._id);
-  //   return {
-  //     ...cartItem,
-  //     ...product,
-  //   };
-  // });
 
   const handleRemoveProduct = (_id: string) => {
     dispatch(removeProduct(_id));
@@ -123,7 +113,9 @@ const ShoppingCart: React.FC = () => {
                       </td>
                       <td className="mobile-cart">{product?.brand}</td>
                       <td className="mobile-cart">
-                        {product?.price ? product?.offerPrice : product?.price}
+                        {product?.offerPrice
+                          ? product?.offerPrice
+                          : product?.price}
                       </td>
 
                       <td className="align-middle">
@@ -134,7 +126,7 @@ const ShoppingCart: React.FC = () => {
                                 style={{ color: "gray" }}
                                 className="m-0 fw-bold"
                               >
-                                {product.quantity}
+                                {product?.quantity}
                               </p>
                             </div>
                             <div className="d-grid attar-detail-quantity-counter-dev">
@@ -184,7 +176,7 @@ const ShoppingCart: React.FC = () => {
                       <td className="text-end align-middle">
                         {product?.quantity *
                           Number(
-                            product?.price
+                            product?.offerPrice
                               ? product?.offerPrice
                               : product?.price
                           )}
