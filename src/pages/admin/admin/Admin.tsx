@@ -3,6 +3,11 @@ import "./Admin.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import PageTitle from "../../shared/PageTitle/PageTitle";
+import { Menu } from "antd";
+import menuData, { MenuData } from "./ManuData";
+import React from "react";
+
+const { SubMenu } = Menu;
 
 const Admin = () => {
   return (
@@ -48,7 +53,7 @@ const Admin = () => {
         <div className="container-xxl px-0 py-4">
           <div className="dashboard">
             <div className="dashboard-dev1">
-              <Link to="/admin">
+              {/*             <Link to="/admin">
                 <button>Home</button>
               </Link>
               <Link to="/admin/graphs">
@@ -60,18 +65,43 @@ const Admin = () => {
               <Link to="/admin/allAdmin">
                 <button>All Admin</button>
               </Link>
+              <Link to="/admin/products">
+                <button>Product</button>
+              </Link>
               <Link to="/admin/create-product">
                 <button>Create Product</button>
               </Link>
               <Link to="/admin/update_product">
-                <button>Update Product</button>
-              </Link>
-              <Link to="/admin/delete_product">
+                <button className="mb-5">Update Product</button>
+              </Link> */}
+
+              <Menu
+                mode="inline"
+                defaultOpenKeys={[]} // Set default open keys as 'dashboard'
+              >
+                {menuData.map((menu: MenuData) => (
+                  <SubMenu
+                    key={menu.key}
+                    icon={React.createElement(menu.icon)}
+                    title={menu.title}
+                  >
+                    {menu.items.map((item) => (
+                      <Menu.Item key={item.key}>
+                        <Link style={{ textDecoration: "none" }} to={item.path}>
+                          {item.title}
+                        </Link>
+                      </Menu.Item>
+                    ))}
+                  </SubMenu>
+                ))}
+              </Menu>
+
+              {/*     <Link to="/admin/delete_product">
                 <button>Delete Products</button>
               </Link>
               <Link to="/admin/allUser">
                 <button>All User</button>
-              </Link>
+              </Link> */}
             </div>
             <Outlet />
           </div>

@@ -151,7 +151,7 @@ const CreateProduct = () => {
     <>
       <div className="dashboard-dev2">
         <PageTitle pageTitle="Create Product || Admin" />
-        <div className="pt-4 ps-4">
+        <div className="pt-4 px-4">
           <h4 className="fw-bold side-header">Create Product</h4>
         </div>
         <hr />
