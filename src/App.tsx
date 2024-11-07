@@ -28,6 +28,8 @@ import HomeAdmin from "./pages/admin/homeAdmin/HomeAdmin";
 //////////////// ant design & react-quill css /////////////////////////////
 import "antd/dist/reset.css";
 import "react-quill/dist/quill.snow.css";
+import Prodcuts from "./pages/admin/products/Prodcuts";
+import ListProducts from "./pages/admin/products/listProducts/ListProducts";
 
 function App() {
   return (
@@ -39,6 +41,7 @@ function App() {
           <Route path="/categore" element={<Categore />}>
             <Route path="products/:productId" element={<ProductDetails />} />
           </Route>
+
           <Route
             path="/dashboard"
             element={
@@ -49,6 +52,7 @@ function App() {
           >
             <Route index element={<Profile />} />
           </Route>
+
           <Route
             path="/checkout"
             element={
@@ -75,6 +79,8 @@ function App() {
             }
           >
             <Route index element={<HomeAdmin />} />
+            <Route path="products" element={<Prodcuts />} />
+            <Route path="list-products" element={<ListProducts />} />
             <Route path="create-product" element={<CreateProduct />} />
           </Route>
         </Routes>

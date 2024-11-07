@@ -1,4 +1,5 @@
 import { baseApi } from "../../api/baseApi";
+import { tagTypes } from "../tagTypes";
 
 const productApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -7,6 +8,7 @@ const productApi = baseApi.injectEndpoints({
         url: "/product",
         method: "GET",
       }),
+      providesTags: [tagTypes.product],
     }),
     getSingleProdcut: builder.query({
       query: (id) => ({
@@ -21,6 +23,13 @@ const productApi = baseApi.injectEndpoints({
         body: productInfo,
       }),
     }),
+    deleteProduct: builder.mutation({
+      query: (id) => ({
+        url: `/product/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: [tagTypes.product],
+    }),
   }),
 });
 
@@ -28,4 +37,5 @@ export const {
   useGetProdcutsQuery,
   useGetSingleProdcutQuery,
   useCreateProductMutation,
+  useDeleteProductMutation,
 } = productApi;

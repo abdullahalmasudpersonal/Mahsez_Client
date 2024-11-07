@@ -8,3 +8,31 @@
 .admin-dev1-bg-color {
   background-color: white;
 }
+
+/* ---------- ‍ant desing css ------------------------ */
+/* customStyles.css */
+
+.ant-menu {
+  border: none !important;
+  /* background-color: transparent !important; */
+}
+
+.ant-menu-item {
+  /* background-color: rgb(255, 153, 0) !important; */
+  /* padding: 0 !important; */
+  color: rgb(255, 255, 255) !important;
+  font-weight: 600;
+  /* border: 1px solid rgb(255, 136, 39); */
+  background-color: rgb(194, 87, 0) !important;
+}
+
+.ant-menu-submenu-title {
+  background-color: rgb(255, 136, 39) !important;
+  /* padding: 0 !important; */
+  color: white !important;
+  font-weight: bold;
+}
+
+.ant-menu-submenu {
+  /* background-color: rgb(149, 149, 190) !important; */
+}
