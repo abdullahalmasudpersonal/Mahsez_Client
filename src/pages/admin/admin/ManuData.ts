@@ -36,7 +36,7 @@ const menuData: MenuData[] = [
     title: "Products",
     icon: AppstoreOutlined,
     items: [
-      { key: "list", title: "List", path: "/admin/list-products" },
+      { key: "product-list", title: "List", path: "/admin/list-products" },
       { key: "Grid", title: "Grid", path: "/dashboard/main" },
       {
         key: "create",
@@ -50,7 +50,7 @@ const menuData: MenuData[] = [
     title: "Orders",
     icon: SettingOutlined,
     items: [
-      { key: "ui1", title: "UI Element 1", path: "/dashboard/main" },
+      { key: "order-list", title: "List", path: "/admin/list-orders" },
       { key: "ui2", title: "UI Element 2", path: "/dashboard/main" },
     ],
   },
