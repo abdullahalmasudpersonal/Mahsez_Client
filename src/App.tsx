@@ -30,6 +30,7 @@ import "antd/dist/reset.css";
 import "react-quill/dist/quill.snow.css";
 import Prodcuts from "./pages/admin/products/Prodcuts";
 import ListProducts from "./pages/admin/products/listProducts/ListProducts";
+import MyOrder from "./pages/dashboard/myOrder/MyOrder";
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
             }
           >
             <Route index element={<Profile />} />
+            <Route path="my-orders" element={<MyOrder />} />
           </Route>
 
           <Route

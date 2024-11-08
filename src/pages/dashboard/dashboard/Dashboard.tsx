@@ -66,12 +66,17 @@ const Dashboard = () => {
               </Link> */}
               {admin && (
                 <Link to="/admin">
-                  <button>Admin Panel</button>
+                  <button style={{ backgroundColor: "purple" }}>
+                    Admin Panel
+                  </button>
                 </Link>
               )}
               {/* <Link to="/shopping_Cart">
                 <button>View Cart</button>
               </Link> */}
+              <Link to="/dashboard/my-orders">
+                <button>My Order</button>
+              </Link>
               <button>My Reviews</button>
               <button>Transactions</button>
               <button>Your Messages</button>
