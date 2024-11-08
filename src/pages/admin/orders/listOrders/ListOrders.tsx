@@ -9,96 +9,124 @@ import {
 } from "antd";
 import PageTitle from "../../../shared/PageTitle/PageTitle";
 import { useState } from "react";
-import {
-  useDeleteProductMutation,
-  useGetProdcutsQuery,
-} from "../../../../redux/features/product/productApi";
-import { TQueryParam } from "../../../../types/global";
-import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
+import { useGetAllOrderQuery } from "../../../../redux/features/order/orderApi";
+import { TOrder } from "../../../../types/order.types";
 import Loader from "../../../shared/loader/Loader";
-import { toast } from "sonner";
-import { TProduct } from "../../../../types/product.types";
+import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
 
 const { Option } = Select;
 
-const ListProducts = () => {
+const ListOrders = () => {
   const [pageSize, setPageSize] = useState(10);
-  const [params] = useState<TQueryParam[] | undefined>(undefined);
-  const { data: productData, isLoading: loadingProduct } =
-    useGetProdcutsQuery(params);
-  const [deleteSingleProduct] = useDeleteProductMutation();
+  const { data: orderData, isLoading: orderDataLoading } = useGetAllOrderQuery(
+    {}
+  );
 
   const handlePageSizeChange = (value: number) => {
     setPageSize(value);
   };
 
-  const deleteProduct = async (productId: string) => {
-    const res = await deleteSingleProduct(productId).unwrap();
-    if (res?.success) {
-      toast.success("Delete prodcuct successfully!", {
-        duration: 1000,
-        position: "top-right",
-      });
-    }
-  };
+  function formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      timeZone: "Asia/Dhaka",
+    };
+    return date.toLocaleDateString("en-US", options);
+  }
 
-  const dataTable = productData?.data?.map(
-    ({ _id, name, category, price, availableQuantity, image }: TProduct) => ({
+  const dataTable = orderData?.data?.map(
+    ({
+      _id,
+      name,
+      orderId,
+      createdAt,
+      contactNumber,
+      grandTotal,
+      paymentStatus,
+      items,
+      orderStatus,
+      paymentType,
+    }: TOrder) => ({
       key: _id,
       name,
-      category,
-      price,
-      availableQuantity,
-      image,
+      orderId,
+      createdAt,
+      contactNumber,
+      grandTotal,
+      paymentStatus,
+      items,
+      orderStatus,
+      paymentType,
     })
   );
 
-  const columns: TableColumnsType<TProduct> = [
+  const columns: TableColumnsType<TOrder> = [
     {
-      title: "Product Name",
+      title: "Order ID",
+      key: "orderId",
+      dataIndex: "orderId",
+    },
+    {
+      title: "Date",
+      dataIndex: "createdAt",
+      key: "date",
+      align: "center",
+
+      render: (createdAt: string) => formatDate(createdAt),
+    },
+    {
+      title: "Coustomer",
+      dataIndex: "name",
       key: "name",
-      width: 300,
-      render: (record: TProduct) => (
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <img
-            src={record.image?.[0]}
-            alt={record.name}
-            style={{
-              width: "50px",
-              height: "50px",
-              marginRight: "10px",
-              borderRadius: "5px",
-            }}
-          />
-          <span>{record.name}</span>
-        </div>
-      ),
+      align: "center",
     },
     {
-      title: "Price",
-      dataIndex: "price",
-      key: "price",
+      title: "Amount",
+      dataIndex: "grandTotal",
+      key: "grandTotal",
       align: "center",
-      width: 100,
     },
     {
-      title: "Stock",
-      dataIndex: "availableQuantity",
-      key: "availableQuantity",
+      title: "Payment Status",
+      dataIndex: "paymentStatus",
+      key: "paymentStatus",
       align: "center",
-      width: 100,
     },
     {
-      title: "Category",
-      dataIndex: "category",
-      key: "category",
+      title: "Payment Type",
+      dataIndex: "paymentType",
+      key: "paymentType",
       align: "center",
-      width: 150,
+    },
+    {
+      title: "Contact Number ",
+      dataIndex: "contactNumber",
+      key: "contactNumber",
+      align: "center",
+    },
+    {
+      title: "Items",
+      dataIndex: "items",
+      key: "items",
+      align: "center",
+      width: 80,
+      render: (items) => items?.length,
+    },
+    {
+      title: "Order Status",
+      dataIndex: "orderStatus",
+      key: "orderStatus",
+      align: "center",
+      width: 80,
     },
     {
       title: "Action",
       key: "category",
       align: "center",
+      width: 80,
       render: (item) => {
         return (
           <div
@@ -119,7 +147,7 @@ const ListProducts = () => {
 
             <Popconfirm
               title="Are you sure you want to delete this product?"
-              onConfirm={() => deleteProduct(item?.key)}
+              // onConfirm={() => deleteProduct(item?.key)}
               okText="Yes"
               cancelText="No"
             >
@@ -135,10 +163,10 @@ const ListProducts = () => {
 
   return (
     <div className="dashboard-dev2" style={{ overflowX: "auto" }}>
-      <PageTitle pageTitle="List || Products || Admin" />
+      <PageTitle pageTitle="Order List || Admin" />
       <div className="pt-4 px-4 d-flex justify-content-between align-items-center">
-        <h4 className="fw-bold m-0">
-          All Product List ({productData?.data?.length})
+        <h4 className="fw-bold side-header">
+          All Order List ({orderData?.data?.length})
         </h4>
         <Row justify="end">
           <Col>
@@ -156,8 +184,7 @@ const ListProducts = () => {
         </Row>
       </div>
       <hr />
-
-      {loadingProduct ? (
+      {orderDataLoading ? (
         <Loader />
       ) : (
         <div style={{ padding: "10px" }}>
@@ -179,4 +206,4 @@ const ListProducts = () => {
   );
 };
 
-export default ListProducts;
+export default ListOrders;

@@ -31,6 +31,7 @@ import "react-quill/dist/quill.snow.css";
 import Prodcuts from "./pages/admin/products/Prodcuts";
 import ListProducts from "./pages/admin/products/listProducts/ListProducts";
 import MyOrder from "./pages/dashboard/myOrder/MyOrder";
+import ListOrders from "./pages/admin/orders/listOrders/ListOrders";
 
 function App() {
   return (
@@ -81,6 +82,7 @@ function App() {
             }
           >
             <Route index element={<HomeAdmin />} />
+            <Route path="list-orders" element={<ListOrders />} />
             <Route path="products" element={<Prodcuts />} />
             <Route path="list-products" element={<ListProducts />} />
             <Route path="create-product" element={<CreateProduct />} />
