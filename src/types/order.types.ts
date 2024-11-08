@@ -6,6 +6,7 @@ export type TOrderItem = {
 };
 
 export type TOrder = {
+  _id: string;
   orderId: string;
   userId: string;
   email: string;
@@ -23,4 +24,5 @@ export type TOrder = {
   subTotal: number;
   grandTotal: number;
   isDeleted: boolean;
+  createdAt: string;
 };

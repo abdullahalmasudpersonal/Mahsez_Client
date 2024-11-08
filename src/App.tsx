@@ -52,7 +52,7 @@ function App() {
             }
           >
             <Route index element={<Profile />} />
-            <Route path="my-orders" element={<MyOrder />} />
+            <Route path="my-order" element={<MyOrder />} />
           </Route>
 
           <Route

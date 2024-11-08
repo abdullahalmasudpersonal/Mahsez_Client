@@ -74,7 +74,7 @@ const Dashboard = () => {
               {/* <Link to="/shopping_Cart">
                 <button>View Cart</button>
               </Link> */}
-              <Link to="/dashboard/my-orders">
+              <Link to="/dashboard/my-order">
                 <button>My Order</button>
               </Link>
               <button>My Reviews</button>

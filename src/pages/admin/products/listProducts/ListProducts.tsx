@@ -13,11 +13,11 @@ import {
   useDeleteProductMutation,
   useGetProdcutsQuery,
 } from "../../../../redux/features/product/productApi";
-import { TProduct } from "../../../interface/product.Interface";
 import { TQueryParam } from "../../../../types/global";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
 import Loader from "../../../shared/loader/Loader";
 import { toast } from "sonner";
+import { TProduct } from "../../../../types/product.types";
 
 // const columns = [
 //   {

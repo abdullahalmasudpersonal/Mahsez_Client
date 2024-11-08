@@ -186,7 +186,7 @@ const Profile = () => {
                       name="gender"
                       rules={[
                         {
-                          required: true,
+                          required: false,
                           message: "Please select your gender",
                         },
                       ]}
@@ -204,7 +204,7 @@ const Profile = () => {
                       name="contactNo"
                       rules={[
                         {
-                          required: true,
+                          required: false,
                           message: "Please enter your contact number",
                         },
                       ]}
@@ -218,7 +218,7 @@ const Profile = () => {
                       name="companyName"
                       rules={[
                         {
-                          required: true,
+                          required: false,
                           message: "Please enter your company name",
                         },
                       ]}
@@ -231,7 +231,7 @@ const Profile = () => {
                       label="City"
                       name="city"
                       rules={[
-                        { required: true, message: "Please enter your city" },
+                        { required: false, message: "Please enter your city" },
                       ]}
                     >
                       <Input placeholder="Enter your city" />
@@ -243,7 +243,7 @@ const Profile = () => {
                       name="postCode"
                       rules={[
                         {
-                          required: true,
+                          required: false,
                           message: "Please enter your post code",
                         },
                       ]}
@@ -257,7 +257,7 @@ const Profile = () => {
                       name="presentAddress"
                       rules={[
                         {
-                          required: true,
+                          required: false,
                           message: "Please enter your present address",
                         },
                       ]}
@@ -271,7 +271,7 @@ const Profile = () => {
                       name="permanentAddress"
                       rules={[
                         {
-                          required: true,
+                          required: false,
                           message: "Please enter your permanent address",
                         },
                       ]}
