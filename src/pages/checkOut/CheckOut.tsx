@@ -20,11 +20,11 @@ import {
   Select,
   Modal,
 } from "antd";
-import { TOrder } from "./order.interface";
 import { useCreateOrderMutation } from "../../redux/features/order/orderApi";
 import { toast } from "sonner";
 import { useDispatch } from "react-redux";
 import { clearCart } from "../../redux/features/shoppingCart/shoppingCartSlice";
+import { TOrder } from "../../types/order.types";
 
 const { Paragraph } = Typography;
 
@@ -117,7 +117,7 @@ const CheckOut = () => {
             contactNumber: values?.contactNumber,
             address: values?.address,
             comment: values?.comment,
-            inems: [cartItems],
+            items: cartItems,
             paymentType: paymentMethod,
             deliveryCharge: delivaryCharge,
             subTotal: subTotal,
@@ -129,7 +129,7 @@ const CheckOut = () => {
             toast.success(result?.message, { position: "top-right" });
             form.resetFields();
             dispatch(clearCart());
-            navigate("/dashboard");
+            navigate("/dashboard/my-order");
           }
         } catch (error) {
           if (error && typeof error === "object" && "data" in error) {

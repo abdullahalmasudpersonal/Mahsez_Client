@@ -12,7 +12,7 @@ import {
   removeProduct,
 } from "../../redux/features/shoppingCart/shoppingCartSlice";
 import { useGetProdcutsQuery } from "../../redux/features/product/productApi";
-import { TProduct } from "../interface/product.Interface";
+import { TProduct } from "../../types/product.types";
 
 const ShoppingCart: React.FC = () => {
   const dispatch = useDispatch();

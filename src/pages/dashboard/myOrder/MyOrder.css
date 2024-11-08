@@ -1,0 +1,42 @@
+.my-single-order {
+  border-radius: 5px;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+  transition: all 0.5s ease-in-out;
+}
+.my-single-order:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+    rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+.mySingleOrderInfoDev {
+  border-radius: 0 0 5px 5px;
+  padding: 16px 16px 16px 16px;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  background-color: rgb(248, 252, 255);
+}
+.mySingleOrderInfoDev > div {
+  display: flex;
+  align-items: center;
+}
+.mySingleOrderInfoDevSecond {
+  display: flex;
+  justify-content: end;
+}
+@media screen and (max-width: 1000px) {
+  .mySingleOrderInfoDev {
+    padding: 16px 16px 16px 16px;
+    display: grid;
+    grid-template-columns: 100%;
+  }
+  .mySingleOrderInfoDevSecond {
+    display: flex;
+    justify-content: space-between;
+  }
+  .mySingleOrderInfoDevSecond {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgb(232, 231, 231);
+  }
+}
