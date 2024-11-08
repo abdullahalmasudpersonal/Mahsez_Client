@@ -1,70 +1,106 @@
 import "./Profile.css";
 import profile from "../../../assets/img/profile/profile.png";
-import { useForm } from "react-hook-form";
-
+import { FieldValues } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useGetMyProfileQuery } from "../../../redux/features/user/userApi";
+import {
+  useGetMyProfileQuery,
+  useUpdateMyProfileMutation,
+} from "../../../redux/features/user/userApi";
 import PageTitle from "../../shared/PageTitle/PageTitle";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {
+  Button,
+  Col,
+  Form,
+  Image,
+  Input,
+  Row,
+  Select,
+  Upload,
+  UploadFile,
+} from "antd";
+import { UploadOutlined } from "@ant-design/icons";
+import { toast } from "sonner";
 
 const Profile = () => {
   const { data: userData } = useGetMyProfileQuery({});
-  const { email, name } = userData?.data || {};
-  const { register } = useForm();
-
-  // const [user] = useAuthState(auth);
+  const {
+    email,
+    name,
+    profileImg,
+    contactNo,
+    companyName,
+    city,
+    gender,
+    postCode,
+    presentAddress,
+    permanentAddress,
+  } = userData?.data || {};
+  const [updateMyProfileData] = useUpdateMyProfileMutation();
   const [edit, setEdit] = useState(false);
-  // const imageStorageKey = 'a3d4bff21c6d258146feb02c43808485';
+  const [form] = Form.useForm();
 
-  //   const [userInfo, setuserInfo] = useState({
-  //     file: [],
-  //     filepreview: null,
-  //   });
-  //     const handleInputChange = (event) => {
-  //         setuserInfo({
-  //             ...userInfo,
-  //             file: event.target.files[0],
-  //             filepreview: URL.createObjectURL(event.target.files[0]),
-  //         });
-  //     };
+  //// set default values
+  useEffect(() => {
+    form.setFieldsValue({
+      name: name,
+      contactNo: contactNo,
+      companyName: companyName,
+      city: city,
+      gender: gender,
+      postCode: postCode,
+      presentAddress: presentAddress,
+      permanentAddress: permanentAddress,
+    });
+  }, [
+    name,
+    contactNo,
+    companyName,
+    city,
+    gender,
+    postCode,
+    presentAddress,
+    permanentAddress,
+    form,
+  ]);
 
-  // const onSubmit = async (data, event) => {
-  //     event.preventDefault();
-  //     const profileImg = data.profileImg[0];
-  //     const formData = new FormData();
-  //     formData.append('Image', profileImg);
-  //     const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
-  //     fetch(url, {
-  //         method: 'POST',
-  //         body: formData
-  //     })
-  //         .then(res => res.json())
-  //         .then(imgData => {
-  //             if (imgData.success) {
-  //                 // const img = imgData.data.url;
-  //                 const updateUserProfileInfo = {
-  //                     profileImg: imgData.data.url,
-  //                     name: data.name
-  //                 }
-  //                 fetch('http://localhost:5000/user', {
-  //                     method: "POST",
-  //                     headers: {
-  //                         'content-type': 'application/json'
-  //                     },
-  //                     body: JSON.stringify(updateUserProfileInfo)
-  //                 })
-  //                     .then(res => res.json())
-  //                     .then(inserted => {
-  //                         if (inserted.insertedId) {
+  const [fileList, setFileList] = useState<UploadFile[]>([]);
 
-  //                         }
-  //                         else {
-  //                         }
-  //                     })
-  //             }
-  //         })
-  // }
+  const defaultAvatar = "https://www.w3schools.com/w3images/avatar2.png";
+
+  const handleChange = ({
+    fileList: newFileList,
+  }: {
+    fileList: UploadFile[];
+  }) => {
+    setFileList(newFileList.slice(-1));
+  };
+
+  const handleFinish = async (values: FieldValues) => {
+    const profileData = {
+      name: values?.name,
+      contactNo: values?.contactNo,
+      companyName: values?.companyName,
+      city: values?.city,
+      gender: values?.gender,
+      postCode: values?.postCode,
+      presentAddress: values?.presentAddress,
+      permanentAddress: values?.permanentAddress,
+    };
+    const formData = new FormData();
+    formData.append("data", JSON.stringify(profileData));
+    fileList.forEach((file) => {
+      formData.append("file", file.originFileObj as File);
+    });
+    const res = await updateMyProfileData(formData).unwrap();
+    if (res?.success === true) {
+      toast.success(res?.message, { position: "top-right" });
+      form.resetFields();
+      setFileList([]);
+      setEdit(false);
+    }
+  };
 
   return (
     <div className="dashboard-dev2">
@@ -79,77 +115,192 @@ const Profile = () => {
       <hr />
       <div className="p-2">
         {edit ? (
-          <form /* onSubmit={handleSubmit(onSubmit)} */>
-            <div className="my-profile py-4">
-              {/* <div className="my-profile-img">
-                {userInfo.filepreview !== null ? (
-                  <img
-                    width="170px"
-                    height="170px"
-                    src={userInfo.filepreview}
-                    alt=""
-                  />
-                ) : (
-                  <img width="170px" height="170px" src={profile} alt="" />
-                )}
-                <input className='custom-file-input' type="file" name='profileImg' required onChange={handleInputChange}  />
-              </div> */}
-
-              <div className="my-profile-img"></div>
-
-              <div className="edit-user-profile-info">
-                <label className="">
-                  <small>Full Name</small>
-                </label>
-                <br />
-                <input
-                  type="text"
-                  placeholder="Enter Full Name"
-                  defaultValue={name}
-                  {...register("userName", { required: false })}
-                />
-                <br />
-                <label className="">
-                  <small>Email Address</small>
-                </label>
-                <br />
-                <input
-                  type="email"
-                  placeholder="Enter Email"
-                  defaultValue={email}
-                  {...register("userEmail", { required: false })}
-                />
-                <br />
-                <label className="">
-                  <small>Phone Number </small>
-                </label>
-                <br />
-                <input
-                  type="number"
-                  placeholder="Enter Phone Number"
-                  onInput={(e) => {
-                    const target = e.target as HTMLInputElement;
-                    target.value = target.value.slice(0, 11).replace(/\D/g, "");
+          <div>
+            <Form form={form} layout="vertical" onFinish={handleFinish}>
+              <Row>
+                <div
+                  style={{
+                    height: "230px",
+                    width: "250px",
+                    margin: "auto",
+                    display: "grid",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginBottom: "30px",
                   }}
-                  {...register("phoneNumber", { required: false })}
-                />
+                >
+                  <Image
+                    width={160}
+                    height={160}
+                    src={
+                      fileList.length > 0
+                        ? fileList[0].thumbUrl ||
+                          URL.createObjectURL(fileList[0].originFileObj as Blob)
+                        : profileImg || defaultAvatar
+                    }
+                    style={{
+                      boxShadow:
+                        "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
+                      backgroundColor: "#f56a00",
+                      borderRadius: "2px",
+                      margin: "auto",
+                    }}
+                  />
 
-                <br />
+                  <Upload
+                    accept="image/*"
+                    fileList={fileList}
+                    onChange={handleChange}
+                    beforeUpload={() => false}
+                    showUploadList={false}
+                    multiple={false}
+                  >
+                    <Button
+                      type="primary"
+                      icon={<UploadOutlined />}
+                      style={{
+                        backgroundColor: "orange",
+                        marginLeft: "11px",
+                      }}
+                    >
+                      Profile Image
+                    </Button>
+                  </Upload>
+                </div>
+
+                <Row gutter={16}>
+                  <Col xs={24} md={12}>
+                    <Form.Item
+                      label="Name"
+                      name="name"
+                      rules={[
+                        { required: true, message: "Please enter your name" },
+                      ]}
+                    >
+                      <Input placeholder="Enter your name" />
+                    </Form.Item>
+                  </Col>
+                  <Col xs={24} md={12}>
+                    <Form.Item
+                      label="Gender"
+                      name="gender"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Please select your gender",
+                        },
+                      ]}
+                    >
+                      <Select placeholder="Select your gender">
+                        <Select.Option value="male">Male</Select.Option>
+                        <Select.Option value="female">Female</Select.Option>
+                        <Select.Option value="other">Other</Select.Option>
+                      </Select>
+                    </Form.Item>
+                  </Col>
+                  <Col xs={24} md={12}>
+                    <Form.Item
+                      label="Contact No"
+                      name="contactNo"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Please enter your contact number",
+                        },
+                      ]}
+                    >
+                      <Input placeholder="Enter your contact number" />
+                    </Form.Item>
+                  </Col>
+                  <Col xs={24} md={12}>
+                    <Form.Item
+                      label="Company Name"
+                      name="companyName"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Please enter your company name",
+                        },
+                      ]}
+                    >
+                      <Input placeholder="Enter your company name" />
+                    </Form.Item>
+                  </Col>
+                  <Col xs={24} md={12}>
+                    <Form.Item
+                      label="City"
+                      name="city"
+                      rules={[
+                        { required: true, message: "Please enter your city" },
+                      ]}
+                    >
+                      <Input placeholder="Enter your city" />
+                    </Form.Item>
+                  </Col>
+                  <Col xs={24} md={12}>
+                    <Form.Item
+                      label="Post Code"
+                      name="postCode"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Please enter your post code",
+                        },
+                      ]}
+                    >
+                      <Input placeholder="Enter your post code" />
+                    </Form.Item>
+                  </Col>
+                  <Col xs={24} md={12}>
+                    <Form.Item
+                      label="Present Address"
+                      name="presentAddress"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Please enter your present address",
+                        },
+                      ]}
+                    >
+                      <Input.TextArea placeholder="Enter your present address" />
+                    </Form.Item>
+                  </Col>
+                  <Col xs={24} md={12}>
+                    <Form.Item
+                      label="Permanent Address"
+                      name="permanentAddress"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Please enter your permanent address",
+                        },
+                      ]}
+                    >
+                      <Input.TextArea placeholder="Enter your permanent address" />
+                    </Form.Item>
+                  </Col>
+                </Row>
+              </Row>
+              <div style={{ textAlign: "center", margin: "20px auto" }}>
+                <Button
+                  type="primary"
+                  style={{ backgroundColor: "orange" }}
+                  htmlType="submit"
+                >
+                  Update Profile
+                </Button>
               </div>
-            </div>
-            <div className="d-flex justify-content-center mb-3">
-              <input
-                type="Submit"
-                value="Save Change"
-                className="change-profile-save"
-              />
-            </div>
-          </form>
+            </Form>
+          </div>
         ) : (
           <div>
             <div className="my-profile py-4">
               <div className="my-profile-img">
-                <img width="170px" height="170px" src={profile} alt="" />
+                {profileImg ? (
+                  <img width="170px" height="170px" src={profileImg} alt="" />
+                ) : (
+                  <img width="170px" height="170px" src={profile} alt="" />
+                )}
               </div>
 
               <div className="edit-user-profile-info">
@@ -166,7 +317,7 @@ const Profile = () => {
                   <small>Phone Number </small>
                 </label>
                 <br />
-                <h6 className="mb-0">01737906772</h6>
+                <h6 className="mb-0">{contactNo}</h6>
                 <br />
               </div>
             </div>
