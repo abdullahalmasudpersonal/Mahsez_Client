@@ -18,6 +18,7 @@ import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
 import Loader from "../../../shared/loader/Loader";
 import { toast } from "sonner";
 import { TProduct } from "../../../../types/product.types";
+import { Link } from "react-router-dom";
 
 const { Option } = Select;
 
@@ -58,11 +59,11 @@ const ListProducts = () => {
       title: "Product Name",
       key: "name",
       width: 300,
-      render: (record: TProduct) => (
+      render: (item) => (
         <div style={{ display: "flex", alignItems: "center" }}>
           <img
-            src={record.image?.[0]}
-            alt={record.name}
+            src={item.image?.[0]}
+            alt={item.name}
             style={{
               width: "50px",
               height: "50px",
@@ -70,7 +71,12 @@ const ListProducts = () => {
               borderRadius: "5px",
             }}
           />
-          <span>{record.name}</span>
+          <Link
+            style={{ textDecoration: "none", color: "black" }}
+            to={`/categore/product/${item.key}`}
+          >
+            <span>{item.name}</span>
+          </Link>
         </div>
       ),
     },

@@ -9,8 +9,11 @@ import { Carousel } from "react-responsive-carousel";
 import PageTitle from "../../shared/PageTitle/PageTitle";
 import CreateReview from "./CreateReview";
 import ProductDesWR from "../ProductDesWR/ProductDesWR";
-import { useAppDispatch } from "../../../redux/hooks";
-import { addToCart } from "../../../redux/features/shoppingCart/shoppingCartSlice";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
+import {
+  addToCart,
+  removeProduct,
+} from "../../../redux/features/shoppingCart/shoppingCartSlice";
 import { toast } from "sonner";
 import { useGetSingleProdcutQuery } from "../../../redux/features/product/productApi";
 
@@ -45,13 +48,53 @@ const ProductDetails = () => {
     }
   };
 
-  const handleAddToCart = (_id: string) => {
-    if (quantity < availableQuantity && quantity < 10) {
-      dispatch(addToCart({ _id, quantity }));
-      toast.success("Product added to cart!", {
+  const cart = useAppSelector((state) => state.shopping.cart);
+  const isInCart = cart.some((item) => item._id === _id);
+
+  const handleCartToggle = () => {
+    if (isInCart) {
+      // Remove from cart
+      dispatch(removeProduct(_id));
+      toast.success("Product removed from cart!", {
         position: "top-right",
         duration: 1500,
       });
+    } else {
+      // Add to cart
+      if (quantity < availableQuantity && quantity <= 10) {
+        dispatch(addToCart({ _id, quantity }));
+        toast.success("Product added to cart!", {
+          position: "top-right",
+          duration: 1500,
+        });
+      } else {
+        toast.error("Cannot add more products!", {
+          position: "top-right",
+          duration: 1500,
+        });
+      }
+    }
+  };
+
+  //  নিচের ফাংশন ডিলিট করা যাবে না ভবিষৎে কাজে লাগতে পারে
+  // const handleAddToCart = (_id: string) => {
+  //   if (quantity < availableQuantity && quantity < 10) {
+  //     dispatch(addToCart({ _id, quantity }));
+  //     toast.success("Product added to cart!", {
+  //       position: "top-right",
+  //       duration: 1500,
+  //     });
+  //   } else {
+  //     toast.error("Cannot add more products!", {
+  //       position: "top-right",
+  //       duration: 1500,
+  //     });
+  //   }
+  // };
+
+  const handleAddToCart = (_id: string) => {
+    if (quantity < availableQuantity && quantity < 10) {
+      dispatch(addToCart({ _id, quantity }));
     } else {
       toast.error("Cannot add more products!", {
         position: "top-right",
@@ -68,7 +111,17 @@ const ProductDetails = () => {
           <Carousel className="text-center pro-detail-casual">
             {image?.map((img: string, index: number) => (
               <div key={index}>
-                <img src={img} />
+                <img
+                  src={
+                    img.includes("res.cloudinary.com")
+                      ? img.replace("/upload/", "/upload/f_auto,q_auto/")
+                      : img
+                  }
+                  srcSet={`${img}?w=300 300w, ${img}?w=600 600w, ${img}?w=1200 1200w`}
+                  sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1200px"
+                  alt={`Product Image ${index}`}
+                  loading="lazy"
+                />
               </div>
             ))}
           </Carousel>
@@ -228,15 +281,26 @@ const ProductDetails = () => {
           ) : (
             <div className="mt-4">
               <Link to="/shopping_cart">
-                <button className="add-to-cart mb-3">Buy Now</button>
+                <button
+                  className="add-to-cart mb-3"
+                  onClick={() => handleAddToCart(_id)}
+                >
+                  Buy Now
+                </button>
               </Link>{" "}
               &nbsp; &nbsp; &nbsp;
               <button
+                className={`${isInCart ? `remove-from-cart` : "add-to-cart"}`}
+                onClick={handleCartToggle}
+              >
+                {isInCart ? "Remove from Cart" : "Add to Cart"}
+              </button>
+              {/* <button
                 className="add-to-cart"
                 onClick={() => handleAddToCart(_id)}
               >
                 Add to Cart
-              </button>
+              </button> */}
             </div>
           )}
         </div>

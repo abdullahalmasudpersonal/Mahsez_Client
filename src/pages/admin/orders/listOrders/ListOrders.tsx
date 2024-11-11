@@ -127,7 +127,7 @@ const ListOrders = () => {
       key: "category",
       align: "center",
       width: 80,
-      render: (item) => {
+      render: () => {
         return (
           <div
             style={{ display: "flex", justifyContent: "center", gap: "10px" }}

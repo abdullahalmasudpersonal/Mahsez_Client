@@ -6,7 +6,6 @@ import PageTitle from "../shared/PageTitle/PageTitle";
 import { useGetMyProfileQuery } from "../../redux/features/user/userApi";
 import District from "./District";
 import { useEffect, useState } from "react";
-import { TProduct } from "../interface/product.Interface";
 import { useAppSelector } from "../../redux/hooks";
 import { useGetProdcutsQuery } from "../../redux/features/product/productApi";
 import {
@@ -25,6 +24,7 @@ import { toast } from "sonner";
 import { useDispatch } from "react-redux";
 import { clearCart } from "../../redux/features/shoppingCart/shoppingCartSlice";
 import { TOrder } from "../../types/order.types";
+import { TProduct } from "../../types/product.types";
 
 const { Paragraph } = Typography;
 

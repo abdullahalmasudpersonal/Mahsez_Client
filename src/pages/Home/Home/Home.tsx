@@ -12,7 +12,7 @@ import "./home.css";
 const Home = () => {
   return (
     <div className="home-bg pb-5 px-0">
-      <PageTitle pageTitle="Home" />
+      <PageTitle pageTitle="" />
       <div className="container-xxl d-flex p-0">
         {/*    <HomeHeader/> */}
         <HomeHeaders />
@@ -22,12 +22,12 @@ const Home = () => {
       <div className="container-xxl home-div-responsive mobile-responsive-featured-category my-5">
         <HomeFeaturedCategory />
       </div>
-      <div className="container-xxl home-div-responsive mt-4 mb-5">
-        <NewArrivals />
-      </div>
       {/* ----------------- special class ----------------------------- */}
       <div className="container-xxl home-div-responsive pc-responsive-featured-category">
         <HomeFeaturedCategory />
+      </div>
+      <div className="container-xxl home-div-responsive mt-4 mb-5">
+        <NewArrivals />
       </div>
       <div className="container-xxl home-div-responsive mt-5">
         <HomeProductOnes />
