@@ -1,5 +1,5 @@
 import { useGetProdcutsQuery } from "../../../redux/features/product/productApi";
-import { TProduct } from "../../interface/product.Interface";
+import { TProduct } from "../../../types/product.types";
 import HomeProduct from "../homeProduct/HomeProduct";
 
 const HomeFeaturedProducts = () => {

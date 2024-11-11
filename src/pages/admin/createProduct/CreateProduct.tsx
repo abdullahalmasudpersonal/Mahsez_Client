@@ -19,6 +19,8 @@ import { categoriesData } from "./CreateCategoreData";
 import { FieldValues } from "react-hook-form";
 import { useCreateProductMutation } from "../../../redux/features/product/productApi";
 import { toast } from "sonner";
+import imageCompression from "browser-image-compression";
+import { resizeImage } from "../../../utils/resizeResolution";
 
 const { Option } = Select;
 
@@ -71,12 +73,61 @@ const CreateProduct = () => {
     setPreviewOpen(true);
   };
 
-  const handleChange = ({
+  // const handleChange = ({
+  //   fileList: newFileList,
+  // }: {
+  //   fileList: UploadFile[];
+  // }) => {
+  //   setFileList(newFileList);
+  // };
+
+  const handleChange = async ({
     fileList: newFileList,
   }: {
     fileList: UploadFile[];
   }) => {
-    setFileList(newFileList);
+    const compressedFileList = (await Promise.all(
+      newFileList.map(async (file) => {
+        if (file.originFileObj) {
+          try {
+            // Compress the file
+            const options = {
+              maxSizeMB: 1,
+              useWebWorker: true,
+            };
+
+            const compressedBlob = await imageCompression(
+              file.originFileObj as File,
+              options
+            );
+
+            const compressedFile = new File([compressedBlob], file.name, {
+              type: file.type,
+              lastModified: file.originFileObj.lastModified,
+            });
+
+            console.log(compressedFile, "compressedfile");
+            // Resize the compressed file to 1000 x 1000 pixels
+            const resizedFile = await resizeImage(compressedFile, 1000, 1000);
+
+            console.log(resizedFile, "resizefiles");
+
+            return {
+              ...file,
+              url: URL.createObjectURL(resizedFile),
+              originFileObj: resizedFile,
+              size: resizedFile.size,
+            } as UploadFile<unknown>;
+          } catch (error) {
+            console.error("Error compressing or resizing image:", error);
+            return file;
+          }
+        }
+        return file;
+      })
+    )) as UploadFile<unknown>[];
+
+    setFileList([...compressedFileList]);
   };
 
   const uploadButton = (
@@ -90,8 +141,7 @@ const CreateProduct = () => {
   const [form] = Form.useForm();
   const handleSubmit = async (data: FieldValues) => {
     Modal.confirm({
-      title: "Are you sure you want to submit?",
-      content: "Submitting will save all changes.",
+      title: "Are you sure you want to create product !",
       okText: "Yes",
       cancelText: "No",
       onOk: async () => {
@@ -117,8 +167,10 @@ const CreateProduct = () => {
           const formData = new FormData();
           formData.append("data", JSON.stringify(productData));
           fileList.forEach((file) => {
+            console.log(file, "file");
             formData.append("files", file.originFileObj as File);
           });
+
           const res = await createProduct(formData).unwrap();
           if (res?.success === true) {
             toast.success(res?.message, { position: "top-right" });
@@ -239,6 +291,11 @@ const CreateProduct = () => {
                     <Select>
                       <Option value="Mahsez">Mahsez</Option>
                       <Option value="Alif">Alif</Option>
+                      <Option value="Al-Nuaim">Al-Nuaim</Option>
+                      <Option value="Manfare">Manfare</Option>
+                      <Option value="Leebas">Leebas</Option>
+                      <Option value="AKIJ">AKIJ</Option>
+                      <Option value="Morphy">Morphy</Option>
                       <Option value="No Brand">No Brand</Option>
                     </Select>
                   </Form.Item>

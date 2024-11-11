@@ -2,7 +2,7 @@ import "./NewArrivals.css";
 import { useGetProdcutsQuery } from "../../../redux/features/product/productApi";
 import HomeProduct from "../homeProduct/HomeProduct";
 import "../home/HomeProducts.css";
-import { TProduct } from "../../interface/product.Interface";
+import { TProduct } from "../../../types/product.types";
 
 const NewArrivals = () => {
   const { data: productDta } = useGetProdcutsQuery({});

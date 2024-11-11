@@ -2,7 +2,7 @@ import "./HomeProduct.css";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { TProduct } from "../../interface/product.Interface";
+import { TProduct } from "../../../types/product.types";
 
 const HomeProduct = (product: TProduct) => {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ const HomeProduct = (product: TProduct) => {
   } = product;
 
   const navigateToProductDetails = (_id: string) => {
-    navigate(`/categore/products/${_id}`);
+    navigate(`/categore/product/${_id}`);
   };
 
   return (

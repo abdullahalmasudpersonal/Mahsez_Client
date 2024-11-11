@@ -1,82 +1,82 @@
 [
-    {
-        "_id":"ds6h5fg4af",
-        "categoryName":"Beauty",
-        "image":"https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
-    },
-    {
-        "_id":"ds654af",
-        "categoryName":"Bags",
-        "image":"https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
-    },
-    {
-        "_id":"dsdsfgh654af",
-        "categoryName":"Computer",
-        "image":"https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
-    },
-    {
-        "_id":"ds65gh4af",
-        "categoryName":"Dress",
-        "image":"https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
-    },
-    {
-        "_id":"dsfh654af",
-        "categoryName":"Electronic",
-        "image":"https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
-    },
-    {
-        "_id":"ds654agff",
-        "categoryName":"Foods",
-        "image":"https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
-    },
-    {
-        "_id":"ds6rtur54af",
-        "categoryName":"Islamic",
-        "image":"https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
-    },
-    {
-        "_id":"ds65tr4af",
-        "categoryName":"Sports",
-        "image":"https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
-    },
-    {
-        "_id":"dsdfh654af",
-        "categoryName":"Attar",
-        "image":"https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
-    },
-    {
-        "_id":"dsfgh654af",
-        "categoryName":"Accessories",
-        "image":"https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
-    },
-    {
-        "_id":"ds6fdgh54af",
-        "categoryName":"Laptop",
-        "image":"https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
-    },
-    {
-        "_id":"ds6fgsdgh54af",
-        "categoryName":"Mobile",
-        "image":"https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
-    },
-    {
-        "_id":"ds6fgsd456gh54af",
-        "categoryName":"Jewelry",
-        "image":"https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
-    },
-    {
-        "_id":"ds6fgsdfgh456gh54af",
-        "categoryName":"Jewelry",
-        "image":"https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
-    },
-    {
-        "_id":"ds6fgsdsdfg456gh54af",
-        "categoryName":"Jewelry",
-        "image":"https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
-    },
-    {
-        "_id":"ds65th4af",
-        "categoryName":"Cosmatics",
-        "image":"https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
-    }
+  {
+    "_id": "ds6h5fg4af",
+    "categoryName": "Beauty",
+    "image": "https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
+  },
+  {
+    "_id": "ds654af",
+    "categoryName": "Bags",
+    "image": "https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
+  },
+  {
+    "_id": "dsdsfgh654af",
+    "categoryName": "Computer",
+    "image": "https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
+  },
+  {
+    "_id": "ds65gh4af",
+    "categoryName": "Dress",
+    "image": "https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
+  },
+  {
+    "_id": "dsfh654af",
+    "categoryName": "Electronic",
+    "image": "../src/assets/img/category/Electronic.png"
+  },
+  {
+    "_id": "ds654agff",
+    "categoryName": "Foods",
+    "image": "https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
+  },
+  {
+    "_id": "ds6rtur54af",
+    "categoryName": "Islamic",
+    "image": "https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
+  },
+  {
+    "_id": "ds65tr4af",
+    "categoryName": "Sports",
+    "image": "https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
+  },
+  {
+    "_id": "dsdfh654af",
+    "categoryName": "Attar",
+    "image": "../src/assets/img/category/attar.webp"
+  },
+  {
+    "_id": "dsfgh654af",
+    "categoryName": "Accessories",
+    "image": "https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
+  },
+  {
+    "_id": "ds6fdgh54af",
+    "categoryName": "Laptop",
+    "image": "https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
+  },
+  {
+    "_id": "ds6fgsdgh54af",
+    "categoryName": "Mobile",
+    "image": "https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
+  },
+  {
+    "_id": "ds6fgsd456gh54af",
+    "categoryName": "Jewelry",
+    "image": "https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
+  },
+  {
+    "_id": "ds6fgsdfgh456gh54af",
+    "categoryName": "Jewelry",
+    "image": "https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
+  },
+  {
+    "_id": "ds6fgsdsdfg456gh54af",
+    "categoryName": "Jewelry",
+    "image": "https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
+  },
+  {
+    "_id": "ds65th4af",
+    "categoryName": "Cosmatics",
+    "image": "https://i.ibb.co/6D81mHj/fashion-hand-new-women-luxury.jpg"
+  }
 ]

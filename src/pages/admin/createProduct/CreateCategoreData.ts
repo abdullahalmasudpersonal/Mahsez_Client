@@ -63,36 +63,36 @@ export const categoriesData: MainCategory[] = [
     ],
   },
   {
-    name: "Dresses",
+    name: "Dresses & Jewellery",
     categories: [
       {
-        name: "F first",
-        subCategories: ["F1 area 1", "area 2"],
+        name: "T-Shirt",
+        subCategories: [
+          "Polo T-Shirt",
+          "Crew Neck T-Shirt",
+          "No Sub Categories",
+        ],
       },
       {
         name: "f Second",
         subCategories: ["F2 area 3", "area 4"],
-      },
-      {
-        name: "F Thired",
-        subCategories: ["F3 area 5", "area 6"],
       },
     ],
   },
   {
-    name: "Electronic",
+    name: "Electronic & TV",
     categories: [
       {
-        name: "F first",
-        subCategories: ["F1 area 1", "area 2"],
+        name: "Fan",
+        subCategories: ["Ceiling Fan", "area 2"],
       },
       {
-        name: "f Second",
-        subCategories: ["F2 area 3", "area 4"],
+        name: " Iron",
+        subCategories: ["F2 area 3", "No Sub Categories"],
       },
       {
-        name: "F Thired",
-        subCategories: ["F3 area 5", "area 6"],
+        name: "Kettle",
+        subCategories: ["Electric Kettle", "No Sub Categories"],
       },
     ],
   },
@@ -118,7 +118,12 @@ export const categoriesData: MainCategory[] = [
     categories: [
       {
         name: "Attar",
-        subCategories: ["Popular Attar", "Attar Combo Offers", "Alif Attar"],
+        subCategories: [
+          "Popular Attar",
+          "Attar Combo Offers",
+          "Alif Attar",
+          "Al-Nuaim Roll Attar",
+        ],
       },
       {
         name: "Miswak",
@@ -126,7 +131,7 @@ export const categoriesData: MainCategory[] = [
       },
       {
         name: "Tasbeeh",
-        subCategories: [],
+        subCategories: ["No Sub Category"],
       },
       {
         name: "Tupi",

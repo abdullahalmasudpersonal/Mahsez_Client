@@ -104,7 +104,7 @@ const ShoppingCart: React.FC = () => {
                       <td className="align-middle">
                         <Link
                           style={{ textDecoration: "none", color: "black" }}
-                          to={`/categore/products/${product?._id}`}
+                          to={`/categore/product/${product?._id}`}
                         >
                           <span style={{ cursor: "pointer" }}>
                             {product.name}
