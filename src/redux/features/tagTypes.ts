@@ -4,6 +4,7 @@ export enum tagTypes {
   product = "product",
   order = "order",
   buyer = "buyer",
+  blog = "blog",
 }
 
 // export type TagTypes = (typeof tagTypes)[keyof typeof tagTypes];
@@ -16,4 +17,5 @@ export const tagTypesList = [
   tagTypes.product,
   tagTypes.order,
   tagTypes.buyer,
+  tagTypes.blog,
 ];

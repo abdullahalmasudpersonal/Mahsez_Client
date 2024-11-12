@@ -1,4 +1,4 @@
-import "./Header.css";
+import "./Navber.css";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../../assets/img/logo/mahsez.png";
@@ -19,6 +19,7 @@ import {
 } from "../../../../redux/features/auth/authSlice";
 import profileImg from "../../../../assets/img/profile/profile.png";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
+import MobileSideber from "../MobileSideber/MobileSideber";
 
 const Navber = () => {
   const dispatch = useAppDispatch();
@@ -129,6 +130,7 @@ const Navber = () => {
                     style={{ padding: "0" }}
                   />
                 </button>
+
                 <div
                   style={{ width: "300px" }}
                   className="offcanvas offcanvas-start"
@@ -147,7 +149,7 @@ const Navber = () => {
                     </button>
                   </div>
                   <div className="offcanvas-body py-0 px-0">
-                    {/* <MobileSideber /> */}
+                    <MobileSideber />
                   </div>
                 </div>
               </div>
@@ -157,10 +159,33 @@ const Navber = () => {
                 </Link>
               </div>
               <div className="mobile-screen-top-part pt-1">
-                <Link to="/shopping_cart">
+                {cartLength > 0 ? (
+                  <Link to="/shopping_cart">
+                    <button
+                      className="position-relative p-0 pe-3"
+                      style={{ border: "none", background: "none" }}
+                    >
+                      <FontAwesomeIcon
+                        className="top-right-btn"
+                        icon={faShoppingCart}
+                      />
+                      <span
+                        className="position-absolute translate-middle badge rounded-pill"
+                        style={{ color: "", backgroundColor: "orangered" }}
+                      >
+                        {cartLength}
+                      </span>
+                    </button>
+                  </Link>
+                ) : (
                   <button
                     className="position-relative p-0 pe-3"
-                    style={{ border: "none", background: "none" }}
+                    style={{
+                      border: "none",
+                      background: "none",
+                      cursor: "auto",
+                    }}
+                    title="No cart items!"
                   >
                     <FontAwesomeIcon
                       className="top-right-btn"
@@ -170,10 +195,10 @@ const Navber = () => {
                       className="position-absolute translate-middle badge rounded-pill"
                       style={{ color: "", backgroundColor: "orangered" }}
                     >
-                      {/* {cart.length} */}
+                      {cartLength}
                     </span>
                   </button>
-                </Link>
+                )}
               </div>
             </div>
             <div className="header2-part-2">
@@ -211,16 +236,28 @@ const Navber = () => {
 
           <div className="header2-lust-part pe-2">
             <FontAwesomeIcon className="heart-cart" icon={faHeart} />
-            <Link to="/shopping_cart" className="ms-3">
-              <FontAwesomeIcon
-                className="shopping-cart"
-                icon={faShoppingCart}
-              />
-              <span className="position-absolute translate-middle badge rounded-pill cart-quantity-badge py-1 px-2 mt-1 ">
-                {/* {cart.length} */} {cartLength}
-                {/*  {cart.map(products=> <>{products.quantity}</>)} */}
-              </span>
-            </Link>
+            {cartLength > 0 ? (
+              <Link to="/shopping_cart" className="ms-3">
+                <FontAwesomeIcon
+                  className="shopping-cart"
+                  icon={faShoppingCart}
+                />
+                <span className="position-absolute translate-middle badge rounded-pill cart-quantity-badge py-1 px-2 mt-1 ">
+                  {cartLength}
+                </span>
+              </Link>
+            ) : (
+              <Link to="" className="ms-3" title="No Cart Items!">
+                <FontAwesomeIcon
+                  className="shopping-cart"
+                  icon={faShoppingCart}
+                />
+                <span className="position-absolute translate-middle badge rounded-pill cart-quantity-badge py-1 px-2 mt-1 ">
+                  {cartLength}
+                </span>
+              </Link>
+            )}
+
             {user ? (
               <Link to="/dashboard" className="ms-3">
                 <img width="32px" src={profileImg} alt="" />

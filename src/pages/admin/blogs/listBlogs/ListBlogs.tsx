@@ -8,109 +8,70 @@ import {
   TableColumnsType,
 } from "antd";
 import PageTitle from "../../../shared/PageTitle/PageTitle";
+import { useGetBlogsQuery } from "../../../../redux/features/blog/BlogApi";
 import { useState } from "react";
-import { useGetAllOrderQuery } from "../../../../redux/features/order/orderApi";
-import { TOrder } from "../../../../types/order.types";
 import Loader from "../../../shared/loader/Loader";
+import { TBlog } from "../../../../types/blog.types";
+import { Link } from "react-router-dom";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
-import { formatDate } from "../../../../utils/formatDate";
 
 const { Option } = Select;
-
-const ListOrders = () => {
+const ListBlogs = () => {
   const [pageSize, setPageSize] = useState(10);
-  const { data: orderData, isLoading: orderDataLoading } = useGetAllOrderQuery(
-    {}
-  );
-
+  const { data: blogsData, isLoading: blogDataLoading } = useGetBlogsQuery({});
   const handlePageSizeChange = (value: number) => {
     setPageSize(value);
   };
 
-  const dataTable = orderData?.data?.map(
-    ({
-      _id,
-      name,
-      orderId,
-      createdAt,
-      contactNumber,
-      grandTotal,
-      paymentStatus,
-      items,
-      orderStatus,
-      paymentType,
-    }: TOrder) => ({
+  const dataTable = blogsData?.data?.map(
+    ({ _id, title, image, writer, description }: TBlog) => ({
       key: _id,
-      name,
-      orderId,
-      createdAt,
-      contactNumber,
-      grandTotal,
-      paymentStatus,
-      items,
-      orderStatus,
-      paymentType,
+      title,
+      image,
+      writer,
+      description,
     })
   );
 
-  const columns: TableColumnsType<TOrder> = [
+  const columns: TableColumnsType<TBlog> = [
     {
-      title: "Order ID",
-      key: "orderId",
-      dataIndex: "orderId",
+      title: "Blog Title",
+      key: "title",
+      width: 300,
+      render: (item) => (
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <img
+            src={item.image}
+            alt="blog image"
+            style={{
+              width: "50px",
+              height: "50px",
+              marginRight: "10px",
+              borderRadius: "5px",
+            }}
+          />
+          <Link
+            style={{ textDecoration: "none", color: "black" }}
+            to={`/blog/${item.key}`}
+          >
+            <span>{item.title}</span>
+          </Link>
+        </div>
+      ),
     },
     {
-      title: "Date",
-      dataIndex: "createdAt",
-      key: "date",
+      title: "Writer",
+      dataIndex: "writer",
+      key: "writer",
       align: "center",
+    },
 
-      render: (createdAt: string) => formatDate(createdAt),
-    },
     {
-      title: "Coustomer",
-      dataIndex: "name",
-      key: "name",
+      title: "Description",
+      dataIndex: "description",
+      key: "description",
       align: "center",
-    },
-    {
-      title: "Amount",
-      dataIndex: "grandTotal",
-      key: "grandTotal",
-      align: "center",
-    },
-    {
-      title: "Payment Status",
-      dataIndex: "paymentStatus",
-      key: "paymentStatus",
-      align: "center",
-    },
-    {
-      title: "Payment Type",
-      dataIndex: "paymentType",
-      key: "paymentType",
-      align: "center",
-    },
-    {
-      title: "Contact Number ",
-      dataIndex: "contactNumber",
-      key: "contactNumber",
-      align: "center",
-    },
-    {
-      title: "Items",
-      dataIndex: "items",
-      key: "items",
-      align: "center",
-      width: 80,
-      render: (items) => items?.length,
-    },
-    {
-      title: "Order Status",
-      dataIndex: "orderStatus",
-      key: "orderStatus",
-      align: "center",
-      width: 80,
+      width: 400,
     },
     {
       title: "Action",
@@ -137,7 +98,7 @@ const ListOrders = () => {
 
             <Popconfirm
               title="Are you sure you want to delete this product?"
-              // onConfirm={() => deleteProduct(item?.key)}
+              //    onConfirm={() => deleteProduct(item?.key)}
               okText="Yes"
               cancelText="No"
             >
@@ -155,9 +116,9 @@ const ListOrders = () => {
     <div className="dashboard-dev2" style={{ overflowX: "auto" }}>
       <PageTitle pageTitle="Order List || Admin" />
       <div className="pt-4 px-4 d-flex justify-content-between align-items-center">
-        <h4 className="fw-bold side-header">
-          All Order List ({orderData?.data?.length})
-        </h4>
+        <h5 className="fw-bold side-header">
+          All Blog List ({blogsData?.data?.length})
+        </h5>
         <Row justify="end">
           <Col>
             <Select
@@ -174,7 +135,7 @@ const ListOrders = () => {
         </Row>
       </div>
       <hr />
-      {orderDataLoading ? (
+      {blogDataLoading ? (
         <Loader />
       ) : (
         <div style={{ padding: "10px" }}>
@@ -196,4 +157,4 @@ const ListOrders = () => {
   );
 };
 
-export default ListOrders;
+export default ListBlogs;

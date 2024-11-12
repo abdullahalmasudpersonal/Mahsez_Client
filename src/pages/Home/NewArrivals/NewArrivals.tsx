@@ -6,7 +6,7 @@ import { TProduct } from "../../../types/product.types";
 
 const NewArrivals = () => {
   const { data: productDta } = useGetProdcutsQuery({});
-  console.log(productDta, "p[ordds");
+
   return (
     <div className="mb-2">
       <h5 className="homefeaturedCategore-title">NEW ARRIVALS</h5>

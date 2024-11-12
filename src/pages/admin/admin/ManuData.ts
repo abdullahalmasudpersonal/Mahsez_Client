@@ -55,6 +55,24 @@ const menuData: MenuData[] = [
     ],
   },
   {
+    key: "offer",
+    title: "Offer",
+    icon: SettingOutlined,
+    items: [
+      { key: "offer-list", title: "List", path: "/admin/list-orders" },
+      { key: "ui2", title: "UI Element 2", path: "/dashboard/main" },
+    ],
+  },
+  {
+    key: "blogs",
+    title: "Blogs",
+    icon: SettingOutlined,
+    items: [
+      { key: "blog-list", title: "List", path: "/admin/list-blogs" },
+      { key: "create-blog", title: "Create Blog", path: "/admin/create-blog" },
+    ],
+  },
+  {
     key: "admins",
     title: "Admins",
     icon: SettingOutlined,
