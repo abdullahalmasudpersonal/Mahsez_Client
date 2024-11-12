@@ -8,6 +8,7 @@ import { useLoginMutation } from "../../../redux/features/auth/authApi";
 import { verifyToken } from "../../../utils/verifyToken";
 import { setUser, TUser } from "../../../redux/features/auth/authSlice";
 import PageTitle from "../../shared/PageTitle/PageTitle";
+import DemoCredentials from "./DemoCredentials";
 
 type FormValues = {
   email: string;
@@ -108,6 +109,7 @@ const Login = () => {
           </p>
         </div>
       </div>
+      <DemoCredentials />
     </div>
   );
 };

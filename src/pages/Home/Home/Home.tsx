@@ -12,7 +12,7 @@ import "./home.css";
 const Home = () => {
   return (
     <div className="home-bg pb-5 px-0">
-      <PageTitle pageTitle="" />
+      <PageTitle pageTitle="Home" />
       <div className="container-xxl d-flex p-0">
         {/*    <HomeHeader/> */}
         <HomeHeaders />

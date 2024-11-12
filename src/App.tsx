@@ -1,6 +1,11 @@
+//////////////// ant design & react-quill css /////////////////////////////
+import "antd/dist/reset.css";
+import "react-quill/dist/quill.snow.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../node_modules/bootstrap/dist/js/bootstrap.min";
+//////////////// ant design & react-quill css /////////////////////////////
 import { Route, Routes } from "react-router-dom";
 import "./index.css";
-
 import Footer from "./pages/shared/Footer/Footer";
 import Navber from "./pages/shared/navber/navber/Navber";
 import Login from "./pages/Logins/Login/Login";
@@ -25,13 +30,16 @@ import HomeAdmin from "./pages/admin/homeAdmin/HomeAdmin";
 //  import Home from "./pages/Home/Home/Home";
 // import Categore from "./pages/Categories/Categore/Categore/Categore";
 // import ProductDetails from "./pages/ProductDetails/ProductDetails/ProductDetails";
-//////////////// ant design & react-quill css /////////////////////////////
-import "antd/dist/reset.css";
-import "react-quill/dist/quill.snow.css";
+
 import Prodcuts from "./pages/admin/products/Prodcuts";
 import ListProducts from "./pages/admin/products/listProducts/ListProducts";
 import MyOrder from "./pages/dashboard/myOrder/MyOrder";
 import ListOrders from "./pages/admin/orders/listOrders/ListOrders";
+import Blogs from "./pages/Blogs/Blogs/Blogs";
+import Offers from "./pages/Offers/Offers";
+import CreateBlog from "./pages/admin/blogs/createBlog/CreateBlog";
+import BlogDetails from "./pages/Blogs/blogDetails/BlogDetails";
+import ListBlogs from "./pages/admin/blogs/listBlogs/ListBlogs";
 
 function App() {
   return (
@@ -68,6 +76,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/aboutUs" element={<AboutUs />} />
+          <Route path="/offers" element={<Offers />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blog/:blogId" element={<BlogDetails />} />
           <Route path="/shopping_cart" element={<ShoppingCart />} />
           <Route path="/privacy_policy" element={<PrivacyPolicy />} />
           <Route path="/terms_condition" element={<TermsCondition />} />
@@ -86,6 +97,8 @@ function App() {
             <Route path="products" element={<Prodcuts />} />
             <Route path="list-products" element={<ListProducts />} />
             <Route path="create-product" element={<CreateProduct />} />
+            <Route path="list-blogs" element={<ListBlogs />} />
+            <Route path="create-blog" element={<CreateBlog />} />
           </Route>
         </Routes>
         <Footer />
