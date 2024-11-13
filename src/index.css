@@ -6,6 +6,10 @@
 .apps {
 }
 
+hr {
+  border: 0;
+}
+
 /* --------------Breadcrumb css --------------------- */
 .breadcrumb-bg {
   border-bottom: 1px solid rgb(223, 223, 223);
