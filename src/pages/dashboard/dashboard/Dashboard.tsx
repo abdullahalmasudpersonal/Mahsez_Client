@@ -1,6 +1,6 @@
 import "./Dashboard.css";
 import profileImg from "../../../assets/img/profile/profile.png";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { logout } from "../../../redux/features/auth/authSlice";
@@ -12,21 +12,11 @@ const Dashboard = () => {
   const { data: userData } = useGetMyProfileQuery({});
   const { role } = userData?.data?.user || {};
   const admin = role === "admin";
-
-  // const [user] = useAuthState(auth);
-  // const user = useAppSelector(selectCurrentUser);
-  // const [admin] = UseAdmin(user);
-  // const navigate = useNavigate();
-  // const logout = () => {
-  //   signOut(auth);
-  //   navigate('/');
-  //   localStorage.removeItem('accessToken');
+  const location = useLocation();
 
   const handleLogout = () => {
     dispatch(logout());
   };
-
-  // }
 
   return (
     <>
@@ -54,31 +44,45 @@ const Dashboard = () => {
           <div className="dashboard">
             <div className="dashboard-dev1">
               <img width="60px" src={profileImg} alt="" />
-              {/* <h5 className='text-center mt-2'>{user.displayName}</h5> */}
+              <h5 className="text-center mt-2 " style={{ color: "black" }}>
+                {userData?.data?.name}
+              </h5>
               <Link to="/dashboard">
-                <button>My Profile</button>
+                <button
+                  className={location.pathname === "/dashboard" ? "active" : ""}
+                >
+                  My Profile
+                </button>
               </Link>
-              {/* <Link to="/dashboard/address">
-                <button>Address</button>
-              </Link>
-              <Link to="/dashboard/myOrders">
-                <button>My Orders</button>
-              </Link> */}
               {admin && (
                 <Link to="/admin">
-                  <button style={{ backgroundColor: "purple" }}>
+                  <button
+                    className={location.pathname === "/admin" ? "active" : ""}
+                    style={{ color: "gray" }}
+                  >
                     Admin Panel
                   </button>
                 </Link>
               )}
-              {/* <Link to="/shopping_Cart">
-                <button>View Cart</button>
-              </Link> */}
               <Link to="/dashboard/my-order">
-                <button>My Order</button>
+                <button
+                  className={
+                    location.pathname === "/dashboard/my-order" ? "active" : ""
+                  }
+                >
+                  My Order
+                </button>
               </Link>
               <Link to="/dashboard/my-payment">
-                <button>My Payment</button>
+                <button
+                  className={
+                    location.pathname === "/dashboard/my-payment"
+                      ? "active"
+                      : ""
+                  }
+                >
+                  My Payment
+                </button>
               </Link>
               <button>My Reviews</button>
               <button>Transactions</button>

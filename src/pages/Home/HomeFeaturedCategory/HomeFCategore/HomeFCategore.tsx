@@ -13,7 +13,7 @@ const HomeFCategore: React.FC<HomeFCategoreProps> = ({ homeFCategore }) => {
   const { categoryName, image } = homeFCategore;
 
   return (
-    <div className="homeFCategore" /* rules="all" */>
+    <div className="homeFCategore">
       <div>
         <img className="text-center homeFCategore-img" src={image} />
         <h6 className="text-center categore-title">

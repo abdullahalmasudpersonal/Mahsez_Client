@@ -6,7 +6,7 @@ const HomeFeaturedCategory = () => {
   const [homeFCategory] = UseHomeFeaturedCategory();
 
   return (
-    <div className="my-2">
+    <div className="my-5">
       <h5 className="homefeaturedCategore-title">FEATURED CATEGORIES</h5>
       <hr style={{ marginTop: "10px" }}></hr>
 
