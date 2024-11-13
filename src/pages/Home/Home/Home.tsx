@@ -2,6 +2,7 @@ import HomeHeaders from "../../shared/Header/HomeHeaders/HomeHeaders";
 import PageTitle from "../../shared/PageTitle/PageTitle";
 import Banner from "../Banner/Banner";
 import Banner2 from "../Banner/Banner2";
+import HomeBlogs from "../HomeBlogs/HomeBlogs";
 import HomeFeaturedCategory from "../HomeFeaturedCategory/HomeFeaturedCategory";
 import HomeFeaturedProducts from "../homeFeaturedProducts/HomeFeaturedProducts";
 import HomeProductOnes from "../HomeProductOnes/HomeProductOnes";
@@ -46,9 +47,9 @@ const Home = () => {
         <Banner2 />
       </div>
 
-      {/*     <div className="container-xxl home-div-responsive">
+      <div className="container-xxl home-div-responsive">
         <HomeBlogs />
-      </div>  */}
+      </div>
     </div>
   );
 };

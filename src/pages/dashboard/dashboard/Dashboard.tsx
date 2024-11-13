@@ -77,6 +77,9 @@ const Dashboard = () => {
               <Link to="/dashboard/my-order">
                 <button>My Order</button>
               </Link>
+              <Link to="/dashboard/my-payment">
+                <button>My Payment</button>
+              </Link>
               <button>My Reviews</button>
               <button>Transactions</button>
               <button>Your Messages</button>

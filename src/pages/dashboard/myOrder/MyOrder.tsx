@@ -7,30 +7,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 import { useGetProdcutsQuery } from "../../../redux/features/product/productApi";
 import { TProduct } from "../../../types/product.types";
+import { formatDate } from "../../../utils/formatDate";
 
 const MyOrder = () => {
   const { data: myOrderData, isLoading: myOrderDataLoading } =
     useGetBuyerOrderQuery({});
-  console.log(myOrderData?.data);
   const { data: getProducts } = useGetProdcutsQuery({});
-
-  // Helper function to format the date in Bangladesh time zone
-  function formatDate(dateString: string): string {
-    const date = new Date(dateString);
-    const options: Intl.DateTimeFormatOptions = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      timeZone: "Asia/Dhaka",
-    };
-    return date.toLocaleDateString("en-GB", options);
-  }
 
   return (
     <div className="dashboard-dev2">
       <PageTitle pageTitle="My Profile " />
       <div className="pt-4 px-4">
-        <h4 className="fw-bold ">My Orders</h4>
+        <h5 className="fw-bold ">My Orders</h5>
       </div>
       <hr />
       <div className="p-3">
@@ -98,27 +86,6 @@ const MyOrder = () => {
                           );
                         })}
                       </div>
-                      {/* 
-                       {order.productsImage.slice(0 - 1).map((proImg, index) => (
-                      <>
-                        <img src={proImg} alt="" width="50px" />
-                      </>
-                    ))}
-                    &nbsp;&nbsp;
-                    {order.productsName.slice(0 - 1).map((proName, index) => (
-                      <td>
-                        {proName}
-                        <br />
-                        {order.productsName.length > 1 ? (
-                          <span color="purple">
-                            {order.productsName.length}&nbsp;Items
-                          </span>
-                        ) : (
-                          <></>
-                        )}
-                      </td>
-                    ))}
-             */}
                       <div className="mySingleOrderInfoDevSecond">
                         <td
                           className="text-end align-middle fw-bold h5 mb-0"

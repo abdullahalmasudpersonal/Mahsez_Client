@@ -1,8 +1,12 @@
+import "./global.css";
 //////////////// ant design & react-quill css /////////////////////////////
 import "antd/dist/reset.css";
 import "react-quill/dist/quill.snow.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.min";
+/* slick-carousel */
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 //////////////// ant design & react-quill css /////////////////////////////
 import { Route, Routes } from "react-router-dom";
 import "./index.css";
@@ -16,7 +20,6 @@ import AboutUs from "./pages/AboutUs/AboutUs";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import TermsCondition from "./pages/Terms&Condition/Terms&Condition";
 import Notfound from "./pages/shared/Notfound/Notfound";
-// import Home from "./pages/Homes/Home/Home";
 import Categore from "./pages/Categories/Categore/Categore/Categore";
 import ProductDetails from "./pages/ProductDetails/ProductDetails/ProductDetails";
 import Home from "./pages/home/home/Home";
@@ -26,11 +29,6 @@ import CheckOut from "./pages/checkOut/CheckOut";
 import Admin from "./pages/admin/admin/Admin";
 import CreateProduct from "./pages/admin/createProduct/CreateProduct";
 import HomeAdmin from "./pages/admin/homeAdmin/HomeAdmin";
-// import ShoppingCart from "./pages/shoppingCart/ShoppingCart";
-//  import Home from "./pages/Home/Home/Home";
-// import Categore from "./pages/Categories/Categore/Categore/Categore";
-// import ProductDetails from "./pages/ProductDetails/ProductDetails/ProductDetails";
-
 import Prodcuts from "./pages/admin/products/Prodcuts";
 import ListProducts from "./pages/admin/products/listProducts/ListProducts";
 import MyOrder from "./pages/dashboard/myOrder/MyOrder";
@@ -40,6 +38,7 @@ import Offers from "./pages/Offers/Offers";
 import CreateBlog from "./pages/admin/blogs/createBlog/CreateBlog";
 import BlogDetails from "./pages/Blogs/blogDetails/BlogDetails";
 import ListBlogs from "./pages/admin/blogs/listBlogs/ListBlogs";
+import MyPayment from "./pages/dashboard/myPayment/MyPayment";
 
 function App() {
   return (
@@ -62,6 +61,7 @@ function App() {
           >
             <Route index element={<Profile />} />
             <Route path="my-order" element={<MyOrder />} />
+            <Route path="my-payment" element={<MyPayment />} />
           </Route>
 
           <Route
