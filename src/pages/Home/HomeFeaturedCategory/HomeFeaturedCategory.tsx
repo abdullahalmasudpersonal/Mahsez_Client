@@ -11,20 +11,32 @@ const HomeFeaturedCategory = () => {
       <hr style={{ marginTop: "10px" }}></hr>
 
       <div className="homefeaturedCategore homefeaturedCategore-pc">
-        {homeFCategory.map((homeFCategore) => (
-          <HomeFCategore
+        {homeFCategory.map((homeFCategore, index) => (
+          <div
             key={homeFCategore._id}
-            homeFCategore={homeFCategore}
-          />
+            className="delayProductItem"
+            style={{ animationDelay: `${index * 0.1}s` }}
+          >
+            <HomeFCategore
+              key={homeFCategore._id}
+              homeFCategore={homeFCategore}
+            />
+          </div>
         ))}
       </div>
 
       <div className="homefeaturedCategore homefeaturedCategore-mobile">
-        {homeFCategory.slice(0, 8).map((homeFCategore) => (
-          <HomeFCategore
+        {homeFCategory.slice(0, 8).map((homeFCategore, index) => (
+          <div
             key={homeFCategore._id}
-            homeFCategore={homeFCategore}
-          />
+            className="delayProductItem"
+            style={{ animationDelay: `${index * 0.1}s` }}
+          >
+            <HomeFCategore
+              key={homeFCategore._id}
+              homeFCategore={homeFCategore}
+            />
+          </div>
         ))}
       </div>
     </div>

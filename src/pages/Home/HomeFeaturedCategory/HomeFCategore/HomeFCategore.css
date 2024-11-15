@@ -34,7 +34,7 @@
 
 @media screen and (max-width: 620px) {
   .homeFCategore {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(238, 238, 238);
     display: flex;
     justify-content: center;
     padding: 6px 5px;
@@ -58,7 +58,7 @@
 
 @media screen and (max-width: 500px) {
   .homeFCategore {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(238, 238, 238);
     display: flex;
     justify-content: center;
     padding: 4px 4px;

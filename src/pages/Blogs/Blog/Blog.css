@@ -1,6 +1,6 @@
 .blog {
   max-width: 400px;
-  max-height: 500px;
+  min-height: 500px;
   border-radius: 3px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
@@ -8,9 +8,10 @@
 }
 .blog img {
   border-radius: 3px 3px 0 0;
-  max-height: 300px;
+  max-width: 100%;
+  max-height: 100%;
 }
-@media screen and (max-width: 1250px) {
+/* @media screen and (max-width: 1250px) {
   .blog {
     max-width: 380px;
     max-height: 480px;
@@ -117,9 +118,10 @@
   .blog img {
     border-radius: 3px 3px 0 0;
   }
-}
+} */
+
 /* 2 coloum ar jonno */
-@media screen and (max-width: 870px) {
+/* @media screen and (max-width: 870px) {
   .blog {
     max-width: 380px;
     max-height: 480px;
@@ -334,4 +336,4 @@
   .blog img {
     border-radius: 3px 3px 0 0;
   }
-}
+} */

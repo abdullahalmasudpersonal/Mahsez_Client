@@ -6,16 +6,19 @@ import { formatDate } from "../../../utils/formatDate";
 import { Link } from "react-router-dom";
 
 const Blog = (blog: TBlog) => {
-  const { _id, writer, title, image, createdAt } = blog;
+  const { _id, writer, title, image, description, createdAt } = blog;
 
   const createBlogDate = formatDate(createdAt);
 
   return (
-    <div className="d-flex justify-content-center py-1 mt-3">
+    <div className="d-flex justify-content-center py-2">
       <div className="blog">
-        <img src={image} className="blogImage" />
+        <img src={image} />
         <div className="p-3">
-          <h6 className="mt- mb-3">{title}</h6>
+          <h6 className="mt- mb-3" title={title}>
+            {title.length > 40 ? title.slice(0, 40) + "..." : title}
+            {/* {title} */}
+          </h6>
           <div className="d-flex justify-content-between">
             <h6>
               <FontAwesomeIcon
@@ -29,6 +32,12 @@ const Blog = (blog: TBlog) => {
             </h6>
           </div>
           <hr style={{ border: "0" }} />
+
+          <p>
+            {description.length > 150
+              ? description.slice(0, 150) + "..."
+              : description}
+          </p>
           <h6 className="d-flex align-items-center m-0">
             <FontAwesomeIcon icon={faCaretRight} fontSize="14px" />
             &nbsp; &nbsp;

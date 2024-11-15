@@ -1,27 +1,51 @@
-/* HTML: <div class="loader"></div> */
 .loader {
-  width: 50px;
-  --b: 8px;
-  aspect-ratio: 1;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  padding: 1px;
-  background: conic-gradient(#0000 10%, #110229) content-box;
-  -webkit-mask: repeating-conic-gradient(
-      #0000 0deg,
-      #000 1deg 20deg,
-      #0000 21deg 36deg
-    ),
-    radial-gradient(
-      farthest-side,
-      #0000 calc(100% - var(--b) - 1px),
-      #000 calc(100% - var(--b))
-    );
-  -webkit-mask-composite: destination-in;
-  mask-composite: intersect;
-  animation: l4 1s infinite steps(10);
+  display: block;
+  margin: 15px auto;
+  position: relative;
+  color: #ff8800;
+  left: -100px;
+  box-sizing: border-box;
+  animation: shadowRolling 2s linear infinite;
 }
-@keyframes l4 {
-  to {
-    transform: rotate(1turn);
+
+@keyframes shadowRolling {
+  0% {
+    box-shadow: 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0),
+      0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+  }
+  12% {
+    box-shadow: 100px 0 #ff8800, 0px 0 rgba(255, 255, 255, 0),
+      0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+  }
+  25% {
+    box-shadow: 110px 0 #ff8800, 100px 0 #ff8800, 0px 0 rgba(255, 255, 255, 0),
+      0px 0 rgba(255, 255, 255, 0);
+  }
+  36% {
+    box-shadow: 120px 0 #ff8800, 110px 0 #ff8800, 100px 0 #ff8800,
+      0px 0 rgba(255, 255, 255, 0);
+  }
+  50% {
+    box-shadow: 130px 0 #ff8800, 120px 0 #ff8800, 110px 0 #ff8800,
+      100px 0 #ff8800;
+  }
+  62% {
+    box-shadow: 200px 0 rgba(255, 255, 255, 0), 130px 0 #ff8800, 120px 0 #ff8800,
+      110px 0 #ff8800;
+  }
+  75% {
+    box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0),
+      130px 0 #ff8800, 120px 0 #ff8800;
+  }
+  87% {
+    box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0),
+      200px 0 rgba(255, 255, 255, 0), 130px 0 #ff8800;
+  }
+  100% {
+    box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0),
+      200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0);
   }
 }

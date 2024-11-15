@@ -1,192 +1,165 @@
+.homefeaturedCategore-title {
+  position: relative;
+}
+.homefeaturedCategore-title::before {
+  content: "";
+  position: absolute;
+  width: 97px;
+  height: 2.5px;
+  left: 0px;
+  top: 33px;
+  background: rgb(255, 115, 0);
+}
+.homefeaturedCategore {
+  display: grid;
+  grid-gap: 9px;
+  grid-template-columns: repeat(8, 1fr);
+}
 
-.homefeaturedCategore-title{
-    position: relative;
+.homefeaturedCategore-dev {
+  padding: 5px;
+  background-color: aliceblue;
 }
-.homefeaturedCategore-title::before{
-    content: "";
-    position: absolute;
-    width: 97px;
-    height: 2.5px;
-    left: 0px;
-    top: 33px;
-    background: rgb(255, 115, 0);
+
+.homefeaturedCategore-dev > div > img {
+  width: 120px;
+  height: 120px;
 }
-.homefeaturedCategore{
+
+@media screen and (max-width: 1200px) {
+  .homefeaturedCategore {
     display: grid;
-    grid-gap: 9px;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(7, 1fr);
+  }
+}
+@media screen and (max-width: 1100px) {
+  .homefeaturedCategore {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+@media screen and (max-width: 930px) {
+  .homefeaturedCategore {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+@media screen and (max-width: 790px) {
+  .homefeaturedCategore {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (max-width: 620px) {
+  .homefeaturedCategore {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (max-width: 500px) {
+  .homefeaturedCategore-pc {
+    display: none;
+  }
+}
+@media screen and (min-width: 500px) {
+  .homefeaturedCategore-mobile {
+    display: none;
+  }
 }
 
-.homefeaturedCategore-dev{
-    padding: 5px;
-    background-color: aliceblue;
+.homefeaturedCategore-dev1 {
+  border-top: 0.5px solid gray;
+  border-bottom: 0.5px solid gray;
+  border-left: 0.5px solid gray;
+  border-right: 0.5px solid gray;
 }
-
-.homefeaturedCategore-dev > div > img{
-    width: 120px;
-    height: 120px;
+.homefeaturedCategore-dev2 {
+  border-top: 0.5px solid gray;
+  border-bottom: 0.5px solid gray;
+  border-left: 0px solid gray;
+  border-right: 0.5px solid gray;
 }
-
-@media screen and (max-width:1200px) {
-    .homefeaturedCategore{
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-    }
+.homefeaturedCategore-dev3 {
+  border-top: 0.5px solid gray;
+  border-bottom: 0.5px solid gray;
+  border-left: 0px solid gray;
+  border-right: 0.5px solid gray;
 }
-@media screen and (max-width:1100px) {
-    .homefeaturedCategore{
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-    }
+.homefeaturedCategore-dev4 {
+  border-top: 0.5px solid gray;
+  border-bottom: 0.5px solid gray;
+  border-left: 0px solid gray;
+  border-right: 0.5px solid gray;
 }
-@media screen and (max-width:930px) {
-    .homefeaturedCategore{
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-    }
+.homefeaturedCategore-dev5 {
+  border-top: 0.5px solid gray;
+  border-bottom: 0.5px solid gray;
+  border-left: 0px solid gray;
+  border-right: 0.5px solid gray;
 }
-@media screen and (max-width:790px) {
-    .homefeaturedCategore{
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-    }
+.homefeaturedCategore-dev6 {
+  border-top: 0.5px solid gray;
+  border-bottom: 0.5px solid gray;
+  border-left: 0px solid gray;
+  border-right: 0.5px solid gray;
 }
-@media screen and (max-width:620px) {
-    .homefeaturedCategore{
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-    }
+.homefeaturedCategore-dev7 {
+  border-top: 0.5px solid gray;
+  border-bottom: 0.5px solid gray;
+  border-left: 0px solid gray;
+  border-right: 0.5px solid gray;
 }
-@media screen and (max-width:500px) {
-    .homefeaturedCategore-pc{
-        display: none;
-    }
+.homefeaturedCategore-dev8 {
+  border-top: 0.5px solid gray;
+  border-bottom: 0.5px solid gray;
+  border-left: 0.5px solid gray;
+  border-right: 0.5px solid gray;
 }
-@media screen and (min-width:500px) {
-    .homefeaturedCategore-mobile{
-        display: none;
-    }
+.homefeaturedCategore-dev9 {
+  border-top: 0.5px solid gray;
+  border-bottom: 0.5px solid gray;
+  border-left: 0px solid gray;
+  border-right: 0.5px solid gray;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.homefeaturedCategore-dev1{
-    border-top: .5px solid gray;
-    border-bottom: .5px solid gray;
-    border-left: .5px solid gray;
-    border-right: .5px solid gray;
+.homefeaturedCategore-dev10 {
+  border-top: 0.5px solid gray;
+  border-bottom: 0.5px solid gray;
+  border-left: 0px solid gray;
+  border-right: 0.5px solid gray;
 }
-.homefeaturedCategore-dev2{
-    border-top: .5px solid gray;
-    border-bottom: .5px solid gray;
-    border-left: .0px solid gray;
-    border-right: .5px solid gray;
+.homefeaturedCategore-dev11 {
+  border-top: 0.5px solid gray;
+  border-bottom: 0.5px solid gray;
+  border-left: 0px solid gray;
+  border-right: 0.5px solid gray;
 }
-.homefeaturedCategore-dev3{
-    border-top: .5px solid gray;
-    border-bottom: .5px solid gray;
-    border-left: .0px solid gray;
-    border-right: .5px solid gray;
+.homefeaturedCategore-dev12 {
+  border-top: 0.5px solid gray;
+  border-bottom: 0.5px solid gray;
+  border-left: 0px solid gray;
+  border-right: 0.5px solid gray;
 }
-.homefeaturedCategore-dev4{
-    border-top: .5px solid gray;
-    border-bottom: .5px solid gray;
-    border-left: .0px solid gray;
-    border-right: .5px solid gray;
+.homefeaturedCategore-dev13 {
+  border-top: 0.5px solid gray;
+  border-bottom: 0.5px solid gray;
+  border-left: 0px solid gray;
+  border-right: 0.5px solid gray;
 }
-.homefeaturedCategore-dev5{
-    border-top: .5px solid gray;
-    border-bottom: .5px solid gray;
-    border-left: .0px solid gray;
-    border-right: .5px solid gray;
+.homefeaturedCategore-dev14 {
+  border-top: 0.5px solid gray;
+  border-bottom: 0.5px solid gray;
+  border-left: 0px solid gray;
+  border-right: 0.5px solid gray;
 }
-.homefeaturedCategore-dev6{
-    border-top: .5px solid gray;
-    border-bottom: .5px solid gray;
-    border-left: .0px solid gray;
-    border-right: .5px solid gray;
+.homefeaturedCategore-dev15 {
+  border-top: 0.5px solid gray;
+  border-bottom: 0.5px solid gray;
+  border-left: 0px solid gray;
+  border-right: 0.5px solid gray;
 }
-.homefeaturedCategore-dev7{
-    border-top: .5px solid gray;
-    border-bottom: .5px solid gray;
-    border-left: .0px solid gray;
-    border-right: .5px solid gray;
-}
-.homefeaturedCategore-dev8{
-    border-top: .5px solid gray;
-    border-bottom: .5px solid gray;
-    border-left: .5px solid gray;
-    border-right: .5px solid gray;
-}
-.homefeaturedCategore-dev9{
-    border-top: .5px solid gray;
-    border-bottom: .5px solid gray;
-    border-left: .0px solid gray;
-    border-right: .5px solid gray;
-}
-.homefeaturedCategore-dev10{
-    border-top: .5px solid gray;
-    border-bottom: .5px solid gray;
-    border-left: .0px solid gray;
-    border-right: .5px solid gray;
-}
-.homefeaturedCategore-dev11{
-    border-top: .5px solid gray;
-    border-bottom: .5px solid gray;
-    border-left: .0px solid gray;
-    border-right: .5px solid gray;
-}
-.homefeaturedCategore-dev12{
-    border-top: .5px solid gray;
-    border-bottom: .5px solid gray;
-    border-left: .0px solid gray;
-    border-right: .5px solid gray;
-}
-.homefeaturedCategore-dev13{
-    border-top: .5px solid gray;
-    border-bottom: .5px solid gray;
-    border-left: .0px solid gray;
-    border-right: .5px solid gray;
-}
-.homefeaturedCategore-dev14{
-    border-top: .5px solid gray;
-    border-bottom: .5px solid gray;
-    border-left: .0px solid gray;
-    border-right: .5px solid gray;
-}
-.homefeaturedCategore-dev15{
-    border-top: .5px solid gray;
-    border-bottom: .5px solid gray;
-    border-left: .0px solid gray;
-    border-right: .5px solid gray;
-}
-.homefeaturedCategore-dev16{
-    border-top: .5px solid gray;
-    border-bottom: .5px solid gray;
-    border-left: .0px solid gray;
-    border-right: .5px solid gray;
+.homefeaturedCategore-dev16 {
+  border-top: 0.5px solid gray;
+  border-bottom: 0.5px solid gray;
+  border-left: 0px solid gray;
+  border-right: 0.5px solid gray;
 }

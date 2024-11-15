@@ -3,22 +3,41 @@ import { useGetProdcutsQuery } from "../../../redux/features/product/productApi"
 import HomeProduct from "../homeProduct/HomeProduct";
 import "../home/HomeProducts.css";
 import { TProduct } from "../../../types/product.types";
+import Loader from "../../shared/loader/Loader";
 
 const NewArrivals = () => {
-  const { data: productDta } = useGetProdcutsQuery({});
+  const { data: productDta, isLoading } = useGetProdcutsQuery({});
 
   return (
     <div className="mb-2">
       <h5 className="homefeaturedCategore-title">NEW ARRIVALS</h5>
       <hr style={{ marginTop: "10px" }}></hr>
-      <div className="homeProducts newArrival-dev">
-        {productDta?.data
-          .slice(0 - 6)
-          .reverse()
-          .map((product: TProduct) => (
-            <HomeProduct key={product._id} {...product} />
-          ))}
-      </div>
+      {isLoading ? (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "380px",
+          }}
+        >
+          <Loader />
+        </div>
+      ) : (
+        <div className="homeProducts newArrival-dev">
+          {productDta?.data
+            .slice(0 - 6)
+            .map((product: TProduct, index: number) => (
+              <div
+                key={product._id}
+                className="delayProductItem"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <HomeProduct {...product} />
+              </div>
+            ))}
+        </div>
+      )}
     </div>
   );
 };
