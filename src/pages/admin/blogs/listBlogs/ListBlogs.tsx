@@ -12,15 +12,20 @@ import { useGetBlogsQuery } from "../../../../redux/features/blog/BlogApi";
 import { useState } from "react";
 import Loader from "../../../shared/loader/Loader";
 import { TBlog } from "../../../../types/blog.types";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
 
 const { Option } = Select;
 const ListBlogs = () => {
   const [pageSize, setPageSize] = useState(10);
+  const navigate = useNavigate();
   const { data: blogsData, isLoading: blogDataLoading } = useGetBlogsQuery({});
   const handlePageSizeChange = (value: number) => {
     setPageSize(value);
+  };
+
+  const navigateToEditBlog = (id: string) => {
+    navigate(`/admin/update-blog/${id}`);
   };
 
   const dataTable = blogsData?.data?.map(
@@ -78,7 +83,7 @@ const ListBlogs = () => {
       key: "category",
       align: "center",
       width: 80,
-      render: () => {
+      render: (blog) => {
         return (
           <div
             style={{ display: "flex", justifyContent: "center", gap: "10px" }}
@@ -87,6 +92,7 @@ const ListBlogs = () => {
               <EyeOutlined />
             </Button>
             <Button
+              onClick={() => navigateToEditBlog(blog?.key)}
               variant="filled"
               style={{
                 backgroundColor: "#FFF8DC",
@@ -114,7 +120,7 @@ const ListBlogs = () => {
 
   return (
     <div className="dashboard-dev2" style={{ overflowX: "auto" }}>
-      <PageTitle pageTitle="Order List || Admin" />
+      <PageTitle pageTitle="Blog List || Admin" />
       <div className="pt-4 px-4 d-flex justify-content-between align-items-center">
         <h5 className="fw-bold side-header">
           All Blog List ({blogsData?.data?.length})

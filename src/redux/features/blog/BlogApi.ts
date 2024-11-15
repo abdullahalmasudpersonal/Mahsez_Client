@@ -26,8 +26,8 @@ const blogApi = baseApi.injectEndpoints({
       providesTags: [tagTypes.blog],
     }),
     updateBlog: builder.mutation({
-      query: (updateData) => ({
-        url: `/blog/${updateData.id}`,
+      query: ({ formData: updateData, _id }) => ({
+        url: `/blog/${_id}`,
         method: "PATCH",
         body: updateData,
       }),

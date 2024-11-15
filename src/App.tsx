@@ -39,11 +39,14 @@ import CreateBlog from "./pages/admin/blogs/createBlog/CreateBlog";
 import BlogDetails from "./pages/Blogs/blogDetails/BlogDetails";
 import ListBlogs from "./pages/admin/blogs/listBlogs/ListBlogs";
 import MyPayment from "./pages/dashboard/myPayment/MyPayment";
+import ScrollingBtn from "./pages/shared/ScrollingBtn/ScrollingBtn";
+import UpdateBlog from "./pages/admin/blogs/updateBlog/UpdateBlog";
 
 function App() {
   return (
     <>
       <div className="apps">
+        <ScrollingBtn />
         <Navber />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -99,6 +102,7 @@ function App() {
             <Route path="create-product" element={<CreateProduct />} />
             <Route path="list-blogs" element={<ListBlogs />} />
             <Route path="create-blog" element={<CreateBlog />} />
+            <Route path="update-blog/:blogId" element={<UpdateBlog />} />
           </Route>
         </Routes>
         <Footer />
