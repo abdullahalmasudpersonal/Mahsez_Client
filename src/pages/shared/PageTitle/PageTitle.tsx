@@ -9,7 +9,7 @@ const PageTitle = ({ pageTitle }: any) => {
       : "Mahsez Online Shopping";
   return (
     <Helmet>
-      <title>{title} || Mahsez Online Shopping</title>
+      <title>{title}</title>
     </Helmet>
   );
 };

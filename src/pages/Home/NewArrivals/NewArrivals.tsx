@@ -26,7 +26,7 @@ const NewArrivals = () => {
       ) : (
         <div className="homeProducts newArrival-dev">
           {productDta?.data
-            .slice(0 - 6)
+            ?.slice(0, 6)
             .map((product: TProduct, index: number) => (
               <div
                 key={product._id}
