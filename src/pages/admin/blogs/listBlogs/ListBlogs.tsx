@@ -8,20 +8,39 @@ import {
   TableColumnsType,
 } from "antd";
 import PageTitle from "../../../shared/PageTitle/PageTitle";
-import { useGetBlogsQuery } from "../../../../redux/features/blog/BlogApi";
+import {
+  useDeleteBlogMutation,
+  useGetBlogsQuery,
+} from "../../../../redux/features/blog/BlogApi";
 import { useState } from "react";
 import Loader from "../../../shared/loader/Loader";
 import { TBlog } from "../../../../types/blog.types";
 import { Link, useNavigate } from "react-router-dom";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
+import { toast } from "sonner";
 
 const { Option } = Select;
 const ListBlogs = () => {
   const [pageSize, setPageSize] = useState(10);
   const navigate = useNavigate();
+  const [deleteBlog] = useDeleteBlogMutation();
   const { data: blogsData, isLoading: blogDataLoading } = useGetBlogsQuery({});
   const handlePageSizeChange = (value: number) => {
     setPageSize(value);
+  };
+
+  const handleDeleteBlog = async (blogId: string) => {
+    console.log(blogId);
+    const res = await deleteBlog(blogId).unwrap();
+    if (res?.success) {
+      toast.success("Delete blog successfully!", {
+        duration: 1000,
+        position: "top-right",
+      });
+    } else {
+      toast.error("Delete blog successfully!");
+      console.log("Cannot delete blog!");
+    }
   };
 
   const navigateToEditBlog = (id: string) => {
@@ -69,14 +88,15 @@ const ListBlogs = () => {
       dataIndex: "writer",
       key: "writer",
       align: "center",
+      width: 200,
     },
-
     {
       title: "Description",
       dataIndex: "description",
       key: "description",
       align: "center",
       width: 400,
+      render: (text) => (text.length > 100 ? `${text.slice(0, 100)}...` : text),
     },
     {
       title: "Action",
@@ -88,9 +108,14 @@ const ListBlogs = () => {
           <div
             style={{ display: "flex", justifyContent: "center", gap: "10px" }}
           >
-            <Button color="primary" variant="filled">
-              <EyeOutlined />
-            </Button>
+            <Link
+              style={{ textDecoration: "none", color: "black" }}
+              to={`/blog/${blog.key}`}
+            >
+              <Button color="primary" variant="filled">
+                <EyeOutlined />
+              </Button>
+            </Link>
             <Button
               onClick={() => navigateToEditBlog(blog?.key)}
               variant="filled"
@@ -104,7 +129,7 @@ const ListBlogs = () => {
 
             <Popconfirm
               title="Are you sure you want to delete this product?"
-              //    onConfirm={() => deleteProduct(item?.key)}
+              onConfirm={() => handleDeleteBlog(blog?.key)}
               okText="Yes"
               cancelText="No"
             >

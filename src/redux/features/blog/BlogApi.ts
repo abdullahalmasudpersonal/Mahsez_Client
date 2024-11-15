@@ -6,7 +6,7 @@ const blogApi = baseApi.injectEndpoints({
     createBlog: builder.mutation({
       query: (blogData) => ({
         url: "/blog/create-blog",
-        methods: "POST",
+        method: "POST",
         body: blogData,
       }),
       invalidatesTags: [tagTypes.blog],
@@ -35,9 +35,10 @@ const blogApi = baseApi.injectEndpoints({
     }),
     deleteBlog: builder.mutation({
       query: (blogId) => ({
-        url: `/${blogId}`,
+        url: `/blog/${blogId}`,
         method: "DELETE",
       }),
+      invalidatesTags: [tagTypes.blog],
     }),
   }),
 });

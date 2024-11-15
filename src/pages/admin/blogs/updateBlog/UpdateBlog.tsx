@@ -7,7 +7,7 @@ import {
   useGetSingleBlogQuery,
   useUpdateBlogMutation,
 } from "../../../../redux/features/blog/BlogApi";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import imageCompression from "browser-image-compression";
 import { resizeImage } from "../../../../utils/resizeResolution";
 import { toast } from "sonner";
@@ -15,10 +15,10 @@ import { toast } from "sonner";
 const UpdateBlog = () => {
   const { blogId } = useParams();
   const [form] = Form.useForm();
+  const navigate = useNavigate();
   const [fileList, setFileList] = useState<UploadFile[]>([]);
   const [updateBlog] = useUpdateBlogMutation();
   const { data: blogData } = useGetSingleBlogQuery(blogId);
-  const defaultAvatar = "https://www.w3schools.com/w3images/avatar2.png";
   const { _id, title, description, description2, features, features2, image } =
     blogData?.data || {};
 
@@ -33,61 +33,48 @@ const UpdateBlog = () => {
     });
   });
 
-  // const handleChange = ({
-  //   fileList: newFileList,
-  // }: {
-  //   fileList: UploadFile[];
-  // }) => {
-  //   setFileList(newFileList.slice(-1));
-  // };
-
   const handleChange = async ({
     fileList: newFileList,
   }: {
     fileList: UploadFile[];
   }) => {
-    const compressedFileList = (await Promise.all(
-      newFileList.map(async (file) => {
-        if (file.originFileObj) {
-          try {
-            // Compress the file
-            const options = {
-              maxSizeMB: 1,
-              useWebWorker: true,
-            };
+    if (newFileList.length > 0) {
+      const file = newFileList[newFileList.length - 1]; // শুধুমাত্র প্রথম ইমেজ নিন
+      if (file.originFileObj) {
+        try {
+          // Compress the file
+          const options = {
+            maxSizeMB: 1,
+            useWebWorker: true,
+          };
 
-            const compressedBlob = await imageCompression(
-              file.originFileObj as File,
-              options
-            );
+          const compressedBlob = await imageCompression(
+            file.originFileObj as File,
+            options
+          );
 
-            const compressedFile = new File([compressedBlob], file.name, {
-              type: file.type,
-              lastModified: file.originFileObj.lastModified,
-            });
+          const compressedFile = new File([compressedBlob], file.name, {
+            type: file.type,
+            lastModified: file.originFileObj.lastModified,
+          });
 
-            console.log(compressedFile, "compressedfile");
-            // Resize the compressed file to 1000 x 1000 pixels
-            const resizedFile = await resizeImage(compressedFile, 1350, 1000);
+          // Resize the compressed file
+          const resizedFile = await resizeImage(compressedFile, 1350, 1000);
 
-            console.log(resizedFile, "resizefiles");
-
-            return {
+          // Update fileList with only one processed file
+          setFileList([
+            {
               ...file,
               url: URL.createObjectURL(resizedFile),
               originFileObj: resizedFile,
               size: resizedFile.size,
-            } as UploadFile<unknown>;
-          } catch (error) {
-            console.error("Error compressing or resizing image:", error);
-            return file;
-          }
+            } as UploadFile<unknown>,
+          ]);
+        } catch (error) {
+          console.error("Error compressing or resizing image:", error);
         }
-        return file;
-      })
-    )) as UploadFile<unknown>[];
-
-    setFileList([...compressedFileList]);
+      }
+    }
   };
 
   const onFinish = async (values: TBlog) => {
@@ -107,8 +94,12 @@ const UpdateBlog = () => {
     const res = await updateBlog({ formData, _id }).unwrap();
     if (res?.success === true) {
       toast.success(res?.message, { position: "top-right" });
-      // form.resetFields();
-      // setFileList([]);
+      form.resetFields();
+      setFileList([]);
+      navigate(`/admin/list-blogs`);
+    } else {
+      toast.error(res?.message, { position: "top-right" });
+      console.log(res.message);
     }
   };
 
@@ -189,23 +180,22 @@ const UpdateBlog = () => {
                 marginBottom: "30px",
               }}
             >
-              <Image
-                width={160}
-                height={160}
-                src={
-                  fileList.length > 0
-                    ? fileList[0].thumbUrl ||
-                      URL.createObjectURL(fileList[0].originFileObj as Blob)
-                    : image || defaultAvatar
-                }
+              <div
                 style={{
+                  height: "160px",
+                  width: "180px",
                   boxShadow:
                     "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
-                  backgroundColor: "#f56a00",
                   borderRadius: "2px",
-                  margin: "auto",
                 }}
-              />
+              >
+                <Image
+                  width={180}
+                  height={160}
+                  src={fileList.length > 0 ? fileList[0].url : image}
+                  style={{ borderRadius: "2px" }}
+                />
+              </div>
 
               <Upload
                 accept="image/*"
@@ -220,7 +210,7 @@ const UpdateBlog = () => {
                   icon={<UploadOutlined />}
                   style={{
                     backgroundColor: "orange",
-                    marginLeft: "17px",
+                    marginLeft: "27px",
                   }}
                 >
                   Blog Image

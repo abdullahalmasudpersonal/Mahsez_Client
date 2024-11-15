@@ -70,7 +70,6 @@ const menuData: MenuData[] = [
     items: [
       { key: "blog-list", title: "List", path: "/admin/list-blogs" },
       { key: "create-blog", title: "Create Blog", path: "/admin/create-blog" },
-      { key: "update-blog", title: "Update Blog", path: "/admin/update-blog" },
     ],
   },
   {
