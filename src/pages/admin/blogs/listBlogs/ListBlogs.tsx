@@ -178,7 +178,7 @@ const ListBlogs = () => {
               pageSize: pageSize,
               showSizeChanger: false,
             }}
-            scroll={{ x: true, y: 500 }}
+            scroll={{ x: "max-content", y: 500 }}
             style={{ width: "100%" }}
             sticky
           />

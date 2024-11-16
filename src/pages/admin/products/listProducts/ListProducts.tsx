@@ -18,12 +18,13 @@ import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
 import Loader from "../../../shared/loader/Loader";
 import { toast } from "sonner";
 import { TProduct } from "../../../../types/product.types";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const { Option } = Select;
 
 const ListProducts = () => {
   const [pageSize, setPageSize] = useState(10);
+  const navigate = useNavigate();
   const [params] = useState<TQueryParam[] | undefined>(undefined);
   const { data: productData, isLoading: loadingProduct } =
     useGetProdcutsQuery(params);
@@ -31,6 +32,10 @@ const ListProducts = () => {
 
   const handlePageSizeChange = (value: number) => {
     setPageSize(value);
+  };
+
+  const navigateToUpdateProduct = (id: string) => {
+    navigate(`/admin/update-product/${id}`);
   };
 
   const deleteProduct = async (productId: string) => {
@@ -110,10 +115,13 @@ const ListProducts = () => {
           <div
             style={{ display: "flex", justifyContent: "center", gap: "10px" }}
           >
-            <Button color="primary" variant="filled">
-              <EyeOutlined />
-            </Button>
+            <Link to={`/categore/product/${item.key}`}>
+              <Button color="primary" variant="filled">
+                <EyeOutlined />
+              </Button>
+            </Link>
             <Button
+              onClick={() => navigateToUpdateProduct(item?.key)}
               variant="filled"
               style={{
                 backgroundColor: "#FFF8DC",
@@ -175,7 +183,7 @@ const ListProducts = () => {
               pageSize: pageSize,
               showSizeChanger: false,
             }}
-            scroll={{ x: true, y: 500 }}
+            scroll={{ x: "max-content", y: 500 }}
             style={{ width: "100%" }}
             sticky
           />

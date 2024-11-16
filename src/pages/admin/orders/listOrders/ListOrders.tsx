@@ -64,7 +64,7 @@ const ListOrders = () => {
       dataIndex: "createdAt",
       key: "date",
       align: "center",
-
+      width: 110,
       render: (createdAt: string) => formatDate(createdAt),
     },
     {
@@ -72,18 +72,21 @@ const ListOrders = () => {
       dataIndex: "name",
       key: "name",
       align: "center",
+      width: 150,
     },
     {
       title: "Amount",
       dataIndex: "grandTotal",
       key: "grandTotal",
       align: "center",
+      width: 100,
     },
     {
       title: "Payment Status",
       dataIndex: "paymentStatus",
       key: "paymentStatus",
       align: "center",
+      width: 150,
     },
     {
       title: "Payment Type",
@@ -102,7 +105,7 @@ const ListOrders = () => {
       dataIndex: "items",
       key: "items",
       align: "center",
-      width: 80,
+      width: 100,
       render: (items) => items?.length,
     },
     {
@@ -110,13 +113,11 @@ const ListOrders = () => {
       dataIndex: "orderStatus",
       key: "orderStatus",
       align: "center",
-      width: 80,
     },
     {
       title: "Action",
       key: "category",
       align: "center",
-      width: 80,
       render: () => {
         return (
           <div
@@ -152,7 +153,7 @@ const ListOrders = () => {
   ];
 
   return (
-    <div className="dashboard-dev2" style={{ overflowX: "auto" }}>
+    <div className="dashboard-dev2">
       <PageTitle pageTitle="Order List || Admin" />
       <div className="pt-4 px-4 d-flex justify-content-between align-items-center">
         <h4 className="fw-bold side-header">
@@ -186,7 +187,7 @@ const ListOrders = () => {
               pageSize: pageSize,
               showSizeChanger: false,
             }}
-            scroll={{ x: true, y: 500 }}
+            scroll={{ x: "max-content", y: 500 }}
             style={{ width: "100%" }}
             sticky
           />
