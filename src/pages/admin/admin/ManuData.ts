@@ -24,11 +24,11 @@ const menuData: MenuData[] = [
     title: "Dashboard",
     icon: DashboardOutlined,
     items: [
-      { key: "main", title: "Main", path: "/dashboard/main" },
-      { key: "rtl", title: "RTL", path: "/dashboard/main" },
-      { key: "horizontal", title: "Horizontal", path: "/dashboard/main" },
-      { key: "ecommerce", title: "Ecommerce", path: "/dashboard/main" },
-      { key: "blog", title: "Blog", path: "/dashboard/main" },
+      { key: "main", title: "Main", path: "/admin/" },
+      { key: "rtl", title: "RTL", path: "/admin/" },
+      { key: "horizontal", title: "Horizontal", path: "/admin/" },
+      { key: "ecommerce", title: "Ecommerce", path: "/admin/" },
+      { key: "blog", title: "Blog", path: "/admin/" },
     ],
   },
   {
@@ -37,7 +37,6 @@ const menuData: MenuData[] = [
     icon: AppstoreOutlined,
     items: [
       { key: "product-list", title: "List", path: "/admin/list-products" },
-      { key: "Grid", title: "Grid", path: "/dashboard/main" },
       {
         key: "create",
         title: "Create",
@@ -49,19 +48,13 @@ const menuData: MenuData[] = [
     key: "orders",
     title: "Orders",
     icon: SettingOutlined,
-    items: [
-      { key: "order-list", title: "List", path: "/admin/list-orders" },
-      { key: "ui2", title: "UI Element 2", path: "/dashboard/main" },
-    ],
+    items: [{ key: "order-list", title: "List", path: "/admin/list-orders" }],
   },
   {
     key: "offer",
     title: "Offer",
     icon: SettingOutlined,
-    items: [
-      { key: "offer-list", title: "List", path: "/admin/list-orders" },
-      { key: "ui2", title: "UI Element 2", path: "/dashboard/main" },
-    ],
+    items: [{ key: "offer-list", title: "List", path: "/admin/list-orders" }],
   },
   {
     key: "blogs",
@@ -77,8 +70,8 @@ const menuData: MenuData[] = [
     title: "Admins",
     icon: SettingOutlined,
     items: [
-      { key: "ui1", title: "UI Element 1", path: "/dashboard/main" },
-      { key: "ui2", title: "UI Element 2", path: "/dashboard/main" },
+      { key: "ui14", title: "UI Element 1", path: "/admin/" },
+      { key: "u1i22", title: "UI Element 2", path: "/admin/" },
     ],
   },
   {
@@ -86,8 +79,8 @@ const menuData: MenuData[] = [
     title: "Buyers",
     icon: SettingOutlined,
     items: [
-      { key: "ui1", title: "UI Element 1", path: "/dashboard/main" },
-      { key: "ui2", title: "UI Element 2", path: "/dashboard/main" },
+      { key: "ui11", title: "UI Element 1", path: "/admin/" },
+      { key: "ui21", title: "UI Element 2", path: "/admin/" },
     ],
   },
 ];

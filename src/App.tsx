@@ -27,9 +27,7 @@ import ShoppingCart from "./pages/shoppingCart/ShoppingCart";
 import ProtectedRoute from "./pages/shared/protectedRoute/ProtectedRoute";
 import CheckOut from "./pages/checkOut/CheckOut";
 import Admin from "./pages/admin/admin/Admin";
-import CreateProduct from "./pages/admin/createProduct/CreateProduct";
 import HomeAdmin from "./pages/admin/homeAdmin/HomeAdmin";
-import Prodcuts from "./pages/admin/products/Prodcuts";
 import ListProducts from "./pages/admin/products/listProducts/ListProducts";
 import MyOrder from "./pages/dashboard/myOrder/MyOrder";
 import ListOrders from "./pages/admin/orders/listOrders/ListOrders";
@@ -41,6 +39,8 @@ import ListBlogs from "./pages/admin/blogs/listBlogs/ListBlogs";
 import MyPayment from "./pages/dashboard/myPayment/MyPayment";
 import ScrollingBtn from "./pages/shared/ScrollingBtn/ScrollingBtn";
 import UpdateBlog from "./pages/admin/blogs/updateBlog/UpdateBlog";
+import UpdateProduct from "./pages/admin/products/updateProduct/UpdateProduct";
+import CreateProduct from "./pages/admin/products/createProduct/CreateProduct";
 
 function App() {
   return (
@@ -97,9 +97,12 @@ function App() {
           >
             <Route index element={<HomeAdmin />} />
             <Route path="list-orders" element={<ListOrders />} />
-            <Route path="products" element={<Prodcuts />} />
             <Route path="list-products" element={<ListProducts />} />
             <Route path="create-product" element={<CreateProduct />} />
+            <Route
+              path="update-product/:productId"
+              element={<UpdateProduct />}
+            />
             <Route path="list-blogs" element={<ListBlogs />} />
             <Route path="create-blog" element={<CreateBlog />} />
             <Route path="update-blog/:blogId" element={<UpdateBlog />} />
