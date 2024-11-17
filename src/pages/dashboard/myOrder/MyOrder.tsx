@@ -8,11 +8,18 @@ import { faClock } from "@fortawesome/free-solid-svg-icons";
 import { useGetProdcutsQuery } from "../../../redux/features/product/productApi";
 import { TProduct } from "../../../types/product.types";
 import { formatDate } from "../../../utils/formatDate";
+import { Button } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const MyOrder = () => {
   const { data: myOrderData, isLoading: myOrderDataLoading } =
     useGetBuyerOrderQuery({});
   const { data: getProducts } = useGetProdcutsQuery({});
+  const navigate = useNavigate();
+
+  // const navigateToOrderDetail = () => {
+  //   navigate("/dashboard/my-order-details/${}");
+  // };
 
   return (
     <div className="dashboard-dev2">
@@ -98,13 +105,17 @@ const MyOrder = () => {
                           className="text-end p-0 align-middle"
                           style={{ border: "0", width: "70px" }}
                         >
-                          <button
-                            type="button"
-                            className="btn btn-info"
-                            // onClick={() => navigateToOrderDetail(order._id)}
+                          <Button
+                            color="primary"
+                            variant="filled"
+                            onClick={() =>
+                              navigate(
+                                `/dashboard/my-order-details/${order?._id}`
+                              )
+                            }
                           >
                             View
-                          </button>
+                          </Button>
                         </td>
                       </div>
                     </div>

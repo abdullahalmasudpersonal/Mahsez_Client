@@ -14,6 +14,7 @@ import { TOrder } from "../../../../types/order.types";
 import Loader from "../../../shared/loader/Loader";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
 import { formatDate } from "../../../../utils/formatDate";
+import { Link } from "react-router-dom";
 
 const { Option } = Select;
 
@@ -118,14 +119,16 @@ const ListOrders = () => {
       title: "Action",
       key: "category",
       align: "center",
-      render: () => {
+      render: (item) => {
         return (
           <div
             style={{ display: "flex", justifyContent: "center", gap: "10px" }}
           >
-            <Button color="primary" variant="filled">
-              <EyeOutlined />
-            </Button>
+            <Link to={`/admin/order-details/${item.key}`}>
+              <Button color="primary" variant="filled">
+                <EyeOutlined />
+              </Button>
+            </Link>
             <Button
               variant="filled"
               style={{

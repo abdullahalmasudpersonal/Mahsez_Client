@@ -1,0 +1,39 @@
+.orderInfoDiv {
+  padding-right: 5px;
+}
+.orderHistoryDiv {
+  padding-left: 5px;
+}
+@media (max-width: 991px) {
+  .orderInfoDiv {
+    padding-right: 0;
+  }
+
+  .orderHistoryDiv {
+    padding-top: 15px;
+    padding-left: 0;
+  }
+}
+@media (max-width: 767px) {
+  .orderInfoDivOrderSummary {
+    padding-top: 20px;
+  }
+}
+
+/* -------------------- */
+.order-status-graph {
+  padding: 0 0 25px 20px;
+  margin-top: -2px;
+  border-left: 2px solid #b0bac4;
+  position: relative;
+}
+.order-status-graph::before {
+  content: "";
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  border-radius: 50px;
+  left: -9px;
+  top: 4px;
+  background: rgba(0, 34, 85, 0.932);
+}
