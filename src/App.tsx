@@ -41,6 +41,8 @@ import ScrollingBtn from "./pages/shared/ScrollingBtn/ScrollingBtn";
 import UpdateBlog from "./pages/admin/blogs/updateBlog/UpdateBlog";
 import UpdateProduct from "./pages/admin/products/updateProduct/UpdateProduct";
 import CreateProduct from "./pages/admin/products/createProduct/CreateProduct";
+import OrderDetails from "./pages/admin/orders/orderDetails/OrderDetails";
+import MyOrderDetails from "./pages/dashboard/myOrder/MyOrderDetails";
 
 function App() {
   return (
@@ -64,6 +66,10 @@ function App() {
           >
             <Route index element={<Profile />} />
             <Route path="my-order" element={<MyOrder />} />
+            <Route
+              path="my-order-details/:orderId"
+              element={<MyOrderDetails />}
+            />
             <Route path="my-payment" element={<MyPayment />} />
           </Route>
 
@@ -97,6 +103,7 @@ function App() {
           >
             <Route index element={<HomeAdmin />} />
             <Route path="list-orders" element={<ListOrders />} />
+            <Route path="order-details/:orderId" element={<OrderDetails />} />
             <Route path="list-products" element={<ListProducts />} />
             <Route path="create-product" element={<CreateProduct />} />
             <Route

@@ -1,3 +1,11 @@
+export type TOrderItemCoustom = {
+  product_id: string;
+  image: string;
+  name: string;
+  price: number;
+  quantity: number;
+  total_price: number;
+};
 export type TOrderItem = {
   product_id: string;
   quantity: number;

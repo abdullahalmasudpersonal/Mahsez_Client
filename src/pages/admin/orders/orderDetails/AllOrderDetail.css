@@ -1,0 +1,85 @@
+
+.allOrderDetail{
+    height: 70vh;
+    width: 100%;
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    grid-template-columns: repeat(900px, 200px) !important;
+    grid-gap: 20px;
+    background-color: white;
+}
+.allOrderDetail-part1{
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+    padding: 10px;
+    width: 650px;
+}
+.order-status{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+.order-status-p{
+    background-color: rgb(29, 143, 29);
+    padding: 0 5px 2px 5px;
+    border-radius: 2px;
+    color: white;
+    margin: 0;
+    font-size: 12px;
+}
+.shipping-summary{
+    background-color: rgba(214, 214, 236, 0.521);
+    margin: 20px 20px 20px 20px;
+    min-height: 300px;
+    padding: 15px;
+    border-radius: 5px;
+    display: flex;
+    grid-gap: 10px;
+}
+.order-shipping-dev{
+    width: 350px;
+    border: 1px solid gray;
+    padding: 5px;
+}
+.order-summary-dev{
+    width: 350px;
+    border: 1px solid gray;
+    padding: 5px;
+}
+.allOrderDetail-part2{
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+    padding: 10px;
+    width: 300px;
+}
+.allOrderDetail-part2-prientBtn{
+    width: 100%;
+    background: rgb(78, 20, 193);
+    color: white;
+    padding: 5px 10px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    margin-bottom: 6px;
+}
+.order-status-graph {
+    padding: 0 0 25px 20px;
+    margin-top: -2px;
+    border-left: 2px solid #b0bac4;
+    position: relative;
+}
+.order-status-graph::before {
+    content: "";
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    border-radius: 50px;
+    left: -9px;
+    top: 4px;
+    background: rgba(0, 34, 85, 0.932);
+}
+
+@media screen and (min-width:1200px) {
+    
+}

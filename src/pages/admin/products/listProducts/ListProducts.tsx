@@ -49,11 +49,20 @@ const ListProducts = () => {
   };
 
   const dataTable = productData?.data?.map(
-    ({ _id, name, category, price, availableQuantity, image }: TProduct) => ({
+    ({
+      _id,
+      name,
+      category,
+      price,
+      availableQuantity,
+      brand,
+      image,
+    }: TProduct) => ({
       key: _id,
       name,
       category,
       price,
+      brand,
       availableQuantity,
       image,
     })
@@ -103,6 +112,13 @@ const ListProducts = () => {
       title: "Category",
       dataIndex: "category",
       key: "category",
+      align: "center",
+      width: 150,
+    },
+    {
+      title: "Brand",
+      dataIndex: "brand",
+      key: "brand",
       align: "center",
       width: 150,
     },
