@@ -43,6 +43,7 @@ import UpdateProduct from "./pages/admin/products/updateProduct/UpdateProduct";
 import CreateProduct from "./pages/admin/products/createProduct/CreateProduct";
 import OrderDetails from "./pages/admin/orders/orderDetails/OrderDetails";
 import MyOrderDetails from "./pages/dashboard/myOrder/MyOrderDetails";
+import Beauty from "./pages/Categories/Beauty/BeautyCategories/BeautyCategories";
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/categore" element={<Categore />}>
+            <Route path="beauty" element={<Beauty />} />
             <Route path="product/:productId" element={<ProductDetails />} />
           </Route>
 
