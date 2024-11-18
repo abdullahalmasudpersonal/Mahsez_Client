@@ -1,21 +1,21 @@
-import "./HomeProduct.css";
-import { useNavigate } from "react-router-dom";
+import { faShoppingCart, faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { TProduct } from "../../../types/product.types";
+import { useNavigate } from "react-router-dom";
+import "../NestedPorductsCSS/NestedProduct.css";
+import { TProduct } from "../../../../types/product.types";
 
-const HomeProduct = (product: TProduct) => {
+const NestedProduct = (product: TProduct) => {
+  const { _id, name, image, availableQuantity, regularPrice, offerPrice } =
+    product;
   const navigate = useNavigate();
-
-  const { _id, name, offerPrice, regularPrice, image } = product;
 
   const navigateToProductDetails = (_id: string) => {
     navigate(`/categore/product/${_id}`);
   };
 
   return (
-    <div className="homeProduct">
-      <div className="homeProductImg">
+    <div className="nestedProduct">
+      <div className="nestedProductImg">
         {image && image.length > 0 ? (
           <img
             src={image[0]}
@@ -29,16 +29,16 @@ const HomeProduct = (product: TProduct) => {
       </div>
       <div className="px-2 pt-2">
         <h6
-          className="homeProductName text-center mb-1 mt-2 m-0 p-0"
+          className="nestedProductName text-center pb-1 m-0 p-0"
           onClick={() => navigateToProductDetails(_id)}
           data-toggle="tooltip"
           data-placement="right"
           title={name}
         >
-          {name.length > 45 ? name.slice(0, 45) + "..." : name}
+          {name.length > 55 ? name.slice(0, 55) + "..." : name}
         </h6>
       </div>
-      <div className="homeProductReview">
+      <div className="nestedProductReview">
         <p className="text-center m-0">
           <small>4.5 </small>
           <FontAwesomeIcon
@@ -64,10 +64,10 @@ const HomeProduct = (product: TProduct) => {
           <small> (27)</small>
         </p>
       </div>
-      <div className="homeProductPrice">
-        <p className="text-center m-0">
+      <div className="nestedProductPrice">
+        <p className="text-center">
           {offerPrice ? (
-            <p className="">
+            <p>
               <span
                 style={{
                   fontSize: "14px",
@@ -92,25 +92,37 @@ const HomeProduct = (product: TProduct) => {
               </span>
             </p>
           ) : (
-            <p>
-              <span>
-                <span
-                  style={{
-                    fontSize: "15px",
-                    fontFamily: "Optima",
-                    fontWeight: "bold",
-                  }}
-                >
-                  ৳
-                </span>
-                {regularPrice}.00
+            <span>
+              <span
+                style={{
+                  fontSize: "15px",
+                  fontFamily: "Optima",
+                  fontWeight: "bold",
+                }}
+              >
+                ৳
               </span>
-            </p>
+              {regularPrice}.00
+            </span>
           )}
         </p>
       </div>
+      <>
+        {availableQuantity < 1 ? (
+          <div className="nestedProductOutOfCart">
+            <button disabled>Out Of Stock</button>
+          </div>
+        ) : (
+          <div className="nestedProductAddCart">
+            <button /* onClick={() => handleAddToCard(nestedProduct)} */>
+              <FontAwesomeIcon icon={faShoppingCart} />
+              &nbsp; Add to Cart
+            </button>
+          </div>
+        )}
+      </>
     </div>
   );
 };
 
-export default HomeProduct;
+export default NestedProduct;

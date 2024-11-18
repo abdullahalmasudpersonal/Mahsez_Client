@@ -4,6 +4,7 @@ interface Category {
   _id: string;
   categoryName: string;
   image: string;
+  path: string;
 }
 
 const UseHomeFeaturedCategory = (): [
