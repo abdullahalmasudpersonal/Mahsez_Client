@@ -26,6 +26,14 @@ const MyOrderDetails = () => {
     paymentStatus,
     items = [],
     createdAt,
+    confirmOrder,
+    confirmOrderDate,
+    deliveredOrder,
+    deliveredOrderDate,
+    cancelOrder,
+    cancelOrderDate,
+    fakeOrder,
+    fakeOrderDate,
   } = orderDetails?.data || {};
 
   let orderProducts: {
@@ -410,14 +418,53 @@ const MyOrderDetails = () => {
                             :
                             ""
                     } */}
-                {orderStatus === "Pneding" ? (
+
+                {/* {orderStatus === "Pneding" ? (
                   <div className="order-status-graph">
                     <h6>{orderStatus}</h6>
                     <p className="m-0">{formatDate(createdAt)}</p>
                   </div>
                 ) : (
                   ""
+                )} */}
+
+                {deliveredOrder ? (
+                  <div className="order-status-graph">
+                    <h6>Delivered Order</h6>
+                    <p className="m-0">{formatDate(deliveredOrderDate)}</p>
+                  </div>
+                ) : (
+                  ""
                 )}
+                {confirmOrder ? (
+                  <div className="order-status-graph">
+                    <h6>Confirm Order</h6>
+                    <p className="m-0">{formatDate(confirmOrderDate)}</p>
+                  </div>
+                ) : (
+                  ""
+                )}
+                {fakeOrder ? (
+                  <div className="order-status-graph">
+                    <h6>Fake Order</h6>
+                    <p className="m-0">{formatDate(fakeOrderDate)}</p>
+                  </div>
+                ) : (
+                  ""
+                )}
+                {cancelOrder ? (
+                  <div className="order-status-graph">
+                    <h6>Cancel Order</h6>
+                    <p className="m-0">{formatDate(cancelOrderDate)}</p>
+                  </div>
+                ) : (
+                  ""
+                )}
+
+                <div className="order-status-graph">
+                  <h6>Pending</h6>
+                  <p className="m-0">{formatDate(createdAt)}</p>
+                </div>
               </div>
             </Col>
           </Col>
