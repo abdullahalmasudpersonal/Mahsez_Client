@@ -43,7 +43,7 @@ import UpdateProduct from "./pages/admin/products/updateProduct/UpdateProduct";
 import CreateProduct from "./pages/admin/products/createProduct/CreateProduct";
 import OrderDetails from "./pages/admin/orders/orderDetails/OrderDetails";
 import MyOrderDetails from "./pages/dashboard/myOrder/MyOrderDetails";
-import Beauty from "./pages/Categories/Beauty/BeautyCategories/BeautyCategories";
+import Beauty from "./pages/Categories/Beauty/Beauty/Beauty";
 
 function App() {
   return (

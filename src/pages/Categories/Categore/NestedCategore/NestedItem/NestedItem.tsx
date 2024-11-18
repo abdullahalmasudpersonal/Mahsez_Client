@@ -1,21 +1,16 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./NestedItem.css";
+import { SidebarItem } from "../../../../shared/navber/navCategoreData/NavCategoreData";
 
-interface Child {
-  title: string;
-  path: string;
-  childrens?: Child[];
+interface MobileSideberItemProps {
+  sideberData: SidebarItem;
 }
 
-interface NestedItemProps {
-  item: Child; // or Category depending on your structure
-}
-
-const NestedItem = ({ item }: NestedItemProps) => {
+const NestedItem: React.FC<MobileSideberItemProps> = ({ sideberData }) => {
   const [nestedOpen, setNestedOpen] = useState(false);
 
-  if (item.childrens) {
+  if (sideberData.childrens) {
     return (
       <div
         className={
@@ -25,9 +20,9 @@ const NestedItem = ({ item }: NestedItemProps) => {
         <div className="nestedSidebarTitle">
           <Link
             className="text-decoration-none nestedSidebarTitleName"
-            to={item.path || ""}
+            to={sideberData.path || ""}
           >
-            <span>{item.title}</span>
+            <span>{sideberData.title}</span>
           </Link>
           <i
             className="bi-chevron-right nestedToggleBtn"
@@ -35,8 +30,8 @@ const NestedItem = ({ item }: NestedItemProps) => {
           ></i>
         </div>
         <div className="nestedSidebarContent">
-          {item.childrens.map((child, index) => (
-            <NestedItem key={index} item={child} />
+          {sideberData.childrens.map((child, index) => (
+            <NestedItem key={index} sideberData={child} />
           ))}
         </div>
       </div>
@@ -45,9 +40,9 @@ const NestedItem = ({ item }: NestedItemProps) => {
     return (
       <Link
         className="text-decoration-none nestedSidebarItem nestedPlain"
-        to={item.path || "path"}
+        to={sideberData.path || "path"}
       >
-        {item.title}
+        {sideberData.title}
       </Link>
     );
   }

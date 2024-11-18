@@ -1,4 +1,3 @@
-import React from "react";
 // import UseProducts from '../../../../Hooks/UseProducts/UseProducts';
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

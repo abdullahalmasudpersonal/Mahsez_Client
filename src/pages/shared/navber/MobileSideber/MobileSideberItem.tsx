@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./MobileSideberAll.css";
 import { Link } from "react-router-dom";
-import { SidebarItem } from "./MobileSideberData";
+import { SidebarItem } from "../navCategoreData/NavCategoreData";
 
 interface MobileSideberItemProps {
   sideberData: SidebarItem;
