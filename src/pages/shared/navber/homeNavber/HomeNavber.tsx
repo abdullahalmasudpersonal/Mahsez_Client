@@ -1,4 +1,4 @@
-import "./HomeHeaders.css";
+import "./HomeNavber.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBowlFood,
@@ -13,7 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-const HomeHeaders = () => {
+const HomeNavber = () => {
   return (
     <div className="homeHeaders">
       <ul className="p-0">
@@ -302,4 +302,4 @@ const HomeHeaders = () => {
   );
 };
 
-export default HomeHeaders;
+export default HomeNavber;

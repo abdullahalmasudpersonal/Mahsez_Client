@@ -1,8 +1,9 @@
-import item from "../SideberData/SideberItem.json";
+// import item from "../SideberData/SideberItem.json";
 import "./NestedCategore.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAlignLeft } from "@fortawesome/free-solid-svg-icons";
 import NestedItem from "../NestedItem/NestedItem";
+import { navCategoreData } from "../../../../shared/navber/navCategoreData/NavCategoreData";
 
 const NestedCategore = () => {
   return (
@@ -12,8 +13,8 @@ const NestedCategore = () => {
         <span>ALL CATEGORIES</span>
       </div>
 
-      {item.map((item, index) => (
-        <NestedItem key={index} item={item} />
+      {navCategoreData.map((sideberData, index) => (
+        <NestedItem key={index} sideberData={sideberData} />
       ))}
     </div>
   );

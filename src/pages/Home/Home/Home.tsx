@@ -1,4 +1,4 @@
-import HomeHeaders from "../../shared/Header/HomeHeaders/HomeHeaders";
+import HomeNavber from "../../shared/navber/homeNavber/HomeNavber";
 import PageTitle from "../../shared/PageTitle/PageTitle";
 import Banner from "../Banner/Banner";
 import Banner2 from "../Banner/Banner2";
@@ -15,7 +15,7 @@ const Home = () => {
     <div className="home-bg pb-5 px-0">
       <PageTitle pageTitle="Home" />
       <div className="container-xxl d-flex p-0">
-        <HomeHeaders />
+        <HomeNavber />
         <Banner />
       </div>
       {/* ----------------- special class ----------------------------- */}

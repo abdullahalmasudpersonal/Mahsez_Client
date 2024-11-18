@@ -1,11 +1,11 @@
+import { navCategoreData } from "../navCategoreData/NavCategoreData";
 import "./MobileSideberAll.css";
-import { sideberDatas } from "./MobileSideberData";
 import MobileSideberItem from "./MobileSideberItem";
 
 const MobileSideber = () => {
   return (
     <div className="mobile-sideber">
-      {sideberDatas.map((sideberData, index) => (
+      {navCategoreData.map((sideberData, index) => (
         <MobileSideberItem key={index} sideberData={sideberData} />
       ))}
     </div>
