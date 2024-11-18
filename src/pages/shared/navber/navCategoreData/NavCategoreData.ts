@@ -9,7 +9,7 @@ export const navCategoreData: SidebarItem[] = [
   {
     title: "Beauty",
     icon: "fa-sharp fa-solid fa-spa",
-    path: "/categore/beautyes",
+    path: "/categore/beauty",
     childrens: [
       {
         title: "Jainamaz",

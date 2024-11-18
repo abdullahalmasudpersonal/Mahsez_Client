@@ -1,4 +1,5 @@
 // import UseProducts from '../../../../Hooks/UseProducts/UseProducts';
+import "../../Categore/NestedPorductsCSS/NestedProducts.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -6,17 +7,18 @@ import {
   faHome,
   faList,
 } from "@fortawesome/free-solid-svg-icons";
+import PageTitle from "../../../shared/PageTitle/PageTitle";
 // import NestedProduct from "../../Categore/NestedPorduct/NestedProduct";
 // import PageTitle from "../../../Shared/PageTitle/PageTitle";
 
-const Beauty = () => {
+const BeautyCategore = () => {
   // const [nestedProducts, setNestedProducts] = UseProducts([]);
 
   // const nestedProductsLength = nestedProducts.filter(categore => categore.mainCategory === 'Islamic').length;
 
   return (
     <div className="nestedProductsMain">
-      {/* <PageTitle pageTitle="Beauty |" /> */}
+      <PageTitle pageTitle="Beauty" />
       <div className="nestedProductsBreadcrumb">
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb mb-0 ">
@@ -90,4 +92,4 @@ const Beauty = () => {
   );
 };
 
-export default Beauty;
+export default BeautyCategore;

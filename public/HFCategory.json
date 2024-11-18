@@ -2,81 +2,97 @@
   {
     "_id": "ds6h5fg4af",
     "categoryName": "Beauty",
+    "path": "/categore/beauty",
     "image": "../src/assets/img/category/Beauty.png"
   },
   {
     "_id": "ds654af",
     "categoryName": "Bags",
+    "path": "",
     "image": "../src/assets/img/category/bag.png"
   },
   {
     "_id": "dsdsfgh654af",
     "categoryName": "Computer",
+    "path": "",
     "image": "../src/assets/img/category/computer.png"
   },
   {
     "_id": "ds65gh4af",
     "categoryName": "Dress",
+    "path": "",
     "image": "../src/assets/img/category/dress.png"
   },
   {
     "_id": "dsfh654af",
     "categoryName": "Electronic",
+    "path": "",
     "image": "../src/assets/img/category/Electronic.png"
   },
   {
     "_id": "ds654agff",
     "categoryName": "Refrigerator",
+    "path": "",
     "image": "../src/assets/img/category/Refrigerator.png"
   },
   {
     "_id": "ds6rtur54af",
     "categoryName": "Watch",
+    "path": "",
     "image": "../src/assets/img/category/Watch.png"
   },
   {
     "_id": "ds65tr4af",
     "categoryName": "Sports",
+    "path": "",
     "image": "../src/assets/img/category/Sports.png"
   },
   {
     "_id": "dsdfh654af",
     "categoryName": "Attar",
+    "path": "",
     "image": "../src/assets/img/category/attar.png"
   },
   {
     "_id": "dsfgh654af",
     "categoryName": "Accessories",
+    "path": "",
     "image": "../src/assets/img/category/ItAccessories.png"
   },
   {
     "_id": "ds6fdgh54af",
     "categoryName": "Laptop",
+    "path": "",
     "image": "../src/assets/img/category/laptop.png"
   },
   {
     "_id": "ds6fgsdgh54af",
     "categoryName": "Mobile",
+    "path": "",
     "image": "../src/assets/img/category/mobile.png"
   },
   {
     "_id": "ds6fgsd456gh54af",
     "categoryName": "TV",
+    "path": "",
     "image": "../src/assets/img/category/tv.png"
   },
   {
     "_id": "ds6fgsdfgh456gh54af",
     "categoryName": "Jewelry",
+    "path": "",
     "image": "../src/assets/img/category/Jewelry.png"
   },
   {
     "_id": "ds6fgsdsdfg456gh54af",
     "categoryName": "Groceries",
+    "path": "",
     "image": "../src/assets/img/category/Groceries.png"
   },
   {
     "_id": "ds65th4af",
     "categoryName": "Cosmatics",
+    "path": "",
     "image": "../src/assets/img/category/Cosmatics.png"
   }
 ]
