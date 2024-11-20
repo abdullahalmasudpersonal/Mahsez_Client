@@ -66,21 +66,12 @@ const menuData: MenuData[] = [
     ],
   },
   {
-    key: "admins",
-    title: "Admins",
+    key: "users",
+    title: "Users",
     icon: SettingOutlined,
     items: [
-      { key: "ui14", title: "UI Element 1", path: "/admin/" },
-      { key: "u1i22", title: "UI Element 2", path: "/admin/" },
-    ],
-  },
-  {
-    key: "buyers",
-    title: "Buyers",
-    icon: SettingOutlined,
-    items: [
-      { key: "ui11", title: "UI Element 1", path: "/admin/" },
-      { key: "ui21", title: "UI Element 2", path: "/admin/" },
+      { key: "admin", title: "All Admin", path: "/admin/all-admin" },
+      { key: "buyer", title: "All Buyer", path: "/admin/all-buyer" },
     ],
   },
 ];

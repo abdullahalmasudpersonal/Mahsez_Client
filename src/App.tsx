@@ -45,6 +45,8 @@ import OrderDetails from "./pages/admin/orders/orderDetails/OrderDetails";
 import MyOrderDetails from "./pages/dashboard/myOrder/MyOrderDetails";
 import BeautyCategore from "./pages/Categories/Beauty/BeautyCategore/BeautyCategore";
 import IslamicCategore from "./pages/Categories/Islamic/lslamicCategore/IslamicCategore";
+import AllAdmin from "./pages/admin/users/allAdmin/AllAdmin";
+import AllBuyer from "./pages/admin/users/allBuyer/AllBuyer";
 
 function App() {
   const location = useLocation();
@@ -125,6 +127,8 @@ function App() {
             <Route path="list-blogs" element={<ListBlogs />} />
             <Route path="create-blog" element={<CreateBlog />} />
             <Route path="update-blog/:blogId" element={<UpdateBlog />} />
+            <Route path="all-admin" element={<AllAdmin />} />
+            <Route path="all-buyer" element={<AllBuyer />} />
           </Route>
         </Routes>
         {/* <Footer /> */}
