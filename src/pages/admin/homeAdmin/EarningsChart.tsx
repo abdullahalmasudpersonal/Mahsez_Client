@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { EllipsisOutlined } from "@ant-design/icons";
 import { Dropdown } from "antd";
 import { useState } from "react";
@@ -6,7 +7,7 @@ import ReactApexChart from "react-apexcharts";
 const EarningsChart = () => {
   const options = {
     chart: {
-      type: "bar",
+      type: "bar" as const,
       stacked: false,
       toolbar: { show: false },
     },
@@ -32,24 +33,24 @@ const EarningsChart = () => {
     },
     tooltip: {
       y: {
-        formatter: (val) => `$${val.toLocaleString()}`,
+        formatter: (val: any) => `$${val.toLocaleString()}`,
       },
     },
   };
 
   const series = [
     {
-      //   name: "Revenue",
+      name: "Revenue",
       data: [37000, 20000, 30000, 25000, 50000, 40000, 15000, 25000],
     },
     {
-      //   name: "Profit",
+      name: "Profit",
       data: [28000, 15000, 22000, 18000, 40000, 30000, 10000, 20000],
     },
   ];
 
   //////////////////////////////////
-  const [selectedFilters, setSelectedFilters] = useState({
+  const [, /* selectedFilters */ setSelectedFilters] = useState({
     revenue: "1",
     orders: "1",
     growth: "1",
