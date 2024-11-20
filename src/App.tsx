@@ -8,7 +8,7 @@ import "../node_modules/bootstrap/dist/js/bootstrap.min";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 //////////////// ant design & react-quill css /////////////////////////////
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import "./index.css";
 import Footer from "./pages/shared/Footer/Footer";
 import Navber from "./pages/shared/navber/navber/Navber";
@@ -47,11 +47,18 @@ import BeautyCategore from "./pages/Categories/Beauty/BeautyCategore/BeautyCateg
 import IslamicCategore from "./pages/Categories/Islamic/lslamicCategore/IslamicCategore";
 
 function App() {
+  const location = useLocation();
+  const hideNavAndFooterPaths = ["/login", "/dashboard", "/admin"];
+  const shouldHideNavAndFooter = hideNavAndFooterPaths.includes(
+    location.pathname
+  );
+
   return (
     <>
       <div className="apps">
         <ScrollingBtn />
-        <Navber />
+        {!shouldHideNavAndFooter && <Navber />}
+        {/* <Navber /> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/categore" element={<Categore />}>
@@ -120,7 +127,8 @@ function App() {
             <Route path="update-blog/:blogId" element={<UpdateBlog />} />
           </Route>
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
+        {!shouldHideNavAndFooter && <Footer />}
       </div>
     </>
   );

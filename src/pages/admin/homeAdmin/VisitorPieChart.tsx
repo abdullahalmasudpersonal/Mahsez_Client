@@ -3,11 +3,11 @@ import ReactApexChart from "react-apexcharts";
 const VisitorPieChart = () => {
   const options = {
     chart: {
-      type: "pie",
+      type: "pie" as const,
     },
     labels: ["Direct", "Referral", "Social Media", "Others"], // বিভাগের নাম
     legend: {
-      position: "bottom",
+      position: "bottom" as "bottom" | "left" | "right" | "top",
     },
     colors: ["#3B82F6", "#34D399", "#F59E0B", "#A78BFA"], // কাস্টম রঙ
     responsive: [
@@ -15,7 +15,7 @@ const VisitorPieChart = () => {
         breakpoint: 768, // মোবাইলের জন্য
         options: {
           legend: {
-            position: "bottom", // মোবাইলে লেজেন্ড নিচে যাবে
+            position: "bottom" as "bottom" | "left" | "right" | "top", // মোবাইলে লেজেন্ড নিচে যাবে
           },
         },
       },
