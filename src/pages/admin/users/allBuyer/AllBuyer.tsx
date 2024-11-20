@@ -7,116 +7,146 @@ import {
   Table,
   TableColumnsType,
 } from "antd";
-import PageTitle from "../../../shared/PageTitle/PageTitle";
-import {
-  useDeleteBlogMutation,
-  useGetBlogsQuery,
-} from "../../../../redux/features/blog/BlogApi";
-import { useState } from "react";
+import { useGetBuyersQuery } from "../../../../redux/features/buyer/buyerApi";
 import Loader from "../../../shared/loader/Loader";
-import { TBlog } from "../../../../types/blog.types";
-import { Link, useNavigate } from "react-router-dom";
+import PageTitle from "../../../shared/PageTitle/PageTitle";
+import { Link } from "react-router-dom";
+import { TBuyer } from "../../../../types/buyer.types";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
-import { toast } from "sonner";
+import { useState } from "react";
 
 const { Option } = Select;
-const ListBlogs = () => {
+const AllBuyer = () => {
   const [pageSize, setPageSize] = useState(10);
-  const navigate = useNavigate();
-  const [deleteBlog] = useDeleteBlogMutation();
-  const { data: blogsData, isLoading: blogDataLoading } = useGetBlogsQuery({});
+  const { data: buyersData, isLoading: buyerDataLoading } = useGetBuyersQuery(
+    {}
+  );
   const handlePageSizeChange = (value: number) => {
     setPageSize(value);
   };
 
-  const handleDeleteBlog = async (blogId: string) => {
-    const res = await deleteBlog(blogId).unwrap();
-    if (res?.success) {
-      toast.success("Delete blog successfully!", {
-        duration: 1000,
-        position: "top-right",
-      });
-    } else {
-      toast.error("Delete blog successfully!");
-      console.log("Cannot delete blog!");
-    }
-  };
-
-  const navigateToEditBlog = (id: string) => {
-    navigate(`/admin/update-blog/${id}`);
-  };
-
-  const dataTable = blogsData?.data?.map(
-    ({ _id, title, image, writer, description }: TBlog) => ({
+  const dataTable = buyersData?.data?.map(
+    ({
+      _id,
+      id,
+      name,
+      contactNo,
+      email,
+      city,
+      profileImg,
+      status,
+    }: TBuyer) => ({
       key: _id,
-      title,
-      image,
-      writer,
-      description,
+      id,
+      name,
+      contactNo,
+      email,
+      profileImg,
+      city,
+      status,
     })
   );
 
-  const columns: TableColumnsType<TBlog> = [
+  const columns: TableColumnsType<TBuyer> = [
     {
-      title: "Blog Title",
-      key: "title",
-      width: 300,
+      title: "Name",
+      key: "name",
       render: (item) => (
         <div style={{ display: "flex", alignItems: "center" }}>
           <img
-            src={item.image}
-            alt="blog image"
+            src={item.profileImg}
+            alt="buyer image"
             style={{
               width: "50px",
-              height: "50px",
+              height: "55px",
               marginRight: "10px",
               borderRadius: "5px",
+              boxShadow:
+                "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
             }}
           />
           <Link
             style={{ textDecoration: "none", color: "black" }}
             to={`/blog/${item.key}`}
           >
-            <span>{item.title}</span>
+            <span>{item.name}</span>
           </Link>
         </div>
       ),
     },
     {
-      title: "Writer",
-      dataIndex: "writer",
-      key: "writer",
+      title: "UserId",
+      dataIndex: "id",
+      key: "id",
       align: "center",
-      width: 200,
     },
     {
-      title: "Description",
-      dataIndex: "description",
-      key: "description",
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
       align: "center",
-      width: 400,
-      render: (text) => (text.length > 100 ? `${text.slice(0, 100)}...` : text),
+    },
+    {
+      title: "ContactNo",
+      dataIndex: "contactNo",
+      key: "contactNo",
+      align: "center",
+    },
+    {
+      title: "City",
+      dataIndex: "city",
+      key: "cigy",
+      align: "center",
+    },
+    {
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
+      align: "center",
+      render: (status) =>
+        status === "active" ? (
+          <div
+            style={{
+              backgroundColor: "green",
+              color: "white",
+              borderRadius: "5px",
+              padding: "1px 5px",
+            }}
+          >
+            {status}
+          </div>
+        ) : (
+          <div
+            style={{
+              backgroundColor: "red",
+              color: "white",
+              borderRadius: "5px",
+              padding: "1px 5px",
+            }}
+          >
+            {status}
+          </div>
+        ),
     },
     {
       title: "Action",
       key: "category",
       align: "center",
-      width: 80,
-      render: (blog) => {
+      render: () => {
         return (
           <div
             style={{ display: "flex", justifyContent: "center", gap: "10px" }}
           >
-            <Link
+            {/* <Link
               style={{ textDecoration: "none", color: "black" }}
               to={`/blog/${blog.key}`}
-            >
-              <Button color="primary" variant="filled">
-                <EyeOutlined />
-              </Button>
-            </Link>
+            > */}
+            <Button color="primary" variant="filled">
+              <EyeOutlined />
+            </Button>
+            {/* </Link> */}
             <Button
-              onClick={() => navigateToEditBlog(blog?.key)}
+              //   onClick={() => navigateToEditBlog(blog?.key)}
               variant="filled"
               style={{
                 backgroundColor: "#FFF8DC",
@@ -128,7 +158,7 @@ const ListBlogs = () => {
 
             <Popconfirm
               title="Are you sure you want to delete this product?"
-              onConfirm={() => handleDeleteBlog(blog?.key)}
+              //   onConfirm={() => handleDeleteBlog(blog?.key)}
               okText="Yes"
               cancelText="No"
             >
@@ -144,10 +174,10 @@ const ListBlogs = () => {
 
   return (
     <div className="dashboard-dev2" style={{ overflowX: "auto" }}>
-      <PageTitle pageTitle="Blog List || Admin" />
+      <PageTitle pageTitle="Buyer List || Admin" />
       <div className="pt-4 px-4 d-flex justify-content-between align-items-center">
         <h5 className="fw-bold side-header">
-          All Blog List ({blogsData?.data?.length})
+          All Buyer List ({buyersData?.data?.length})
         </h5>
         <Row justify="end">
           <Col>
@@ -165,7 +195,7 @@ const ListBlogs = () => {
         </Row>
       </div>
       <hr />
-      {blogDataLoading ? (
+      {buyerDataLoading ? (
         <Loader />
       ) : (
         <div style={{ padding: "10px" }}>
@@ -187,4 +217,4 @@ const ListBlogs = () => {
   );
 };
 
-export default ListBlogs;
+export default AllBuyer;
