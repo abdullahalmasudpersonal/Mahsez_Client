@@ -1,5 +1,5 @@
 import "./Profile.css";
-import profile from "../../../assets/img/profile/profile.png";
+import profile from "../../../../public/assets/img/profile/profile.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useGetMyProfileQuery } from "../../../redux/features/user/userApi";
 import PageTitle from "../../shared/PageTitle/PageTitle";

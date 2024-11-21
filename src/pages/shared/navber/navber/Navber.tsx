@@ -1,7 +1,7 @@
 import "./Navber.css";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../../../assets/img/logo/mahsez.png";
+import logo from "../../../../../public/assets/img/logo/mahsez.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAlignJustify,
@@ -17,7 +17,7 @@ import {
   logout,
   selectCurrentUser,
 } from "../../../../redux/features/auth/authSlice";
-import profileImg from "../../../../assets/img/profile/profile.png";
+import profileImg from "../../../../../public/assets/img/profile/profile.png";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
 import MobileSideber from "../MobileSideber/MobileSideber";
 

@@ -47,6 +47,7 @@ import BeautyCategore from "./pages/Categories/Beauty/BeautyCategore/BeautyCateg
 import IslamicCategore from "./pages/Categories/Islamic/lslamicCategore/IslamicCategore";
 import AllAdmin from "./pages/admin/users/allAdmin/AllAdmin";
 import AllBuyer from "./pages/admin/users/allBuyer/AllBuyer";
+import Invoice from "./pages/dashboard/myOrder/Invoice";
 
 function App() {
   const location = useLocation();
@@ -85,6 +86,7 @@ function App() {
               element={<MyOrderDetails />}
             />
             <Route path="my-payment" element={<MyPayment />} />
+            <Route path="invoice" element={<Invoice />} />
           </Route>
 
           <Route
