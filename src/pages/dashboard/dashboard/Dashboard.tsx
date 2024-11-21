@@ -1,5 +1,5 @@
 import "./Dashboard.css";
-import profileImg from "../../../assets/img/profile/profile.png";
+import profileImg from "../../../../public/assets/img/profile/profile.png";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";

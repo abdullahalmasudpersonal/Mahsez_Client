@@ -1,98 +1,98 @@
 [
   {
-    "_id": "ds6h5fg4af",
+    "_id": "ds6h51fg4af",
     "categoryName": "Beauty",
     "path": "/categore/beauty",
-    "image": "../src/assets/img/category/Beauty.png"
+    "image": "assets/img/category/Beauty.png"
   },
   {
-    "_id": "ds654af",
+    "_id": "ds6254af",
     "categoryName": "Bags",
     "path": "",
-    "image": "../src/assets/img/category/bag.png"
+    "image": "assets/img/category/bag.png"
   },
   {
-    "_id": "dsdsfgh654af",
+    "_id": "dsd3sfgh654af",
     "categoryName": "Computer",
     "path": "",
-    "image": "../src/assets/img/category/computer.png"
+    "image": "assets/img/category/computer.png"
   },
   {
-    "_id": "ds65gh4af",
+    "_id": "ds6345gh4af",
     "categoryName": "Dress",
     "path": "",
-    "image": "../src/assets/img/category/dress.png"
+    "image": "assets/img/category/dress.png"
   },
   {
-    "_id": "dsfh654af",
+    "_id": "dsf5h654af",
     "categoryName": "Electronic",
     "path": "",
-    "image": "../src/assets/img/category/Electronic.png"
+    "image": "assets/img/category/Electronic.png"
   },
   {
-    "_id": "ds654agff",
+    "_id": "ds6546agff",
     "categoryName": "Refrigerator",
     "path": "",
-    "image": "../src/assets/img/category/Refrigerator.png"
+    "image": "assets/img/category/Refrigerator.png"
   },
   {
-    "_id": "ds6rtur54af",
+    "_id": "ds67rtur54af",
     "categoryName": "Watch",
     "path": "",
-    "image": "../src/assets/img/category/Watch.png"
+    "image": "assets/img/category/Watch.png"
   },
   {
-    "_id": "ds65tr4af",
+    "_id": "ds658tr4af",
     "categoryName": "Sports",
     "path": "",
-    "image": "../src/assets/img/category/Sports.png"
+    "image": "assets/img/category/Sports.png"
   },
   {
-    "_id": "dsdfh654af",
+    "_id": "dsdfh9654af",
     "categoryName": "Attar",
     "path": "",
-    "image": "../src/assets/img/category/attar.png"
+    "image": "assets/img/category/attar.png"
   },
   {
-    "_id": "dsfgh654af",
+    "_id": "dsfg77h654af",
     "categoryName": "Accessories",
     "path": "",
-    "image": "../src/assets/img/category/ItAccessories.png"
+    "image": "assets/img/category/ItAccessories.png"
   },
   {
-    "_id": "ds6fdgh54af",
+    "_id": "ds6fdg87h54af",
     "categoryName": "Laptop",
     "path": "",
-    "image": "../src/assets/img/category/laptop.png"
+    "image": "assets/img/category/laptop.png"
   },
   {
-    "_id": "ds6fgsdgh54af",
+    "_id": "ds6fgs87dgh54af",
     "categoryName": "Mobile",
     "path": "",
-    "image": "../src/assets/img/category/mobile.png"
+    "image": "assets/img/category/mobile.png"
   },
   {
-    "_id": "ds6fgsd456gh54af",
+    "_id": "ds6f89gsd456gh54af",
     "categoryName": "TV",
     "path": "",
-    "image": "../src/assets/img/category/tv.png"
+    "image": "assets/img/category/tv.png"
   },
   {
-    "_id": "ds6fgsdfgh456gh54af",
+    "_id": "ds6fg87sdfgh456gh54af",
     "categoryName": "Jewelry",
     "path": "",
-    "image": "../src/assets/img/category/Jewelry.png"
+    "image": "assets/img/category/Jewelry.png"
   },
   {
-    "_id": "ds6fgsdsdfg456gh54af",
+    "_id": "ds6fg52sdsdfg456gh54af",
     "categoryName": "Groceries",
     "path": "",
-    "image": "../src/assets/img/category/Groceries.png"
+    "image": "assets/img/category/Groceries.png"
   },
   {
-    "_id": "ds65th4af",
+    "_id": "ds65t61h4af",
     "categoryName": "Cosmatics",
     "path": "",
-    "image": "../src/assets/img/category/Cosmatics.png"
+    "image": "assets/img/category/Cosmatics.png"
   }
 ]

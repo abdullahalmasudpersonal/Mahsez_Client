@@ -1,5 +1,5 @@
 import "./OrderDetails.css";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import PageTitle from "../../shared/PageTitle/PageTitle";
 import { useGetSingleOrderQuery } from "../../../redux/features/order/orderApi";
 import { Col, Row, Table, TableColumnsType, Typography } from "antd";
@@ -7,6 +7,8 @@ import { TOrderItem, TOrderItemCoustom } from "../../../types/order.types";
 import { useGetProdcutsQuery } from "../../../redux/features/product/productApi";
 import { TProduct } from "../../../types/product.types";
 import { formatDate } from "../../../utils/formatDate";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFileInvoice } from "@fortawesome/free-solid-svg-icons";
 
 const MyOrderDetails = () => {
   const { orderId: orderNumber } = useParams();
@@ -50,7 +52,7 @@ const MyOrderDetails = () => {
       const productDetail = products?.data?.find(
         (item: TProduct) => item._id === orderItem.product_id
       );
-      console.log(productDetail);
+
       return {
         product_id: orderItem.product_id,
         image: productDetail?.image || "No image available",
@@ -66,8 +68,6 @@ const MyOrderDetails = () => {
   } else {
     console.warn("Items is not an array.");
   }
-
-  console.log(orderProducts);
 
   const dataTable = orderProducts.map((orderItem) => ({
     product_id: orderItem.product_id,
@@ -130,6 +130,11 @@ const MyOrderDetails = () => {
       width: 110,
     },
   ];
+
+  const navigate = useNavigate();
+  const handleNavigateInvoice = async () => {
+    navigate("/dashboard/invoice");
+  };
 
   return (
     <>
@@ -374,60 +379,27 @@ const MyOrderDetails = () => {
           <Col xs={24} md={24} lg={8} className="orderHistoryDiv">
             <Col
               style={{
-                padding: "10px",
+                padding: "20px",
                 borderRadius: "3px",
                 boxShadow:
                   "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
               }}
             >
-              <h5>Order History</h5>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  padding: "0px",
+                }}
+              >
+                <h5>Order History</h5>
+                <FontAwesomeIcon
+                  style={{ fontSize: "20px", cursor: "pointer" }}
+                  icon={faFileInvoice}
+                  onClick={handleNavigateInvoice}
+                />
+              </div>
               <div className="mt-4 ps-2">
-                {/* {
-                        orderDetails.deliveredOrderStatus ?
-                            <div className='order-status-graph'>
-                                <h6>{orderDetails.deliveredOrderStatus}</h6>
-                                <p className='m-0'>{orderDetails.deliveredOrderDate}&nbsp;{orderDetails.deliveredOrderTime}</p>
-                            </div>
-                            :
-                            ""
-                    } */}
-                {/* {
-                        orderDetails.confirmOrderStatus ?
-                            <div className='order-status-graph'>
-                                <h6>{orderDetails.confirmOrderStatus}</h6>
-                                <p className='m-0'>{orderDetails.confirmOrderDate}&nbsp;{orderDetails.confirmorderTime}</p>
-                            </div>
-                            :
-                            ""
-                    }
-                    {
-                        orderDetails.fakeOrderStatus ?
-                            <div className='order-status-graph'>
-                                <h6>{orderDetails.fakeOrderStatus}</h6>
-                                <p className='m-0'>{orderDetails.fakeOrderDate}&nbsp;{orderDetails.fakeOrderTime}</p>
-                            </div>
-                            :
-                            ""
-                    }
-                    {
-                        orderDetails.cancelOrderStatus ?
-                            <div className='order-status-graph'>
-                                <h6>{orderDetails.cancelOrderStatus}</h6>
-                                <p className='m-0'>{orderDetails.cancelOrderDate}&nbsp;{orderDetails.cancelOrderTime}</p>
-                            </div>
-                            :
-                            ""
-                    } */}
-
-                {/* {orderStatus === "Pneding" ? (
-                  <div className="order-status-graph">
-                    <h6>{orderStatus}</h6>
-                    <p className="m-0">{formatDate(createdAt)}</p>
-                  </div>
-                ) : (
-                  ""
-                )} */}
-
                 {deliveredOrder ? (
                   <div className="order-status-graph">
                     <h6>Delivered Order</h6>

@@ -1,4 +1,4 @@
-import bannerimg from "../../../assets/img/adBanner/adbanner.jpg";
+import bannerimg from "../../../../public/assets/img/adBanner/adbanner.jpg";
 import "./Banner.css";
 
 const Banner2 = () => {
