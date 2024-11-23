@@ -11,13 +11,13 @@ import {
   incrementQuantity,
   removeProduct,
 } from "../../redux/features/shoppingCart/shoppingCartSlice";
-import { useGetProdcutsQuery } from "../../redux/features/product/productApi";
+import { useGetProductsQuery } from "../../redux/features/product/productApi";
 import { TProduct } from "../../types/product.types";
 
 const ShoppingCart: React.FC = () => {
   const dispatch = useDispatch();
   const cart = useAppSelector((state) => state.shopping.cart);
-  const { data: products } = useGetProdcutsQuery({});
+  const { data: products } = useGetProductsQuery({});
 
   const cartDetails = cart.map((cartItem) => {
     const product = products?.data.find(

@@ -15,13 +15,13 @@ import {
   removeProduct,
 } from "../../../redux/features/shoppingCart/shoppingCartSlice";
 import { toast } from "sonner";
-import { useGetSingleProdcutQuery } from "../../../redux/features/product/productApi";
+import { useGetSingleProductQuery } from "../../../redux/features/product/productApi";
 
 const ProductDetails = () => {
   const { productId } = useParams();
   const dispatch = useAppDispatch();
   const [quantity, setQuantity] = useState(1);
-  const { data: productDetails } = useGetSingleProdcutQuery(productId);
+  const { data: productDetails } = useGetSingleProductQuery(productId);
 
   const {
     _id,

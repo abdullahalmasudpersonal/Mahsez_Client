@@ -3,7 +3,7 @@ import { formatDate } from "../../../utils/formatDate";
 import Loader from "../../shared/loader/Loader";
 import PageTitle from "../../shared/PageTitle/PageTitle";
 import { faMoneyCheck } from "@fortawesome/free-solid-svg-icons";
-import { useGetProdcutsQuery } from "../../../redux/features/product/productApi";
+import { useGetProductsQuery } from "../../../redux/features/product/productApi";
 import { useGetBuyerOrderQuery } from "../../../redux/features/order/orderApi";
 import { TProduct } from "../../../types/product.types";
 import { TOrder } from "../../../types/order.types";
@@ -12,7 +12,7 @@ import { Button } from "antd";
 const MyPayment = () => {
   const { data: myOrderData, isLoading: myOrderDataLoading } =
     useGetBuyerOrderQuery({});
-  const { data: getProducts } = useGetProdcutsQuery({});
+  const { data: getProducts } = useGetProductsQuery({});
 
   return (
     <div className="dashboard-dev2">

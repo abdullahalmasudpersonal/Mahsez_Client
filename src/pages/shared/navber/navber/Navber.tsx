@@ -20,6 +20,7 @@ import {
 import profileImg from "../../../../../public/assets/img/profile/profile.png";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
 import MobileSideber from "../MobileSideber/MobileSideber";
+import PcSearchBer from "../pcSearchBer/PcSearchBer";
 
 const Navber = () => {
   const dispatch = useAppDispatch();
@@ -231,7 +232,7 @@ const Navber = () => {
           </div>
 
           {/* ------------------ start pc search ber  ------------------------------ */}
-          {/* <PcSearchber /> */}
+          <PcSearchBer />
           {/* ------------------ end pc search ber  ------------------------------ */}
 
           <div className="header2-lust-part pe-2">

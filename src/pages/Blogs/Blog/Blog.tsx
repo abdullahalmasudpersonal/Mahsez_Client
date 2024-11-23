@@ -11,12 +11,12 @@ const Blog = (blog: TBlog) => {
   const createBlogDate = formatDate(createdAt);
 
   return (
-    <div className="d-flex justify-content-center py-2">
+    <div data-aos="fade-zoom-in" className="d-flex justify-content-center py-2">
       <div className="blog">
         <img src={image} />
         <div className="p-3">
           <h6 className="mt- mb-3" title={title}>
-            {title.length > 40 ? title.slice(0, 40) + "..." : title}
+            {title?.length > 40 ? title.slice(0, 40) + "..." : title}
             {/* {title} */}
           </h6>
           <div className="d-flex justify-content-between">
@@ -34,7 +34,7 @@ const Blog = (blog: TBlog) => {
           <hr style={{ border: "0" }} />
 
           <p>
-            {description.length > 150
+            {description?.length > 150
               ? description.slice(0, 150) + "..."
               : description}
           </p>

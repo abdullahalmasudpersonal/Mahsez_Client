@@ -1,12 +1,12 @@
 import "./NewArrivals.css";
-import { useGetProdcutsQuery } from "../../../redux/features/product/productApi";
+import { useGetProductsQuery } from "../../../redux/features/product/productApi";
 import HomeProduct from "../homeProduct/HomeProduct";
 import "../home/HomeProducts.css";
 import { TProduct } from "../../../types/product.types";
 import Loader from "../../shared/loader/Loader";
 
 const NewArrivals = () => {
-  const { data: productDta, isLoading } = useGetProdcutsQuery({});
+  const { data: productDta, isLoading } = useGetProductsQuery({});
 
   return (
     <div className="mb-2">

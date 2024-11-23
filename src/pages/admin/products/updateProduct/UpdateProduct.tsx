@@ -20,7 +20,7 @@ import { resizeImage } from "../../../../utils/resizeResolution";
 import imageCompression from "browser-image-compression";
 import { categoriesData } from "../createProduct/CreateCategoreData";
 import {
-  useGetSingleProdcutQuery,
+  useGetSingleProductQuery,
   useUpdateProductMutation,
 } from "../../../../redux/features/product/productApi";
 import { toast } from "sonner";
@@ -42,7 +42,7 @@ const UpdateProduct = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [subCategories, setSubCategories] = useState<SubCategory[]>([]);
   const [updateProduct] = useUpdateProductMutation();
-  const { data: productData } = useGetSingleProdcutQuery(productId);
+  const { data: productData } = useGetSingleProductQuery(productId);
   /////////////////// images upload /////////////
   const [fileList, setFileList] = useState<UploadFile[]>([]);
   const [previewOpen, setPreviewOpen] = useState(false);

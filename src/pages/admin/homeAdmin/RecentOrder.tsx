@@ -1,6 +1,6 @@
 import { Table, TableColumnsType } from "antd";
 import { useGetAllOrderQuery } from "../../../redux/features/order/orderApi";
-import { useGetProdcutsQuery } from "../../../redux/features/product/productApi";
+import { useGetProductsQuery } from "../../../redux/features/product/productApi";
 import { TOrder } from "../../../types/order.types";
 import Loader from "../../shared/loader/Loader";
 import { formatDate } from "../../../utils/formatDate";
@@ -10,7 +10,7 @@ const RecentOrder = () => {
   const { data: orderData, isLoading: orderDataLoading } = useGetAllOrderQuery(
     {}
   );
-  const { data: productData } = useGetProdcutsQuery({});
+  const { data: productData } = useGetProductsQuery({});
 
   const dataTable = orderData?.data?.map(
     ({

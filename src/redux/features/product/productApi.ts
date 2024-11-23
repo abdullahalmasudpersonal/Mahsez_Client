@@ -3,14 +3,15 @@ import { tagTypes } from "../tagTypes";
 
 const productApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getProdcuts: builder.query({
-      query: () => ({
+    getProducts: builder.query({
+      query: (searchTerm) => ({
         url: "/product",
         method: "GET",
+        params: searchTerm ? { searchTerm } : {},
       }),
       providesTags: [tagTypes.product],
     }),
-    getSingleProdcut: builder.query({
+    getSingleProduct: builder.query({
       query: (id) => ({
         url: `/product/${id}`,
         method: "GET",
@@ -44,8 +45,8 @@ const productApi = baseApi.injectEndpoints({
 });
 
 export const {
-  useGetProdcutsQuery,
-  useGetSingleProdcutQuery,
+  useGetProductsQuery,
+  useGetSingleProductQuery,
   useCreateProductMutation,
   useUpdateProductMutation,
   useDeleteProductMutation,

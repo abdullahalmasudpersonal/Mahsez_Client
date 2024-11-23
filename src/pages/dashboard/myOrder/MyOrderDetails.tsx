@@ -4,7 +4,7 @@ import PageTitle from "../../shared/PageTitle/PageTitle";
 import { useGetSingleOrderQuery } from "../../../redux/features/order/orderApi";
 import { Col, Row, Table, TableColumnsType, Typography } from "antd";
 import { TOrderItem, TOrderItemCoustom } from "../../../types/order.types";
-import { useGetProdcutsQuery } from "../../../redux/features/product/productApi";
+import { useGetProductsQuery } from "../../../redux/features/product/productApi";
 import { TProduct } from "../../../types/product.types";
 import { formatDate } from "../../../utils/formatDate";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,7 +13,7 @@ import { faFileInvoice } from "@fortawesome/free-solid-svg-icons";
 const MyOrderDetails = () => {
   const { orderId: orderNumber } = useParams();
   const { data: orderDetails } = useGetSingleOrderQuery(orderNumber);
-  const { data: products } = useGetProdcutsQuery({});
+  const { data: products } = useGetProductsQuery({});
   const {
     orderStatus,
     orderId,
