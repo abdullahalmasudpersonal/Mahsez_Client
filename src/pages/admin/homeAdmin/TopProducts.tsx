@@ -1,12 +1,12 @@
 import { Table, TableColumnsType } from "antd";
-import { useGetProdcutsQuery } from "../../../redux/features/product/productApi";
+import { useGetProductsQuery } from "../../../redux/features/product/productApi";
 import Loader from "../../shared/loader/Loader";
 import { Link } from "react-router-dom";
 import { TProduct } from "../../../types/product.types";
 import { useEffect } from "react";
 
 const TopProducts = () => {
-  const { data: productData, isLoading: loadingProduct } = useGetProdcutsQuery(
+  const { data: productData, isLoading: loadingProduct } = useGetProductsQuery(
     {}
   );
 

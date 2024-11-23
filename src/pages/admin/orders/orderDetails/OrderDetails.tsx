@@ -16,7 +16,7 @@ import {
   useGetSingleOrderQuery,
   useUpdateOrderStatusMutation,
 } from "../../../../redux/features/order/orderApi";
-import { useGetProdcutsQuery } from "../../../../redux/features/product/productApi";
+import { useGetProductsQuery } from "../../../../redux/features/product/productApi";
 import { formatDate } from "../../../../utils/formatDate";
 import { FieldValues } from "react-hook-form";
 
@@ -24,7 +24,7 @@ const { Option } = Select;
 const OrderDetails = () => {
   const { orderId: orderNumber } = useParams();
   const { data: orderDetails } = useGetSingleOrderQuery(orderNumber);
-  const { data: products } = useGetProdcutsQuery({});
+  const { data: products } = useGetProductsQuery({});
   const [updateOrderStatus] = useUpdateOrderStatusMutation();
 
   const {

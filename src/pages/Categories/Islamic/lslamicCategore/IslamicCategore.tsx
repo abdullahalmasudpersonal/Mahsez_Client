@@ -1,5 +1,3 @@
-// import UseProducts from '../../../../Hooks/UseProducts/UseProducts';
-// import NestedProduct from '../../Categore/NestedPorduct/NestedProduct';
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PageTitle from "../../../shared/PageTitle/PageTitle";
@@ -8,14 +6,12 @@ import {
   faHome,
   faList,
 } from "@fortawesome/free-solid-svg-icons";
-import { useGetProdcutsQuery } from "../../../../redux/features/product/productApi";
+import { useGetProductsQuery } from "../../../../redux/features/product/productApi";
 import { TProduct } from "../../../../types/product.types";
 import NestedProduct from "../../Categore/NestedPorduct/NestedProduct";
 
 const IslamicCategore = () => {
-  const { data: products } = useGetProdcutsQuery({});
-
-  //const nestedProductsLength = nestedProducts.filter(categore => categore.mainCategory === 'Islamic').length;
+  const { data: products } = useGetProductsQuery({});
 
   return (
     <div className="nestedProductsMain">
@@ -98,7 +94,3 @@ const IslamicCategore = () => {
 };
 
 export default IslamicCategore;
-
-// .filter((categore) => categore.mainCategory === "Islamic")
-// .slice(0)
-// .reverse()

@@ -7,7 +7,7 @@ import { useGetMyProfileQuery } from "../../redux/features/user/userApi";
 import District from "./District";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "../../redux/hooks";
-import { useGetProdcutsQuery } from "../../redux/features/product/productApi";
+import { useGetProductsQuery } from "../../redux/features/product/productApi";
 import {
   Card,
   Radio,
@@ -35,7 +35,7 @@ const CheckOut = () => {
   const { data: userData } = useGetMyProfileQuery({});
   const { name, email } = userData?.data || {};
   const cart = useAppSelector((state) => state.shopping.cart);
-  const { data: products } = useGetProdcutsQuery({});
+  const { data: products } = useGetProductsQuery({});
   const [paymentMethod, setPaymentMethod] =
     useState<string>("Cash On Delivery");
   const [createOrder] = useCreateOrderMutation();

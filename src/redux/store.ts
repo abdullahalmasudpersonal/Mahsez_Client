@@ -14,6 +14,7 @@ import {
 import storage from "redux-persist/lib/storage";
 import counterReducer from "./features/counter/counterSlice";
 import shoppingCartResucer from "./features/shoppingCart/shoppingCartSlice";
+import searchReducer from "./features/search/searchSlice";
 
 const parsistConfig = {
   key: "auth",
@@ -37,6 +38,7 @@ export const store = configureStore({
     auth: parsistedAuthReducer,
     counter: counterReducer,
     shopping: persistedShoppingCartReducer,
+    search: searchReducer,
   },
   middleware: (getDefaultMiddlewares) =>
     getDefaultMiddlewares({

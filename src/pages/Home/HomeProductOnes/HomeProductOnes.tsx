@@ -1,10 +1,10 @@
-import { useGetProdcutsQuery } from "../../../redux/features/product/productApi";
+import { useGetProductsQuery } from "../../../redux/features/product/productApi";
 import { TProduct } from "../../../types/product.types";
 import Loader from "../../shared/loader/Loader";
 import HomeProduct from "../homeProduct/HomeProduct";
 
 const HomeProductOnes = () => {
-  const { data: productDta, isLoading } = useGetProdcutsQuery({});
+  const { data: productDta, isLoading } = useGetProductsQuery({});
   return (
     <div>
       <h5 className="homefeaturedCategore-title">POPULAR ATTAR</h5>

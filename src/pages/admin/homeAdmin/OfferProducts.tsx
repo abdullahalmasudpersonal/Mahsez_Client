@@ -3,10 +3,10 @@ import Loader from "../../shared/loader/Loader";
 import { Table, TableColumnsType } from "antd";
 import { Link } from "react-router-dom";
 import { TProduct } from "../../../types/product.types";
-import { useGetProdcutsQuery } from "../../../redux/features/product/productApi";
+import { useGetProductsQuery } from "../../../redux/features/product/productApi";
 
 const OfferProducts = () => {
-  const { data: productData, isLoading: loadingProduct } = useGetProdcutsQuery(
+  const { data: productData, isLoading: loadingProduct } = useGetProductsQuery(
     {}
   );
 

@@ -7,6 +7,8 @@ import "../node_modules/bootstrap/dist/js/bootstrap.min";
 /* slick-carousel */
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+// aos css
+import "aos/dist/aos.css";
 //////////////// ant design & react-quill css /////////////////////////////
 import { Route, Routes, useLocation } from "react-router-dom";
 import "./index.css";
@@ -48,13 +50,22 @@ import IslamicCategore from "./pages/Categories/Islamic/lslamicCategore/IslamicC
 import AllAdmin from "./pages/admin/users/allAdmin/AllAdmin";
 import AllBuyer from "./pages/admin/users/allBuyer/AllBuyer";
 import Invoice from "./pages/dashboard/myOrder/Invoice";
+import { useEffect } from "react";
+import Aos from "aos";
+import SearchBerResult from "./pages/shared/navber/SearchBerResult/SearchBerResult";
 
 function App() {
   const location = useLocation();
   const hideNavAndFooterPaths = ["/login", "/dashboard", "/admin"];
-  const shouldHideNavAndFooter = hideNavAndFooterPaths.includes(
-    location.pathname
+  const shouldHideNavAndFooter = hideNavAndFooterPaths.some(
+    (path) =>
+      location.pathname === path || location.pathname.startsWith(`${path}/`)
   );
+
+  // //////// must /////////////
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
 
   return (
     <>
@@ -65,6 +76,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/categore" element={<Categore />}>
+            <Route path="search-results" element={<SearchBerResult />} />
             <Route path="beauty" element={<BeautyCategore />} />
             <Route path="islamic" element={<IslamicCategore />} />
 

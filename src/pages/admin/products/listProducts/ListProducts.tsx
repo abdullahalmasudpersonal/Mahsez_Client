@@ -11,7 +11,7 @@ import PageTitle from "../../../shared/PageTitle/PageTitle";
 import { useState } from "react";
 import {
   useDeleteProductMutation,
-  useGetProdcutsQuery,
+  useGetProductsQuery,
 } from "../../../../redux/features/product/productApi";
 import { TQueryParam } from "../../../../types/global";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
@@ -27,7 +27,7 @@ const ListProducts = () => {
   const navigate = useNavigate();
   const [params] = useState<TQueryParam[] | undefined>(undefined);
   const { data: productData, isLoading: loadingProduct } =
-    useGetProdcutsQuery(params);
+    useGetProductsQuery(params);
   const [deleteSingleProduct] = useDeleteProductMutation();
 
   const handlePageSizeChange = (value: number) => {

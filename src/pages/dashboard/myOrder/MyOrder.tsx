@@ -5,7 +5,7 @@ import PageTitle from "../../shared/PageTitle/PageTitle";
 import { TOrder } from "../../../types/order.types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
-import { useGetProdcutsQuery } from "../../../redux/features/product/productApi";
+import { useGetProductsQuery } from "../../../redux/features/product/productApi";
 import { TProduct } from "../../../types/product.types";
 import { formatDate } from "../../../utils/formatDate";
 import { Button } from "antd";
@@ -14,16 +14,12 @@ import { useNavigate } from "react-router-dom";
 const MyOrder = () => {
   const { data: myOrderData, isLoading: myOrderDataLoading } =
     useGetBuyerOrderQuery({});
-  const { data: getProducts } = useGetProdcutsQuery({});
+  const { data: getProducts } = useGetProductsQuery({});
   const navigate = useNavigate();
-
-  // const navigateToOrderDetail = () => {
-  //   navigate("/dashboard/my-order-details/${}");
-  // };
 
   return (
     <div className="dashboard-dev2">
-      <PageTitle pageTitle="My Profile " />
+      <PageTitle pageTitle="My Profile" />
       <div className="pt-4 px-4">
         <h5 className="fw-bold ">My Orders</h5>
       </div>
@@ -40,7 +36,10 @@ const MyOrder = () => {
             ) : (
               <>
                 {myOrderData?.data?.map((order: TOrder) => (
-                  <div className="my-single-order mb-3">
+                  <div
+                    className="my-single-order mb-3 "
+                    data-aos="fade-zoom-in"
+                  >
                     <div className="px-3 pt-3 pb-2 d-flex justify-content-between">
                       <div>
                         <h6 className="m-0 fw-bold">Order# {order?.orderId}</h6>
