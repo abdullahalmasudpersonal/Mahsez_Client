@@ -1,43 +1,67 @@
-// import React from 'react';
-// import auth from '../../../firebase.init';
-import { Link } from "react-router-dom";
-// import PageTitle from "../../shared/PageTitle/PageTitle";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Register.css";
-// import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
-// import { Link, useLocation, useNavigate } from 'react-router-dom';
-// import UseToken from '../../../Hooks/UseToken/UseToken';
-// import PageTitle from '../../Shared/PageTitle/PageTitle';
+import PageTitle from "../../shared/PageTitle/PageTitle";
+import { toast } from "sonner";
+import { useState } from "react";
+// import { TUser } from "../../../redux/features/auth/authSlice";
+import { SubmitHandler, useForm } from "react-hook-form";
+import {
+  useLoginMutation,
+  useRegistrationBuyerMutation,
+} from "../../../redux/features/auth/authApi";
+import { verifyToken } from "../../../utils/verifyToken";
+import { setUser, TUser } from "../../../redux/features/auth/authSlice";
+import { useAppDispatch } from "../../../redux/hooks";
+
+type FormValues = {
+  name: string;
+  email: string;
+  password: string;
+};
 
 const Register = () => {
-  // const [
-  //     createUserWithEmailAndPassword,
-  //     user,
-  //     loading,
-  //     error,
-  // ] = useCreateUserWithEmailAndPassword(auth);
-  // const [updateProfile, updating, UpdateError] = useUpdateProfile(auth);
+  const { register, handleSubmit } = useForm<FormValues>();
+  const [error, setError] = useState<string | null>(null);
+  const [passVisible, setPassVisible] = useState(false);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const [createBuyer] = useRegistrationBuyerMutation();
+  const [login] = useLoginMutation();
 
-  // const [token] = UseToken(user);
+  const onFinish: SubmitHandler<FormValues> = async (data) => {
+    try {
+      const userInfo = {
+        password: data?.password,
+        buyer: {
+          name: data?.name,
+          email: data?.email,
+        },
+      };
 
-  // const navigate = useNavigate();
-  // const location = useLocation();
-  // let from = location.state?.from?.pathname || '/';
-
-  // if (token) {
-  //     navigate(from, { replace: true });
-  // }
-
-  // const handleRegister = async (event) => {
-  //     event.preventDefault();
-  //     const fullName = event.target.firstName.value;
-  //     //  const lustName = event.target.lustName.value;
-  //     const email = event.target.email.value;
-  //     const password = event.target.password.value;
-  //     await createUserWithEmailAndPassword(email, password);
-  //     await updateProfile({ displayName: fullName });
-
-  //    // console.log(updateProfile)
-  // }
+      const res = await createBuyer(userInfo).unwrap();
+      if (res.success) {
+        const loginData = {
+          email: res?.data?.email,
+          password: data?.password,
+        };
+        const result = await login(loginData).unwrap();
+        const user = verifyToken(result?.data?.accessToken) as TUser;
+        dispatch(setUser({ user: user, token: result?.data?.accessToken }));
+        const toastId = toast.loading("Logging in...");
+        toast.success("Logged in successfully!", {
+          id: toastId,
+          duration: 2000,
+        });
+        navigate(from, { replace: true });
+      }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (err) {
+      setError("Please check your credentials.");
+      toast.error("Something went wrong!");
+    }
+  };
 
   // let errorElement;
   // if (error) {
@@ -48,36 +72,43 @@ const Register = () => {
 
   return (
     <div className="container-xxl my-5 ">
-      {/* <PageTitle pageTitle="Registration" /> */}
+      <PageTitle pageTitle="Registration" />
       <div className="register">
         <div className="register-dev">
           <h4 className="text-center pt-4" style={{ fontFamily: "Algerian" }}>
             New Account
           </h4>
+
           <div className="register-form-dev">
-            <form /* onSubmit={handleRegister} */>
+            <form onSubmit={handleSubmit(onFinish)}>
               <div>
                 <input
                   type="text"
                   placeholder="Full Name"
-                  name="firstName"
-                  required
+                  {...register("name", { required: true })}
                 />
-              </div>
-              {/* <div>
-                                <input type='text' placeholder='Lust Name' name='lustName' required />
-                            </div> */}
-              <div>
-                <input type="email" placeholder="Email" name="email" required />
               </div>
 
               <div>
                 <input
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  required
+                  type="email"
+                  placeholder="Email"
+                  {...register("email", { required: true })}
                 />
+              </div>
+
+              <div>
+                <input
+                  type={passVisible ? "text" : "password"}
+                  placeholder="Password"
+                  {...register("password", { required: true })}
+                />
+                <span
+                  className="login-pass-show"
+                  onClick={() => setPassVisible(!passVisible)}
+                >
+                  <small>{passVisible ? "Hide" : "Show"}</small>
+                </span>
               </div>
               <div>
                 <input
@@ -89,7 +120,9 @@ const Register = () => {
               </div>
             </form>
           </div>
-          {/* <p className='text-center m-0 p-0'><small>{errorElement}</small></p> */}
+          <p className="text-center m-0 p-0">
+            {/* <small>{errorElement}</small> */}
+          </p>
           <p className="text-center">
             <small>
               Alrady have an account?

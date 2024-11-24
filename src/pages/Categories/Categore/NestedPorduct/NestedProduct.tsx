@@ -5,8 +5,15 @@ import "../NestedPorductsCSS/NestedProduct.css";
 import { TProduct } from "../../../../types/product.types";
 
 const NestedProduct = (product: TProduct) => {
-  const { _id, name, image, availableQuantity, regularPrice, offerPrice } =
-    product;
+  const {
+    _id,
+    name,
+    image,
+    availableQuantity,
+    regularPrice,
+    price,
+    offerPrice,
+  } = product;
   const navigate = useNavigate();
 
   const navigateToProductDetails = (_id: string) => {
@@ -35,7 +42,7 @@ const NestedProduct = (product: TProduct) => {
           data-placement="right"
           title={name}
         >
-          {name.length > 55 ? name.slice(0, 55) + "..." : name}
+          {name.length > 35 ? name.slice(0, 35) + "..." : name}
         </h6>
       </div>
       <div className="nestedProductReview">
@@ -88,22 +95,34 @@ const NestedProduct = (product: TProduct) => {
                   textDecoration: "line-through 1px",
                 }}
               >
-                ৳ {regularPrice}.00
+                ৳ {price}.00
               </span>
             </p>
           ) : (
-            <span>
+            <p>
               <span
                 style={{
-                  fontSize: "15px",
+                  fontSize: "14px",
                   fontFamily: "Optima",
                   fontWeight: "bold",
                 }}
               >
                 ৳
               </span>
-              {regularPrice}.00
-            </span>
+              <span>{price}.00 &nbsp;</span>
+
+              <span
+                style={{
+                  fontSize: "13px",
+                  fontFamily: "Optima",
+                  fontWeight: "bold",
+                  color: "gray",
+                  textDecoration: "line-through 1px",
+                }}
+              >
+                ৳ {regularPrice}.00
+              </span>
+            </p>
           )}
         </p>
       </div>

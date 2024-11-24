@@ -7,17 +7,21 @@ import {
   Table,
   TableColumnsType,
 } from "antd";
-import { useGetBuyersQuery } from "../../../../redux/features/buyer/buyerApi";
+import {
+  useDeleteBuyerMutation,
+  useGetBuyersQuery,
+} from "../../../../redux/features/buyer/buyerApi";
 import Loader from "../../../shared/loader/Loader";
 import PageTitle from "../../../shared/PageTitle/PageTitle";
-import { Link } from "react-router-dom";
 import { TBuyer } from "../../../../types/buyer.types";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
 import { useState } from "react";
+import { toast } from "sonner";
 
 const { Option } = Select;
 const AllBuyer = () => {
   const [pageSize, setPageSize] = useState(10);
+  const [deleteBuyer] = useDeleteBuyerMutation();
   const { data: buyersData, isLoading: buyerDataLoading } = useGetBuyersQuery(
     {}
   );
@@ -26,16 +30,7 @@ const AllBuyer = () => {
   };
 
   const dataTable = buyersData?.data?.map(
-    ({
-      _id,
-      id,
-      name,
-      contactNo,
-      email,
-      city,
-      profileImg,
-      status,
-    }: TBuyer) => ({
+    ({ _id, id, name, contactNo, email, city, profileImg, user }: TBuyer) => ({
       key: _id,
       id,
       name,
@@ -43,9 +38,23 @@ const AllBuyer = () => {
       email,
       profileImg,
       city,
-      status,
+      user,
     })
   );
+
+  const handleDeleteBuyer = async (buyerId: string) => {
+    const res = await deleteBuyer(buyerId);
+    console.log(res, "res", buyerId);
+    if (res?.data?.success) {
+      toast.success("Delete buyer successfully!", {
+        duration: 1000,
+        position: "top-right",
+      });
+    } else {
+      toast.error("Cannot delete buyer!");
+      console.log("Cannot delete buyer!");
+    }
+  };
 
   const columns: TableColumnsType<TBuyer> = [
     {
@@ -65,12 +74,7 @@ const AllBuyer = () => {
                 "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
             }}
           />
-          <Link
-            style={{ textDecoration: "none", color: "black" }}
-            to={`/blog/${item.key}`}
-          >
-            <span>{item.name}</span>
-          </Link>
+          <span>{item.name}</span>
         </div>
       ),
     },
@@ -91,20 +95,22 @@ const AllBuyer = () => {
       dataIndex: "contactNo",
       key: "contactNo",
       align: "center",
+      width: 120,
     },
     {
       title: "City",
       dataIndex: "city",
       key: "cigy",
       align: "center",
+      width: 120,
     },
     {
       title: "Status",
-      dataIndex: "status",
+      dataIndex: "user",
       key: "status",
       align: "center",
-      render: (status) =>
-        status === "active" ? (
+      render: (user) =>
+        user.status === "active" ? (
           <div
             style={{
               backgroundColor: "green",
@@ -113,7 +119,7 @@ const AllBuyer = () => {
               padding: "1px 5px",
             }}
           >
-            {status}
+            {user.status}
           </div>
         ) : (
           <div
@@ -124,15 +130,15 @@ const AllBuyer = () => {
               padding: "1px 5px",
             }}
           >
-            {status}
+            {user.status}
           </div>
         ),
     },
     {
       title: "Action",
-      key: "category",
+      key: "action",
       align: "center",
-      render: () => {
+      render: (buyer) => {
         return (
           <div
             style={{ display: "flex", justifyContent: "center", gap: "10px" }}
@@ -158,7 +164,7 @@ const AllBuyer = () => {
 
             <Popconfirm
               title="Are you sure you want to delete this product?"
-              //   onConfirm={() => handleDeleteBlog(blog?.key)}
+              onConfirm={() => handleDeleteBuyer(buyer.key)}
               okText="Yes"
               cancelText="No"
             >

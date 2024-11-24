@@ -293,6 +293,13 @@ const CreateProduct = () => {
                     <Option value="Leebas">Leebas</Option>
                     <Option value="AKIJ">AKIJ</Option>
                     <Option value="Morphy">Morphy</Option>
+                    <Option value="Lenovo">Lenovo</Option>
+                    <Option value="Asus">Asus</Option>
+                    <Option value="Walton">Walton</Option>
+                    <Option value="Sony">Sony</Option>
+                    <Option value="LG">LG</Option>
+                    <Option value="Smart">Smart</Option>
+                    <Option value="Deer">Deer</Option>
                     <Option value="No Brand">No Brand</Option>
                   </Select>
                 </Form.Item>

@@ -1,4 +1,5 @@
 import { baseApi } from "../../api/baseApi";
+import { tagTypes } from "../tagTypes";
 
 const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -8,15 +9,17 @@ const authApi = baseApi.injectEndpoints({
         method: "POST",
         body: userInfo,
       }),
+      invalidatesTags: [tagTypes.buyer],
     }),
-    registration: builder.mutation({
+    registrationBuyer: builder.mutation({
       query: (userInfo) => ({
         url: "/user/create-buyer",
         method: "POST",
         body: userInfo,
       }),
+      invalidatesTags: [tagTypes.buyer],
     }),
   }),
 });
 
-export const { useLoginMutation, useRegistrationMutation } = authApi;
+export const { useLoginMutation, useRegistrationBuyerMutation } = authApi;

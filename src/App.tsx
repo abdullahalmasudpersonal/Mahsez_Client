@@ -56,7 +56,7 @@ import SearchBerResult from "./pages/shared/navber/SearchBerResult/SearchBerResu
 
 function App() {
   const location = useLocation();
-  const hideNavAndFooterPaths = ["/login", "/dashboard", "/admin"];
+  const hideNavAndFooterPaths = ["/login", "/register", "/dashboard", "/admin"];
   const shouldHideNavAndFooter = hideNavAndFooterPaths.some(
     (path) =>
       location.pathname === path || location.pathname.startsWith(`${path}/`)

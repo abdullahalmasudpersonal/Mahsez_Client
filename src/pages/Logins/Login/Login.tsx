@@ -39,8 +39,6 @@ const Login = () => {
       toast.success("Logged in successfully!", { id: toastId, duration: 2000 });
 
       navigate(from, { replace: true });
-
-      // navigate(`/${user.role}/dashboard`);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       setError("Please check your credentials.");
@@ -50,7 +48,6 @@ const Login = () => {
 
   let errorElement;
   if (error) {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     errorElement = <p className="text-danger m-0 text-center">{error}</p>;
   }
 

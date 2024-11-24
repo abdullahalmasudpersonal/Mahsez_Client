@@ -12,6 +12,7 @@ export type TProduct = {
   regularPrice: number;
   offerPrice: number;
   size: string;
+  soldQuantity: number;
   features: string;
   features2?: string[];
   description: string;
