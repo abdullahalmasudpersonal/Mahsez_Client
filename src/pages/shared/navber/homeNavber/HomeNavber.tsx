@@ -31,7 +31,7 @@ const HomeNavber = () => {
               />
             </div>
           </Link>
-          <div className="homeHeadersCategoryDev">
+          {/* <div className="homeHeadersCategoryDev">
             <ul>
               <li>
                 <Link to="" className="text-decoration-none">
@@ -58,7 +58,7 @@ const HomeNavber = () => {
                 </div>
               </li>
             </ul>
-          </div>
+          </div> */}
         </li>
         <li>
           <Link to="/categore/bags" className="text-decoration-none">
@@ -179,7 +179,7 @@ const HomeNavber = () => {
               />
             </div>
           </Link>
-          <div className="homeHeadersCategoryDev">
+          {/* <div className="homeHeadersCategoryDev">
             <ul>
               <li>
                 <Link
@@ -280,7 +280,7 @@ const HomeNavber = () => {
                 </Link>
               </li>
             </ul>
-          </div>
+          </div> */}
         </li>
         <li>
           <Link to="/categore/sports" className="text-decoration-none">

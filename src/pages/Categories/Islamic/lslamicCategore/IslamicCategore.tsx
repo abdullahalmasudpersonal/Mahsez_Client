@@ -1,17 +1,26 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PageTitle from "../../../shared/PageTitle/PageTitle";
-import {
-  faBorderNone,
-  faHome,
-  faList,
-} from "@fortawesome/free-solid-svg-icons";
-import { useGetProductsQuery } from "../../../../redux/features/product/productApi";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { useGetProductsWithSearchFilterQuery } from "../../../../redux/features/product/productApi";
 import { TProduct } from "../../../../types/product.types";
 import NestedProduct from "../../Categore/NestedPorduct/NestedProduct";
+import { Col, Pagination, Row, Select } from "antd";
+import { useState } from "react";
 
+const { Option } = Select;
 const IslamicCategore = () => {
-  const { data: products } = useGetProductsQuery({});
+  const [pageSize, setPageSize] = useState(20);
+  const [currentPage, setCurrentPage] = useState(1);
+  const { data: products } = useGetProductsWithSearchFilterQuery({
+    limit: pageSize,
+    page: currentPage,
+  });
+
+  const handleTableChange = (page: number, pageSize: number) => {
+    setCurrentPage(page);
+    setPageSize(pageSize);
+  };
 
   return (
     <div className="nestedProductsMain">
@@ -33,21 +42,6 @@ const IslamicCategore = () => {
           </ol>
         </nav>
       </div>
-      <div className="nestedProductsNamePart">
-        <div>
-          <h5 className="m-0 fw-bold">Islamics Products In Mahsez</h5>
-        </div>
-        <div>
-          <p className="m-0">
-            <span>Show:</span>&nbsp;
-            <select className="">
-              <option value="">20</option>
-              <option value="">30</option>
-              <option value="">40</option>
-            </select>
-          </p>
-        </div>
-      </div>
       <div className="nestedProductsSortByViewPart">
         <div>
           <p className="m-0">
@@ -55,39 +49,59 @@ const IslamicCategore = () => {
           </p>
         </div>
         <div className="nestedProductsSortByViewDev">
-          <p className="m-0">
-            <span>Sort By:</span>&nbsp;
-            <select>
-              <option value="">Default</option>
-              <option value="">A TO Z</option>
-              <option value="">Z TO A</option>
-              <option value="">Best Selling</option>
-              <option value="">Price Low to high</option>
-              <option value="">Price high to low</option>
-            </select>
-          </p>{" "}
-          &nbsp;&nbsp;&nbsp;
-          <p className="m-0 d-flex justify-content-center align-items-center">
-            <span>View As:</span> &nbsp;&nbsp;
-            <FontAwesomeIcon
-              color="rgb(42, 42, 42))"
-              fontSize="20px"
-              style={{ padding: "5px" }}
-              icon={faBorderNone}
-            />{" "}
-            &nbsp;
-            <FontAwesomeIcon
-              fontSize="20px"
-              style={{ padding: "5px" }}
-              icon={faList}
-            />
-          </p>
+          <Row justify="end" gutter={16}>
+            <Col>
+              <span>Sort By:</span>&nbsp;
+              <Select
+                defaultValue={10}
+                style={{ width: 130 }}
+                // onChange={handlePageSizeChange}
+              >
+                <Option value={""}>Default</Option>
+                <Option value={""}>A TO Z</Option>
+                <Option value={""}>Z TO A</Option>
+                <Option value={""}>Best Selling</Option>
+                <Option value={""}>Price Low to high</Option>
+                <Option value={""}>Price high to low</Option>
+              </Select>
+            </Col>
+            <Col>
+              <Select
+                defaultValue={10}
+                style={{ width: 70 }}
+                onChange={(value) => setPageSize(value)}
+              >
+                <Option value={20}>20</Option>
+                <Option value={30}>30</Option>
+                <Option value={50}>50</Option>
+                <Option value={100}>100</Option>
+              </Select>
+            </Col>
+          </Row>
         </div>
       </div>
       <div className="nestedProducts">
         {products?.data?.map((product: TProduct) => (
           <NestedProduct {...product}></NestedProduct>
         ))}
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "80px",
+          width: "100%",
+          marginTop: "10px",
+        }}
+      >
+        <Pagination
+          total={products?.meta?.total}
+          current={currentPage}
+          pageSize={pageSize}
+          showSizeChanger={false}
+          onChange={handleTableChange}
+        />
       </div>
     </div>
   );

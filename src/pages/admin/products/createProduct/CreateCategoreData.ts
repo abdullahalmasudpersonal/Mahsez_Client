@@ -12,11 +12,11 @@ type MainCategory = {
 
 export const categoriesData: MainCategory[] = [
   {
-    name: "Beauty",
+    name: "Health & Beauty",
     categories: [
       {
-        name: "1 first",
-        subCategories: ["L1 area 1", "area 2"],
+        name: "Beauty",
+        subCategories: ["Cream", "area 2"],
       },
       {
         name: "2 Second",
@@ -29,15 +29,20 @@ export const categoriesData: MainCategory[] = [
     ],
   },
   {
-    name: "Bags",
+    name: "Bags & Watch",
     categories: [
       {
-        name: "V first",
-        subCategories: ["V1 area 1", "area 2"],
+        name: "Watch",
+        subCategories: [
+          "Smartwatch",
+          "Analog-Digital Watch",
+          "Digital Watch",
+          "Analog Wrist Watch",
+        ],
       },
       {
-        name: "V Second",
-        subCategories: ["V2 area 3", "area 4"],
+        name: "Bags",
+        subCategories: ["Vanity Bag", "area 4"],
       },
       {
         name: "V Thired",
@@ -46,15 +51,15 @@ export const categoriesData: MainCategory[] = [
     ],
   },
   {
-    name: "Computer",
+    name: "Computer & Accessories",
     categories: [
       {
-        name: "F first",
-        subCategories: ["F1 area 1", "area 2"],
+        name: "Dasktop",
+        subCategories: ["F1 area 1", "No Sub Category"],
       },
       {
-        name: "f Second",
-        subCategories: ["F2 area 3", "area 4"],
+        name: "Laptop",
+        subCategories: ["F2 area 3", "area 4", "No Sub Category"],
       },
       {
         name: "F Thired",
@@ -67,15 +72,11 @@ export const categoriesData: MainCategory[] = [
     categories: [
       {
         name: "T-Shirt",
-        subCategories: [
-          "Polo T-Shirt",
-          "Crew Neck T-Shirt",
-          "No Sub Categories",
-        ],
+        subCategories: ["Polo T-Shirt", "Crew Neck T-Shirt", "No Sub Category"],
       },
       {
-        name: "f Second",
-        subCategories: ["F2 area 3", "area 4"],
+        name: "Jewellery",
+        subCategories: ["Necklace", "Earrings"],
       },
     ],
   },
@@ -83,25 +84,48 @@ export const categoriesData: MainCategory[] = [
     name: "Electronic & TV",
     categories: [
       {
+        name: "TV",
+        subCategories: ["LED TV", "Smart TV"],
+      },
+      {
+        name: "Mobile",
+        subCategories: ["Smart Phone", "Button Phone"],
+      },
+      {
         name: "Fan",
         subCategories: ["Ceiling Fan", "area 2"],
       },
       {
         name: " Iron",
-        subCategories: ["F2 area 3", "No Sub Categories"],
+        subCategories: ["F2 area 3", "No Sub Category"],
       },
       {
         name: "Kettle",
-        subCategories: ["Electric Kettle", "No Sub Categories"],
+        subCategories: ["Electric Kettle", "No Sub Category"],
       },
     ],
   },
   {
-    name: "Foods",
+    name: "Home Appliences",
     categories: [
       {
-        name: "F first",
-        subCategories: ["F1 area 1", "area 2"],
+        name: "Refrigerator",
+        subCategories: [
+          "Single Door",
+          " Double Door",
+          "Side-by-Side",
+          "Bottom Mount",
+        ],
+      },
+      { name: "Sink", subCategories: [] },
+    ],
+  },
+  {
+    name: "Groceries & Foods",
+    categories: [
+      {
+        name: "Rice",
+        subCategories: ["F1 area 1", "No Sub Category"],
       },
       {
         name: "f Second",
@@ -144,15 +168,15 @@ export const categoriesData: MainCategory[] = [
     ],
   },
   {
-    name: "Sports",
+    name: "Sports & Outdoors",
     categories: [
       {
-        name: "F first",
-        subCategories: ["F1 area 1", "area 2"],
+        name: "Ball",
+        subCategories: ["Football", "Tanisball", "Cricket Ball"],
       },
       {
-        name: "f Second",
-        subCategories: ["F2 area 3", "area 4"],
+        name: "Bat",
+        subCategories: ["Cricket Bat", "Tanis Bat"],
       },
       {
         name: "F Thired",

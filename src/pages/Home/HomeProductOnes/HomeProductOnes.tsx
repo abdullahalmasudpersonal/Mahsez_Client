@@ -7,7 +7,7 @@ const HomeProductOnes = () => {
   const { data: productDta, isLoading } = useGetProductsQuery({});
   return (
     <div>
-      <h5 className="homefeaturedCategore-title">POPULAR ATTAR</h5>
+      <h5 className="homefeaturedCategore-title">POPULAR PRODUCTS</h5>
       <hr style={{ marginTop: "10px" }}></hr>
       {isLoading ? (
         <div
@@ -22,7 +22,11 @@ const HomeProductOnes = () => {
         </div>
       ) : (
         <div className="homeProducts">
-          {productDta?.data
+          {productDta.data
+            ?.filter((product: TProduct) => product.soldQuantity)
+            ?.sort(
+              (a: TProduct, b: TProduct) => b.soldQuantity - a.soldQuantity
+            )
             ?.slice(0, 12)
             .map((product: TProduct, index: number) => (
               <div

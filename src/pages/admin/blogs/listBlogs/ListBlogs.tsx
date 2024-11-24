@@ -37,7 +37,7 @@ const ListBlogs = () => {
         position: "top-right",
       });
     } else {
-      toast.error("Delete blog successfully!");
+      toast.error("Cannot delete blog!");
       console.log("Cannot delete blog!");
     }
   };

@@ -23,15 +23,17 @@ const HomeFeaturedProducts = () => {
         </div>
       ) : (
         <div className="homeProducts delayProductItem">
-          {productDta?.data?.map((product: TProduct, index: number) => (
-            <div
-              key={product._id}
-              className="delayProductItem"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <HomeProduct key={product._id} {...product} />
-            </div>
-          ))}
+          {productDta?.data
+            ?.slice(0, 24)
+            ?.map((product: TProduct, index: number) => (
+              <div
+                key={product._id}
+                className="delayProductItem"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <HomeProduct key={product._id} {...product} />
+              </div>
+            ))}
         </div>
       )}
     </div>

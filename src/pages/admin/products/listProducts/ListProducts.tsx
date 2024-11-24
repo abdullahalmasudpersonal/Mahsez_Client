@@ -11,9 +11,8 @@ import PageTitle from "../../../shared/PageTitle/PageTitle";
 import { useState } from "react";
 import {
   useDeleteProductMutation,
-  useGetProductsQuery,
+  useGetProductsWithSearchFilterQuery,
 } from "../../../../redux/features/product/productApi";
-import { TQueryParam } from "../../../../types/global";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
 import Loader from "../../../shared/loader/Loader";
 import { toast } from "sonner";
@@ -24,14 +23,18 @@ const { Option } = Select;
 
 const ListProducts = () => {
   const [pageSize, setPageSize] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
-  const [params] = useState<TQueryParam[] | undefined>(undefined);
   const { data: productData, isLoading: loadingProduct } =
-    useGetProductsQuery(params);
+    useGetProductsWithSearchFilterQuery({
+      limit: pageSize,
+      page: currentPage,
+    });
   const [deleteSingleProduct] = useDeleteProductMutation();
 
-  const handlePageSizeChange = (value: number) => {
-    setPageSize(value);
+  const handleTableChange = (page: number, pageSize: number) => {
+    setCurrentPage(page);
+    setPageSize(pageSize);
   };
 
   const navigateToUpdateProduct = (id: string) => {
@@ -57,6 +60,7 @@ const ListProducts = () => {
       availableQuantity,
       brand,
       image,
+      soldQuantity,
     }: TProduct) => ({
       key: _id,
       name,
@@ -65,6 +69,7 @@ const ListProducts = () => {
       brand,
       availableQuantity,
       image,
+      soldQuantity,
     })
   );
 
@@ -123,6 +128,13 @@ const ListProducts = () => {
       width: 150,
     },
     {
+      title: "Sold Quantity",
+      dataIndex: "soldQuantity",
+      key: "soldQuantity",
+      align: "center",
+      width: 100,
+    },
+    {
       title: "Action",
       key: "category",
       align: "center",
@@ -168,14 +180,14 @@ const ListProducts = () => {
       <PageTitle pageTitle="List || Products || Admin" />
       <div className="pt-4 px-4 d-flex justify-content-between align-items-center">
         <h4 className="fw-bold m-0">
-          All Product List ({productData?.data?.length})
+          All Product List ({productData?.meta?.total})
         </h4>
         <Row justify="end">
           <Col>
             <Select
               defaultValue={10}
               style={{ width: 120 }}
-              onChange={handlePageSizeChange}
+              onChange={(value) => setPageSize(value)}
             >
               <Option value={10}>10 / page</Option>
               <Option value={20}>20 / page</Option>
@@ -195,9 +207,11 @@ const ListProducts = () => {
             columns={columns}
             dataSource={dataTable}
             pagination={{
-              position: ["bottomRight"],
+              current: currentPage,
               pageSize: pageSize,
+              total: productData?.meta?.total,
               showSizeChanger: false,
+              onChange: handleTableChange,
             }}
             scroll={{ x: "max-content", y: 500 }}
             style={{ width: "100%" }}

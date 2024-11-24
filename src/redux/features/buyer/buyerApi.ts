@@ -8,9 +8,15 @@ const buyerApi = baseApi.injectEndpoints({
         url: "/buyer",
         method: "GET",
       }),
-      providesTags: [tagTypes.buyer],
+    }),
+    deleteBuyer: builder.mutation({
+      query: (id) => ({
+        url: `/buyer/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: [tagTypes.buyer],
     }),
   }),
 });
 
-export const { useGetBuyersQuery } = buyerApi;
+export const { useGetBuyersQuery, useDeleteBuyerMutation } = buyerApi;

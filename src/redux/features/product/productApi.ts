@@ -4,10 +4,21 @@ import { tagTypes } from "../tagTypes";
 const productApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getProducts: builder.query({
-      query: (searchTerm) => ({
+      query: () => ({
         url: "/product",
         method: "GET",
-        params: searchTerm ? { searchTerm } : {},
+      }),
+      providesTags: [tagTypes.product],
+    }),
+    getProductsWithSearchFilter: builder.query({
+      query: ({ searchTerm, limit, page }) => ({
+        url: "/product/search-filter",
+        method: "GET",
+        params: {
+          ...(searchTerm && { searchTerm }),
+          ...(limit && { limit }),
+          ...(page && { page }),
+        },
       }),
       providesTags: [tagTypes.product],
     }),
@@ -46,6 +57,7 @@ const productApi = baseApi.injectEndpoints({
 
 export const {
   useGetProductsQuery,
+  useGetProductsWithSearchFilterQuery,
   useGetSingleProductQuery,
   useCreateProductMutation,
   useUpdateProductMutation,

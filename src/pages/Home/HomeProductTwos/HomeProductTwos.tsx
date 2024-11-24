@@ -24,6 +24,10 @@ const HomeProductTwos = () => {
       ) : (
         <div className="homeProducts">
           {productDta?.data
+            ?.filter((product: TProduct) => product.soldQuantity)
+            ?.sort(
+              (a: TProduct, b: TProduct) => b.soldQuantity - a.soldQuantity
+            )
             ?.slice(0, 12)
             .map((product: TProduct, index: number) => (
               <div
