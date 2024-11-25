@@ -1,27 +1,9 @@
-.newArrival-dev {
-  padding: 25px 15px;
-  border-radius: 4px;
-  background-color: rgb(255, 255, 255);
-}
-@media screen and (min-width: 1400px) {
-  .newArrival-dev {
-    padding: 25px 15px;
-    border-radius: 4px;
-    background-color: rgb(255, 255, 255);
-    box-shadow: rgba(225, 225, 225, 0.4) 5px 5px,
-      rgba(210, 210, 210, 0.3) 10px 10px, rgba(210, 210, 210, 0.2) 15px 15px,
-      rgba(180, 180, 180, 0.1) 20px 20px, rgba(197, 197, 197, 0.05) 25px 25px;
-  }
-}
-@media screen and (max-width: 1399px) {
-  .newArrival-dev {
-    padding: 25px 10px;
-    border-radius: 4px;
-    background-color: rgb(255, 255, 255);
-  }
-}
-
-.loader2 {
+const Loader2 = () => {
+  return (
+    <div>
+      <style>
+        {`
+           .loader2 {
   width: 50px;
   aspect-ratio: 1;
   display: grid;
@@ -61,3 +43,12 @@
     transform: rotate(1turn);
   }
 }
+
+          `}
+      </style>
+      <div className="loader2"></div>
+    </div>
+  );
+};
+
+export default Loader2;

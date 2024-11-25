@@ -7,9 +7,9 @@ export interface SidebarItem {
 
 export const navCategoreData: SidebarItem[] = [
   {
-    title: "Beauty",
+    title: "Health & Beauty",
     icon: "fa-sharp fa-solid fa-spa",
-    path: "/categore/beauty",
+    path: "/categore/health-beauty",
     // childrens: [
     //   {
     //     title: "Jainamaz",
@@ -36,7 +36,7 @@ export const navCategoreData: SidebarItem[] = [
     // ],
   },
   {
-    title: "Bags",
+    title: "Bags & Watch",
     icon: "fa-sharp fa-solid fa-bag-shopping",
     path: "/categore/bags",
     // childrens: [
@@ -47,7 +47,7 @@ export const navCategoreData: SidebarItem[] = [
     // ],
   },
   {
-    title: "Computer",
+    title: "Computer Accessories",
     icon: "fa-sharp fa-solid fa-computer",
     path: "/categore/computers",
     // childrens: [
@@ -58,7 +58,7 @@ export const navCategoreData: SidebarItem[] = [
     // ],
   },
   {
-    title: "Dresses",
+    title: "Dresses & Jewellery",
     icon: "a-sharp fa-solid fa-person-dress",
     path: "/categore/dresses",
     // childrens: [
@@ -69,7 +69,7 @@ export const navCategoreData: SidebarItem[] = [
     // ],
   },
   {
-    title: "Electronic",
+    title: "Electronic & TV",
     icon: "fa-sharp fa-solid fa-microchip",
     path: "/categore/electronics",
     // childrens: [
@@ -80,7 +80,7 @@ export const navCategoreData: SidebarItem[] = [
     // ],
   },
   {
-    title: "Foods",
+    title: "Home Appliences",
     icon: "fa-sharp fa-solid fa-bowl-food",
     path: "/categore/foods",
     // childrens: [
@@ -91,7 +91,29 @@ export const navCategoreData: SidebarItem[] = [
     // ],
   },
   {
-    title: "Islamic",
+    title: "Kids Accessories",
+    icon: "fa-sharp fa-solid fa-bowl-food",
+    path: "/categore/foods",
+    // childrens: [
+    //   {
+    //     title: "Jainamaz",
+    //     path: "",
+    //   },
+    // ],
+  },
+  {
+    title: "Groceries & Foods",
+    icon: "fa-sharp fa-solid fa-bowl-food",
+    path: "/categore/foods",
+    // childrens: [
+    //   {
+    //     title: "Jainamaz",
+    //     path: "",
+    //   },
+    // ],
+  },
+  {
+    title: "Islamic Accessories",
     icon: "fa-sharp fa-solid fa-mosque",
     path: "/categore/islamic",
     // childrens: [
@@ -136,7 +158,7 @@ export const navCategoreData: SidebarItem[] = [
     // ],
   },
   {
-    title: "Sports",
+    title: "Sports & Outdoors",
     icon: "fa-sharp fa-solid fa-trophy",
     path: "/categore/sports",
     // childrens: [

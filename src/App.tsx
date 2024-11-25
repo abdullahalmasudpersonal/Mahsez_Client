@@ -45,14 +45,14 @@ import UpdateProduct from "./pages/admin/products/updateProduct/UpdateProduct";
 import CreateProduct from "./pages/admin/products/createProduct/CreateProduct";
 import OrderDetails from "./pages/admin/orders/orderDetails/OrderDetails";
 import MyOrderDetails from "./pages/dashboard/myOrder/MyOrderDetails";
-import BeautyCategore from "./pages/Categories/Beauty/BeautyCategore/BeautyCategore";
-import IslamicCategore from "./pages/Categories/Islamic/lslamicCategore/IslamicCategore";
 import AllAdmin from "./pages/admin/users/allAdmin/AllAdmin";
 import AllBuyer from "./pages/admin/users/allBuyer/AllBuyer";
 import Invoice from "./pages/dashboard/myOrder/Invoice";
 import { useEffect } from "react";
 import Aos from "aos";
 import SearchBerResult from "./pages/shared/navber/SearchBerResult/SearchBerResult";
+import IslamicCategore from "./pages/Categories/IslamicAccessories/lslamicCategore/IslamicCategore";
+import HealthBeautyCategore from "./pages/Categories/health&Beauty/health&BeautyCategore/HealthBeautyCategore";
 
 function App() {
   const location = useLocation();
@@ -77,7 +77,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/categore" element={<Categore />}>
             <Route path="search-results" element={<SearchBerResult />} />
-            <Route path="beauty" element={<BeautyCategore />} />
+            <Route path="health-beauty" element={<HealthBeautyCategore />} />
             <Route path="islamic" element={<IslamicCategore />} />
 
             <Route path="product/:productId" element={<ProductDetails />} />
