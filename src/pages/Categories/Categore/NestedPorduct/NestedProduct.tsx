@@ -21,7 +21,7 @@ const NestedProduct = (product: TProduct) => {
   };
 
   return (
-    <div className="nestedProduct">
+    <div className="nestedProduct" data-aos="fade-zoom-in">
       <div className="nestedProductImg">
         {image && image.length > 0 ? (
           <img

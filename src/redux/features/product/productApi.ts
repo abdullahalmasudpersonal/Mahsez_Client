@@ -11,13 +11,15 @@ const productApi = baseApi.injectEndpoints({
       providesTags: [tagTypes.product],
     }),
     getProductsWithSearchFilter: builder.query({
-      query: ({ searchTerm, limit, page }) => ({
+      query: ({ searchTerm, limit, page, sort, mainCategory }) => ({
         url: "/product/search-filter",
         method: "GET",
         params: {
           ...(searchTerm && { searchTerm }),
           ...(limit && { limit }),
           ...(page && { page }),
+          ...(sort && { sort }),
+          ...(mainCategory && { mainCategory }),
         },
       }),
       providesTags: [tagTypes.product],
