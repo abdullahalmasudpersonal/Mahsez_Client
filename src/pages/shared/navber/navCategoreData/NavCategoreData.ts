@@ -38,7 +38,7 @@ export const navCategoreData: SidebarItem[] = [
   {
     title: "Bags & Watch",
     icon: "fa-sharp fa-solid fa-bag-shopping",
-    path: "/categore/bags",
+    path: "/categore/bag-watch",
     // childrens: [
     //   {
     //     title: "Jainamaz",
@@ -49,7 +49,7 @@ export const navCategoreData: SidebarItem[] = [
   {
     title: "Computer Accessories",
     icon: "fa-sharp fa-solid fa-computer",
-    path: "/categore/computers",
+    path: "/categore/computer-accessories",
     // childrens: [
     //   {
     //     title: "Jainamaz",
@@ -60,7 +60,7 @@ export const navCategoreData: SidebarItem[] = [
   {
     title: "Dresses & Jewellery",
     icon: "a-sharp fa-solid fa-person-dress",
-    path: "/categore/dresses",
+    path: "/categore/dress-jewellery",
     // childrens: [
     //   {
     //     title: "Jainamaz",
@@ -71,7 +71,7 @@ export const navCategoreData: SidebarItem[] = [
   {
     title: "Electronic & TV",
     icon: "fa-sharp fa-solid fa-microchip",
-    path: "/categore/electronics",
+    path: "/categore/electronics-tv",
     // childrens: [
     //   {
     //     title: "Jainamaz",
@@ -82,7 +82,7 @@ export const navCategoreData: SidebarItem[] = [
   {
     title: "Home Appliences",
     icon: "fa-sharp fa-solid fa-bowl-food",
-    path: "/categore/foods",
+    path: "/categore/homeApplience",
     // childrens: [
     //   {
     //     title: "Jainamaz",
@@ -93,7 +93,7 @@ export const navCategoreData: SidebarItem[] = [
   {
     title: "Kids Accessories",
     icon: "fa-sharp fa-solid fa-bowl-food",
-    path: "/categore/foods",
+    path: "/categore/kidsAccessories",
     // childrens: [
     //   {
     //     title: "Jainamaz",
@@ -104,7 +104,7 @@ export const navCategoreData: SidebarItem[] = [
   {
     title: "Groceries & Foods",
     icon: "fa-sharp fa-solid fa-bowl-food",
-    path: "/categore/foods",
+    path: "/categore/groceries-foods",
     // childrens: [
     //   {
     //     title: "Jainamaz",
@@ -160,7 +160,7 @@ export const navCategoreData: SidebarItem[] = [
   {
     title: "Sports & Outdoors",
     icon: "fa-sharp fa-solid fa-trophy",
-    path: "/categore/sports",
+    path: "/categore/sports-outdoors",
     // childrens: [
     //   {
     //     title: "Jainamaz",

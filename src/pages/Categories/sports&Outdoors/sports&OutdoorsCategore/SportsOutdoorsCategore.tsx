@@ -8,7 +8,7 @@ import Loader from "../../../shared/loader/Loader";
 import Loader2 from "../../../shared/loader/Loader2";
 
 const { Option } = Select;
-const IslamicCategore = () => {
+const SportsOutdoorsCategore = () => {
   const [pageSize, setPageSize] = useState(20);
   const [currentPage, setCurrentPage] = useState(1);
   const [sortOption, setSortOption] = useState<string>("");
@@ -20,7 +20,7 @@ const IslamicCategore = () => {
     limit: pageSize,
     page: currentPage,
     sort: sortOption,
-    mainCategory: "Islamic",
+    mainCategory: "Sports & Outdoors",
   });
 
   const productQuantity = products?.meta?.total;
@@ -44,10 +44,10 @@ const IslamicCategore = () => {
 
   return (
     <div className="nestedProductsMain">
-      <PageTitle pageTitle="Islamic" />
+      <PageTitle pageTitle="Sports |" />
       <div className="nestedProductsSortByViewPart">
         <div>
-          <p className="m-0">{productQuantity} Products Found In Islamics</p>
+          <p className="m-0">{productQuantity} Sports Found In Islamics</p>
         </div>
         <div className="nestedProductsSortByViewDev">
           <Row justify="end" gutter={16}>
@@ -79,7 +79,6 @@ const IslamicCategore = () => {
           </Row>
         </div>
       </div>
-
       {isLoading ? (
         <div
           style={{
@@ -154,4 +153,4 @@ const IslamicCategore = () => {
   );
 };
 
-export default IslamicCategore;
+export default SportsOutdoorsCategore;

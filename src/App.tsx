@@ -53,6 +53,15 @@ import Aos from "aos";
 import SearchBerResult from "./pages/shared/navber/SearchBerResult/SearchBerResult";
 import IslamicCategore from "./pages/Categories/IslamicAccessories/lslamicCategore/IslamicCategore";
 import HealthBeautyCategore from "./pages/Categories/health&Beauty/health&BeautyCategore/HealthBeautyCategore";
+import BagsWatchCategore from "./pages/Categories/bags&Watchs/bags&WatchCategore/BagsWatchCategore";
+import ComputersCategore from "./pages/Categories/computerAccessories/ComputersCategore/ComputersCategore";
+import DressesJewelleryCategore from "./pages/Categories/dresses&Jewellery/dresses&JewelleryCategore/DressesJewelleryCategore";
+import SportsOutdoorsCategore from "./pages/Categories/sports&Outdoors/sports&OutdoorsCategore/SportsOutdoorsCategore";
+import GroceriesFoodsCategore from "./pages/Categories/groceries&Foods/groceries&FoodsCategore/GroceriesFoodsCategore";
+import ElectronicsTVCategore from "./pages/Categories/electronice&TV/Electronics&TVCategore/ElectronicsTVCategore";
+import KidsAccessoriesCategore from "./pages/Categories/kidsAccessories/kidsAccessoriesCategore/KidsAccessoriesCategore";
+import HomeAppliencesCategore from "./pages/Categories/homeAppliences/homeAppliencesCategore/HomeAppliencesCategore";
+import ScrollManager from "./pages/shared/ScrollManager/ScrollManager";
 
 function App() {
   const location = useLocation();
@@ -70,15 +79,38 @@ function App() {
   return (
     <>
       <div className="apps">
+        <ScrollManager />
         <ScrollingBtn />
         {!shouldHideNavAndFooter && <Navber />}
-        {/* <Navber /> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/categore" element={<Categore />}>
             <Route path="search-results" element={<SearchBerResult />} />
             <Route path="health-beauty" element={<HealthBeautyCategore />} />
+            <Route path="bag-watch" element={<BagsWatchCategore />} />
+            <Route
+              path="computer-accessories"
+              element={<ComputersCategore />}
+            />
+            <Route
+              path="dress-jewellery"
+              element={<DressesJewelleryCategore />}
+            />
+            <Route path="electronics-tv" element={<ElectronicsTVCategore />} />
+            <Route path="homeApplience" element={<HomeAppliencesCategore />} />
+            <Route
+              path="kidsAccessories"
+              element={<KidsAccessoriesCategore />}
+            />
+            <Route
+              path="groceries-foods"
+              element={<GroceriesFoodsCategore />}
+            />
             <Route path="islamic" element={<IslamicCategore />} />
+            <Route
+              path="sports-outdoors"
+              element={<SportsOutdoorsCategore />}
+            />
 
             <Route path="product/:productId" element={<ProductDetails />} />
           </Route>

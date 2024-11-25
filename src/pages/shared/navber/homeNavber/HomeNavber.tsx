@@ -18,7 +18,7 @@ const HomeNavber = () => {
     <div className="homeHeaders">
       <ul className="p-0">
         <li>
-          <Link to="/categore/beautyes" className="text-decoration-none">
+          <Link to="/categore/health-beauty" className="text-decoration-none">
             <div className="homeHeadersMainCategoreDev">
               <FontAwesomeIcon
                 icon={faUserDoctor}
@@ -61,7 +61,7 @@ const HomeNavber = () => {
           </div> */}
         </li>
         <li>
-          <Link to="/categore/bags" className="text-decoration-none">
+          <Link to="/categore/bag-watch" className="text-decoration-none">
             <div className="homeHeadersMainCategoreDev">
               <FontAwesomeIcon
                 icon={faShoppingBag}
@@ -76,7 +76,10 @@ const HomeNavber = () => {
           </Link>
         </li>
         <li>
-          <Link to="/categore/computers" className="text-decoration-none">
+          <Link
+            to="/categore/computer-accessories"
+            className="text-decoration-none"
+          >
             <div className="homeHeadersMainCategoreDev">
               <FontAwesomeIcon
                 icon={faComputer}
@@ -91,7 +94,7 @@ const HomeNavber = () => {
           </Link>
         </li>
         <li>
-          <Link to="/categore/dresses" className="text-decoration-none">
+          <Link to="/categore/dress-jewellery" className="text-decoration-none">
             <div className="homeHeadersMainCategoreDev">
               <FontAwesomeIcon
                 icon={faPersonDress}
@@ -106,7 +109,7 @@ const HomeNavber = () => {
           </Link>
         </li>
         <li>
-          <Link to="/categore/electronics" className="text-decoration-none">
+          <Link to="/categore/electronics-tv" className="text-decoration-none">
             <div className="homeHeadersMainCategoreDev">
               <FontAwesomeIcon
                 icon={faMicrochip}
@@ -121,7 +124,7 @@ const HomeNavber = () => {
           </Link>
         </li>
         <li>
-          <Link to="/categore/foods" className="text-decoration-none">
+          <Link to="/categore/homeApplience" className="text-decoration-none">
             <div className="homeHeadersMainCategoreDev">
               <FontAwesomeIcon
                 icon={faBowlFood}
@@ -136,7 +139,7 @@ const HomeNavber = () => {
           </Link>
         </li>
         <li>
-          <Link to="/categore/foods" className="text-decoration-none">
+          <Link to="/categore/kidsAccessories" className="text-decoration-none">
             <div className="homeHeadersMainCategoreDev">
               <FontAwesomeIcon
                 icon={faBowlFood}
@@ -151,7 +154,7 @@ const HomeNavber = () => {
           </Link>
         </li>
         <li>
-          <Link to="/categore/foods" className="text-decoration-none">
+          <Link to="/categore/groceries-foods" className="text-decoration-none">
             <div className="homeHeadersMainCategoreDev">
               <FontAwesomeIcon
                 icon={faBowlFood}
@@ -283,7 +286,7 @@ const HomeNavber = () => {
           </div> */}
         </li>
         <li>
-          <Link to="/categore/sports" className="text-decoration-none">
+          <Link to="/categore/sports-outdoors" className="text-decoration-none">
             <div className="homeHeadersMainCategoreDev mainCategoryBorderNot">
               <FontAwesomeIcon
                 icon={faTrophy}
