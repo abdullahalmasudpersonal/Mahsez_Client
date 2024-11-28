@@ -1,17 +1,15 @@
 import { Table, TableColumnsType } from "antd";
-import { useGetProductsQuery } from "../../../redux/features/product/productApi";
+import { useGetProductsWithSearchFilterQuery } from "../../../redux/features/product/productApi";
 import Loader from "../../shared/loader/Loader";
 import { Link } from "react-router-dom";
 import { TProduct } from "../../../types/product.types";
 import { useEffect } from "react";
 
 const TopProducts = () => {
-  const { data: productData, isLoading: loadingProduct } = useGetProductsQuery(
-    {}
-  );
+  const { data: productData, isLoading: loadingProduct } =
+    useGetProductsWithSearchFilterQuery({ sort: "-soldQuantity", limit: 5 });
 
   useEffect(() => {
-    // এখানে CSS `ant-table-body`-তে অ্যাপ্লাই হবে।
     const style = document.createElement("style");
     style.innerHTML = `
       .ant-table-body::-webkit-scrollbar {
@@ -28,27 +26,27 @@ const TopProducts = () => {
     };
   }, []);
 
-  const dataTable = productData?.data
-    ?.slice(0, 5)
-    ?.map(
-      ({
-        _id,
-        name,
-        category,
-        price,
-        availableQuantity,
-        brand,
-        image,
-      }: TProduct) => ({
-        key: _id,
-        name,
-        category,
-        price,
-        brand,
-        availableQuantity,
-        image,
-      })
-    );
+  const dataTable = productData?.data?.map(
+    ({
+      _id,
+      name,
+      category,
+      price,
+      availableQuantity,
+      brand,
+      image,
+      soldQuantity,
+    }: TProduct) => ({
+      key: _id,
+      name,
+      category,
+      price,
+      brand,
+      availableQuantity,
+      image,
+      soldQuantity,
+    })
+  );
 
   const columns: TableColumnsType<TProduct> = [
     {
@@ -95,9 +93,9 @@ const TopProducts = () => {
       width: 100,
     },
     {
-      title: "Sales",
-      dataIndex: "sales",
-      key: "sales",
+      title: "sale",
+      dataIndex: "soldQuantity",
+      key: "soldQuantity",
       align: "center",
       width: 100,
     },

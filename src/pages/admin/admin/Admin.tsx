@@ -3,16 +3,50 @@ import "./Admin.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import PageTitle from "../../shared/PageTitle/PageTitle";
-import { Menu } from "antd";
+import { Menu, Typography } from "antd";
 import menuData, { MenuData } from "./ManuData";
-import React from "react";
+import { createElement } from "react";
+import logo from "../../../../public/assets/img/logo/mahsez.png";
 
 const { SubMenu } = Menu;
 
 const Admin = () => {
   return (
     <>
-      <PageTitle pageTitle="Admin " />
+      <PageTitle pageTitle="Admin" />
+      <div className="dashboardNavber">
+        <div className="container-xxl px-0">
+          <div
+            className="dashboard"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "0",
+            }}
+          >
+            <div
+              style={{ display: "flex", alignItems: "center", height: "60px" }}
+            >
+              <Link to="/">
+                <img src={logo} alt="log" height="45px" />
+              </Link>
+            </div>
+            <div>
+              <Typography
+                style={{
+                  color: "rgb(255, 123, 0)",
+                  fontSize: "20px",
+                  fontWeight: "600",
+                }}
+              >
+                Admin Dashboard
+              </Typography>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="breadcrumb-bg">
         <div className="container-xxl">
           <nav aria-label="breadcrumb">
@@ -82,7 +116,7 @@ const Admin = () => {
                 {menuData.map((menu: MenuData) => (
                   <SubMenu
                     key={menu.key}
-                    icon={React.createElement(menu.icon)}
+                    icon={createElement(menu.icon)}
                     title={menu.title}
                   >
                     {menu.items.map((item) => (

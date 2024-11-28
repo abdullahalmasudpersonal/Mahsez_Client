@@ -21,7 +21,7 @@ type FormValues = {
 
 const Register = () => {
   const { register, handleSubmit } = useForm<FormValues>();
-  const [error, setError] = useState<string | null>(null);
+  const [, setError] = useState<string | null>(null);
   const [passVisible, setPassVisible] = useState(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();

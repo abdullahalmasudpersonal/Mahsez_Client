@@ -12,43 +12,45 @@ const RecentOrder = () => {
   );
   const { data: productData } = useGetProductsQuery({});
 
-  const dataTable = orderData?.data?.map(
-    ({
-      _id,
-      name,
-      orderId,
-      createdAt,
-      contactNumber,
-      grandTotal,
-      paymentStatus,
-      items,
-      orderStatus,
-      paymentType,
-    }: TOrder) => {
-      const productsWithImages = items.map((item) => {
-        const product = productData?.data?.find(
-          (prod: TProduct) => prod._id === item.product_id
-        );
-        return {
-          ...item,
-          image: product?.image?.[0] || null,
-        };
-      });
-
-      return {
-        key: _id,
+  const dataTable = orderData?.data
+    ?.slice(0, 7)
+    ?.map(
+      ({
+        _id,
         name,
         orderId,
         createdAt,
         contactNumber,
         grandTotal,
         paymentStatus,
-        items: productsWithImages,
+        items,
         orderStatus,
         paymentType,
-      };
-    }
-  );
+      }: TOrder) => {
+        const productsWithImages = items?.map((item) => {
+          const product = productData?.data?.find(
+            (prod: TProduct) => prod._id === item.product_id
+          );
+          return {
+            ...item,
+            image: product?.image?.[0] || null,
+          };
+        });
+
+        return {
+          key: _id,
+          name,
+          orderId,
+          createdAt,
+          contactNumber,
+          grandTotal,
+          paymentStatus,
+          items: productsWithImages,
+          orderStatus,
+          paymentType,
+        };
+      }
+    );
   const columns: TableColumnsType<TOrder> = [
     {
       title: "Order ID",
@@ -136,10 +138,6 @@ const RecentOrder = () => {
     <div
       style={{
         marginTop: "20px",
-        // backgroundColor: "rgb(247, 247, 247)",
-        // display: "block",
-        // width: "100%",
-        // height: "100%",
       }}
     >
       {orderDataLoading ? (
@@ -149,11 +147,7 @@ const RecentOrder = () => {
           <Table
             columns={columns}
             dataSource={dataTable}
-            // pagination={{
-            //   position: ["bottomRight"],
-            //   pageSize: pageSize,
-            //   showSizeChanger: false,
-            // }}
+            pagination={false}
             scroll={{ x: true }}
             style={{
               width: "100%",

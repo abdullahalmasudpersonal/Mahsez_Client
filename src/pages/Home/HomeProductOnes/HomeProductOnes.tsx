@@ -22,7 +22,7 @@ const HomeProductOnes = () => {
         </div>
       ) : (
         <div className="homeProducts">
-          {productDta.data
+          {productDta?.data
             ?.filter((product: TProduct) => product.soldQuantity)
             ?.sort(
               (a: TProduct, b: TProduct) => b.soldQuantity - a.soldQuantity
