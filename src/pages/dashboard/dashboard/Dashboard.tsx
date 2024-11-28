@@ -6,6 +6,8 @@ import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { logout } from "../../../redux/features/auth/authSlice";
 import { useAppDispatch } from "../../../redux/hooks";
 import { useGetMyProfileQuery } from "../../../redux/features/user/userApi";
+import logo from "../../../../public/assets/img/logo/mahsez.png";
+import { Typography } from "antd";
 
 const Dashboard = () => {
   const dispatch = useAppDispatch();
@@ -20,6 +22,39 @@ const Dashboard = () => {
 
   return (
     <>
+      <div className="dashboardNavber">
+        <div className="container-xxl px-0">
+          <div
+            className="dashboard"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "0",
+            }}
+          >
+            <div
+              style={{ display: "flex", alignItems: "center", height: "60px" }}
+            >
+              <Link to="/">
+                <img src={logo} alt="log" height="45px" />
+              </Link>
+            </div>
+            <div>
+              <Typography
+                style={{
+                  color: "rgb(255, 123, 0)",
+                  fontSize: "20px",
+                  fontWeight: "600",
+                }}
+              >
+                Dashboard
+              </Typography>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="breadcrumb-bg">
         <div className="container-xxl">
           <nav aria-label="breadcrumb">
@@ -39,6 +74,7 @@ const Dashboard = () => {
           </nav>
         </div>
       </div>
+
       <div className="home-bg">
         <div className="container-xxl px-0 py-4">
           <div className="dashboard">

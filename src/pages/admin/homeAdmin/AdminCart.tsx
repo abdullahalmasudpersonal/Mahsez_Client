@@ -5,6 +5,8 @@ import {
   ArrowDownOutlined,
   MoreOutlined,
 } from "@ant-design/icons";
+import { useGetAllOrderQuery } from "../../../redux/features/order/orderApi";
+import Loader2 from "../../shared/loader/Loader2";
 
 const { Title, Text } = Typography;
 
@@ -31,12 +33,18 @@ const AdminCart = () => {
   const handleMenuClick = (key: string, filter: string) => {
     setSelectedFilters((prev) => ({ ...prev, [key]: filter }));
   };
+  const { data } = useGetAllOrderQuery({});
+  const orderLength = data?.data?.length;
+
+  if (orderLength < 0) {
+    <Loader2 />;
+  }
 
   const cardsData = [
     {
       key: "orders",
       title: "Orders",
-      value: "$6523",
+      value: `000${orderLength}`,
       trend: "up",
       percentage: "+3.45%",
       description: "from last week",

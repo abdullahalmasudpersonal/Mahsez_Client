@@ -1,3 +1,14 @@
+.dashboardNavber {
+  height: 60px;
+  width: 100%;
+  background-color: rgb(233, 240, 241);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
 .dashboard {
   display: grid;
   grid-template-columns: 270px auto;

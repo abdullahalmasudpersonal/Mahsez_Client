@@ -1,10 +1,19 @@
 .coverPhoto {
   height: 250px;
-  background: radial-gradient(
+  /* background: radial-gradient(
     circle,
     rgba(186, 63, 251, 1) 0%,
     rgba(106, 70, 252, 1) 100%
-  );
+  ); */
+  background-image: url(../../../../public/assets/img/profile/coverPhoto-2.avif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* background: radial-gradient(
+    circle,
+    rgba(98, 61, 222, 0.639093137254902) 42%,
+    rgba(255, 166, 0, 0.8379726890756303) 65%
+  ); */
 }
 .topProfileData {
   display: flex;

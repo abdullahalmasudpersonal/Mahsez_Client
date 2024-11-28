@@ -8,11 +8,18 @@ import { useGetBuyerOrderQuery } from "../../../redux/features/order/orderApi";
 import { TProduct } from "../../../types/product.types";
 import { TOrder } from "../../../types/order.types";
 import { Button } from "antd";
+import { useInitPaymentMutation } from "../../../redux/features/payment/paymentApi";
 
 const MyPayment = () => {
   const { data: myOrderData, isLoading: myOrderDataLoading } =
     useGetBuyerOrderQuery({});
   const { data: getProducts } = useGetProductsQuery({});
+  const [initPayment] = useInitPaymentMutation({});
+
+  const handlePayment = async (orderId: string) => {
+    const res = await initPayment(orderId).unwrap();
+    window.open(`${res?.data?.paymentUrl}`, "_blank");
+  };
 
   return (
     <div className="dashboard-dev2">
@@ -33,7 +40,7 @@ const MyPayment = () => {
             ) : (
               <>
                 {myOrderData?.data?.map((order: TOrder) => (
-                  <div className="my-single-order mb-3">
+                  <div className="my-single-order mb-3" data-aos="fade-zoom-in">
                     <div className="px-3 pt-3 pb-2 d-flex justify-content-between">
                       <div>
                         <h6 className="m-0 fw-bold">Order# {order?.orderId}</h6>
@@ -107,7 +114,7 @@ const MyPayment = () => {
                             style={{
                               backgroundColor: "rgba(255, 117, 25, 0.801)",
                             }}
-                            // onClick={() => navigateToOrderDetail(order._id)}
+                            onClick={() => handlePayment(order.orderId)}
                           >
                             Pay
                           </Button>

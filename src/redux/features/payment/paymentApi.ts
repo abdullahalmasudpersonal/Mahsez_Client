@@ -2,6 +2,12 @@ import { baseApi } from "../../api/baseApi";
 
 const paymentApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
+    initPayment: builder.mutation({
+      query: (orderId) => ({
+        url: `/payment/init-payment/${orderId}`,
+        method: "POST",
+      }),
+    }),
     getBuyerPayment: builder.query({
       query: () => ({
         url: "/payment/buyer-payment",
@@ -11,4 +17,4 @@ const paymentApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetBuyerPaymentQuery } = paymentApi;
+export const { useInitPaymentMutation, useGetBuyerPaymentQuery } = paymentApi;
