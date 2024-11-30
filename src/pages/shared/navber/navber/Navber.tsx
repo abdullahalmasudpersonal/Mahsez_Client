@@ -21,6 +21,7 @@ import profileImg from "../../../../../public/assets/img/profile/profile.png";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
 import MobileSideber from "../MobileSideber/MobileSideber";
 import PcSearchBer from "../pcSearchBer/PcSearchBer";
+import { Dropdown, MenuProps, Typography } from "antd";
 
 const Navber = () => {
   const dispatch = useAppDispatch();
@@ -43,6 +44,34 @@ const Navber = () => {
     dispatch(logout());
     navigate("/");
   };
+
+  const items: MenuProps["items"] = [
+    {
+      key: "2",
+      label: (
+        <Link to="/dashboard" style={{ textDecoration: "none" }}>
+          Dashboard
+        </Link>
+      ),
+    },
+    {
+      key: "3",
+      label: <Typography onClick={handleLogout}>Logout</Typography>,
+    },
+  ];
+
+  const isAdmin = user?.role === "admin";
+
+  if (isAdmin) {
+    items.push({
+      key: "1",
+      label: (
+        <Link to="/admin" style={{ textDecoration: "none" }}>
+          Admin Panel
+        </Link>
+      ),
+    });
+  }
 
   return (
     <>
@@ -260,9 +289,23 @@ const Navber = () => {
             )}
 
             {user ? (
-              <Link to="/dashboard" className="ms-3">
-                <img width="32px" src={profileImg} alt="" />
-              </Link>
+              // <Link to="/dashboard" className="ms-3">
+              //   <img width="32px" src={profileImg} alt="" />
+              // </Link>
+              <Dropdown
+                menu={{ items }}
+                placement="bottomRight"
+                arrow
+                className="ms-3"
+              >
+                <img
+                  width="32px"
+                  height="32px"
+                  src={profileImg}
+                  alt=""
+                  style={{ cursor: "pointer" }}
+                />
+              </Dropdown>
             ) : (
               <Link to="/login" className="ms-3">
                 <FontAwesomeIcon className="shopping-cart" icon={faUserAlt} />

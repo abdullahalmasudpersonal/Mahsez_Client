@@ -7,18 +7,30 @@ import { useGetProductsQuery } from "../../../redux/features/product/productApi"
 import { useGetBuyerOrderQuery } from "../../../redux/features/order/orderApi";
 import { TProduct } from "../../../types/product.types";
 import { TOrder } from "../../../types/order.types";
-import { Button } from "antd";
+import { Button, Spin } from "antd";
 import { useInitPaymentMutation } from "../../../redux/features/payment/paymentApi";
+import { useState } from "react";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const MyPayment = () => {
+  const [loadingStates, setLoadingStates] = useState<{
+    [key: string]: boolean;
+  }>({});
   const { data: myOrderData, isLoading: myOrderDataLoading } =
     useGetBuyerOrderQuery({});
   const { data: getProducts } = useGetProductsQuery({});
   const [initPayment] = useInitPaymentMutation({});
 
   const handlePayment = async (orderId: string) => {
-    const res = await initPayment(orderId).unwrap();
-    window.open(`${res?.data?.paymentUrl}`, "_blank");
+    setLoadingStates((prev) => ({ ...prev, [orderId]: true }));
+    try {
+      const res = await initPayment(orderId).unwrap();
+      window.open(`${res?.data?.paymentUrl}`, "_blank");
+    } catch (error) {
+      console.error("Payment Error:", error);
+    } finally {
+      setLoadingStates((prev) => ({ ...prev, [orderId]: false }));
+    }
   };
 
   return (
@@ -108,7 +120,8 @@ const MyPayment = () => {
                           className="text-end p-0 align-middle"
                           style={{ border: "0", width: "70px" }}
                         >
-                          <Button
+                          {/*  <Button
+                            disabled={loadingStates[order.orderId]}
                             color="default"
                             variant="solid"
                             style={{
@@ -116,8 +129,49 @@ const MyPayment = () => {
                             }}
                             onClick={() => handlePayment(order.orderId)}
                           >
+                            {loadingStates[order.orderId] && (
+                              <Spin
+                                indicator={
+                                  <LoadingOutlined color="white" spin />
+                                }
+                                size="small"
+                              />
+                            )}
                             Pay
-                          </Button>
+                          </Button> */}
+
+                          {order?.paymentStatus === "PAID" ? (
+                            <Button
+                              color="default"
+                              variant="solid"
+                              style={{
+                                backgroundColor: "rgba(255, 117, 25, 0.801)",
+                              }}
+                              disabled={order?.paymentStatus === "PAID"}
+                            >
+                              PAID
+                            </Button>
+                          ) : (
+                            <Button
+                              disabled={loadingStates[order.orderId]}
+                              color="default"
+                              variant="solid"
+                              style={{
+                                backgroundColor: "rgba(255, 117, 25, 0.801)",
+                              }}
+                              onClick={() => handlePayment(order.orderId)}
+                            >
+                              {loadingStates[order.orderId] && (
+                                <Spin
+                                  indicator={
+                                    <LoadingOutlined color="white" spin />
+                                  }
+                                  size="small"
+                                />
+                              )}
+                              Pay
+                            </Button>
+                          )}
                         </td>
                       </div>
                     </div>
