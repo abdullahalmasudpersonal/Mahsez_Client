@@ -8,7 +8,7 @@ export enum tagTypes {
   payment = "payment",
 }
 
-// export type TagTypes = (typeof tagTypes)[keyof typeof tagTypes];
+export type TagTypes = (typeof tagTypes)[keyof typeof tagTypes];
 
 // export type TagType = keyof typeof tagTypes;
 

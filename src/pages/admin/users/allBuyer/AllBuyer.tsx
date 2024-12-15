@@ -15,22 +15,45 @@ import Loader from "../../../shared/loader/Loader";
 import PageTitle from "../../../shared/PageTitle/PageTitle";
 import { TBuyer } from "../../../../types/buyer.types";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 const { Option } = Select;
 const AllBuyer = () => {
   const [pageSize, setPageSize] = useState(10);
   const [deleteBuyer] = useDeleteBuyerMutation();
-  const { data: buyersData, isLoading: buyerDataLoading } = useGetBuyersQuery(
-    {}
-  );
+  const {
+    data: buyersData,
+    isLoading: buyerDataLoading,
+    refetch,
+  } = useGetBuyersQuery({
+    pollingInterval: 3000,
+    skipPollingIfUnfocused: true,
+  });
   const handlePageSizeChange = (value: number) => {
     setPageSize(value);
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      refetch();
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [refetch]);
+  console.log(buyersData?.data);
+
   const dataTable = buyersData?.data?.map(
-    ({ _id, id, name, contactNo, email, city, profileImg, user }: TBuyer) => ({
+    ({
+      _id,
+      id,
+      name,
+      contactNo,
+      email,
+      city,
+      profileImg,
+      user,
+      onlineStatus,
+    }: TBuyer) => ({
       key: _id,
       id,
       name,
@@ -39,6 +62,7 @@ const AllBuyer = () => {
       profileImg,
       city,
       user,
+      onlineStatus,
     })
   );
 
@@ -131,6 +155,66 @@ const AllBuyer = () => {
             }}
           >
             {user.status}
+          </div>
+        ),
+    },
+    /*   {
+      title: "Online Status",
+      dataIndex: "onlineStatus",
+      key: "onlineStatus",
+      align: "center",
+      render: (onlineStatus) =>
+        onlineStatus === "online" ? (
+          <div
+            style={{
+              backgroundColor: "green",
+              color: "white",
+              borderRadius: "5px",
+              padding: "1px 5px",
+            }}
+          >
+            {onlineStatus}
+          </div>
+        ) : (
+          <div
+            style={{
+              backgroundColor: "red",
+              color: "white",
+              borderRadius: "5px",
+              padding: "1px 5px",
+            }}
+          >
+            {onlineStatus}
+          </div>
+        ),
+    }, */
+    {
+      title: "Online Status",
+      dataIndex: "user",
+      key: "user",
+      align: "center",
+      render: (user) =>
+        user?.isOnline ? (
+          <div
+            style={{
+              backgroundColor: "green",
+              color: "white",
+              borderRadius: "5px",
+              padding: "1px 5px",
+            }}
+          >
+            Online
+          </div>
+        ) : (
+          <div
+            style={{
+              backgroundColor: "red",
+              color: "white",
+              borderRadius: "5px",
+              padding: "1px 5px",
+            }}
+          >
+            Offline
           </div>
         ),
     },

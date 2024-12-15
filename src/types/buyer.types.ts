@@ -10,6 +10,7 @@ export type TBuyer = {
   city: string;
   postCode: string;
   status: string;
+  onlineStatus: string;
   presentAddress: string;
   permanentAddress: string;
   profileImg?: string;

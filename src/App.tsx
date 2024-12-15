@@ -62,8 +62,12 @@ import ElectronicsTVCategore from "./pages/Categories/electronice&TV/Electronics
 import KidsAccessoriesCategore from "./pages/Categories/kidsAccessories/kidsAccessoriesCategore/KidsAccessoriesCategore";
 import HomeAppliencesCategore from "./pages/Categories/homeAppliences/homeAppliencesCategore/HomeAppliencesCategore";
 import ScrollManager from "./pages/shared/ScrollManager/ScrollManager";
+import socket from "./utils/Socket";
+import { useAppSelector } from "./redux/hooks";
+import { selectCurrentUser } from "./redux/features/auth/authSlice";
 
 function App() {
+  const user = useAppSelector(selectCurrentUser);
   const location = useLocation();
   const hideNavAndFooterPaths = ["/login", "/register", "/dashboard", "/admin"];
   const shouldHideNavAndFooter = hideNavAndFooterPaths.some(
@@ -75,6 +79,10 @@ function App() {
   useEffect(() => {
     Aos.init({ duration: 1000 });
   }, []);
+
+  socket.on("connect", () => {
+    socket.emit("userOnline", user?.userId);
+  });
 
   return (
     <>

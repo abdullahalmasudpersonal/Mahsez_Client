@@ -1,4 +1,5 @@
 export type TAdmin = {
+  _id: string;
   id: string;
   user: string;
   name: string;
@@ -7,7 +8,10 @@ export type TAdmin = {
   contactNo: string;
   companyName: string;
   city: string;
+  status: string;
   postCode: string;
+  isOnline: string;
+  onlineStatus: string;
   presentAddress: string;
   permanentAddress: string;
   profileImg?: string;
