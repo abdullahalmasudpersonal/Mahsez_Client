@@ -16,18 +16,25 @@ import {
 import {
   logout,
   selectCurrentUser,
+  TUser,
 } from "../../../../redux/features/auth/authSlice";
 import profileImg from "../../../../../public/assets/img/profile/profile.png";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
 import MobileSideber from "../MobileSideber/MobileSideber";
 import PcSearchBer from "../pcSearchBer/PcSearchBer";
 import { Dropdown, MenuProps, Typography } from "antd";
+import { useUpdateBuyerOnlineStatusMutation } from "../../../../redux/features/buyer/buyerApi";
+import { useUpdateAdminOnlineStatusMutation } from "../../../../redux/features/admin/adminApi";
+import socket from "../../../../utils/Socket";
 
 const Navber = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectCurrentUser);
+  const { role } = (user as TUser) || {};
   const [shadow, setShadow] = useState(false);
   const navigate = useNavigate();
+  const [updateBuyerOnlinestatus] = useUpdateBuyerOnlineStatusMutation();
+  const [updateAdminOnlineStatus] = useUpdateAdminOnlineStatusMutation();
 
   const cartLength = useAppSelector((state) => state.shopping.cart.length);
 
@@ -40,8 +47,25 @@ const Navber = () => {
   };
   window.addEventListener("scroll", changeShadow);
 
-  const handleLogout = () => {
-    dispatch(logout());
+  const handleLogout = async () => {
+    socket.emit("userOffline", user?.userId);
+    // socket.on("disconnect", () => {
+    //   socket.emit("userOffline", user?.userId);
+    // });
+    const userId = user?.userId;
+    if (role === "buyer") {
+      const res = await updateBuyerOnlinestatus({ userId });
+      if (res?.data?.success === true) {
+        dispatch(logout());
+      }
+    } else if (role === "admin") {
+      const res = await updateAdminOnlineStatus({ userId });
+      if (res?.data?.success === true) {
+        dispatch(logout());
+      }
+    }
+
+    // socket.emit("userOffline", user?.userId);
     navigate("/");
   };
 

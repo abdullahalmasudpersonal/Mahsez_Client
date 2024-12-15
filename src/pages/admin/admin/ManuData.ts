@@ -24,11 +24,8 @@ const menuData: MenuData[] = [
     title: "Dashboard",
     icon: DashboardOutlined,
     items: [
-      { key: "main", title: "Main", path: "/admin/" },
+      { key: "home", title: "Home", path: "/admin" },
       { key: "rtl", title: "RTL", path: "/admin/" },
-      { key: "horizontal", title: "Horizontal", path: "/admin/" },
-      { key: "ecommerce", title: "Ecommerce", path: "/admin/" },
-      { key: "blog", title: "Blog", path: "/admin/" },
     ],
   },
   {

@@ -8,6 +8,9 @@ import { useAppDispatch } from "../../../redux/hooks";
 import { useGetMyProfileQuery } from "../../../redux/features/user/userApi";
 import logo from "../../../../public/assets/img/logo/mahsez.png";
 import { Typography } from "antd";
+import { useUpdateBuyerOnlineStatusMutation } from "../../../redux/features/buyer/buyerApi";
+import { useUpdateAdminOnlineStatusMutation } from "../../../redux/features/admin/adminApi";
+import socket from "../../../utils/Socket";
 
 const Dashboard = () => {
   const dispatch = useAppDispatch();
@@ -15,9 +18,23 @@ const Dashboard = () => {
   const { role } = userData?.data?.user || {};
   const admin = role === "admin";
   const location = useLocation();
+  const [updateBuyerOnlineStatus] = useUpdateBuyerOnlineStatusMutation();
+  const [updateAdminOnlineStatus] = useUpdateAdminOnlineStatusMutation();
 
-  const handleLogout = () => {
-    dispatch(logout());
+  const handleLogout = async () => {
+    const userId = userData.data.id;
+    socket.emit("userOffline", userId);
+    if (role === "buyer") {
+      const res = await updateBuyerOnlineStatus({ userId });
+      if (res?.data?.success === true) {
+        dispatch(logout());
+      }
+    } else if (role === "admin") {
+      const res = await updateAdminOnlineStatus({ userId });
+      if (res?.data?.success === true) {
+        dispatch(logout());
+      }
+    }
   };
 
   return (

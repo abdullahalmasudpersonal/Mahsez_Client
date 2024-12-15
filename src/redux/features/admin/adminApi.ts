@@ -10,7 +10,16 @@ const adminApi = baseApi.injectEndpoints({
       }),
       providesTags: [tagTypes.admin],
     }),
+    updateAdminOnlineStatus: builder.mutation({
+      query: (userId) => ({
+        url: "/admin/update-online-status",
+        method: "PATCH",
+        body: userId,
+      }),
+      invalidatesTags: [tagTypes.admin],
+    }),
   }),
 });
 
-export const { useGetAdminsQuery } = adminApi;
+export const { useGetAdminsQuery, useUpdateAdminOnlineStatusMutation } =
+  adminApi;

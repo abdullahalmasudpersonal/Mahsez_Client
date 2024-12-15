@@ -1,14 +1,19 @@
 import { useState } from "react";
 import "./Login.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { useLoginMutation } from "../../../redux/features/auth/authApi";
 import { verifyToken } from "../../../utils/verifyToken";
-import { setUser, TUser } from "../../../redux/features/auth/authSlice";
+import {
+  selectCurrentUser,
+  setUser,
+  TUser,
+} from "../../../redux/features/auth/authSlice";
 import PageTitle from "../../shared/PageTitle/PageTitle";
 import DemoCredentials from "./DemoCredentials";
+import socket from "../../../utils/Socket";
 
 type FormValues = {
   email: string;
@@ -18,6 +23,7 @@ type FormValues = {
 const Login = () => {
   const { register, handleSubmit } = useForm<FormValues>();
   const [passVisible, setPassVisible] = useState(false);
+  const user = useAppSelector(selectCurrentUser);
   const [error, setError] = useState<string | null>(null);
   const dispatch = useAppDispatch();
   const [login] = useLoginMutation();
@@ -45,6 +51,8 @@ const Login = () => {
       toast.error("Something went wrong!");
     }
   };
+
+  socket.emit("userOnline", user?.userId);
 
   let errorElement;
   if (error) {

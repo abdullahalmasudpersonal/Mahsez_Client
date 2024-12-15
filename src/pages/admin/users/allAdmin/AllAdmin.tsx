@@ -11,9 +11,9 @@ import {
 import Loader from "../../../shared/loader/Loader";
 import PageTitle from "../../../shared/PageTitle/PageTitle";
 import { Link } from "react-router-dom";
-import { TBuyer } from "../../../../types/buyer.types";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
 import { useState } from "react";
+import { TAdmin } from "../../../../types/admin.types";
 
 const { Option } = Select;
 const AllAdmin = () => {
@@ -35,7 +35,9 @@ const AllAdmin = () => {
       city,
       profileImg,
       status,
-    }: TBuyer) => ({
+      onlineStatus,
+      isOnline,
+    }: TAdmin) => ({
       key: _id,
       id,
       name,
@@ -44,10 +46,12 @@ const AllAdmin = () => {
       profileImg,
       city,
       status,
+      onlineStatus,
+      isOnline,
     })
   );
-
-  const columns: TableColumnsType<TBuyer> = [
+  console.log(adminsData);
+  const columns: TableColumnsType<TAdmin> = [
     {
       title: "Name",
       key: "name",
@@ -125,6 +129,66 @@ const AllAdmin = () => {
             }}
           >
             {status}
+          </div>
+        ),
+    },
+    // {
+    //   title: "Online Status",
+    //   dataIndex: "onlineStatus",
+    //   key: "onlineStatus",
+    //   align: "center",
+    //   render: (status) =>
+    //     status === "online" ? (
+    //       <div
+    //         style={{
+    //           backgroundColor: "green",
+    //           color: "white",
+    //           borderRadius: "5px",
+    //           padding: "1px 5px",
+    //         }}
+    //       >
+    //         {status}
+    //       </div>
+    //     ) : (
+    //       <div
+    //         style={{
+    //           backgroundColor: "red",
+    //           color: "white",
+    //           borderRadius: "5px",
+    //           padding: "1px 5px",
+    //         }}
+    //       >
+    //         {status}
+    //       </div>
+    //     ),
+    // },
+    {
+      title: "Online Status",
+      dataIndex: "isOnline",
+      key: "isOnline",
+      align: "center",
+      render: (isOnline) =>
+        isOnline ? (
+          <div
+            style={{
+              backgroundColor: "green",
+              color: "white",
+              borderRadius: "5px",
+              padding: "1px 5px",
+            }}
+          >
+            Online
+          </div>
+        ) : (
+          <div
+            style={{
+              backgroundColor: "red",
+              color: "white",
+              borderRadius: "5px",
+              padding: "1px 5px",
+            }}
+          >
+            Offline
           </div>
         ),
     },
