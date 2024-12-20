@@ -154,6 +154,7 @@ const CreateProduct = () => {
             availableQuantity: data?.availableQuantity,
             stockStatus: data?.stockStatus,
             price: data?.price,
+            purchaseprice: data?.purchaseprice,
             regularPrice: data?.regularPrice,
             offerPrice: data?.offerPrice,
             size: data?.size,
@@ -330,6 +331,16 @@ const CreateProduct = () => {
 
               <Col xs={24} md={12}>
                 <Form.Item
+                  label="Purchase Price"
+                  name="purchaseprice"
+                  rules={[{ required: true }]}
+                >
+                  <InputNumber style={{ width: "100%" }} min={0} />
+                </Form.Item>
+              </Col>
+
+              <Col xs={24} md={12}>
+                <Form.Item
                   label="Price"
                   name="price"
                   rules={[{ required: true }]}
@@ -354,7 +365,7 @@ const CreateProduct = () => {
                 </Form.Item>
               </Col>
 
-              <Col xs={24} md={24}>
+              <Col xs={24} md={12}>
                 <Form.Item
                   name="size"
                   label="Size"

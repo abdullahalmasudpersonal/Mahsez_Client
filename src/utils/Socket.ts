@@ -1,12 +1,15 @@
 import { io } from "socket.io-client";
 
 // সার্ভার URL এ কানেক্ট
-const socket = io("http://localhost:5000", {
-  autoConnect: true,
-  reconnection: true,
-  withCredentials: true, // CORS সমস্যা এড়ানোর জন্য
-  transports: ["websocket"], // Transport মেথড নির্দিষ্ট করা
-});
+const socket = io(
+  `${import.meta.env.VITE_mahsez_without_version_backend_url}`,
+  {
+    autoConnect: true,
+    reconnection: true,
+    withCredentials: true, // CORS সমস্যা এড়ানোর জন্য
+    transports: ["websocket"], // Transport মেথড নির্দিষ্ট করা
+  }
+);
 
 // // কানেকশন সফল হলে লগ দেখানো
 // socket.on("connect", () => {

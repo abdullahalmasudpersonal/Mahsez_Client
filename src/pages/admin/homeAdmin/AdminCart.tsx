@@ -7,6 +7,8 @@ import {
 } from "@ant-design/icons";
 import { useGetAllOrderQuery } from "../../../redux/features/order/orderApi";
 import Loader2 from "../../shared/loader/Loader2";
+import { TVisitors } from "../../../types/visitor.types";
+import { useGetVisitorsWithFiltersQuery } from "../../../redux/features/visitor/visitorApi";
 
 const { Title, Text } = Typography;
 
@@ -15,6 +17,11 @@ const AdminCart = () => {
   // const [amountFilter, setAmountFilter] = useState("1");
   // const [visitorFilter, setVisitorFilter] = useState("1");
   // const [revenueFilter, setRevenueFilter] = useState("1");
+  const { data: visitorData } = useGetVisitorsWithFiltersQuery({});
+  const totalVisitCount = visitorData?.data?.reduce(
+    (sum: number, visitor: TVisitors) => sum + (visitor.visitCount || 0),
+    0
+  );
 
   const filters = [
     { key: "1", label: "Today" },
@@ -34,7 +41,7 @@ const AdminCart = () => {
     setSelectedFilters((prev) => ({ ...prev, [key]: filter }));
   };
   const { data } = useGetAllOrderQuery({});
-  const orderLength = data?.data?.length;
+  const orderLength = data?.data?.length || "";
 
   if (orderLength < 0) {
     <Loader2 />;
@@ -77,7 +84,7 @@ const AdminCart = () => {
     {
       key: "Visitors",
       title: "Visitors",
-      value: "$6523",
+      value: totalVisitCount,
       trend: "up",
       percentage: "+3.45%",
       description: "from last week",

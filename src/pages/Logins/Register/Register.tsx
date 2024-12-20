@@ -131,6 +131,16 @@ const Register = () => {
               </Link>
             </small>
           </p>
+          <Link to="/" style={{ textDecoration: "none", color: "orange" }}>
+            <h6
+              style={{
+                textAlign: "center",
+                marginTop: "10px",
+              }}
+            >
+              Continue to home
+            </h6>
+          </Link>
         </div>
       </div>
     </div>

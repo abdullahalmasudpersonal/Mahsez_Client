@@ -1,0 +1,52 @@
+.bottemHeader {
+  overflow: hidden;
+  bottom: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  background-color: rgb(229, 241, 253);
+}
+
+.bottemHeader-dev {
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 13px;
+}
+
+.header-buttom-btn {
+  color: rgb(255, 151, 55) !important;
+  text-decoration: none;
+}
+
+.header-buttom-btn:active {
+  color: rgb(255, 4, 4) !important;
+}
+
+.bottemHeader-dev div {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottemHeader-dev div p {
+  font-size: 12px;
+}
+
+.header-buttom-cart-quantity {
+  position: absolute;
+  color: rgb(255, 255, 255);
+  top: -10px;
+  right: -15px;
+  font-size: 14px;
+  padding: 0px 6px;
+  border-radius: 50%;
+  background-color: rgb(255, 30, 0);
+}
+
+@media screen and (min-width: 931px) {
+  .bottemHeader {
+    display: none;
+  }
+}

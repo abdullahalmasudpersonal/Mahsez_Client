@@ -34,10 +34,10 @@ const DemoCredentials = () => {
       >
         <Panel header="Buyer" key="1">
           <p
-            onClick={() => handleCopy("mahmud@gmail.com")}
+            onClick={() => handleCopy("taki@gmail.com")}
             style={{ marginBottom: "5px", cursor: "pointer", color: "gray" }}
           >
-            Email: mahmud@gmail.com
+            Email: taki@gmail.com
           </p>
           <p
             onClick={() => handleCopy("123456")}

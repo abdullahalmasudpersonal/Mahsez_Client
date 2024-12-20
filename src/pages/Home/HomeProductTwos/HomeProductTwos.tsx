@@ -1,10 +1,13 @@
-import { useGetProductsQuery } from "../../../redux/features/product/productApi";
+import { useGetProductsWithSearchFilterQuery } from "../../../redux/features/product/productApi";
 import { TProduct } from "../../../types/product.types";
 import Loader from "../../shared/loader/Loader";
 import HomeProduct from "../homeProduct/HomeProduct";
 
 const HomeProductTwos = () => {
-  const { data: productDta, isLoading } = useGetProductsQuery({});
+  const { data: productDta, isLoading } = useGetProductsWithSearchFilterQuery({
+    sort: "-soldQuantity",
+    limit: 12,
+  });
 
   return (
     <div>
@@ -23,21 +26,15 @@ const HomeProductTwos = () => {
         </div>
       ) : (
         <div className="homeProducts">
-          {productDta?.data
-            ?.filter((product: TProduct) => product.soldQuantity)
-            ?.sort(
-              (a: TProduct, b: TProduct) => b.soldQuantity - a.soldQuantity
-            )
-            ?.slice(0, 12)
-            .map((product: TProduct, index: number) => (
-              <div
-                key={product._id}
-                className="delayProductItem"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <HomeProduct key={product._id} {...product} />
-              </div>
-            ))}
+          {productDta?.data.map((product: TProduct, index: number) => (
+            <div
+              key={product._id}
+              className="delayProductItem"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <HomeProduct key={product._id} {...product} />
+            </div>
+          ))}
         </div>
       )}
     </div>

@@ -119,8 +119,8 @@ const ProductDetails = () => {
                   }
                   srcSet={`${img}?w=300 300w, ${img}?w=600 600w, ${img}?w=1200 1200w`}
                   sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1200px"
-                  alt={`Product Image ${index}`}
                   loading="lazy"
+                  alt={`Product Image ${index}`}
                 />
               </div>
             ))}

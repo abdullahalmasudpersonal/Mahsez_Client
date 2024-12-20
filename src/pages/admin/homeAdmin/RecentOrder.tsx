@@ -33,6 +33,7 @@ const RecentOrder = () => {
           );
           return {
             ...item,
+            // image: product?.image || null,
             image: product?.image?.[0] || null,
           };
         });
@@ -67,15 +68,43 @@ const RecentOrder = () => {
       width: 80,
       render: (items) => {
         const firstItem = items[0];
+        console.log(firstItem, "firstItem");
+        // const firstItem = items[0];
+
         return firstItem ? (
           <>
             {firstItem.image && (
               <img
-                src={firstItem.image}
+                // src={firstItem.image}
+                src={
+                  firstItem.image.includes("res.cloudinary.com")
+                    ? firstItem.image.replace(
+                        "/upload/",
+                        "/upload/f_auto,q_auto/w_50/"
+                      )
+                    : firstItem.image
+                }
                 alt={firstItem.name}
                 style={{ width: 50, height: 50, borderRadius: "5px" }}
               />
             )}
+
+            {/* {firstItem?.image?.slice(0, 1)?.map((img: string) => (
+              <img
+                src={
+                  img.includes("res.cloudinary.com")
+                    ? img.replace("/upload/", "/upload/f_auto,q_auto/w_50/")
+                    : img
+                }
+                loading="lazy"
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  marginRight: "10px",
+                  borderRadius: "5px",
+                }}
+              />
+            ))} */}
           </>
         ) : (
           <span>No items available</span>
