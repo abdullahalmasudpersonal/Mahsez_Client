@@ -27,7 +27,7 @@ const AllBuyer = () => {
     isLoading: buyerDataLoading,
     refetch,
   } = useGetBuyersQuery({
-    pollingInterval: 3000,
+    pollingInterval: 2000,
     skipPollingIfUnfocused: true,
   });
   const handlePageSizeChange = (value: number) => {
@@ -40,7 +40,6 @@ const AllBuyer = () => {
     }, 2000);
     return () => clearInterval(interval);
   }, [refetch]);
-  console.log(buyersData?.data);
 
   const dataTable = buyersData?.data?.map(
     ({
@@ -134,7 +133,7 @@ const AllBuyer = () => {
       key: "status",
       align: "center",
       render: (user) =>
-        user.status === "active" ? (
+        user?.status === "active" ? (
           <div
             style={{
               backgroundColor: "green",
@@ -154,7 +153,7 @@ const AllBuyer = () => {
               padding: "1px 5px",
             }}
           >
-            {user.status}
+            {user?.status}
           </div>
         ),
     },

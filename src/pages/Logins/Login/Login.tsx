@@ -14,6 +14,7 @@ import {
 import PageTitle from "../../shared/PageTitle/PageTitle";
 import DemoCredentials from "./DemoCredentials";
 import socket from "../../../utils/Socket";
+// import logo from "../../../../public/assets/img/logo/mahsez.png";
 
 type FormValues = {
   email: string;
@@ -64,7 +65,10 @@ const Login = () => {
       <PageTitle pageTitle="Login" />
       <div className="register">
         <div className="register-dev">
-          <h4 className="text-center pt-4" style={{ fontFamily: "Algerian" }}>
+          {/* <div style={{ display: "flex", justifyContent: "center" }}>
+            <img src={logo} height="50px" alt="" />
+          </div> */}
+          <h4 className="text-center pt-3" style={{ fontFamily: "Algerian" }}>
             Login
           </h4>
           <div className="register-form-dev">
@@ -112,6 +116,16 @@ const Login = () => {
               </Link>
             </small>
           </p>
+          <Link to="/" style={{ textDecoration: "none", color: "orange" }}>
+            <h6
+              style={{
+                textAlign: "center",
+                marginTop: "30px",
+              }}
+            >
+              Continue to home
+            </h6>
+          </Link>
         </div>
       </div>
       <DemoCredentials />

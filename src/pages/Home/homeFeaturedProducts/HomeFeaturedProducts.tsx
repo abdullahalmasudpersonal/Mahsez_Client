@@ -1,10 +1,12 @@
-import { useGetProductsQuery } from "../../../redux/features/product/productApi";
+import { useGetProductsWithSearchFilterQuery } from "../../../redux/features/product/productApi";
 import { TProduct } from "../../../types/product.types";
 import Loader from "../../shared/loader/Loader";
 import HomeProduct from "../homeProduct/HomeProduct";
 
 const HomeFeaturedProducts = () => {
-  const { data: productDta, isLoading } = useGetProductsQuery({});
+  const { data: productDta, isLoading } = useGetProductsWithSearchFilterQuery({
+    limit: 24,
+  });
 
   return (
     <div className="">

@@ -9,15 +9,30 @@ import { TProduct } from "../../../types/product.types";
 import { TOrder } from "../../../types/order.types";
 import { Button, Spin } from "antd";
 import { useInitPaymentMutation } from "../../../redux/features/payment/paymentApi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LoadingOutlined } from "@ant-design/icons";
 
 const MyPayment = () => {
   const [loadingStates, setLoadingStates] = useState<{
     [key: string]: boolean;
   }>({});
-  const { data: myOrderData, isLoading: myOrderDataLoading } =
-    useGetBuyerOrderQuery({});
+  const {
+    data: myOrderData,
+    isLoading: myOrderDataLoading,
+    refetch,
+  } = useGetBuyerOrderQuery({
+    pollingInterval: 2000,
+    skipPollingIfUnfocused: true,
+  });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      refetch();
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [refetch]);
+
+  console.log(myOrderData, "myorderdat");
   const { data: getProducts } = useGetProductsQuery({});
   const [initPayment] = useInitPaymentMutation({});
 
@@ -63,16 +78,28 @@ const MyPayment = () => {
                       </div>
                       <div className="d-flex justify-content-center align-items-center">
                         <h6 className="m-0">
-                          <FontAwesomeIcon
-                            icon={faMoneyCheck}
-                            style={{ color: "orange" }}
-                          />
+                          {order?.paymentStatus === "PAID" ? (
+                            <FontAwesomeIcon
+                              icon={faMoneyCheck}
+                              style={{ color: "rgb(15, 175, 0)" }}
+                            />
+                          ) : (
+                            <FontAwesomeIcon
+                              icon={faMoneyCheck}
+                              style={{ color: "orange" }}
+                            />
+                          )}
                           &nbsp;
-                          <span
-                            className=""
-                            style={{ color: "rgb(255, 77, 7)" }}
-                          >
-                            {order?.paymentStatus}
+                          <span>
+                            {order?.paymentStatus === "PAID" ? (
+                              <span style={{ color: "rgb(15, 175, 0)" }}>
+                                {order?.paymentStatus}
+                              </span>
+                            ) : (
+                              <span style={{ color: "rgb(255, 77, 7)" }}>
+                                {order?.paymentStatus}
+                              </span>
+                            )}
                           </span>
                         </h6>
                       </div>
@@ -86,12 +113,28 @@ const MyPayment = () => {
                           );
                           return (
                             <>
-                              <img
-                                src={product?.image[0]}
-                                width="50px"
-                                height="50px"
-                                alt={product?.name}
-                              />
+                              {product?.image
+                                ?.slice(0, 1)
+                                .map((img: string) => (
+                                  <img
+                                    src={
+                                      img.includes("res.cloudinary.com")
+                                        ? img.replace(
+                                            "/upload/",
+                                            "/upload/f_auto,q_auto/w_50/"
+                                          )
+                                        : img
+                                    }
+                                    alt={product?.name}
+                                    loading="lazy"
+                                    style={{
+                                      width: "50px",
+                                      height: "50px",
+                                      marginRight: "10px",
+                                      borderRadius: "5px",
+                                    }}
+                                  />
+                                ))}
                               &nbsp;&nbsp;
                               <td>
                                 {product?.name}
@@ -145,7 +188,8 @@ const MyPayment = () => {
                               color="default"
                               variant="solid"
                               style={{
-                                backgroundColor: "rgba(255, 117, 25, 0.801)",
+                                color: "white",
+                                backgroundColor: "rgb(15, 175, 0)",
                               }}
                               disabled={order?.paymentStatus === "PAID"}
                             >

@@ -13,16 +13,30 @@ const HomeProduct = (product: TProduct) => {
     navigate(`/categore/product/${_id}`);
   };
 
+  //const resizedImage = image[0]?.replace("/upload/", "/upload/w_220/");
+  {
+    /* <img src={resizedImage} alt="Resized Image" />; */
+  }
+
   return (
     <div className="homeProduct">
       <div className="homeProductImg">
         {image && image.length > 0 ? (
-          <img
-            src={image[0]}
-            alt=""
-            className="img-fluid"
-            style={{ borderRadius: "2px 2px 0 0" }}
-          />
+          <>
+            {image?.slice(0, 1).map((img: string) => (
+              <img
+                src={
+                  img.includes("res.cloudinary.com")
+                    ? img.replace("/upload/", "/upload/f_auto,q_auto/w_220/")
+                    : img
+                }
+                alt=""
+                loading="lazy"
+                className="img-fluid"
+                style={{ borderRadius: "2px 2px 0 0" }}
+              />
+            ))}
+          </>
         ) : (
           <p>No image available</p>
         )}

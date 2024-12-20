@@ -24,12 +24,21 @@ const NestedProduct = (product: TProduct) => {
     <div className="nestedProduct" data-aos="fade-zoom-in">
       <div className="nestedProductImg">
         {image && image.length > 0 ? (
-          <img
-            src={image[0]}
-            alt=""
-            className="img-fluid"
-            style={{ borderRadius: "2px 2px 0 0" }}
-          />
+          <>
+            {image?.slice(0, 1).map((img: string) => (
+              <img
+                src={
+                  img.includes("res.cloudinary.com")
+                    ? img.replace("/upload/", "/upload/f_auto,q_auto/w_245/")
+                    : img
+                }
+                alt=""
+                loading="lazy"
+                className="img-fluid"
+                style={{ borderRadius: "2px 2px 0 0" }}
+              />
+            ))}
+          </>
         ) : (
           <p>No image available</p>
         )}

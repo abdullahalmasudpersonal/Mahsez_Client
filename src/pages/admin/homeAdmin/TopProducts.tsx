@@ -55,16 +55,23 @@ const TopProducts = () => {
       width: 300,
       render: (item) => (
         <div style={{ display: "flex", alignItems: "center" }}>
-          <img
-            src={item.image?.[0]}
-            alt={item.name}
-            style={{
-              width: "50px",
-              height: "50px",
-              marginRight: "10px",
-              borderRadius: "5px",
-            }}
-          />
+          {item?.image?.slice(0, 1).map((img: string) => (
+            <img
+              src={
+                img.includes("res.cloudinary.com")
+                  ? img.replace("/upload/", "/upload/f_auto,q_auto/w_50/")
+                  : img
+              }
+              alt={item.name}
+              loading="lazy"
+              style={{
+                width: "50px",
+                height: "50px",
+                marginRight: "10px",
+                borderRadius: "5px",
+              }}
+            />
+          ))}
           <Link
             style={{ textDecoration: "none", color: "black" }}
             to={`/categore/product/${item.key}`}

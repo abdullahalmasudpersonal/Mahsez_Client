@@ -1,12 +1,14 @@
 import "./NewArrivals.css";
-import { useGetProductsQuery } from "../../../redux/features/product/productApi";
+import { useGetProductsWithSearchFilterQuery } from "../../../redux/features/product/productApi";
 import HomeProduct from "../homeProduct/HomeProduct";
 import "../home/HomeProducts.css";
 import { TProduct } from "../../../types/product.types";
 import Loader from "../../shared/loader/Loader";
 
 const NewArrivals = () => {
-  const { data: productDta, isLoading } = useGetProductsQuery({});
+  const { data: productDta, isLoading } = useGetProductsWithSearchFilterQuery({
+    limit: 6,
+  });
 
   return (
     <div className="mb-2">
@@ -25,17 +27,15 @@ const NewArrivals = () => {
         </div>
       ) : (
         <div className="homeProducts newArrival-dev">
-          {productDta?.data
-            ?.slice(0, 6)
-            .map((product: TProduct, index: number) => (
-              <div
-                key={product._id}
-                className="delayProductItem"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <HomeProduct {...product} />
-              </div>
-            ))}
+          {productDta?.data.map((product: TProduct, index: number) => (
+            <div
+              key={product._id}
+              className="delayProductItem"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <HomeProduct {...product} />
+            </div>
+          ))}
         </div>
       )}
     </div>

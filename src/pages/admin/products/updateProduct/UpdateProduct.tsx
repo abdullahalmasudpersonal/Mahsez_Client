@@ -69,6 +69,7 @@ const UpdateProduct = () => {
         brand,
         availableQuantity,
         stockStatus,
+        purchaseprice,
         price,
         regularPrice,
         offerPrice,
@@ -104,6 +105,7 @@ const UpdateProduct = () => {
         brand,
         availableQuantity,
         stockStatus,
+        purchaseprice,
         price,
         regularPrice,
         offerPrice,
@@ -213,6 +215,7 @@ const UpdateProduct = () => {
       availableQuantity: data?.availableQuantity,
       stockStatus: data?.stockStatus,
       price: data?.price,
+      purchaseprice: data?.purchaseprice,
       regularPrice: data?.regularPrice,
       offerPrice: data?.offerPrice,
       size: data?.size,
@@ -380,6 +383,16 @@ const UpdateProduct = () => {
 
             <Col xs={24} md={12}>
               <Form.Item
+                label="Purchase Price"
+                name="purchaseprice"
+                rules={[{ required: true }]}
+              >
+                <InputNumber style={{ width: "100%" }} min={0} />
+              </Form.Item>
+            </Col>
+
+            <Col xs={24} md={12}>
+              <Form.Item
                 label="Price"
                 name="price"
                 rules={[{ required: true }]}
@@ -404,7 +417,7 @@ const UpdateProduct = () => {
               </Form.Item>
             </Col>
 
-            <Col xs={24} md={24}>
+            <Col xs={24} md={12}>
               <Form.Item name="size" label="Size" rules={[{ required: true }]}>
                 <Select>
                   <Option value="S">S</Option>

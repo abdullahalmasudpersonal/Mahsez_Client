@@ -65,6 +65,8 @@ import ScrollManager from "./pages/shared/ScrollManager/ScrollManager";
 import socket from "./utils/Socket";
 import { useAppSelector } from "./redux/hooks";
 import { selectCurrentUser } from "./redux/features/auth/authSlice";
+import BottemHeader from "./pages/shared/navber/BottemHeader/BottemHeader";
+import VisitorList from "./pages/admin/homeAdmin/visitorList/VisitorList";
 
 function App() {
   const user = useAppSelector(selectCurrentUser);
@@ -170,6 +172,7 @@ function App() {
             }
           >
             <Route index element={<HomeAdmin />} />
+            <Route path="list-visitor" element={<VisitorList />} />
             <Route path="list-orders" element={<ListOrders />} />
             <Route path="order-details/:orderId" element={<OrderDetails />} />
             <Route path="list-products" element={<ListProducts />} />
@@ -186,7 +189,9 @@ function App() {
           </Route>
         </Routes>
         {/* <Footer /> */}
+
         {!shouldHideNavAndFooter && <Footer />}
+        {!shouldHideNavAndFooter && <BottemHeader />}
       </div>
     </>
   );
