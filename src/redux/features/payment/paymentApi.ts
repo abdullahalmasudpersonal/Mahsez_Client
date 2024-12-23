@@ -15,7 +15,7 @@ const paymentApi = baseApi.injectEndpoints({
         url: `/payment/init-payment/${orderId}`,
         method: "POST",
       }),
-      invalidatesTags: [tagTypes.payment],
+      invalidatesTags: [tagTypes.payment, tagTypes.order],
     }),
   }),
 });

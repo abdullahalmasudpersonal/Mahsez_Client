@@ -1,16 +1,15 @@
-import { useState } from "react";
-import { Row, Col, Card, Typography, Space, Dropdown } from "antd";
+// import { useState } from "react";
+import { Row, Col, Card, Typography, Space } from "antd";
+// import { ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons";
 import {
-  ArrowUpOutlined,
-  ArrowDownOutlined,
-  MoreOutlined,
-} from "@ant-design/icons";
-import { useGetAllOrderQuery } from "../../../redux/features/order/orderApi";
+  useGetAllOrderQuery,
+  useGetRevinewQuery,
+} from "../../../redux/features/order/orderApi";
 import Loader2 from "../../shared/loader/Loader2";
 import { TVisitors } from "../../../types/visitor.types";
 import { useGetVisitorsWithFiltersQuery } from "../../../redux/features/visitor/visitorApi";
 
-const { Title, Text } = Typography;
+const { Title } = Typography;
 
 const AdminCart = () => {
   // const [orderFilter, setOrderFilter] = useState("1");
@@ -23,23 +22,22 @@ const AdminCart = () => {
     0
   );
 
-  const filters = [
-    { key: "1", label: "Today" },
-    { key: "7", label: "Last Week" },
-    { key: "30", label: "Last Month" },
-    { key: "365", label: "Current Year" },
-  ];
+  // const filters = [
+  //   { key: "1", label: "Today" },
+  //   { key: "7", label: "Last Week" },
+  //   { key: "30", label: "Last Month" },
+  //   { key: "365", label: "Current Year" },
+  // ];
+  // const [,  selectedFilters  setSelectedFilters] = useState({
+  //   revenue: "1",
+  //   orders: "1",
+  //   growth: "1",
+  //   conversion: "1",
+  // });
+  // const handleMenuClick = (key: string, filter: string) => {
+  //   setSelectedFilters((prev) => ({ ...prev, [key]: filter }));
+  // };
 
-  const [, /* selectedFilters */ setSelectedFilters] = useState({
-    revenue: "1",
-    orders: "1",
-    growth: "1",
-    conversion: "1",
-  });
-
-  const handleMenuClick = (key: string, filter: string) => {
-    setSelectedFilters((prev) => ({ ...prev, [key]: filter }));
-  };
   const { data } = useGetAllOrderQuery({});
   const orderLength = data?.data?.length || "";
 
@@ -47,11 +45,14 @@ const AdminCart = () => {
     <Loader2 />;
   }
 
+  const { data: revinewData } = useGetRevinewQuery({});
+  const totalRevinew = revinewData?.data;
+
   const cardsData = [
     {
       key: "orders",
       title: "Orders",
-      value: `000${orderLength}`,
+      value: `00${orderLength}`,
       trend: "up",
       percentage: "+3.45%",
       description: "from last week",
@@ -73,7 +74,7 @@ const AdminCart = () => {
     {
       key: "Revinew",
       title: "Revinew",
-      value: "$6523",
+      value: `${totalRevinew}৳`,
       trend: "down",
       percentage: "+3.45%",
       description: "from last week",
@@ -148,7 +149,7 @@ const AdminCart = () => {
                     </Title>
                   </div>
 
-                  <Dropdown
+                  {/*  <Dropdown
                     placement="bottomRight"
                     menu={{
                       items: filters.map((filter) => ({
@@ -173,7 +174,7 @@ const AdminCart = () => {
                         color: "#fff",
                       }}
                     />
-                  </Dropdown>
+                  </Dropdown> */}
                 </Space>
 
                 <div
@@ -187,7 +188,7 @@ const AdminCart = () => {
                     {card.value}
                   </Title>
 
-                  <Space
+                  {/* <Space
                     align="center"
                     style={{ display: "grid", justifyItems: "end", gap: "0" }}
                   >
@@ -208,7 +209,7 @@ const AdminCart = () => {
                     <Typography style={{ color: "#fff" }}>
                       {card.description}
                     </Typography>
-                  </Space>
+                  </Space> */}
                 </div>
               </Space>
             </Card>
