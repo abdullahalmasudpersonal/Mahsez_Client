@@ -40,6 +40,13 @@ const orderApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: [tagTypes.order],
     }),
+    getRevinew: builder.query({
+      query: () => ({
+        url: "/order/revinew",
+        method: "GET",
+      }),
+      providesTags: [tagTypes.order],
+    }),
   }),
 });
 
@@ -49,4 +56,5 @@ export const {
   useGetAllOrderQuery,
   useGetSingleOrderQuery,
   useUpdateOrderStatusMutation,
+  useGetRevinewQuery,
 } = orderApi;

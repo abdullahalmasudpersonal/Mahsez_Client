@@ -79,23 +79,37 @@ const MyPayment = () => {
                       <div className="d-flex justify-content-center align-items-center">
                         <h6 className="m-0">
                           {order?.paymentStatus === "PAID" ? (
-                            <FontAwesomeIcon
-                              icon={faMoneyCheck}
-                              style={{ color: "rgb(15, 175, 0)" }}
-                            />
+                            <>
+                              <FontAwesomeIcon
+                                icon={faMoneyCheck}
+                                style={{ color: "rgb(15, 175, 0)" }}
+                              />
+                            </>
                           ) : (
                             <FontAwesomeIcon
                               icon={faMoneyCheck}
-                              style={{ color: "orange" }}
+                              style={{ color: "rgb(255, 114, 58)" }}
                             />
                           )}
                           &nbsp;
                           <span>
                             {order?.paymentStatus === "PAID" ? (
+                              /*  <Button
+                                style={{
+                                  backgroundColor: "rgb(138, 0, 218)",
+                                  color: "#fff",
+                                  border: "none",
+                                }}
+                              >
+                                Details
+                              </Button> */
                               <span style={{ color: "rgb(15, 175, 0)" }}>
                                 {order?.paymentStatus}
                               </span>
                             ) : (
+                              /*  <span style={{ color: "rgb(15, 175, 0)" }}>
+                                {order?.paymentStatus}
+                              </span> */
                               <span style={{ color: "rgb(255, 77, 7)" }}>
                                 {order?.paymentStatus}
                               </span>
@@ -163,33 +177,13 @@ const MyPayment = () => {
                           className="text-end p-0 align-middle"
                           style={{ border: "0", width: "70px" }}
                         >
-                          {/*  <Button
-                            disabled={loadingStates[order.orderId]}
-                            color="default"
-                            variant="solid"
-                            style={{
-                              backgroundColor: "rgba(255, 117, 25, 0.801)",
-                            }}
-                            onClick={() => handlePayment(order.orderId)}
-                          >
-                            {loadingStates[order.orderId] && (
-                              <Spin
-                                indicator={
-                                  <LoadingOutlined color="white" spin />
-                                }
-                                size="small"
-                              />
-                            )}
-                            Pay
-                          </Button> */}
-
                           {order?.paymentStatus === "PAID" ? (
                             <Button
                               color="default"
                               variant="solid"
                               style={{
                                 color: "white",
-                                backgroundColor: "rgb(15, 175, 0)",
+                                backgroundColor: "rgb(13, 160, 0)",
                               }}
                               disabled={order?.paymentStatus === "PAID"}
                             >

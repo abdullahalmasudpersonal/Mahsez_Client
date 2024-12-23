@@ -67,6 +67,7 @@ import { useAppSelector } from "./redux/hooks";
 import { selectCurrentUser } from "./redux/features/auth/authSlice";
 import BottemHeader from "./pages/shared/navber/BottemHeader/BottemHeader";
 import VisitorList from "./pages/admin/homeAdmin/visitorList/VisitorList";
+import SuccessPayment from "./pages/dashboard/myPayment/SuccessPayment";
 
 function App() {
   const user = useAppSelector(selectCurrentUser);
@@ -140,6 +141,7 @@ function App() {
               element={<MyOrderDetails />}
             />
             <Route path="my-payment" element={<MyPayment />} />
+            <Route path="payment-success" element={<SuccessPayment />} />
             <Route path="invoice" element={<Invoice />} />
           </Route>
 

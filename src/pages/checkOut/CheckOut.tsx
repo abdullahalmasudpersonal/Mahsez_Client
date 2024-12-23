@@ -129,7 +129,7 @@ const CheckOut = () => {
             toast.success(result?.message, { position: "top-right" });
             form.resetFields();
             dispatch(clearCart());
-            navigate("/dashboard/my-order");
+            navigate("/dashboard/my-payment");
           }
         } catch (error) {
           if (error && typeof error === "object" && "data" in error) {
