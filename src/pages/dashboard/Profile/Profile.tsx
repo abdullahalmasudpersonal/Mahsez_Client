@@ -6,8 +6,8 @@ import PageTitle from "../../shared/PageTitle/PageTitle";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { Form } from "antd";
-import UpdateProfile from "./UpdateProfile";
 import Loader from "../../shared/loader/Loader";
+import UpdateProfile from "./UpdateProfile";
 
 const Profile = () => {
   const { data: userData, isLoading } = useGetMyProfileQuery({});
