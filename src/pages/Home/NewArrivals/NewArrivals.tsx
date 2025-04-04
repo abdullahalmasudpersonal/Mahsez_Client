@@ -1,9 +1,9 @@
 import "./NewArrivals.css";
 import { useGetProductsWithSearchFilterQuery } from "../../../redux/features/product/productApi";
-import HomeProduct from "../homeProduct/HomeProduct";
 import "../home/HomeProducts.css";
 import { TProduct } from "../../../types/product.types";
 import Loader from "../../shared/loader/Loader";
+import HomeProduct from "../HomeProduct/HomeProduct";
 
 const NewArrivals = () => {
   const { data: productDta, isLoading } = useGetProductsWithSearchFilterQuery({

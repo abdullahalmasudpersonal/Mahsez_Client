@@ -7,7 +7,7 @@ import HomeFeaturedCategory from "../HomeFeaturedCategory/HomeFeaturedCategory";
 import HomeFeaturedProducts from "../homeFeaturedProducts/HomeFeaturedProducts";
 import HomeProductOnes from "../HomeProductOnes/HomeProductOnes";
 import HomeProductTwos from "../HomeProductTwos/HomeProductTwos";
-import NewArrivals from "../newArrivals/NewArrivals";
+import NewArrivals from "../NewArrivals/NewArrivals";
 import "./home.css";
 
 const Home = () => {
