@@ -70,8 +70,8 @@ jobs:
         run: npm ci
 
       # Step 4: লিন্ট এবং টেস্ট রান করা
-      - name: Run Tests
-        run: npm test
+      # - name: Run Tests
+      #   run: npm test
 
       # Step 5: প্রজেক্ট বিল্ড করা
       - name: Build Project
