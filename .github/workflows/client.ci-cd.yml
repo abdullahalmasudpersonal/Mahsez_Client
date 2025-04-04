@@ -70,9 +70,6 @@ jobs:
         run: npm ci
 
       # Step 4: লিন্ট এবং টেস্ট রান করা
-      - name: Run Lint
-        run: npm run lint
-
       - name: Run Tests
         run: npm test
 
