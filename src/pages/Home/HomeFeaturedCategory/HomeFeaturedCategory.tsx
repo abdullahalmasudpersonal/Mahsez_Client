@@ -1,6 +1,6 @@
-import "./HomeFeaturedCategory.css";
-import UseHomeFeaturedCategory from "../../../hooks/UseHomeFeaturedCategory/UseHomeFeaturedCategory";
 import HomeFCategore from "./HomeFCategore/HomeFCategore";
+import "./HomeFeaturedCategory.css";
+import UseHomeFeaturedCategory from "../../../Hooks/UseHomeFeaturedCategory/UseHomeFeaturedCategory";
 
 const HomeFeaturedCategory = () => {
   const [homeFCategory] = UseHomeFeaturedCategory();

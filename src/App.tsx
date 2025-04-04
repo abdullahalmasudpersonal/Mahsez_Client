@@ -17,14 +17,12 @@ import Navber from "./pages/shared/navber/navber/Navber";
 import Login from "./pages/Logins/Login/Login";
 import Register from "./pages/Logins/Register/Register";
 import Dashboard from "./pages/dashboard/dashboard/Dashboard";
-import Profile from "./pages/dashboard/profile/Profile";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import TermsCondition from "./pages/Terms&Condition/Terms&Condition";
 import Notfound from "./pages/shared/Notfound/Notfound";
 import Categore from "./pages/Categories/Categore/Categore/Categore";
 import ProductDetails from "./pages/ProductDetails/ProductDetails/ProductDetails";
-import Home from "./pages/home/home/Home";
 import ShoppingCart from "./pages/shoppingCart/ShoppingCart";
 import ProtectedRoute from "./pages/shared/protectedRoute/ProtectedRoute";
 import CheckOut from "./pages/checkOut/CheckOut";
@@ -68,6 +66,8 @@ import { selectCurrentUser } from "./redux/features/auth/authSlice";
 import BottemHeader from "./pages/shared/navber/BottemHeader/BottemHeader";
 import VisitorList from "./pages/admin/homeAdmin/visitorList/VisitorList";
 import SuccessPayment from "./pages/dashboard/myPayment/SuccessPayment";
+import Home from "./pages/Home/Home/Home";
+import Profile from "./pages/dashboard/Profile/Profile";
 
 function App() {
   const user = useAppSelector(selectCurrentUser);
