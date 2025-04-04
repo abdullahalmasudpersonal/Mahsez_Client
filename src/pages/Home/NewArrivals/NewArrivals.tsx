@@ -1,6 +1,6 @@
 import "./NewArrivals.css";
 import { useGetProductsWithSearchFilterQuery } from "../../../redux/features/product/productApi";
-import "../home/HomeProducts.css";
+import "../Home/HomeProducts.css";
 import { TProduct } from "../../../types/product.types";
 import Loader from "../../shared/loader/Loader";
 import HomeProduct from "../HomeProduct/HomeProduct";
