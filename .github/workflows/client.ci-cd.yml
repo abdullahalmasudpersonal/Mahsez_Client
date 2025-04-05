@@ -84,3 +84,4 @@ jobs:
           vercel-token: ${{ secrets.MAHSEZ_CLIENT_VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.MAHSEZ_CLIENT_ORG_ID }}
           vercel-project-id: ${{ secrets.MAHSEZ_CLIENT_PROJECT_ID }}
+          vercel-args: "--prod"
