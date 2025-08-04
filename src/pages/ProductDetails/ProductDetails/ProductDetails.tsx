@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./ProductDetails.css";
-// import ProductDetailReVe from "../ProductDetailReVe/ProductDetailReVe";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import PageTitle from "../../shared/PageTitle/PageTitle";
@@ -17,7 +16,7 @@ import {
 import { toast } from "sonner";
 import { useGetSingleProductQuery } from "../../../redux/features/product/productApi";
 import { selectCurrentUser } from "../../../redux/features/auth/authSlice";
-// import ProductDetailReVe from "../ProductDetailReVe/ProductDetailReVe";
+import ProductDetailReVe from "../ProductDetailReVe/ProductDetailReVe";
 
 const ProductDetails = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -26,7 +25,6 @@ const ProductDetails = () => {
   const dispatch = useAppDispatch();
   const [quantity, setQuantity] = useState(1);
   const { data: productDetails } = useGetSingleProductQuery(productId);
-
 
   const {
     _id,
@@ -315,7 +313,7 @@ const ProductDetails = () => {
         </div>
       </div>
       <ProductDesWR productDetails={productDetails} />
-      {/* <ProductDetailReVe /> */}
+      <ProductDetailReVe />
     </div>
   );
 };
