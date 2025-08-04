@@ -1,3 +1,6 @@
+.login{
+  height: 100vh;
+}
 .pass-reset-btn {
   margin: 10px;
   color: gray;

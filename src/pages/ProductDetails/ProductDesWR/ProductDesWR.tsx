@@ -1,6 +1,24 @@
+import { Rate } from "antd";
+import { useGetSingleProductReviewQuery } from "../../../redux/features/review/reviewApi";
+import { TProduct } from "../../../types/product.types";
+import { TReview } from "../../../types/review.types";
 import "./ProductDesWR.css";
+import { format } from 'date-fns';
 
-const ProductDesWR = () => {
+type ProductDesWRProps = {
+  productDetails: {
+    data: TProduct;
+  };
+};
+
+const ProductDesWR = ({ productDetails }: ProductDesWRProps) => {
+  const { data: getSingleProductReview } = useGetSingleProductReviewQuery(productDetails?.data?._id);
+  const { description } = productDetails?.data || {};
+  const reviews = getSingleProductReview?.data || {};
+
+  console.log("getSingleProductReview", reviews,)
+
+
   return (
     <>
       <ul className="nav nav-tabs" id="myTab" role="tablist">
@@ -15,7 +33,7 @@ const ProductDesWR = () => {
             aria-controls="home"
             aria-selected="true"
           >
-            Home
+            Description
           </button>
         </li>
         <li className="nav-item" role="presentation">
@@ -29,7 +47,7 @@ const ProductDesWR = () => {
             aria-controls="profile"
             aria-selected="false"
           >
-            Profile
+            Warranty Info
           </button>
         </li>
         <li className="nav-item" role="presentation">
@@ -43,7 +61,7 @@ const ProductDesWR = () => {
             aria-controls="contact"
             aria-selected="false"
           >
-            Contact
+            Reviews
           </button>
         </li>
       </ul>
@@ -54,7 +72,8 @@ const ProductDesWR = () => {
           role="tabpanel"
           aria-labelledby="home-tab"
         >
-          .11.11.
+          <div style={{ padding: '10px' }} dangerouslySetInnerHTML={{ __html: description }} />
+
         </div>
         <div
           className="tab-pane fade"
@@ -62,15 +81,30 @@ const ProductDesWR = () => {
           role="tabpanel"
           aria-labelledby="profile-tab"
         >
-          .22222..
+          {/* <div style={{padding:'10px'}} dangerouslySetInnerHTML={{ __html: warranty }} /> */}
         </div>
         <div
-          className="tab-pane fade"
+          className="tab-pane fade review"
           id="contact"
           role="tabpanel"
           aria-labelledby="contact-tab"
         >
-          ..33333.
+          <h4>{reviews?.length} Reviews</h4>
+          <p style={{ marginBottom: '20px' }}>Get specific details about this product from customers who own it.</p>
+          {reviews?.length ? (
+            reviews.map((review: TReview) => (
+              <div key={review.reviewId} style={{ borderBottom: '1px solid rgb(233, 233, 233)', marginBottom: '30px' }}>
+                <Rate style={{ color: 'orange', fontSize: '18px',marginBottom:"10px" }} value={review.rating} disabled />
+                <h6>{review.displayName} <small style={{ color: 'gray', fontSize: "12px", }}>
+                  {review.updatedAt ? format(new Date(review.updatedAt), 'dd MMM yyyy') : 'No update date'}
+                </small>
+                </h6>
+                <p style={{ marginBottom: '30px' }}>{review.comment}</p>
+              </div>
+            ))
+          ) : (
+            <p>No reviews found</p>
+          )}
         </div>
       </div>
     </>

@@ -192,3 +192,17 @@
     grid-template-columns: auto;
   }
 }
+
+
+/* --------------- */
+.review-btn{
+  cursor: pointer;
+  transition: all .3s;
+}
+.review-btn:hover{
+  color: #ff8534;
+}
+.review-disabled-btn {
+  cursor: not-allowed;
+  opacity: 0.5;
+}

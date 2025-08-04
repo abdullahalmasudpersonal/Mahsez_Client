@@ -6,8 +6,8 @@ const socket = io(
   {
     autoConnect: true,
     reconnection: true,
-    withCredentials: true, // CORS সমস্যা এড়ানোর জন্য
-    transports: ["websocket"], // Transport মেথড নির্দিষ্ট করা
+    withCredentials: true, 
+    transports: ["websocket"], 
   }
 );
 

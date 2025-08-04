@@ -455,7 +455,7 @@ const UpdateProduct = () => {
             </Col>
 
             <Col xs={24}>
-              <Form.Item label="Description 2" name="description2">
+              <Form.Item label="Warranty" name="warranty">
                 <ReactQuill />
               </Form.Item>
             </Col>

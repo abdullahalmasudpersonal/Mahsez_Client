@@ -71,7 +71,7 @@ const Register = () => {
   // }
 
   return (
-    <div className="container-xxl my-5 ">
+    <div className="container-xxl">
       <PageTitle pageTitle="Registration" />
       <div className="register">
         <div className="register-dev">

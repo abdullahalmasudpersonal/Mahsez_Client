@@ -12,7 +12,7 @@ import {
   TUser,
 } from "../../../redux/features/auth/authSlice";
 import PageTitle from "../../shared/PageTitle/PageTitle";
-import DemoCredentials from "./DemoCredentials";
+// import DemoCredentials from "./DemoCredentials";
 import socket from "../../../utils/Socket";
 // import logo from "../../../../public/assets/img/logo/mahsez.png";
 
@@ -21,8 +21,20 @@ type FormValues = {
   password: string;
 };
 
+const demoCredentials = {
+  admin: {
+    email: "abdullah@gmail.com",
+    password: "123456",
+  },
+  buyer: {
+    email: "taki@gmail.com",
+    password: "123456",
+  },
+};
+
+
 const Login = () => {
-  const { register, handleSubmit } = useForm<FormValues>();
+  const { register, handleSubmit, setValue } = useForm<FormValues>();
   const [passVisible, setPassVisible] = useState(false);
   const user = useAppSelector(selectCurrentUser);
   const [error, setError] = useState<string | null>(null);
@@ -31,6 +43,12 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+
+  const fillDemoCredentials = (role: "admin" | "buyer") => {
+    setValue("email", demoCredentials[role].email);
+    setValue("password", demoCredentials[role].password);
+  };
+
 
   const onFinish: SubmitHandler<FormValues> = async (data) => {
     try {
@@ -60,8 +78,9 @@ const Login = () => {
     errorElement = <p className="text-danger m-0 text-center">{error}</p>;
   }
 
+
   return (
-    <div className="container-xxl my-5 ">
+    <div className="container-xxl">
       <PageTitle pageTitle="Login" />
       <div className="register">
         <div className="register-dev">
@@ -127,8 +146,25 @@ const Login = () => {
             </h6>
           </Link>
         </div>
+        <div style={{ display: "flex", gap: "10px", marginBottom: "15px", justifyContent: "center" }}>
+          <button
+            type="button"
+            onClick={() => fillDemoCredentials("admin")}
+            style={{ padding: "6px 12px", cursor: "pointer",borderRadius:'5px',border:'1px solid gray' }}
+          >
+            Demo Admin
+          </button>
+          <button
+            type="button"
+            onClick={() => fillDemoCredentials("buyer")}
+            style={{ padding: "6px 12px", cursor: "pointer",borderRadius:'5px',border:'1px solid gray' }}
+          >
+            Demo Buyer
+          </button>
+        </div>
       </div>
-      <DemoCredentials />
+
+
     </div>
   );
 };
