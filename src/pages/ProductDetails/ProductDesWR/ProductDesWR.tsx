@@ -13,7 +13,7 @@ type ProductDesWRProps = {
 
 const ProductDesWR = ({ productDetails }: ProductDesWRProps) => {
   const { data: getSingleProductReview } = useGetSingleProductReviewQuery(productDetails?.data?._id);
-  const { description } = productDetails?.data || {};
+  const { description,warranty } = productDetails?.data || {};
   const reviews = getSingleProductReview?.data || {};
 
   console.log("getSingleProductReview", reviews,)
@@ -81,7 +81,7 @@ const ProductDesWR = ({ productDetails }: ProductDesWRProps) => {
           role="tabpanel"
           aria-labelledby="profile-tab"
         >
-          {/* <div style={{padding:'10px'}} dangerouslySetInnerHTML={{ __html: warranty }} /> */}
+          <div style={{padding:'10px'}} dangerouslySetInnerHTML={{ __html: warranty || '' }} />
         </div>
         <div
           className="tab-pane fade review"

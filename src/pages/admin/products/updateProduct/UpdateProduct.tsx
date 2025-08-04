@@ -77,7 +77,7 @@ const UpdateProduct = () => {
         features,
         features2,
         description,
-        description2,
+        warranty,
         image,
       } = productData.data;
 
@@ -113,7 +113,7 @@ const UpdateProduct = () => {
         features,
         features2,
         description,
-        description2,
+        warranty,
         image,
       });
 
@@ -222,7 +222,7 @@ const UpdateProduct = () => {
       features: data?.features,
       features2: data?.features2,
       description: data?.description,
-      description2: data?.description2,
+      warranty: data?.warranty,
     };
 
     const existingImages = fileList

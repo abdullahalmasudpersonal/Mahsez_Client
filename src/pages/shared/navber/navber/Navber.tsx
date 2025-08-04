@@ -123,7 +123,7 @@ const Navber = () => {
               <Link to="/offers" style={{ textDecoration: "none" }}>
                 <li>OFFERS</li>
               </Link>
-              <li>FEATURES</li>
+              {/* <li>FEATURES</li> */}
               <Link to="/blogs" style={{ textDecoration: "none" }}>
                 <li>BLOGS</li>
               </Link>
@@ -313,9 +313,6 @@ const Navber = () => {
             )}
 
             {user ? (
-              // <Link to="/dashboard" className="ms-3">
-              //   <img width="32px" src={profileImg} alt="" />
-              // </Link>
               <Dropdown
                 menu={{ items }}
                 placement="bottomRight"
