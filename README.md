@@ -3,6 +3,10 @@
 
 ## Live Link:- https://mahsez.vercel.app
 
+### Demo Access 
+
+- Demo credentials are provided on the login page.
+
 ### 🖥️ Client Features
 
 - Responsive design (desktop, tablet and mobile supported)

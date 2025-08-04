@@ -7,7 +7,7 @@ import "./ProductDetails.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import PageTitle from "../../shared/PageTitle/PageTitle";
-import CreateReview from "./CreateReview";
+import CreateReview from "./createReview/CreateReview";
 import ProductDesWR from "../ProductDesWR/ProductDesWR";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import {
@@ -16,12 +16,17 @@ import {
 } from "../../../redux/features/shoppingCart/shoppingCartSlice";
 import { toast } from "sonner";
 import { useGetSingleProductQuery } from "../../../redux/features/product/productApi";
+import { selectCurrentUser } from "../../../redux/features/auth/authSlice";
+// import ProductDetailReVe from "../ProductDetailReVe/ProductDetailReVe";
 
 const ProductDetails = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const user = useAppSelector(selectCurrentUser);
   const { productId } = useParams();
   const dispatch = useAppDispatch();
   const [quantity, setQuantity] = useState(1);
   const { data: productDetails } = useGetSingleProductQuery(productId);
+
 
   const {
     _id,
@@ -153,18 +158,28 @@ const ProductDetails = () => {
               style={{ color: "gray", width: "13px" }}
             />
             <small> (27) </small>
-            <small>
+            {/* <small>
               &nbsp;{" "}
-              <span
-                data-bs-toggle="modal"
-                data-bs-target="#writeAReview"
-                className="review-btn"
-              >
+              <span onClick={() => setModalOpen(true)} className="review-btn">
                 Write a reviews
               </span>
+            </small> */}
+            <small>
+              &nbsp;{" "}
+              {user ? (
+                <span onClick={() => setModalOpen(true)} className="review-btn">
+                  Write a review
+                </span>
+              ) : (
+                <span className="review-disabled-btn" title="Login to write a review">
+                  Write a review
+                </span>
+              )}
             </small>
-            {productDetails && <CreateReview productDetails={productDetails} />}
+
+            {productDetails && <CreateReview open={modalOpen} onClose={() => setModalOpen(false)} productDetails={productDetails?.data} />}
           </p>
+
 
           <p className="product-dev-p pt-2">
             {offerPrice ? (
@@ -295,18 +310,12 @@ const ProductDetails = () => {
               >
                 {isInCart ? "Remove from Cart" : "Add to Cart"}
               </button>
-              {/* <button
-                className="add-to-cart"
-                onClick={() => handleAddToCart(_id)}
-              >
-                Add to Cart
-              </button> */}
             </div>
           )}
         </div>
       </div>
-      <ProductDesWR /* productDetails={productDetails} */ />
-      {/*    <ProductDetailReVe /> */}
+      <ProductDesWR productDetails={productDetails} />
+      {/* <ProductDetailReVe /> */}
     </div>
   );
 };

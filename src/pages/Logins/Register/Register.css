@@ -1,8 +1,11 @@
 .register {
-    min-height: 600px;
+    min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    gap: 60px;
     align-items: center;
+    padding: 40px 5px;
 }
 
 .register-dev {

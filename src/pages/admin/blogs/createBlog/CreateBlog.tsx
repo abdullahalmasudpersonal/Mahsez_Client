@@ -68,8 +68,6 @@ const CreateBlog = () => {
       features2: values?.features2,
     };
 
-    console.log(blogData);
-
     const formData = new FormData();
     formData.append("data", JSON.stringify(blogData));
     fileList.forEach((file) => {
