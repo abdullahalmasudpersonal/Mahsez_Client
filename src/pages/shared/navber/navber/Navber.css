@@ -1,12 +1,13 @@
 /* -------header-bg-color ----------- */
 .header-bg-color {
-    background-color: rgb(240, 247, 255);
+    background-color: rgb(245, 246, 247);
 }
 
 /* ---------- Header Part 1 -------------- */
 .header-shadow {
     transition: .4s;
-    background-color: rgb(229, 241, 253);
+    background-color: rgb(245, 246, 247);
+    /* color: white !important; */
     box-shadow: rgba(182, 182, 182, 0.281) 0px 1px 0px;
 }
 
