@@ -1,127 +1,53 @@
 import "./Banner.css";
+import smallBanner4 from "../../../../public/assets/img/banner/banner2/banner (2).jpg";
+import smallBanner5 from "../../../../public/assets/img/banner/banner2/banner (3).jpg";
 import banner from "../../../../public/assets/img/banner/banner.jpg";
 import banner2 from "../../../../public/assets/img/banner/banner2.jpg";
 import banner3 from "../../../../public/assets/img/banner/banner3.jpg";
-import { Carousel } from "react-bootstrap";
+import { Carousel } from "antd";
 
 const Banner = () => {
+  const banners = [
+    { id: "1", img2: banner, img: 'https://www.startech.com.bd/image/cache/catalog/home/banner/2025/benq-monitor-982x500.webp' },
+    { id: "2", img2: banner2, img: "https://www.startech.com.bd/image/cache/catalog/home/banner/2025/Sony-WH-1000XM6-Noise-Cancelling-Wireless-Headphone-(Official)-982x500.webp" },
+    { id: "3", img2: banner3, img: "https://www.startech.com.bd/image/cache/catalog/home/banner/2025/star-link-home-2025-banner-982x500.webp" },
+    { id: "4", img2: banner, img: 'https://www.startech.com.bd/image/cache/catalog/home/banner/2025/bkash-offer-web-banner-982x500.webp' },
+  ]
+
+  const smallBanners = [
+    { id: "1", img2: smallBanner4, img: 'https://www.startech.com.bd/image/cache/catalog/home/banner/2025/benq-monitor-982x500.webp' },
+    { id: "2", img2: smallBanner5, img: "https://www.startech.com.bd/image/cache/catalog/home/banner/2025/Sony-WH-1000XM6-Noise-Cancelling-Wireless-Headphone-(Official)-982x500.webp" },
+  ]
+
+
   return (
-    <>
-      <div className="banner">
-        <div className="banner-slide">
-          {/* <div style={{height:'400px'}}>
-            <img
-              className="d-block w-100 h-100"
-              src={banner2}
-              alt="Second slide"
-            />
-          </div> */}
-
-          <Carousel fade>
-            <Carousel.Item className="carousel-item-size">
-              <img
-                className="d-block h-100 d-inline-block carousel-item-size-img"
-                src={banner}
-                alt="First slide"
-              />
-              <Carousel.Caption>
-                <h3></h3>
-                <p></p>
-              </Carousel.Caption>
-            </Carousel.Item>
-
-            <Carousel.Item className="carousel-item-size">
-              <img
-                className="d-block h-100 d-inline-block carousel-item-size-img"
-                src={banner2}
-                alt="Second slide"
-              />
-
-              <Carousel.Caption>
-                <h3></h3>
-                <p></p>
-              </Carousel.Caption>
-            </Carousel.Item>
-
-            <Carousel.Item className="carousel-item-size">
-              <img
-                className="d-block h-100 d-inline-block carousel-item-size-img"
-                src={banner3}
-                alt="Third slide"
-              />
-
-              <Carousel.Caption>
-                <h3></h3>
-                <p></p>
-              </Carousel.Caption>
-            </Carousel.Item>
-          </Carousel>
-        </div>
-
-        <div className="banner-right">
-          <div className="banner-right-child-dev">
-            {/* <img style={{height:'200px'}}
-              className="d-block w-100 "
-              src={banner2}
-              alt="Third slide"
-            /> */}
-            <img
-              className="d-block w-100  banner-right-child-dev-img"
-              src={banner2}
-              alt="Third slide"
-            />
-            <img
-              className="d-block w-100 banner-right-child-dev-img"
-              src={banner3}
-              alt="Third slide"
-            />
-          </div>
-        </div>
+    <div className="banner">
+      <div className="bannerLaftPart">
+        <Carousel arrows autoplay effect="fade" >
+          {
+            banners.map((banner) => (
+              <div key={banner.id}>
+                <img src={banner.img} alt="banner img" className="bannerImg" />
+              </div>
+            ))
+          }
+        </Carousel>
       </div>
-    </>
+      <div className="bannerRightPart">
+        {
+          smallBanners.slice(0, 2).map((banner) => (
+            <div key={banner.id}>
+              <img src={banner.img2} alt="small-banner" style={{
+                width: '100%',
+                height: '200px',
+                objectFit: 'cover'
+              }} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
   );
 };
 
 export default Banner;
-
-{
-  /*  <Carousel fade>
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src={banner}
-                  alt="First slide"
-                />
-                <Carousel.Caption>
-                  <h3>First slide label</h3>
-                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </Carousel.Caption>
-              </Carousel.Item>
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src={banner2}
-                  alt="Second slide"
-                />
-        
-                <Carousel.Caption>
-                  <h3>Second slide label</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </Carousel.Caption>
-              </Carousel.Item>
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src={banner3}
-                  alt="Third slide"
-                />
-        
-                <Carousel.Caption>
-                  <h3>Third slide label</h3>
-                  <p>
-                    Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                  </p>
-                </Carousel.Caption>
-              </Carousel.Item>
-            </Carousel> */
-}

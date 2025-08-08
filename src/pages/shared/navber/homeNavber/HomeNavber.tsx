@@ -85,7 +85,7 @@ const HomeNavber = () => {
                 icon={faComputer}
                 className="homeHeadersMainCategoreImg"
               />
-              <span>Computers Accessories</span>
+              <span>Computers Access..</span>
               <FontAwesomeIcon
                 icon={faChevronRight}
                 className="homeHeadersMainCategoreFaChevronRight"

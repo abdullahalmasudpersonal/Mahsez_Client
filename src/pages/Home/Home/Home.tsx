@@ -1,7 +1,7 @@
 import HomeNavber from "../../shared/navber/homeNavber/HomeNavber";
 import PageTitle from "../../shared/PageTitle/PageTitle";
 import Banner from "../Banner/Banner";
-import Banner2 from "../Banner/Banner2";
+// import Banner2 from "../Banner/Banner2";
 import HomeBlogs from "../HomeBlogs/HomeBlogs";
 import HomeFeaturedCategory from "../HomeFeaturedCategory/HomeFeaturedCategory";
 import HomeFeaturedProducts from "../homeFeaturedProducts/HomeFeaturedProducts";
@@ -11,12 +11,13 @@ import NewArrivals from "../NewArrivals/NewArrivals";
 import "./home.css";
 
 const Home = () => {
+ 
   return (
     <div className="home-bg pb-5 px-0">
       <PageTitle pageTitle="Home" />
       <div className="container-xxl d-flex p-0">
         <HomeNavber />
-        <Banner />
+      <Banner/>
       </div>
       {/* ----------------- special class ----------------------------- */}
       <div className="container-xxl home-div-responsive mobile-responsive-featured-category my-5">
@@ -33,9 +34,9 @@ const Home = () => {
       <div className="container-xxl home-div-responsive mt-5">
         <HomeProductOnes />
       </div>
-      <div className="container-xxl home-div-responsive mb-5 mt-5">
+      {/* <div className="container-xxl home-div-responsive mb-5 mt-5">
         <Banner2 />
-      </div>
+      </div> */}
       <div className="container-xxl home-div-responsive my-5">
         <HomeProductTwos />
       </div>
@@ -43,9 +44,9 @@ const Home = () => {
         <HomeFeaturedProducts />
       </div>
 
-      <div className="container-xxl home-div-responsive mb-5 mt-4">
+      {/* <div className="container-xxl home-div-responsive mb-5 mt-4">
         <Banner2 />
-      </div>
+      </div> */}
 
       <div className="container-xxl home-div-responsive">
         <HomeBlogs />
