@@ -8,7 +8,7 @@ import {
   faCaretDown,
   faClose,
   faHeadset,
-  faHeart,
+  // faHeart,
   faSearch,
   faShoppingCart,
   faUserAlt,
@@ -289,7 +289,7 @@ const Navber = () => {
           {/* ------------------ end pc search ber  ------------------------------ */}
 
           <div className="header2-lust-part pe-2">
-            <FontAwesomeIcon className="heart-cart" icon={faHeart} />
+            {/* <FontAwesomeIcon className="heart-cart" icon={faHeart} /> */}
             {cartLength > 0 ? (
               <Link to="/shopping_cart" className="ms-3">
                 <FontAwesomeIcon

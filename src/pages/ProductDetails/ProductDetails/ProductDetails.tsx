@@ -1,7 +1,7 @@
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import "./ProductDetails.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
@@ -19,12 +19,24 @@ import { selectCurrentUser } from "../../../redux/features/auth/authSlice";
 import ProductDetailReVe from "../ProductDetailReVe/ProductDetailReVe";
 
 const ProductDetails = () => {
-  const [modalOpen, setModalOpen] = useState(false);
+
   const user = useAppSelector(selectCurrentUser);
   const { productId } = useParams();
   const dispatch = useAppDispatch();
   const [quantity, setQuantity] = useState(1);
   const { data: productDetails } = useGetSingleProductQuery(productId);
+   const [modalOpen, setModalOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleReviewClick = () => {
+    if (user) {
+      setModalOpen(true);
+    } else {
+      // লগইন পেজে রিডাইরেক্ট করিয়ে, কারেন্ট লোকেশন পাঠিয়ে দিচ্ছি
+      navigate('/login', { state: { from: location }, replace: true });
+    }
+  };
 
   const {
     _id,
@@ -52,7 +64,7 @@ const ProductDetails = () => {
   };
 
   const cart = useAppSelector((state) => state.shopping.cart);
-  const isInCart = cart.some((item) => item._id === _id);
+  const isInCart = cart.some((item: { _id: string }) => item._id === _id);
 
   const handleCartToggle = () => {
     if (isInCart) {
@@ -156,25 +168,11 @@ const ProductDetails = () => {
               style={{ color: "gray", width: "13px" }}
             />
             <small> (27) </small>
-            {/* <small>
-              &nbsp;{" "}
-              <span onClick={() => setModalOpen(true)} className="review-btn">
-                Write a reviews
-              </span>
-            </small> */}
             <small>
-              &nbsp;{" "}
-              {user ? (
-                <span onClick={() => setModalOpen(true)} className="review-btn">
-                  Write a review
-                </span>
-              ) : (
-                <span className="review-disabled-btn" title="Login to write a review">
-                  Write a review
-                </span>
-              )}
+              &nbsp;{" "}<span onClick={handleReviewClick} className="review-btn">
+                Write a review
+              </span>
             </small>
-
             {productDetails && <CreateReview open={modalOpen} onClose={() => setModalOpen(false)} productDetails={productDetails?.data} />}
           </p>
 
