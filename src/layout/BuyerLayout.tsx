@@ -1,5 +1,5 @@
 import BuyerDashboardNavber from '@/components/navigation/dashboardNavber/BuyerDashboardNavber';
-import BuyerSideber from '@/components/navigation/sideber/buyerSideber';
+import BuyerSideber from '@/components/navigation/sideber/BuyerSideber';
 import { Layout } from 'antd';
 import { Content } from 'antd/es/layout/layout';
 import { Outlet } from 'react-router-dom';
