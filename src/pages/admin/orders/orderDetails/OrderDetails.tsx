@@ -65,7 +65,7 @@ const OrderDetails = () => {
       const productDetail = products?.data?.find(
         (item: TProduct) => item._id === orderItem.product_id
       );
-      console.log(productDetail);
+
       return {
         product_id: orderItem.product_id,
         image: productDetail?.image || "No image available",
@@ -160,9 +160,9 @@ const OrderDetails = () => {
       updateOrderStatusData = { fakeOrder: true };
     }
 
-    const res = await updateOrderStatus({ updateOrderStatusData, orderNumber });
+     await updateOrderStatus({ updateOrderStatusData, orderNumber });
 
-    console.log(res, "order res", updateOrderStatusData);
+  
   };
 
   return (

@@ -70,7 +70,7 @@ const UpdateProfile = ({ setEdit }: UpdateProfileProps) => {
   }) => {
     setFileList(newFileList.slice(-1));
   };
-  console.log(fileList);
+
   const handleFinish = async (values: FieldValues) => {
     const profileData = {
       name: values?.name,

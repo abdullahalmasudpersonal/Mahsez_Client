@@ -50,7 +50,7 @@ const AllAdmin = () => {
       isOnline,
     })
   );
-  console.log(adminsData);
+
   const columns: TableColumnsType<TAdmin> = [
     {
       title: "Name",

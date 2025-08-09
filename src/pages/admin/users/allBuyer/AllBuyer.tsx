@@ -67,7 +67,7 @@ const AllBuyer = () => {
 
   const handleDeleteBuyer = async (buyerId: string) => {
     const res = await deleteBuyer(buyerId);
-    console.log(res, "res", buyerId);
+   
     if (res?.data?.success) {
       toast.success("Delete buyer successfully!", {
         duration: 1000,
