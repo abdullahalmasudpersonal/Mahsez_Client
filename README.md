@@ -1,52 +1,69 @@
-<!-- # [Mahsez](https://mahsez.vercel.app) - Modern E-commerce Web App -->
-# <a href="https://mahsez.vercel.app" target="_blank">Mahsez</a> - Modern E-commerce Web App
+# React + TypeScript + Vite
 
-## Live Link:- https://mahsez.vercel.app
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-### Demo Access 
+Currently, two official plugins are available:
 
-- Demo credentials are provided on the login page.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-### 🖥️ Client Features
+## Expanding the ESLint configuration
 
-- Responsive design (desktop, tablet and mobile supported)
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-- Product filter and search
+```js
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-- Product detail page
+      // Remove tseslint.configs.recommended and replace with this
+      ...tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      ...tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      ...tseslint.configs.stylisticTypeChecked,
 
-- Cart system
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
 
-- Role based dashboard (Buyer & Admin)
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-- Buyer dashboard features - profile view, order details view, payment view.
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-- Admin panel features - total order, total visitor, product (list, create, update, delete), order (list, update order status ), blogs (list, create, update), users (admin list, buyer list)
-
-- Payment system (SSLCOMMERZ)
- 
-- User authentication (Anyone can make a buyer, Admin only creates admins)
-
-- Blogs
-
-### 🛠️ Technologies Used
-
-- Framework: React.js with vite
-
-- Language: TypeScript
-
-- UI Library: Antd Design  
-
-- Routing: React Router DOM
-
-- State Management: Redux toolkit, redux-persist
-
-- Form & Validation: react-hook-form
-
-- Deployment: Vercel
-
-- Real-time communication: Socket.IO 
-
-- data visualization: Recharts 
-
-- Animation: aos
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
