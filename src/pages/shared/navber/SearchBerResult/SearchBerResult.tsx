@@ -21,7 +21,6 @@ const SearchBerResult = () => {
     skip: !searchTerm,
   });
 
-  console.log(productDta, "searchdata");
 
   return (
     <div className="nestedProductsMain">

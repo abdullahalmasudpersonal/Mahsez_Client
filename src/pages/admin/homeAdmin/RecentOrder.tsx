@@ -68,8 +68,6 @@ const RecentOrder = () => {
       width: 80,
       render: (items) => {
         const firstItem = items[0];
-        console.log(firstItem, "firstItem");
-        // const firstItem = items[0];
 
         return firstItem ? (
           <>

@@ -193,7 +193,8 @@ function App() {
         {/* <Footer /> */}
 
         {!shouldHideNavAndFooter && <Footer />}
-        {!shouldHideNavAndFooter && <BottemHeader />}
+        {/* {!shouldHideNavAndFooter && <BottemHeader />} */}
+        <BottemHeader />
       </div>
     </>
   );

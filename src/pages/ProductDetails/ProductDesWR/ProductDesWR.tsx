@@ -16,9 +16,6 @@ const ProductDesWR = ({ productDetails }: ProductDesWRProps) => {
   const { description,warranty } = productDetails?.data || {};
   const reviews = getSingleProductReview?.data || {};
 
-  console.log("getSingleProductReview", reviews,)
-
-
   return (
     <div style={{border:'1px solid rgb(212, 212, 212)',borderRadius:'4px', padding:'20px'}}>
       <ul className="nav nav-tabs" id="myTab" role="tablist" >

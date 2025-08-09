@@ -32,7 +32,6 @@ const MyPayment = () => {
     return () => clearInterval(interval);
   }, [refetch]);
 
-  console.log(myOrderData, "myorderdat");
   const { data: getProducts } = useGetProductsQuery({});
   const [initPayment] = useInitPaymentMutation({});
 

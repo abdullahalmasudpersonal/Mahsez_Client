@@ -105,11 +105,11 @@ const CreateProduct = () => {
               lastModified: file.originFileObj.lastModified,
             });
 
-            console.log(compressedFile, "compressedfile");
+            // console.log(compressedFile, "compressedfile");
             // Resize the compressed file to 1000 x 1000 pixels
             const resizedFile = await resizeImage(compressedFile, 1000, 1000);
 
-            console.log(resizedFile, "resizefiles");
+            // console.log(resizedFile, "resizefiles");
 
             return {
               ...file,
