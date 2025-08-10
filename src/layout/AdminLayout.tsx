@@ -20,7 +20,7 @@ const AdminLayout = () => {
             {screens.lg && <AdminSideber />}
             <Layout>
                 <AdminDashboardNavber onMenuClick={toggleDrawer} />
-                <Content style={{ margin: '16px', padding: 24, background: '#ad5757ff' }}>
+                <Content style={{ margin: '16px', padding: 24, background: '#1f0505ff' }}>
                     <Outlet />
                 </Content>
             </Layout>
@@ -32,7 +32,7 @@ const AdminLayout = () => {
                     closable
                     onClose={() => setDrawerOpen(false)}
                     open={drawerOpen}
-                    
+                    style={{padding:'0'}}
                     bodyStyle={{ padding: 0 }}
                 >
                     <AdminSideber isDrawer />
