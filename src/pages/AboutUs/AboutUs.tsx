@@ -1,6 +1,6 @@
 import "./AboutUs.css";
 
-const AboutUs = () => {
+const AboutUs =() => {
   return (
     <div className="home-page">
       <div className="container-xxl">
