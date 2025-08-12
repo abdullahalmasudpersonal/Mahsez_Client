@@ -328,7 +328,7 @@ const Navber = () => {
                 />
               </Dropdown>
             ) : (
-              <Link to="/login" className="ms-3">
+              <Link to="/auth/login" className="ms-3">
                 <FontAwesomeIcon className="shopping-cart" icon={faUserAlt} />
               </Link>
             )}

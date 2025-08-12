@@ -1,4 +1,3 @@
-import HomeNavber from "../../shared/navber/homeNavber/HomeNavber";
 import PageTitle from "../../shared/PageTitle/PageTitle";
 import Banner from "../Banner/Banner";
 // import Banner2 from "../Banner/Banner2";
@@ -17,10 +16,10 @@ const Home = () => {
     <div className="home-bg pb-5 px-0">
       <PageTitle pageTitle="Home" />
       <div className="container-xxl d-flex p-0">
-        <HomeNavber />
+         <HomeMenu />
         <Banner />
       </div>
-      <HomeMenu />
+      
       {/* ----------------- special class ----------------------------- */}
       <div className="container-xxl home-div-responsive mobile-responsive-featured-category my-5">
         <HomeFeaturedCategory />
