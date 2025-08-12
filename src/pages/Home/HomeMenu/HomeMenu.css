@@ -1,0 +1,49 @@
+.homeMenu {
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
+    rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+}
+.menuItemDiv {
+  width: 270px;
+  padding: 0 15px;
+}
+.menuItem {
+  height: 40px;
+  padding: 7.5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: gray;
+  transition: 0.3s;
+  font-family: serif;
+  cursor: pointer;
+  border-bottom: 1px solid rgb(227, 227, 227);
+}
+.menuItemDiv:last-child .menuItem {
+  border-bottom: none;
+}
+.menuItem:hover {
+  color: rgb(255, 119, 0);
+}
+.menuItemIcon {
+  padding-right: 8px;
+}
+.homeMenuChevronIcon {
+  font-size: 13px;
+}
+
+@media screen and (max-width: 1399px) {
+  .menuItemDiv {
+    width: 240px;
+  }
+}
+@media screen and (max-width: 1199px) {
+ .menuItemDiv {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 930px) {
+  .menuItemDiv {
+    display: none;
+  }
+}
