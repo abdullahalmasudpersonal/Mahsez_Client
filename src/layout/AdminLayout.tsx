@@ -1,5 +1,5 @@
 import AdminDashboardNavber from '@/components/navigation/dashboardNavber/AdminDashboardNavber';
-import AdminSideber from '@/components/navigation/sideber/AdminSideber';
+import AdminSideber from '@/components/navigation/sideber/adminSideber/AdminSideber';
 import { Drawer, Grid, Layout } from 'antd';
 import { Content, } from 'antd/es/layout/layout';
 import { useState } from 'react';
@@ -18,22 +18,24 @@ const AdminLayout = () => {
         <Layout style={{ minHeight: '100vh' }}>
 
             {screens.lg && <AdminSideber />}
-            <Layout>
-                <AdminDashboardNavber onMenuClick={toggleDrawer} />
-                <Content style={{ margin: '16px', padding: 24, background: '#1f0505ff' }}>
+            <Layout style={{ marginLeft: screens.lg ? 255 : 0 }}>
+              
+                <Content style={{
+                    background: "radial-gradient(circle, #133c63ff 0%, #01203bff 50%, #001a33ff 100%)", padding: '84px 20px 20px 20px',
+                }}>  <AdminDashboardNavber onMenuClick={toggleDrawer} />
                     <Outlet />
                 </Content>
             </Layout>
             {/* মোবাইলে Drawer */}
             {!screens.lg && (
                 <Drawer
-                    title="Admin Menu"
+                    width={280}
                     placement="left"
-                    closable
+                    closable={false}
+                    maskClosable={true}
                     onClose={() => setDrawerOpen(false)}
                     open={drawerOpen}
-                    style={{padding:'0'}}
-                    bodyStyle={{ padding: 0 }}
+                    styles={{ body: { padding: 0, backgroundColor: "#001529" } }}
                 >
                     <AdminSideber isDrawer />
                 </Drawer>
@@ -43,79 +45,3 @@ const AdminLayout = () => {
 };
 
 export default AdminLayout;
-
-// import React, { useState } from 'react';
-// import {
-//   MenuFoldOutlined,
-//   MenuUnfoldOutlined,
-//   UploadOutlined,
-//   UserOutlined,
-//   VideoCameraOutlined,
-// } from '@ant-design/icons';
-// import { Button, Layout, Menu, theme } from 'antd';
-
-// const { Header, Sider, Content } = Layout;
-
-// const AdminLayout: React.FC = () => {
-//   const [collapsed, setCollapsed] = useState(false);
-//   const {
-//     token: { colorBgContainer, borderRadiusLG },
-//   } = theme.useToken();
-
-//   return (
-//     <Layout>
-//       <Sider trigger={null} collapsible collapsed={collapsed}>
-//         <div className="demo-logo-vertical" />
-//         <Menu
-//           theme="dark"
-//           mode="inline"
-//           defaultSelectedKeys={['1']}
-//           items={[
-//             {
-//               key: '1',
-//               icon: <UserOutlined />,
-//               label: 'nav 1',
-//             },
-//             {
-//               key: '2',
-//               icon: <VideoCameraOutlined />,
-//               label: 'nav 2',
-//             },
-//             {
-//               key: '3',
-//               icon: <UploadOutlined />,
-//               label: 'nav 3',
-//             },
-//           ]}
-//         />
-//       </Sider>
-//       <Layout>
-//         <Header style={{ padding: 0, background: colorBgContainer }}>
-//           <Button
-//             type="text"
-//             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-//             onClick={() => setCollapsed(!collapsed)}
-//             style={{
-//               fontSize: '16px',
-//               width: 64,
-//               height: 64,
-//             }}
-//           />
-//         </Header>
-//         <Content
-//           style={{
-//             margin: '24px 16px',
-//             padding: 24,
-//             minHeight: 280,
-//             background: colorBgContainer,
-//             borderRadius: borderRadiusLG,
-//           }}
-//         >
-//           Content
-//         </Content>
-//       </Layout>
-//     </Layout>
-//   );
-// };
-
-// export default AdminLayout;
