@@ -1,4 +1,4 @@
-import AdminDashboardNavber from '@/components/navigation/dashboardNavber/AdminDashboardNavber';
+import AdminDashboardNavber from '@/components/navigation/dashboardNavber/adminDashboardNavber/AdminDashboardNavber';
 import AdminSideber from '@/components/navigation/sideber/adminSideber/AdminSideber';
 import { Drawer, Grid, Layout } from 'antd';
 import { Content, } from 'antd/es/layout/layout';

@@ -157,7 +157,7 @@ const Navber = () => {
             </div>
           </div>
         </div>
-
+        {/* header small screen */}
         <div className="header-small-screen">
           <div className={shadow ? "sticky-top  header-shadow " : ""}>
             <div
