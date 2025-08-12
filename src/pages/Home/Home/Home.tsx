@@ -5,20 +5,22 @@ import Banner from "../Banner/Banner";
 import HomeBlogs from "../HomeBlogs/HomeBlogs";
 import HomeFeaturedCategory from "../HomeFeaturedCategory/HomeFeaturedCategory";
 import HomeFeaturedProducts from "../homeFeaturedProducts/HomeFeaturedProducts";
+import HomeMenu from "../HomeMenu/HomeMenu";
 import HomeProductOnes from "../HomeProductOnes/HomeProductOnes";
 import HomeProductTwos from "../HomeProductTwos/HomeProductTwos";
 import NewArrivals from "../NewArrivals/NewArrivals";
 import "./home.css";
 
 const Home = () => {
- 
+
   return (
     <div className="home-bg pb-5 px-0">
       <PageTitle pageTitle="Home" />
       <div className="container-xxl d-flex p-0">
         <HomeNavber />
-      <Banner/>
+        <Banner />
       </div>
+      <HomeMenu />
       {/* ----------------- special class ----------------------------- */}
       <div className="container-xxl home-div-responsive mobile-responsive-featured-category my-5">
         <HomeFeaturedCategory />

@@ -1,4 +1,4 @@
-import BuyerDashboardNavber from '@/components/navigation/dashboardNavber/BuyerDashboardNavber';
+import BuyerDashboardNavber from '@/components/navigation/dashboardNavber/buyerDashboardNavber/BuyerDashboardNavber';
 import BuyerSideber from '@/components/navigation/sideber/buyerSideber/BuyerSideber';
 import { Layout } from 'antd';
 import { Content } from 'antd/es/layout/layout';

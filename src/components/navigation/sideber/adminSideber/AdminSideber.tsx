@@ -23,7 +23,7 @@ const AdminSideber = ({ isDrawer }: { isDrawer?: boolean }) => {
         >
           <Image preview={false} width={140} src={logo} />
         </div>
-        <div style={{ flex: 1, overflowY: "auto" }}>
+        <div style={{ flex: 1, overflowY: "auto" }} className="admin-sidebar-menu-scroll">
           <Menu theme="dark"
             mode="inline"
             items={adminMenus}
@@ -64,7 +64,7 @@ const AdminSideber = ({ isDrawer }: { isDrawer?: boolean }) => {
           <Image preview={false} width={140} height={55} src={logo} />
         </div>
 
-        <div className="admin-sidebar-menu" style={{ height: "calc(100vh - 90px)", overflowY: 'auto', padding: '10px 0' }} >
+        <div className="admin-sidebar-menu admin-sidebar-menu-scroll" style={{ height: "calc(100vh - 90px)", overflowY: 'auto', padding: '10px 0' }} >
           <Menu
             theme="dark"
             mode="inline"
