@@ -24,21 +24,31 @@ const AdminDashboardNavber = ({ onMenuClick }: { onMenuClick: () => void }) => {
     return (
         <Header
             style={{
-                background: "#fff",
+                position: 'fixed',
+                top: 0,
+                left: screens.lg ? 255 : 0,
+                right: 0,
+                zIndex: 5,
+                height: 64,
+                background: "rgba(0, 31, 63, 0.56)",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                borderBottom: "1px solid rgba(255,255,255,0.1)",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
                 padding: "0 20px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
-                borderBottom: "1px solid #f0f0f0",
+              
             }}
         >
             {!screens.lg && (
                 <MenuOutlined
                     onClick={onMenuClick}
-                    style={{ fontSize: "20px", marginRight: "16px", cursor: "pointer" }}
+                    style={{ fontSize: "20px", marginRight: "16px", cursor: "pointer",color:'white' }}
                 />
             )}
-            <Text strong style={{ fontSize: 18 }}>
+            <Text strong style={{ fontSize: 18,  color:'white' }}>
                 Admin Dashboard
             </Text>
 

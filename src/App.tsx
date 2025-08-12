@@ -68,7 +68,7 @@ import VisitorList from "./pages/admin/homeAdmin/visitorList/VisitorList";
 import SuccessPayment from "./pages/dashboard/myPayment/SuccessPayment";
 import Home from "./pages/Home/Home/Home";
 import Profile from "./pages/dashboard/Profile/Profile";
-// import routes from "./routes/routes";
+import routes from "./routes/routes";
 
 function App() {
   const user = useAppSelector(selectCurrentUser);
@@ -88,22 +88,21 @@ function App() {
     socket.emit("userOnline", user?.userId);
   });
 
-  // interface RouteType {
-  //   path?: string;
-  //   element: React.ReactNode;
-  //   children?: RouteType[];
-  //   index?: boolean;
-  // }
-  // const renderRoutes = (routes: RouteType[]) =>
-  //   routes.map(({ path, element, children }, i) => (
-  //     <Route key={i} path={path} element={element}>
-  //       {children && renderRoutes(children)}
-  //     </Route>
-  //   ));
+  interface RouteType {
+    path?: string;
+    element: React.ReactNode;
+    children?: RouteType[];
+  }
+  const renderRoutes = (routes: RouteType[]) =>
+    routes.map(({ path, element, children }, i) => (
+      <Route key={i} path={path} element={element}>
+        {children && renderRoutes(children)}
+      </Route>
+    ));
 
   return (
     <>
-      <div className="apps">
+      {/* <div className="apps">
         <ScrollManager />
         <ScrollingBtn />
         {!shouldHideNavAndFooter && <Navber />}
@@ -207,18 +206,11 @@ function App() {
 
         {!shouldHideNavAndFooter && <Footer />}
         <BottemHeader />
-      </div>
-      
-      {/*      const renderRoutes = (routes: RouteType[]) =>
-      routes.map(({path, element, children}, i) => (
-      <Route key={i} path={path} element={element}>
-        {children && renderRoutes(children)}
-      </Route>
-      )); */}
-
-      {/* <div>
-        <Routes>{renderRoutes(routes)}</Routes>
       </div> */}
+
+      <div>
+        <Routes>{renderRoutes(routes)}</Routes>
+      </div>
 
       {/*      <Suspense fallback={<div>Loading...</div>}>
         <Routes>{renderRoutes(routes)}</Routes>
