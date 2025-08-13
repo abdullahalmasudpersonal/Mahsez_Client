@@ -126,7 +126,7 @@ const Register = () => {
           <p className="text-center">
             <small>
               Alrady have an account?
-              <Link to="/login" style={{ textDecoration: "none" }}>
+              <Link to="/auth/login" style={{ textDecoration: "none" }}>
                 <span style={{ color: "purple" }}> Login</span>
               </Link>
             </small>

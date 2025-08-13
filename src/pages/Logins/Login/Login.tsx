@@ -1,56 +1,75 @@
-import { useState } from "react";
-import "./Login.css";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { toast } from "sonner";
-import { useLoginMutation } from "../../../redux/features/auth/authApi";
-import { verifyToken } from "../../../utils/verifyToken";
+import { useEffect, useState } from "react";
 import {
-  selectCurrentUser,
-  setUser,
-  TUser,
-} from "../../../redux/features/auth/authSlice";
-import PageTitle from "../../shared/PageTitle/PageTitle";
-// import DemoCredentials from "./DemoCredentials";
-import socket from "../../../utils/Socket";
-// import logo from "../../../../public/assets/img/logo/mahsez.png";
+  Button,
+  Card,
+  Checkbox,
+  Divider,
+  Form,
+  Grid,
+  Input,
+  Typography,
+  Space,
+  ConfigProvider,
+  Alert,
+} from "antd";
+import { MailOutlined, LockOutlined } from "@ant-design/icons";
+import { useLocation, useNavigate } from "react-router-dom";
+import { RuleObject } from "antd/es/form";
+import { StoreValue } from "antd/es/form/interface";
+import { useLoginMutation } from "@/redux/features/auth/authApi";
+import { verifyToken } from "@/utils/verifyToken";
+import { setUser, TUser } from "@/redux/features/auth/authSlice";
+import { useAppDispatch } from "@/redux/hooks";
+import { toast } from "sonner";
+const { Title, Text, Link } = Typography;
+const { useBreakpoint } = Grid;
 
-type FormValues = {
-  email: string;
-  password: string;
-};
+interface ErrorSource {
+  path: string;
+  message: string;
+}
 
-const demoCredentials = {
-  admin: {
-    email: "abdullah@gmail.com",
-    password: "123456",
-  },
-  buyer: {
-    email: "taki@gmail.com",
-    password: "123456",
-  },
-};
+interface ServerErrorResponse {
+  data: {
+    errorSources: ErrorSource[];
+    message?: string;
+  };
+}
 
-
-const Login = () => {
-  const { register, handleSubmit, setValue } = useForm<FormValues>();
-  const [passVisible, setPassVisible] = useState(false);
-  const user = useAppSelector(selectCurrentUser);
-  const [error, setError] = useState<string | null>(null);
-  const dispatch = useAppDispatch();
-  const [login] = useLoginMutation();
+export default function ResponsiveLogin() {
+  const [form] = Form.useForm();
+  const [submitting, setSubmitting] = useState(false);
+  const screens = useBreakpoint();
   const navigate = useNavigate();
   const location = useLocation();
+  const [login] = useLoginMutation();
+  const dispatch = useAppDispatch();
   const from = location.state?.from?.pathname || "/";
+  const [serverError, setServerError] = useState<string | null>(null);
 
-  const fillDemoCredentials = (role: "admin" | "buyer") => {
-    setValue("email", demoCredentials[role].email);
-    setValue("password", demoCredentials[role].password);
-  };
+  const passwordRules = [
+    { required: true, message: "Enter password" },
+    {
+      validator(_: RuleObject, value: StoreValue) {
+        if (!value) return Promise.resolve();
+        if ((value as string).length < 6) {
+          return Promise.reject("Must be at least 6 characters.");
+        }
+        return Promise.resolve();
+      },
+    },
+  ];
+
+  useEffect(() => {
+    if (serverError) {
+      const timer = setTimeout(() => setServerError(""), 3000); // 5 seconds
+      return () => clearTimeout(timer); // cleanup
+    }
+  }, [serverError]);
 
 
-  const onFinish: SubmitHandler<FormValues> = async (data) => {
+  const handleFinish = async (data: { email: string, password: string }) => {
+    setSubmitting(true);
     try {
       const userInfo = {
         email: data?.email,
@@ -62,111 +81,176 @@ const Login = () => {
       dispatch(setUser({ user: user, token: res.data.accessToken }));
       const toastId = toast.loading("Logging in...");
       toast.success("Logged in successfully!", { id: toastId, duration: 2000 });
-
       navigate(from, { replace: true });
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
-      setError("Please check your credentials.");
-      toast.error("Something went wrong!");
+      const fieldErrors: { name: string | (string | number)[]; errors: string[] }[] = [];
+
+      const e = err as ServerErrorResponse;
+      if (e?.data?.errorSources?.length) {
+        e.data.errorSources.forEach((source) => {
+          if (source.path === "email") {
+            fieldErrors.push({ name: "email", errors: [source.message] });
+          } else if (source.path === "password") {
+            fieldErrors.push({ name: "password", errors: [source.message] });
+          } else {
+            // unknown path, show general server error
+            setServerError(source.message);
+          }
+        });
+      } else if (e?.data?.message) {
+        // general message
+        setServerError(e.data.message);
+      } else {
+        setServerError("Login failed. Please try again.");
+      }
+      form.setFields(fieldErrors);
+    }
+    finally {
+      setSubmitting(false);
     }
   };
 
-  socket.emit("userOnline", user?.userId);
+  const fillBuyerDemo = () => {
+    form.setFieldsValue({
+      email: "taki@gmail.com",
+      password: "123456",
+    });
+  };
+  const fillAdminDemo = () => {
+    form.setFieldsValue({
+      email: "abdullah@gmail.com",
+      password: "123456",
+    });
+  };
 
-  let errorElement;
-  if (error) {
-    errorElement = <p className="text-danger m-0 text-center">{error}</p>;
-  }
-
+  const goWithoutLogin = () => {
+    navigate("/");
+  };
 
   return (
-    <div className="container-xxl">
-      <PageTitle pageTitle="Login" />
-      <div className="register">
-        <div className="register-dev">
-          {/* <div style={{ display: "flex", justifyContent: "center" }}>
-            <img src={logo} height="50px" alt="" />
-          </div> */}
-          <h4 className="text-center pt-3" style={{ fontFamily: "Algerian" }}>
-            Login
-          </h4>
-          <div className="register-form-dev">
-            <form onSubmit={handleSubmit(onFinish)}>
-              <div>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  {...register("email", { required: true })}
-                />
-              </div>
-
-              <div>
-                <input
-                  type={passVisible ? "text" : "password"}
-                  placeholder="Password"
-                  {...register("password", { required: true })}
-                />
-                <span
-                  className="login-pass-show"
-                  onClick={() => setPassVisible(!passVisible)}
-                >
-                  <small>{passVisible ? "Hide" : "Show"}</small>
-                </span>
-              </div>
-              <div className="pb-2">
-                <small className="pass-reset-btn">Reset Password</small>
-              </div>
-              <div>
-                <input
-                  className="reg-submit-input"
-                  type="submit"
-                  value="Login"
-                  required
-                />
-              </div>
-            </form>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: "#ff9100",
+          colorLink: "#ff9100",
+          colorLinkHover: "#e67f00",
+          colorLinkActive: "#cc6f00",
+          borderRadius: 8,
+        },
+      }}
+    >
+      <div
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: screens.xs ? 16 : 24,
+          // background: "linear-gradient(135deg, #fff3e0, #ffe0b2)",
+        }}
+      >
+        <Card
+          style={{
+            width: "100%",
+            maxWidth: 420,
+            borderRadius: 12,
+          }}
+          bordered
+        >
+          <div style={{ textAlign: "center", marginBottom: 8 }}>
+            <Title level={3} style={{ marginBottom: 10 }}>
+              Login
+            </Title>
           </div>
-          {errorElement}
-          <p className="text-center">
-            <small>
-              Alrady have an account?
-              <Link to="/register" style={{ textDecoration: "none" }}>
-                <span style={{ color: "purple" }}> Register</span>
-              </Link>
-            </small>
-          </p>
-          <Link to="/" style={{ textDecoration: "none", color: "orange" }}>
-            <h6
+
+          <Form
+            form={form}
+            name="login"
+            layout="vertical"
+            autoComplete="on"
+            onFinish={handleFinish}
+            requiredMark={false}
+            validateTrigger={["onBlur", "onSubmit"]}
+          >
+            {serverError && setTimeout(() => setServerError(""), 5000) && <Alert message={serverError} type="error" style={{ marginBottom: 16 }} />}
+            <Form.Item
+              label="Email"
+              name="email"
+              rules={[
+                { required: true, message: "Enter email" },
+                { type: "email", message: "Enter valid email" },
+              ]}
+              normalize={(value) => (value ? value.trim() : value)}
+            >
+              <Input
+                size="large"
+                prefix={<MailOutlined />}
+                placeholder="you@example.com"
+                inputMode="email"
+                autoCapitalize="none"
+                autoCorrect="off"
+                autoComplete="email"
+                aria-label="Email"
+              />
+            </Form.Item>
+
+            <Form.Item label="Password" name="password" rules={passwordRules}>
+              <Input.Password
+                size="large"
+                prefix={<LockOutlined />}
+                placeholder="••••••••"
+                autoComplete="current-password"
+                aria-label="Password"
+              />
+            </Form.Item>
+
+            <div
               style={{
-                textAlign: "center",
-                marginTop: "30px",
+                display: "flex",
+                flexDirection: screens.xs ? "column" : "row",
+                alignItems: screens.xs ? "flex-start" : "center",
+                justifyContent: "space-between",
+                gap: screens.xs ? 8 : 0,
+                marginBottom: 12,
               }}
             >
-              Continue to home
-            </h6>
-          </Link>
-        </div>
-        <div style={{ display: "flex", gap: "10px", marginBottom: "15px", justifyContent: "center" }}>
-          <button
-            type="button"
-            onClick={() => fillDemoCredentials("admin")}
-            style={{ padding: "6px 12px", cursor: "pointer",borderRadius:'5px',border:'1px solid gray' }}
-          >
-            Demo Admin
-          </button>
-          <button
-            type="button"
-            onClick={() => fillDemoCredentials("buyer")}
-            style={{ padding: "6px 12px", cursor: "pointer",borderRadius:'5px',border:'1px solid gray' }}
-          >
-            Demo Buyer
-          </button>
-        </div>
+              <Form.Item name="remember" valuePropName="checked" noStyle>
+                <Checkbox>Remember Me</Checkbox>
+              </Form.Item>
+              <Link href="#/forgot-password">Forgot password?</Link>
+            </div>
+
+            <Button
+              type="primary"
+              htmlType="submit"
+              size="large"
+              block
+              loading={submitting}
+            >
+              Login
+            </Button>
+
+            {/* Demo credential buttons */}
+            <Space style={{ marginTop: 12, width: "100%" }} direction="vertical">
+              <Button onClick={fillBuyerDemo} block>
+                Fill Buyer Demo
+              </Button>
+              <Button onClick={fillAdminDemo} block>
+                Fill Admin Demo
+              </Button>
+              <Button type="link" onClick={goWithoutLogin} block>
+                Continue Without Login
+              </Button>
+            </Space>
+
+            <Divider />
+            <div style={{ textAlign: "center" }}>
+              <Text type="secondary">Don't have an account?</Text>{" "}
+              <Link href="/auth/register">Sign Up</Link>
+            </div>
+          </Form>
+        </Card>
       </div>
-
-
-    </div>
+    </ConfigProvider>
   );
-};
-
-export default Login;
+}

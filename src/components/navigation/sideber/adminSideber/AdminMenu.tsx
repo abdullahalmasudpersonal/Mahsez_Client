@@ -1,9 +1,9 @@
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from "@ant-design/icons";
+import {  DashboardOutlined, ProductFilled, SettingOutlined, ShoppingOutlined } from "@ant-design/icons";
 
 export const adminMenus = [
   {
     key: "",
-    icon: <MailOutlined />,
+    icon: <DashboardOutlined />,
     label: "Dashboard",
     // children: [
     //   { key: "/admin/product-list", label: "List" },
@@ -12,7 +12,7 @@ export const adminMenus = [
   },
   {
     key: "product",
-    icon: <AppstoreOutlined />,
+    icon: <ProductFilled />,
     label: "Product",
     children: [
       { key: "/admin/product-list", label: "List" },
@@ -21,7 +21,7 @@ export const adminMenus = [
   },
   {
     key: "order",
-    icon: <SettingOutlined />,
+    icon: <ShoppingOutlined />,
     label: "Order",
     children: [
       { key: "/admin/order-list", label: "List" },
