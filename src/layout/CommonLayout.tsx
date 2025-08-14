@@ -4,6 +4,8 @@ import { Outlet } from "react-router-dom";
 import Navber from "@/pages/shared/navber/navber/Navber";
 import Footer from "@/pages/shared/Footer/Footer";
 import BottemHeader from "@/pages/shared/navber/BottemHeader/BottemHeader";
+import ScrollManager from "@/pages/shared/ScrollManager/ScrollManager";
+import ScrollingBtn from "@/pages/shared/ScrollingBtn/ScrollingBtn";
 
 const CommonLayout = () => {
   return (
@@ -14,6 +16,8 @@ const CommonLayout = () => {
       </Content>
       <Footer />
       <BottemHeader />
+      <ScrollManager />
+      <ScrollingBtn />
     </Layout>
   );
 };

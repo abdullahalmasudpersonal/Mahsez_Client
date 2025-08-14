@@ -88,16 +88,16 @@ const CreateBlog = () => {
   return (
     <div className="dashboard-dev2">
       <PageTitle pageTitle="Create Blog || Admin" />
-      <div className="pt-4 px-4">
-        <h5 className="fw-bold ">Create Blog</h5>
+      <div className="py-4 px-4" style={{backgroundColor:'#033566ff',borderRadius:'5px 5px 0 0'}}>
+        <h5 className="fw-bold m-0" style={{color:'white'}}>Create Blog</h5>
       </div>
-      <hr />
-      <div style={{ padding: "20px" }}>
+      {/* <hr /> */}
+      <div style={{ padding: "20px" ,}}>
         <Form
           form={form}
           layout="vertical"
           onFinish={onFinish}
-          style={{ maxWidth: "980px", margin: "0 auto" }}
+          style={{ maxWidth: "980px", margin: "0 auto",backgroundColor:'rgba(5, 43, 78, 1)', padding:'20px', borderRadius:'5px' }}
         >
           <Row gutter={16}>
             {/* Title */}

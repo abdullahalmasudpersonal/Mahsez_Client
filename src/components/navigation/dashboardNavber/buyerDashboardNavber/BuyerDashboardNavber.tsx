@@ -19,18 +19,15 @@ const BuyerDashboardNavber = ({ onMenuClick }: { onMenuClick: () => void }) => {
     const [updateAdminOnlineStatus] = useUpdateAdminOnlineStatusMutation();
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    console.log(userData, 'user data', name)
 
     const handleLogout = async () => {
         const userId = userData.data.id;
         socket.emit("userOffline", userId);
         if (user?.role === "buyer") {
-            const res = await updateAdminOnlineStatus({ userId });
-            if (res?.data?.success === true) {
-                dispatch(logout());
-            }
+            await updateAdminOnlineStatus({ userId });
         }
-        navigate("/");
+        dispatch(logout());
+        navigate("/", { replace: true });
     };
 
     const menuItems: MenuProps['items'] = [
@@ -38,7 +35,7 @@ const BuyerDashboardNavber = ({ onMenuClick }: { onMenuClick: () => void }) => {
             key: "user-info",
             label: (
                 <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
-                    <Avatar src={profileImg || undefined} size={74} style={{ backgroundColor: '#f56a00',border:'2px solid rgba(190, 190, 190, 1)', }} icon={<UserOutlined />} />
+                    <Avatar src={profileImg || undefined} size={74} style={{ backgroundColor: '#f56a00', border: '2px solid rgba(190, 190, 190, 1)', }} icon={<UserOutlined />} />
                     <Typography style={{ color: 'white', fontSize: '19px', fontWeight: 700, padding: '10px 0 0 0' }}>{name}</Typography>
                     <Typography style={{ color: 'white' }}><small>Buyer</small></Typography>
                 </div>
@@ -56,8 +53,8 @@ const BuyerDashboardNavber = ({ onMenuClick }: { onMenuClick: () => void }) => {
             handleLogout();
         }
         else if (e.key === "profile") {
-        navigate("/buyer");
-    }
+            navigate("/buyer");
+        }
     };
 
     return (
@@ -92,13 +89,9 @@ const BuyerDashboardNavber = ({ onMenuClick }: { onMenuClick: () => void }) => {
             </Text>
 
             <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-                {/* <Badge count={5} overflowCount={9}>
-                    <BellOutlined style={{ fontSize: 20, cursor: "pointer" }} />
-                </Badge> */}
-
-                <Dropdown menu={{ items: menuItems, onClick: handleMenuClick,className: "buyerNavberProfileDropdown", }} trigger={["click"]} >
+                <Dropdown menu={{ items: menuItems, onClick: handleMenuClick, className: "buyerNavberProfileDropdown", }} trigger={["click"]} >
                     <div style={{ display: "flex", alignItems: "center", cursor: "pointer" }}>
-                        <Avatar src={profileImg || undefined} style={{ backgroundColor: '#f56a00',border:'2px solid rgba(190, 190, 190, 1)', verticalAlign: 'middle' }} size="large" icon={<UserOutlined />} />
+                        <Avatar src={profileImg || undefined} style={{ backgroundColor: '#f56a00', border: '2px solid rgba(190, 190, 190, 1)', verticalAlign: 'middle' }} size="large" icon={<UserOutlined />} />
 
                     </div>
                 </Dropdown>

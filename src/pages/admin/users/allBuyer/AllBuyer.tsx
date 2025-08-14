@@ -264,8 +264,8 @@ const AllBuyer = () => {
   return (
     <div className="dashboard-dev2" style={{ overflowX: "auto" }}>
       <PageTitle pageTitle="Buyer List || Admin" />
-      <div className="pt-4 px-4 d-flex justify-content-between align-items-center">
-        <h5 className="fw-bold side-header">
+      <div className="py-4 px-4 d-flex justify-content-between align-items-center" style={{backgroundColor:'#033566ff',borderRadius:'5px 5px 0 0'}}>
+        <h5 className="fw-bold side-header m-0" style={{color:'white'}}>
           All Buyer List ({buyersData?.data?.length})
         </h5>
         <Row justify="end">
@@ -283,7 +283,7 @@ const AllBuyer = () => {
           </Col>
         </Row>
       </div>
-      <hr />
+      {/* <hr /> */}
       {buyerDataLoading ? (
         <Loader />
       ) : (

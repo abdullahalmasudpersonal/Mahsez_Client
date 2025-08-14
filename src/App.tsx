@@ -18,8 +18,8 @@ import socket from "./utils/Socket";
 import { useAppSelector } from "./redux/hooks";
 import { selectCurrentUser } from "./redux/features/auth/authSlice";
 import routes from "./routes/routes";
-import ScrollManager from "./pages/shared/ScrollManager/ScrollManager";
-import ScrollingBtn from "./pages/shared/ScrollingBtn/ScrollingBtn";
+// import ScrollManager from "./pages/shared/ScrollManager/ScrollManager";
+// import ScrollingBtn from "./pages/shared/ScrollingBtn/ScrollingBtn";
 
 function App() {
   const user = useAppSelector(selectCurrentUser);
@@ -49,8 +49,8 @@ function App() {
     <>
 
       <div>
-         <ScrollManager />
-         <ScrollingBtn />
+         {/* <ScrollManager />
+         <ScrollingBtn /> */}
         <Routes>{renderRoutes(routes)}</Routes>
       </div>
     </>

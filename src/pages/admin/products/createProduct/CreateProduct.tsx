@@ -20,6 +20,7 @@ import imageCompression from "browser-image-compression";
 import PageTitle from "../../../shared/PageTitle/PageTitle";
 import { resizeImage } from "../../../../utils/resizeResolution";
 import { useCreateProductMutation } from "../../../../redux/features/product/productApi";
+import './CreateProduct.css'
 
 const { Option } = Select;
 
@@ -202,18 +203,19 @@ const CreateProduct = () => {
     <>
       <div className="dashboard-dev2">
         <PageTitle pageTitle="Create Product || Admin" />
-        <div className="pt-4 px-4">
-          <h4 className="fw-bold side-header">Create Product</h4>
+        <div className="py-4 px-4" style={{ backgroundColor: '#002952ff', color: 'white', borderRadius: '5px 5px 0 0' }}>
+          <h4 className="fw-bold side-header m-0">Create Product</h4>
         </div>
-        <hr />
-        <div style={{ padding: "5px 20px" }}>
-          <Form form={form} layout="vertical" onFinish={handleSubmit}>
+        {/* <hr /> */}
+        <div style={{ padding: "20px", }}>
+          <Form form={form} layout="vertical" onFinish={handleSubmit} style={{ backgroundColor: '#033566ff', padding: '20px', borderRadius: '5px', }}>
             <Row gutter={16}>
               <Col xs={24} md={12}>
-                <Form.Item
+                <Form.Item style={{ color: 'white' }} className="my-label"
                   name="mainCategory"
                   label="Main Category"
                   rules={[{ required: true }]}
+                  labelCol={{ style: { color: 'white' } }}
                 >
                   <Select
                     placeholder="Main Category--"
@@ -229,7 +231,7 @@ const CreateProduct = () => {
                 </Form.Item>
               </Col>
               <Col xs={24} md={12}>
-                <Form.Item
+                <Form.Item className="my-label"
                   label="Category"
                   name="category"
                   rules={[{ required: true }]}
@@ -250,7 +252,7 @@ const CreateProduct = () => {
               </Col>
 
               <Col xs={24} md={12}>
-                <Form.Item
+                <Form.Item className="my-label"
                   label="Sub Category"
                   name="subCategory"
                   rules={[{ required: true }]}
@@ -271,7 +273,7 @@ const CreateProduct = () => {
               </Col>
 
               <Col xs={24} md={12}>
-                <Form.Item
+                <Form.Item className="my-label"
                   label="Product Name"
                   name="name"
                   rules={[{ required: true }]}
@@ -281,7 +283,7 @@ const CreateProduct = () => {
               </Col>
 
               <Col xs={24} md={12}>
-                <Form.Item
+                <Form.Item className="my-label"
                   label="Brand"
                   name="brand"
                   rules={[{ required: true }]}
@@ -307,7 +309,7 @@ const CreateProduct = () => {
               </Col>
 
               <Col xs={24} md={12}>
-                <Form.Item
+                <Form.Item className="my-label"
                   label="Available Quantity"
                   name="availableQuantity"
                   rules={[{ required: true }]}
@@ -317,7 +319,7 @@ const CreateProduct = () => {
               </Col>
 
               <Col xs={24} md={12}>
-                <Form.Item
+                <Form.Item className="my-label"
                   label="Stock Status"
                   name="stockStatus"
                   rules={[{ required: true }]}
@@ -330,7 +332,7 @@ const CreateProduct = () => {
               </Col>
 
               <Col xs={24} md={12}>
-                <Form.Item
+                <Form.Item className="my-label"
                   label="Purchase Price"
                   name="purchaseprice"
                   rules={[{ required: true }]}
@@ -340,7 +342,7 @@ const CreateProduct = () => {
               </Col>
 
               <Col xs={24} md={12}>
-                <Form.Item
+                <Form.Item className="my-label"
                   label="Price"
                   name="price"
                   rules={[{ required: true }]}
@@ -350,7 +352,7 @@ const CreateProduct = () => {
               </Col>
 
               <Col xs={24} md={12}>
-                <Form.Item
+                <Form.Item className="my-label"
                   label="Regular Price"
                   name="regularPrice"
                   rules={[{ required: true }]}
@@ -360,13 +362,13 @@ const CreateProduct = () => {
               </Col>
 
               <Col xs={24} md={12}>
-                <Form.Item name="offerPrice" label="Offer Price">
+                <Form.Item name="offerPrice" label="Offer Price" className="my-label">
                   <InputNumber style={{ width: "100%" }} min={0} />
                 </Form.Item>
               </Col>
 
               <Col xs={24} md={12}>
-                <Form.Item
+                <Form.Item className="my-label"
                   name="size"
                   label="Size"
                   rules={[{ required: true }]}
@@ -381,7 +383,7 @@ const CreateProduct = () => {
               </Col>
 
               <Col xs={24}>
-                <Form.Item
+                <Form.Item className="my-label"
                   label="Features"
                   name="features"
                   rules={[{ required: true }]}
@@ -391,13 +393,13 @@ const CreateProduct = () => {
               </Col>
 
               <Col xs={24}>
-                <Form.Item label="Features 2" name="features2">
+                <Form.Item label="Features 2" name="features2" className="my-label">
                   <ReactQuill />
                 </Form.Item>
               </Col>
 
               <Col xs={24}>
-                <Form.Item
+                <Form.Item className="my-label"
                   label="Description"
                   name="description"
                   rules={[{ required: true }]}
@@ -407,13 +409,13 @@ const CreateProduct = () => {
               </Col>
 
               <Col xs={24}>
-                <Form.Item label="Description 2" name="description2">
+                <Form.Item label="Description 2" name="description2" className="my-label">
                   <ReactQuill />
                 </Form.Item>
               </Col>
 
               <Col xs={24}>
-                <Form.Item label="Image Upload" name="images">
+                <Form.Item label="Image Upload" name="images" className="my-label">
                   <Upload
                     accept="image/*"
                     listType="picture-card"
@@ -442,7 +444,7 @@ const CreateProduct = () => {
               </Col>
 
               <Col xs={24}>
-                <Form.Item>
+                <Form.Item >
                   <Button
                     type="primary"
                     htmlType="submit"
