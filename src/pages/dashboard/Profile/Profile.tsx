@@ -51,16 +51,16 @@ const Profile = () => {
   ]);
 
   return (
-    <div className="dashboard-dev2">
+    <div className="dashboard-dev2" style={{  borderRadius: '3px' }}>
       <PageTitle pageTitle="My Profile " />
-      <div className="pt-4 px-4 profile-top-part">
-        <h4 className="fw-bold side-header">My Profile</h4>
+      <div className="py-4 px-4 profile-top-part" style={{ backgroundColor: '#002952b2',borderRadius:'5px 5px 0 0' }}>
+        <h4 className="fw-bold side-header m-0" style={{ color: 'white' }}>My Profile</h4>
         <button className="profile-edit-btn" onClick={() => setEdit(!edit)}>
           <FontAwesomeIcon icon={faEdit} />
           <span>&nbsp;{edit === false ? "Edit" : "Cancel"}</span>
         </button>
       </div>
-      <hr style={{ marginBottom: "0" }} />
+      {/* <hr style={{ marginBottom: "0" }} /> */}
       {edit ? (
         <div className="p-3">
           <UpdateProfile setEdit={setEdit} />

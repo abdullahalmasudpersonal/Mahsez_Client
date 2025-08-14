@@ -139,7 +139,7 @@ const MyOrderDetails = () => {
 
   return (
     <>
-      <div className="dashboard-dev2" style={{ padding: "10px" }}>
+      <div className="dashboard-dev2" style={{ padding: "10px"}}>
         <PageTitle pageTitle="Order Details" />
         {isLoading ? (
           <div
@@ -156,22 +156,23 @@ const MyOrderDetails = () => {
         ) : (
           <Row data-aos="fade-zoom-in">
             {/* প্রথম ডিভ */}
-            <Col xs={24} md={24} lg={16} className="orderInfoDiv">
+            <Col xs={24} md={24} lg={16} className="orderInfoDiv" >
               <Col
                 style={{
                   padding: "10px",
                   color: "black",
                   borderRadius: "3px",
+                  backgroundColor:'rgba(5, 85, 138, 1)',
                   boxShadow:
                     "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
                 }}
               >
-                <Col style={{ padding: "10px", textAlign: "center" }}>
-                  <h5 style={{ marginBottom: "0" }}>Order Information</h5>
+                <Col style={{ padding: "10px", textAlign: "center", }}>
+                  <h5 style={{ marginBottom: "0",color:'white' }}>Order Information</h5>
                   <Typography
                     style={
-                      {
-                        // display: "inline-block",
+                      { color:'yellow'
+                        // display: "inline-block", 
                       }
                     }
                   >
@@ -179,7 +180,7 @@ const MyOrderDetails = () => {
                   </Typography>
                   <Typography
                     style={
-                      {
+                      { color:'white'
                         // display: "inline-block",
                       }
                     }
@@ -370,7 +371,7 @@ const MyOrderDetails = () => {
                 style={{
                   width: "100%",
                   marginTop: "20px",
-                  borderRadius: "3px",
+                  color:'white',
                   boxShadow:
                     "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
                 }}
@@ -383,8 +384,9 @@ const MyOrderDetails = () => {
                   dataSource={dataTable}
                   pagination={false}
                   scroll={{ x: true }}
-                  style={{ width: "100%" }}
+                  style={{ width: "100%",border: 'none' }}
                   sticky
+                  
                 />
               </Col>
             </Col>
@@ -394,7 +396,7 @@ const MyOrderDetails = () => {
               <Col
                 style={{
                   padding: "20px",
-                  borderRadius: "3px",
+                  borderRadius: "3px",  backgroundColor:'rgba(5, 85, 138, 1)', color:'white',
                   boxShadow:
                     "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
                 }}

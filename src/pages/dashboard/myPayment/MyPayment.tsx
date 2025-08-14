@@ -50,10 +50,10 @@ const MyPayment = () => {
   return (
     <div className="dashboard-dev2">
       <PageTitle pageTitle="My Payments " />
-      <div className="pt-4 px-4">
-        <h5 className="fw-bold ">My Payments</h5>
+      <div className="py-4 px-4" style={{ backgroundColor: '#002952ff',borderRadius:'5px 5px 0 0' }}>
+        <h5 className="fw-bold m-0" style={{ color: 'white' }}>My Payments</h5>
       </div>
-      <hr />
+      {/* <hr /> */}
       <div className="p-3">
         {myOrderData?.data?.length < 1 ? (
           <div>
@@ -66,8 +66,8 @@ const MyPayment = () => {
             ) : (
               <>
                 {myOrderData?.data?.map((order: TOrder) => (
-                  <div className="my-single-order mb-3" data-aos="fade-zoom-in">
-                    <div className="px-3 pt-3 pb-2 d-flex justify-content-between">
+                  <div className="my-single-order mb-3" data-aos="fade-zoom-in" >
+                    <div className="px-3 pt-3 pb-2 d-flex justify-content-between" style={{ color: 'white',backgroundColor: '#1c548dff', borderRadius:'5px 5px 0 0' }}>
                       <div>
                         <h6 className="m-0 fw-bold">Order# {order?.orderId}</h6>
                         <p className="m-0">
@@ -117,7 +117,7 @@ const MyPayment = () => {
                         </h6>
                       </div>
                     </div>
-                    <hr className="m-0" />
+                    {/* <hr className="m-0" /> */}
                     <div className="mySingleOrderInfoDev">
                       <div>
                         {order?.items?.slice(0, 1)?.map((item) => {

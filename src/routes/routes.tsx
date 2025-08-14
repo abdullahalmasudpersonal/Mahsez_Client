@@ -77,9 +77,9 @@ const routes = [
       { path: "blog/:blogId", element: <BlogDetails /> },
       { path: "offers", element: <Offers /> },
       { path: "aboutUs", element: <AboutUs /> },
-      { path: "/shopping_cart", element: <ShoppingCart /> },
-      { path: "/privacy_policy", element: <PrivacyPolicy /> },
-      { path: "/terms_condition", element: <TermsCondition /> },
+      { path: "shopping_cart", element: <ShoppingCart /> },
+      { path: "privacy_policy", element: <PrivacyPolicy /> },
+      { path: "terms_condition", element: <TermsCondition /> },
       { path: "*", element: <Notfound /> },
     ],
   },
@@ -94,6 +94,7 @@ const routes = [
   },
   {
     path: "/buyer",
+    // element: <BuyerLayout />,
     element: <ProtectedRoute><BuyerLayout /></ProtectedRoute>,
     children: [
       { path: "", element: <Profile /> },

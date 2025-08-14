@@ -92,7 +92,7 @@ const AdminDashboardNavber = ({ onMenuClick }: { onMenuClick: () => void }) => {
             </Text>
 
             <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-                <Dropdown arrow menu={{ items: menuItems, onClick: handleMenuClick, className: "adminNavberProfileDropdown", }} trigger={["click"]} >
+                <Dropdown menu={{ items: menuItems, onClick: handleMenuClick, className: "adminNavberProfileDropdown", }} trigger={["click"]} >
                     <div style={{ display: "flex", alignItems: "center", cursor: "pointer" }}>
                         <Avatar src={profileImg || undefined} style={{ backgroundColor: '#f56a00', verticalAlign: 'middle',border:'2px solid rgba(190, 190, 190, 1)' }} size="large" icon={<UserOutlined />} />
                     </div>

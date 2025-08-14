@@ -25,18 +25,18 @@ export const adminMenus = [
     label: "Order",
     children: [
       { key: "/admin/order-list", label: "List" },
-      { key: "/admin/", label: "Option 2" },
+      // { key: "/admin/", label: "Option 2" },
     ],
   },
-  {
-    key: "offer",
-    icon: <SettingOutlined />,
-    label: "Offer",
-    children: [
-      { key: "/admin/order-list", label: "List" },
-      { key: "/admin/order-list", label: "Create" },
-    ],
-  },
+  // {
+  //   key: "offer",
+  //   icon: <SettingOutlined />,
+  //   label: "Offer",
+  //   children: [
+  //     { key: "/admin/order-list", label: "List" },
+  //     { key: "/admin/order-list", label: "Create" },
+  //   ],
+  // },
   {
     key: "blog",
     icon: <SettingOutlined />,
@@ -61,7 +61,7 @@ export const adminMenus = [
     label: "Admin",
     children: [
       { key: "/admin/admin-list", label: "List" },
-      { key: "/admin/admin-create", label: "Create" },
+      // { key: "/admin/admin-create", label: "Create" },
     ],
   },
   {

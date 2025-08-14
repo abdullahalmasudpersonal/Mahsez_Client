@@ -145,8 +145,8 @@ const ListBlogs = () => {
   return (
     <div className="dashboard-dev2" style={{ overflowX: "auto" }}>
       <PageTitle pageTitle="Blog List || Admin" />
-      <div className="pt-4 px-4 d-flex justify-content-between align-items-center">
-        <h5 className="fw-bold side-header">
+      <div className="py-4 px-4 d-flex justify-content-between align-items-center" style={{backgroundColor:'#033566ff',borderRadius:'5px 5px 0 0'}}>
+        <h5 className="fw-bold m-0 side-header" style={{color:'white'}}>
           All Blog List ({blogsData?.data?.length})
         </h5>
         <Row justify="end">
@@ -164,7 +164,7 @@ const ListBlogs = () => {
           </Col>
         </Row>
       </div>
-      <hr />
+      {/* <hr /> */}
       {blogDataLoading ? (
         <Loader />
       ) : (
@@ -177,7 +177,7 @@ const ListBlogs = () => {
               pageSize: pageSize,
               showSizeChanger: false,
             }}
-            scroll={{ x: "max-content", y: 500 }}
+            scroll={{ x: "max-content", y: 550 }}
             style={{ width: "100%" }}
             sticky
           />

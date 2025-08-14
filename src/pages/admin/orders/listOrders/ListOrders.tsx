@@ -158,8 +158,8 @@ const ListOrders = () => {
   return (
     <div className="dashboard-dev2">
       <PageTitle pageTitle="Order List || Admin" />
-      <div className="pt-4 px-4 d-flex justify-content-between align-items-center">
-        <h4 className="fw-bold side-header">
+      <div className="py-4 px-4 d-flex justify-content-between align-items-center" style={{backgroundColor: '#033566ff', borderRadius:'5px 5px 0 0'}}>
+        <h4 className="fw-bold side-header m-0" style={{color:'white'}}>
           All Order List ({orderData?.data?.length})
         </h4>
         <Row justify="end">
@@ -177,7 +177,7 @@ const ListOrders = () => {
           </Col>
         </Row>
       </div>
-      <hr />
+      {/* <hr /> */}
       {orderDataLoading ? (
         <Loader />
       ) : (
@@ -190,7 +190,7 @@ const ListOrders = () => {
               pageSize: pageSize,
               showSizeChanger: false,
             }}
-            scroll={{ x: "max-content", y: 500 }}
+            scroll={{ x: "max-content", y: 550 }}
             style={{ width: "100%" }}
             sticky
           />
