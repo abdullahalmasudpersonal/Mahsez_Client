@@ -1,25 +1,18 @@
 
 /* margin bottom for gap */
 .admin-sidebar-menu .ant-menu-item, .admin-sidebar-menu .ant-menu-submenu-title{
-  margin: 8px 6px;
   font-size: 15px;
   font-weight: 700;
-  width: 242px;
-  /* border-bottom: 1px solid rgba(75, 75, 75, 0.466); */
     border-radius: 2px;
  }
  /* menu item bg color none */
 .admin-sidebar-menu .ant-menu .ant-menu {
   /* background: none !important; */
   background: rgb(0, 28, 59) !important;
-  /* width: 246px; */
-  /* margin: 5px; */
-  /* border-radius: 0px; */
 }
 /* menu item & submenu item hover color set */
 .admin-sidebar-menu .ant-menu-item:hover, .admin-sidebar-menu .ant-menu-submenu-title:hover {
   background: rgba(24, 144, 255, 0.15) !important;
-  /* border-radius: 1px; */
 }
 /* active item bgcolor & color set */
 :where(.ant-menu-dark) .ant-menu-item-selected {

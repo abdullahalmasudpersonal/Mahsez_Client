@@ -68,7 +68,7 @@ const ShoppingCart: React.FC = () => {
                     <th scope="col" className="mobile-cart">
                       Image
                     </th>
-                    <th scope="col">Product Name</th>
+                    <th scope="col">Product</th>
                     <th scope="col" className="mobile-cart">
                       Brand
                     </th>

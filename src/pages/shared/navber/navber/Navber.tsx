@@ -1,6 +1,6 @@
 import "./Navber.css";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, } from "react-router-dom";
 import logo from "../../../../../public/assets/img/logo/mahsez.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -32,7 +32,7 @@ const Navber = () => {
   const user = useAppSelector(selectCurrentUser);
   const { role } = (user as TUser) || {};
   const [shadow, setShadow] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [updateBuyerOnlinestatus] = useUpdateBuyerOnlineStatusMutation();
   const [updateAdminOnlineStatus] = useUpdateAdminOnlineStatusMutation();
 
@@ -66,14 +66,14 @@ const Navber = () => {
     }
 
     // socket.emit("userOffline", user?.userId);
-    navigate("/");
+    // navigate("/");
   };
 
   const items: MenuProps["items"] = [
     {
       key: "2",
       label: (
-        <Link to="/dashboard" style={{ textDecoration: "none" }}>
+        <Link to={`/${role}`} style={{ textDecoration: "none" }}>
           Dashboard
         </Link>
       ),
@@ -83,19 +83,6 @@ const Navber = () => {
       label: <Typography onClick={handleLogout}>Logout</Typography>,
     },
   ];
-
-  const isAdmin = user?.role === "admin";
-
-  if (isAdmin) {
-    items.push({
-      key: "1",
-      label: (
-        <Link to="/admin" style={{ textDecoration: "none" }}>
-          Admin Panel
-        </Link>
-      ),
-    });
-  }
 
   return (
     <>
@@ -133,7 +120,7 @@ const Navber = () => {
                   SIGN OUT
                 </li>
               ) : (
-                <Link to="/login" style={{ textDecoration: "none" }}>
+                <Link to="/auth/login" style={{ textDecoration: "none" }}>
                   <li>SIGN IN</li>
                 </Link>
               )}

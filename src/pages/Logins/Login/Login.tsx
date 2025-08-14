@@ -13,7 +13,7 @@ import {
   Alert,
 } from "antd";
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { RuleObject } from "antd/es/form";
 import { StoreValue } from "antd/es/form/interface";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
@@ -21,7 +21,7 @@ import { verifyToken } from "@/utils/verifyToken";
 import { setUser, TUser } from "@/redux/features/auth/authSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { toast } from "sonner";
-const { Title, Text, Link } = Typography;
+const { Title, Text } = Typography;
 const { useBreakpoint } = Grid;
 
 interface ErrorSource {
@@ -36,7 +36,7 @@ interface ServerErrorResponse {
   };
 }
 
-export default function ResponsiveLogin() {
+const Login = () => {
   const [form] = Form.useForm();
   const [submitting, setSubmitting] = useState(false);
   const screens = useBreakpoint();
@@ -44,7 +44,7 @@ export default function ResponsiveLogin() {
   const location = useLocation();
   const [login] = useLoginMutation();
   const dispatch = useAppDispatch();
-  const from = location.state?.from?.pathname || "/";
+  // const from = location.state?.from?.pathname || `${role}`;
   const [serverError, setServerError] = useState<string | null>(null);
 
   const passwordRules = [
@@ -81,7 +81,7 @@ export default function ResponsiveLogin() {
       dispatch(setUser({ user: user, token: res.data.accessToken }));
       const toastId = toast.loading("Logging in...");
       toast.success("Logged in successfully!", { id: toastId, duration: 2000 });
-      navigate(from, { replace: true });
+      navigate(location.state?.from?.pathname || `/${user?.role}`, { replace: true });
     } catch (err) {
       const fieldErrors: { name: string | (string | number)[]; errors: string[] }[] = [];
 
@@ -217,7 +217,8 @@ export default function ResponsiveLogin() {
               <Form.Item name="remember" valuePropName="checked" noStyle>
                 <Checkbox>Remember Me</Checkbox>
               </Form.Item>
-              <Link href="#/forgot-password">Forgot password?</Link>
+              <Text>Forgot password?</Text>
+              {/* <Link to="#/forgot-password">Forgot password?</Link> */}
             </div>
 
             <Button
@@ -246,7 +247,7 @@ export default function ResponsiveLogin() {
             <Divider />
             <div style={{ textAlign: "center" }}>
               <Text type="secondary">Don't have an account?</Text>{" "}
-              <Link href="/auth/register">Sign Up</Link>
+              <Link to="/auth/register">Sign Up</Link>
             </div>
           </Form>
         </Card>
@@ -254,3 +255,5 @@ export default function ResponsiveLogin() {
     </ConfigProvider>
   );
 }
+
+export default Login;

@@ -1,8 +1,3 @@
-// import { lazy } from "react";
-// const CommonLayout = lazy(() => import("@/layout/CommonLayout"));
-// const AdminLayout = lazy(() => import("@/layout/AdminLayout"));
-// const AboutUs = lazy(() => import("@/pages/AboutUs/AboutUs"));
-
 import AdminLayout from "@/layout/AdminLayout";
 import AuthLayout from "@/layout/AuthLayout";
 import BuyerLayout from "@/layout/BuyerLayout";
@@ -49,6 +44,7 @@ import ProductDetails from "@/pages/ProductDetails/ProductDetails/ProductDetails
 import SearchBerResult from "@/pages/shared/navber/SearchBerResult/SearchBerResult";
 import Notfound from "@/pages/shared/Notfound/Notfound";
 import ProtectedRoute from "@/pages/shared/protectedRoute/ProtectedRoute";
+import RequireAdmin from "@/pages/shared/protectedRoute/RequireAdmin";
 import ShoppingCart from "@/pages/shoppingCart/ShoppingCart";
 import TermsCondition from "@/pages/Terms&Condition/Terms&Condition";
 
@@ -98,20 +94,20 @@ const routes = [
   },
   {
     path: "/buyer",
-    element: <BuyerLayout />,
+    element: <ProtectedRoute><BuyerLayout /></ProtectedRoute>,
     children: [
       { path: "", element: <Profile /> },
       { path: "my-order", element: <MyOrder /> },
-      { path:"my-order-details/:orderId", element: <MyOrderDetails /> },
-      { path:"my-payment", element: <MyPayment /> },
-      { path:"payment-success", element: <SuccessPayment /> },
-      { path:"invoice", element: <Invoice /> },
+      { path: "my-order-details/:orderId", element: <MyOrderDetails /> },
+      { path: "my-payment", element: <MyPayment /> },
+      { path: "payment-success", element: <SuccessPayment /> },
+      { path: "invoice", element: <Invoice /> },
       { path: "*", element: <Notfound /> },
     ],
   },
   {
     path: "/admin",
-    element: <AdminLayout />,
+    element: <RequireAdmin><AdminLayout /></RequireAdmin>,
     children: [
       { path: '', element: <HomeAdmin /> },
       { path: "product-list", element: <ListProducts /> },
@@ -127,6 +123,7 @@ const routes = [
       { path: "admin-create", element: <AllAdmin /> },
       { path: "buyer-list", element: <AllBuyer /> },
       // { path: "buyer-list", element: <AllBuyer /> },
+      { path: 'profile', element: <Profile /> },
       { path: "*", element: <Notfound /> },
     ],
   },

@@ -44,7 +44,7 @@ const AdminSideber = ({ isDrawer }: { isDrawer?: boolean }) => {
         left: 0,
         top: 0,
         overflow: "hidden",
-        borderRight: '.5px solid #263b44ff'
+        borderRight: '.5px solid #263b44ff',
         // overflow: 'auto',
       }}>
         <div

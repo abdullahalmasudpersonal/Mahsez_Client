@@ -1,6 +1,5 @@
-import { Layout, Avatar, Badge, Dropdown, Typography, Grid, MenuProps } from "antd";
-import { BellOutlined, LogoutOutlined, MenuOutlined, SettingOutlined, UserOutlined, } from "@ant-design/icons";
-import { useState } from "react";
+import { Layout, Avatar, Dropdown, Typography, Grid, MenuProps } from "antd";
+import { LogoutOutlined, MenuOutlined, SettingOutlined, UserOutlined, } from "@ant-design/icons";
 import './adminDashboardNavber.css';
 import { useGetMyProfileQuery } from "@/redux/features/user/userApi";
 import socket from "@/utils/Socket";
@@ -9,28 +8,23 @@ import { useAppDispatch } from "@/redux/hooks";
 import { logout } from "@/redux/features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 
-
 const { Header } = Layout;
 const { Text } = Typography;
 const { useBreakpoint } = Grid;
 
-const ColorList = ['#f56a00', '#7265e6', '#ffbf00', '#00a2ae'];
-const UserList = ['U', 'Lucy', 'Tom', 'Edward'];
-
 const AdminDashboardNavber = ({ onMenuClick }: { onMenuClick: () => void }) => {
-    const [color, /* setColor */] = useState(ColorList[0]);
-    const [user, /* setUser */] = useState(UserList[0]);
     const screens = useBreakpoint();
     const { data: userData } = useGetMyProfileQuery({});
-    const { role } = userData?.data?.user || {};
+    const { user, name, profileImg } = userData?.data || {};
     const [updateAdminOnlineStatus] = useUpdateAdminOnlineStatusMutation();
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    
+    console.log(userData)
+
     const handleLogout = async () => {
         const userId = userData.data.id;
         socket.emit("userOffline", userId);
-        if (role === "admin") {
+        if (user?.role === "admin") {
             const res = await updateAdminOnlineStatus({ userId });
             if (res?.data?.success === true) {
                 dispatch(logout());
@@ -44,10 +38,8 @@ const AdminDashboardNavber = ({ onMenuClick }: { onMenuClick: () => void }) => {
             key: "user-info",
             label: (
                 <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
-                    <Avatar size={74} style={{ backgroundColor: color }}>
-                        {user[0]}
-                    </Avatar>
-                    <Typography style={{ color: 'white', fontSize: '19px', fontWeight: 700, padding: '10px 0 0 0' }}>Abdullah Al Masud</Typography>
+                    <Avatar src={profileImg || undefined} size={74} style={{ backgroundColor: '#f56a00',border:'2px solid rgba(190, 190, 190, 1)', }} icon={<UserOutlined />} />
+                    <Typography style={{ color: 'white', fontSize: '19px', fontWeight: 700, padding: '10px 0 0 0' }}>{name}</Typography>
                     <Typography style={{ color: 'white' }}><small>Admin</small></Typography>
                 </div>
             ),
@@ -62,6 +54,9 @@ const AdminDashboardNavber = ({ onMenuClick }: { onMenuClick: () => void }) => {
     const handleMenuClick = (e: { key: string }) => {
         if (e.key === "logout") {
             handleLogout();
+        }
+        else if (e.key === "profile") {
+            navigate("/admin/profile");
         }
     };
 
@@ -97,15 +92,9 @@ const AdminDashboardNavber = ({ onMenuClick }: { onMenuClick: () => void }) => {
             </Text>
 
             <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-                <Badge count={5} overflowCount={9}>
-                    <BellOutlined style={{ fontSize: 20, cursor: "pointer" }} />
-                </Badge>
-
-                <Dropdown menu={{ items: menuItems, onClick: handleMenuClick }} trigger={["click"]} >
+                <Dropdown arrow menu={{ items: menuItems, onClick: handleMenuClick, className: "adminNavberProfileDropdown", }} trigger={["click"]} >
                     <div style={{ display: "flex", alignItems: "center", cursor: "pointer" }}>
-                        <Avatar style={{ backgroundColor: color, verticalAlign: 'middle' }} size="large">
-                            {user}
-                        </Avatar>
+                        <Avatar src={profileImg || undefined} style={{ backgroundColor: '#f56a00', verticalAlign: 'middle',border:'2px solid rgba(190, 190, 190, 1)' }} size="large" icon={<UserOutlined />} />
                     </div>
                 </Dropdown>
             </div>

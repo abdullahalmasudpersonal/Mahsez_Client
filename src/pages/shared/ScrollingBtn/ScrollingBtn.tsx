@@ -12,7 +12,7 @@ const ScrollingBtn = () => {
   };
 
   const listenToScroll = () => {
-    const heightToHidden = 20;
+    const heightToHidden = 400;
     const winScroll =
       document.body.scrollTop || document.documentElement.scrollTop;
 
