@@ -10,7 +10,7 @@ import {
 } from "antd";
 import Loader from "../../../shared/loader/Loader";
 import PageTitle from "../../../shared/PageTitle/PageTitle";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import { TAdmin } from "../../../../types/admin.types";
