@@ -1,45 +1,65 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import "./Register.css";
-import PageTitle from "../../shared/PageTitle/PageTitle";
-import { toast } from "sonner";
 import { useState } from "react";
-// import { TUser } from "../../../redux/features/auth/authSlice";
-import { SubmitHandler, useForm } from "react-hook-form";
 import {
-  useLoginMutation,
-  useRegistrationBuyerMutation,
-} from "../../../redux/features/auth/authApi";
-import { verifyToken } from "../../../utils/verifyToken";
-import { setUser, TUser } from "../../../redux/features/auth/authSlice";
-import { useAppDispatch } from "../../../redux/hooks";
+  Button,
+  Card,
+  Form,
+  Grid,
+  Input,
+  Typography,
+  ConfigProvider,
+  Alert,
+  Divider,
+} from "antd";
+import { MailOutlined, LockOutlined, UserOutlined } from "@ant-design/icons";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { RuleObject } from "antd/es/form";
+import { StoreValue } from "antd/es/form/interface";
+import { toast } from "sonner";
+import { useLoginMutation, useRegistrationBuyerMutation } from "@/redux/features/auth/authApi";
+import { verifyToken } from "@/utils/verifyToken";
+import { setUser, TUser } from "@/redux/features/auth/authSlice";
+import { useAppDispatch } from "@/redux/hooks";
+// import { useRegisterMutation } from "@/redux/features/auth/authApi"; // API Hook
 
-type FormValues = {
-  name: string;
-  email: string;
-  password: string;
-};
+
+const { Title, Text } = Typography;
+const { useBreakpoint } = Grid;
 
 const Register = () => {
-  const { register, handleSubmit } = useForm<FormValues>();
-  const [, setError] = useState<string | null>(null);
-  const [passVisible, setPassVisible] = useState(false);
-  const dispatch = useAppDispatch();
+  const [form] = Form.useForm();
+  const [submitting, setSubmitting] = useState(false);
+  const screens = useBreakpoint();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
   const [createBuyer] = useRegistrationBuyerMutation();
   const [login] = useLoginMutation();
+  const dispatch = useAppDispatch();
+  const [serverError, setServerError] = useState<string | null>(null);
+  const from = location.state?.from?.pathname || "/";
 
-  const onFinish: SubmitHandler<FormValues> = async (data) => {
+  const passwordRules = [
+    { required: true, message: "Enter password" },
+    {
+      validator(_: RuleObject, value: StoreValue) {
+        if (!value) return Promise.resolve();
+        if ((value as string).length < 6) {
+          return Promise.reject("Must be at least 6 characters.");
+        }
+        return Promise.resolve();
+      },
+    },
+  ];
+
+  const handleFinish = async (data: { name: string; email: string; password: string }) => {
+    setSubmitting(true);
     try {
       const userInfo = {
-        password: data?.password,
+        password: data.password,
         buyer: {
-          name: data?.name,
-          email: data?.email,
-        },
+          name: data.name.trim(),
+          email: data.email.trim(),
+        }
       };
-
       const res = await createBuyer(userInfo).unwrap();
       if (res.success) {
         const loginData = {
@@ -56,94 +76,134 @@ const Register = () => {
         });
         navigate(from, { replace: true });
       }
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (err) {
-      setError("Please check your credentials.");
-      toast.error("Something went wrong!");
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+      setServerError(err.message);
+    } finally {
+      setSubmitting(false);
     }
   };
 
-  // let errorElement;
-  // if (error) {
-  //     errorElement =
-  //         <p className='text-danger m-0'>Error: {error?.message.split(' ')[123]} </p>
-  //        // console.log('masud',errorElement)
-  // }
+  const goWithoutLogin = () => {
+    navigate("/");
+  };
 
   return (
-    <div className="container-xxl">
-      <PageTitle pageTitle="Registration" />
-      <div className="register">
-        <div className="register-dev">
-          <h4 className="text-center pt-4" style={{ fontFamily: "Algerian" }}>
-            New Account
-          </h4>
-
-          <div className="register-form-dev">
-            <form onSubmit={handleSubmit(onFinish)}>
-              <div>
-                <input
-                  type="text"
-                  placeholder="Full Name"
-                  {...register("name", { required: true })}
-                />
-              </div>
-
-              <div>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  {...register("email", { required: true })}
-                />
-              </div>
-
-              <div>
-                <input
-                  type={passVisible ? "text" : "password"}
-                  placeholder="Password"
-                  {...register("password", { required: true })}
-                />
-                <span
-                  className="login-pass-show"
-                  onClick={() => setPassVisible(!passVisible)}
-                >
-                  <small>{passVisible ? "Hide" : "Show"}</small>
-                </span>
-              </div>
-              <div>
-                <input
-                  className="reg-submit-input"
-                  type="submit"
-                  value="Create Account"
-                  required
-                />
-              </div>
-            </form>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: "#ff9100",
+          colorLink: "#ff9100",
+          colorLinkHover: "#e67f00",
+          colorLinkActive: "#cc6f00",
+          borderRadius: 8,
+        },
+      }}
+    >
+      <div
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: screens.xs ? 16 : 24,
+        }}
+      >
+        <Card
+          style={{
+            width: "100%",
+            maxWidth: 420,
+            borderRadius: 12,
+          }}
+          bordered
+        >
+          <div style={{ textAlign: "center", marginBottom: 8 }}>
+            <Title level={3} style={{ marginBottom: 10 }}>
+              Register
+            </Title>
           </div>
-          <p className="text-center m-0 p-0">
-            {/* <small>{errorElement}</small> */}
-          </p>
-          <p className="text-center">
-            <small>
-              Alrady have an account?
-              <Link to="/auth/login" style={{ textDecoration: "none" }}>
-                <span style={{ color: "purple" }}> Login</span>
-              </Link>
-            </small>
-          </p>
-          <Link to="/" style={{ textDecoration: "none", color: "orange" }}>
-            <h6
-              style={{
-                textAlign: "center",
-                marginTop: "10px",
-              }}
+
+          <Form
+            form={form}
+            name="register"
+            layout="vertical"
+            autoComplete="on"
+            onFinish={handleFinish}
+            requiredMark={false}
+            validateTrigger={["onBlur", "onSubmit"]}
+          >
+            {serverError && (
+              <Alert message={serverError} type="error" style={{ marginBottom: 16 }} />
+            )}
+
+            <Form.Item
+              label="Name"
+              name="name"
+              rules={[{ required: true, message: "Enter your name" }]}
+              // normalize={(value) => (value ? value.trim() : value)}
+              normalize={(value) => (value ? value.replace(/\s+/g, ' ') : value)}
+
             >
-              Continue to home
-            </h6>
-          </Link>
-        </div>
+              <Input
+                size="large"
+                prefix={<UserOutlined />}
+                placeholder="Your Name"
+                aria-label="Name"
+              />
+            </Form.Item>
+
+            <Form.Item
+              label="Email"
+              name="email"
+              rules={[
+                { required: true, message: "Enter email" },
+                { type: "email", message: "Enter valid email" },
+              ]}
+              normalize={(value) => (value ? value.trim() : value)}
+            >
+              <Input
+                size="large"
+                prefix={<MailOutlined />}
+                placeholder="you@example.com"
+                inputMode="email"
+                autoCapitalize="none"
+                autoCorrect="off"
+                autoComplete="email"
+                aria-label="Email"
+              />
+            </Form.Item>
+
+            <Form.Item label="Password" name="password" rules={passwordRules}>
+              <Input.Password
+                size="large"
+                prefix={<LockOutlined />}
+                placeholder="••••••••"
+                autoComplete="new-password"
+                aria-label="Password"
+              />
+            </Form.Item>
+
+            <Button
+              type="primary"
+              htmlType="submit"
+              size="large"
+              block
+              loading={submitting}
+            >
+              Register
+            </Button>
+            <Button type="link" onClick={goWithoutLogin} block style={{marginTop:'20px'}}>
+              Continue Without Login
+            </Button>
+            <Divider />
+            <div style={{ textAlign: "center" }}>
+              <Text type="secondary">Already have an account?</Text>{" "}
+              <Link to="/auth/login">Login</Link>
+            </div>
+          </Form>
+        </Card>
       </div>
-    </div>
+    </ConfigProvider>
   );
 };
 
