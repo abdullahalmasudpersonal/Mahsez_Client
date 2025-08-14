@@ -1,22 +1,18 @@
 // import { useLocation } from "react-router-dom";
 import { ReactNode } from "react";
-import { selectCurrentUser } from "../../../redux/features/auth/authSlice";
-import { useAppSelector } from "../../../redux/hooks";
+import { logout, selectCurrentUser } from "../../../redux/features/auth/authSlice";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
+import { Navigate, useLocation } from "react-router-dom";
 
 const RequireAdmin = ({ children }: { children: ReactNode }) => {
-  useAppSelector(selectCurrentUser);
-  // const [admin, adminLoading] = useAdmin(user);
-  // const location = useLocation();
+  const user = useAppSelector(selectCurrentUser);
+  const location = useLocation();
+  const dispatch = useAppDispatch();
 
-
-  // if (loading || adminLoading) {
-  //     return <Loading />
-  // }
-
-  // if (!user || !admin) {
-  //     logout(auth);
-  //     return <Navigate to="/login" state={{ from: location }} replace />;
-  // }
+  if (!user || user.role !== "admin") {
+    dispatch(logout());
+    return <Navigate to="/auth/login" state={{ from: location }} replace />;
+  }
   return children;
 };
 

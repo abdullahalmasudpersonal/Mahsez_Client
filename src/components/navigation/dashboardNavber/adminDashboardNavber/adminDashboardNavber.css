@@ -1,23 +1,22 @@
-/* Dropdown মেনুতে সব টেক্সট সাদা */
-.ant-dropdown-menu {
+/* admin & buyer navber Dropdown মেনুতে সব টেক্সট সাদা */
+.adminNavberProfileDropdown {
   min-width: 230px;
   background-color: #001f3f !important;
   border: 1px solid rgba(75, 75, 75, 1);
 }
-
-.ant-dropdown-menu-item {
-    padding: 6px !important;
+.adminNavberProfileDropdown .ant-dropdown-menu-item {
+  padding: 6px !important;
   color: white !important;
   font-size: 17px !important;
 }
+.adminNavberProfileDropdown .ant-dropdown-menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+}
+
 /* not removed */
 /* .ant-dropdown-menu-item,
 .ant-dropdown-menu-submenu-title {
   color: white !important;
   font-size: 17px !important;
 } */
-
-.ant-dropdown-menu-item:hover {
-  background-color: rgba(255, 255, 255, 0.1) !important;
-  color: white !important;
-}

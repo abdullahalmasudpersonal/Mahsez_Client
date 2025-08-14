@@ -3,10 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight, faUserAlt } from "@fortawesome/free-solid-svg-icons";
 import { TBlog } from "../../../types/blog.types";
 import { formatDate } from "../../../utils/formatDate";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const Blog = (blog: TBlog) => {
-  const { _id, writer, title, image, description, createdAt } = blog;
+  const { /* _id, */ writer, title, image, description, createdAt } = blog;
+  
 
   const createBlogDate = formatDate(createdAt);
 
@@ -41,12 +42,13 @@ const Blog = (blog: TBlog) => {
           <h6 className="d-flex align-items-center m-0">
             <FontAwesomeIcon icon={faCaretRight} fontSize="14px" />
             &nbsp; &nbsp;
-            <Link
+            {/* <Link
               to={`/blog/${_id}`}
               style={{ textDecoration: "none", color: "black" }}
             >
               <small>Read More</small>
-            </Link>
+            </Link> */}
+             <small>Read More</small>
           </h6>
         </div>
       </div>

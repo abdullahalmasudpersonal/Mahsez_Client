@@ -1,9 +1,8 @@
 import HomeFCategore from "./HomeFCategore/HomeFCategore";
 import "./HomeFeaturedCategory.css";
-import UseHomeFeaturedCategory from "../../../Hooks/UseHomeFeaturedCategory/UseHomeFeaturedCategory";
+import { homeFCategory } from "./FeaturedCategoryData";
 
 const HomeFeaturedCategory = () => {
-  const [homeFCategory] = UseHomeFeaturedCategory();
 
   return (
     <div className="my-5">

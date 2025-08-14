@@ -16,7 +16,6 @@ const BuyerLayout = () => {
 
     return (
         <Layout style={{ minHeight: '100vh' }}>
-            <BuyerSideber />
             {screens.lg && <BuyerSideber />}
             <Layout style={{ marginLeft: screens.lg ? 255 : 0 }}>
                 <Content style={{
