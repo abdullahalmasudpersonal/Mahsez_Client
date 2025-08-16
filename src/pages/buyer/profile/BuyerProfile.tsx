@@ -1,4 +1,3 @@
-import UpdateProfile from "@/pages/dashboard/Profile/UpdateProfile";
 import Loader from "@/pages/shared/loader/Loader";
 import { useGetMyProfileQuery } from "@/redux/features/user/userApi";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
@@ -8,6 +7,7 @@ import { useEffect, useState } from "react";
 import profile from "@/assets/img/profile/profileAvater.jpg";
 import Title from "antd/es/typography/Title";
 import './BuyerProfile.css';
+import UpdateProfile from "./UpdateProfile";
 
 
 const BuyerProfile = () => {
