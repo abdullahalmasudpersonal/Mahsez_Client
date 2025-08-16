@@ -63,11 +63,7 @@ const UpdateProfile = ({ setEdit }: UpdateProfileProps) => {
     form,
   ]);
 
-  const handleChange = ({
-    fileList: newFileList,
-  }: {
-    fileList: UploadFile[];
-  }) => {
+  const handleChange = ({ fileList: newFileList }: { fileList: UploadFile[] }) => {
     setFileList(newFileList.slice(-1));
   };
 
@@ -117,7 +113,7 @@ const UpdateProfile = ({ setEdit }: UpdateProfileProps) => {
               src={
                 fileList.length > 0
                   ? fileList[0].thumbUrl ||
-                    URL.createObjectURL(fileList[0].originFileObj as Blob)
+                  URL.createObjectURL(fileList[0].originFileObj as Blob)
                   : profileImg || defaultAvatar
               }
               style={{

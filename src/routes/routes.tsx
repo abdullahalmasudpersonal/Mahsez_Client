@@ -17,6 +17,7 @@ import AllAdmin from "@/pages/admin/users/allAdmin/AllAdmin";
 import AllBuyer from "@/pages/admin/users/allBuyer/AllBuyer";
 import BlogDetails from "@/pages/Blogs/blogDetails/BlogDetails";
 import Blogs from "@/pages/Blogs/Blogs/Blogs";
+import BuyerPayment from "@/pages/buyer/payment/BuyerPayment";
 import BuyerProfile from "@/pages/buyer/profile/BuyerProfile";
 import BagsWatchCategore from "@/pages/Categories/bags&Watchs/bags&WatchCategore/BagsWatchCategore";
 import Categore from "@/pages/Categories/Categore/Categore/Categore";
@@ -33,7 +34,6 @@ import CheckOut from "@/pages/checkOut/CheckOut";
 import Invoice from "@/pages/dashboard/myOrder/Invoice";
 import MyOrder from "@/pages/dashboard/myOrder/MyOrder";
 import MyOrderDetails from "@/pages/dashboard/myOrder/MyOrderDetails";
-import MyPayment from "@/pages/dashboard/myPayment/MyPayment";
 import SuccessPayment from "@/pages/dashboard/myPayment/SuccessPayment";
 import Profile from "@/pages/dashboard/Profile/Profile";
 import Home from "@/pages/Home/Home/Home";
@@ -101,7 +101,7 @@ const routes = [
       { path: "", element: <BuyerProfile /> },
       { path: "my-order", element: <MyOrder /> },
       { path: "my-order-details/:orderId", element: <MyOrderDetails /> },
-      { path: "my-payment", element: <MyPayment /> },
+      { path: "my-payment", element: <BuyerPayment /> },
       { path: "payment-success", element: <SuccessPayment /> },
       { path: "invoice", element: <Invoice /> },
       { path: "*", element: <Notfound /> },
