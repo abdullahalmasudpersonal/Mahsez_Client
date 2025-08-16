@@ -44,14 +44,13 @@ const BuyerSideber = ({ isDrawer }: { isDrawer?: boolean }) => {
             top: 0,
             overflow: "hidden",
             borderRight: '.5px solid #263b44ff'
-            // overflow: 'auto',
         }}>
             <div
                 style={{
                     padding: "17px",
                     display: 'flex',
                     justifyContent: 'center',
-                    // borderBottom: "1px solid rgba(255,255,255,0.2)",
+                    borderBottom: "1px solid rgba(255,255,255,0.2)",
                     flexShrink: 0,
                     position: 'sticky',
                     top: '0',

@@ -19,12 +19,12 @@ const MyOrder = () => {
 
   return (
     <div className="dashboard-dev2">
-      <PageTitle pageTitle="My Profile" />
+      <PageTitle pageTitle="My Orders" />
       <div className="py-4 px-4" style={{ backgroundColor: '#002952ff',borderRadius:'5px 5px 0 0' }}>
-        <h5 className="fw-bold m-0" style={{ color: 'white' }}>My Orders</h5>
+        <h5 className="fw-bold m-0" style={{ color: 'white' }}>My Orders ({myOrderData?.data?.length})</h5>
       </div>
       {/* <hr /> */}
-      <div className="p-3">
+      <div className="py-4">
         {myOrderData?.data?.length < 1 ? (
           <div>
             <h5 className="text-center">Your order is empty</h5>

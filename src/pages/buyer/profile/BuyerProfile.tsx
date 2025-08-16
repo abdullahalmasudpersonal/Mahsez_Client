@@ -8,11 +8,12 @@ import profile from "@/assets/img/profile/profileAvater.jpg";
 import Title from "antd/es/typography/Title";
 import './BuyerProfile.css';
 import UpdateProfile from "./UpdateProfile";
+import PageTitle from "@/pages/shared/PageTitle/PageTitle";
 
 
 const BuyerProfile = () => {
     const [edit, setEdit] = useState(false);
-    const [column, setColumn] = useState(window.innerWidth < 768 ? 1 : 2);
+    const [column, setColumn] = useState(window.innerWidth < 850 ? 1 : 2);
     const { data: userData, isLoading } = useGetMyProfileQuery({});
     const {
         name,
@@ -29,7 +30,7 @@ const BuyerProfile = () => {
 
     useEffect(() => {
         const handleResize = () => {
-            setColumn(window.innerWidth < 768 ? 1 : 2);
+            setColumn(window.innerWidth < 850 ? 1 : 2);
         };
 
         window.addEventListener("resize", handleResize);
@@ -87,6 +88,7 @@ const BuyerProfile = () => {
 
     return (
         <div style={{ flex: 1, }}>
+             <PageTitle pageTitle="My Profile " />
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px', backgroundColor: '#002952b2', borderRadius: '5px 5px 0 0' }}>
                 <h5 style={{ color: 'white', margin: "0", fontWeight: '700' }}>My Profile</h5>
                 <Button onClick={() => setEdit(!edit)}>
@@ -95,7 +97,7 @@ const BuyerProfile = () => {
                 </Button>
             </div>
             {
-                edit ? <div className="p-3">
+                edit ? <div>
                     <UpdateProfile setEdit={setEdit} />
                 </div > : (<>
                     {isLoading ? (<div
@@ -119,26 +121,29 @@ const BuyerProfile = () => {
                                 gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))"
                             }}> */}
 
-                            <Card style={{ borderRadius: 0, marginTop: 20, boxShadow: "0 2px 8px rgba(0,0,0,0.05)" }}>
-                                <Title level={4} style={{ marginBottom: 20 }}>
+                            <Card style={{ borderRadius: 2, marginTop: 20, backgroundColor: '#0b2644ff', border: '1px solid #2a405cff', }}>
+                                <Title level={4} style={{ marginBottom: 20, color: 'white', }}>
                                     Personal Information
                                 </Title>
 
                                 <Descriptions
                                     bordered
                                     column={column}
-                                    labelStyle={{ fontWeight: 700, width: 180 }}
-                                    contentStyle={{ backgroundColor: "#fafafa" }}
+                                    labelStyle={{ fontWeight: 800, width: 185 }}
+                                    contentStyle={{ color: 'white' }}
                                 >
-                                    <Descriptions.Item label="Name">{name || "-"}</Descriptions.Item>
-                                    <Descriptions.Item label="Email">{email || "-"}</Descriptions.Item>
-                                    <Descriptions.Item label="Contact">{contactNo || "-"}</Descriptions.Item>
-                                    <Descriptions.Item label="Company">{companyName || "-"}</Descriptions.Item>
-                                    <Descriptions.Item label="City">{city || "-"}</Descriptions.Item>
-                                    <Descriptions.Item label="Gender">{gender || "-"}</Descriptions.Item>
-                                    <Descriptions.Item label="Post Code">{postCode || "-"}</Descriptions.Item>
-                                    <Descriptions.Item label="Present Address">{presentAddress || "-"}</Descriptions.Item>
-                                    <Descriptions.Item label="Permanent Address" span={2}>
+                                    <Descriptions.Item style={{ color: 'white' }} label="Name">{name || "-"}</Descriptions.Item>
+                                    <Descriptions.Item label="Email" style={{ color: 'white' }}>{email || "-"}</Descriptions.Item>
+                                    <Descriptions.Item label="Contact" style={{ color: 'white' }}>{contactNo || "-"}</Descriptions.Item>
+                                    <Descriptions.Item label="Company" style={{ color: 'white' }}>{companyName || "-"}</Descriptions.Item>
+                                    <Descriptions.Item label="City" style={{ color: 'white' }}>{city || "-"}</Descriptions.Item>
+                                    <Descriptions.Item label="Gender" style={{ color: 'white' }}>
+                                        {gender ? gender.charAt(0).toUpperCase() + gender.slice(1) : "-"}
+                                    </Descriptions.Item>
+
+                                    <Descriptions.Item label="Post Code" style={{ color: 'white' }}>{postCode || "-"}</Descriptions.Item>
+                                    <Descriptions.Item label="Present Address" style={{ color: 'white' }}>{presentAddress || "-"}</Descriptions.Item>
+                                    <Descriptions.Item label="Permanent Address" span={2} style={{ color: 'white' }}>
                                         {permanentAddress || "-"}
                                     </Descriptions.Item>
                                 </Descriptions>
