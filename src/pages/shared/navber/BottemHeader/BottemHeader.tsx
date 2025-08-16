@@ -67,7 +67,7 @@ const BottemHeader = () => {
               </div>
             </Link> */}
             {user ? (
-              <Link to="/dashboard" className="header-buttom-btn">
+              <Link to={`/${user?.role}`} className="header-buttom-btn">
                 <div>
                   <div>
                     <img width="18px" src={profileImg} alt="" />
@@ -78,7 +78,7 @@ const BottemHeader = () => {
                 </div>
               </Link>
             ) : (
-              <Link to="/login" className="header-buttom-btn">
+              <Link to="/auth/login" className="header-buttom-btn">
                 <div>
                   <div>
                     <FontAwesomeIcon icon={faUserAlt} />

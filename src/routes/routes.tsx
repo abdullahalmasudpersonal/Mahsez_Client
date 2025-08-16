@@ -17,6 +17,7 @@ import AllAdmin from "@/pages/admin/users/allAdmin/AllAdmin";
 import AllBuyer from "@/pages/admin/users/allBuyer/AllBuyer";
 import BlogDetails from "@/pages/Blogs/blogDetails/BlogDetails";
 import Blogs from "@/pages/Blogs/Blogs/Blogs";
+import BuyerProfile from "@/pages/buyer/profile/BuyerProfile";
 import BagsWatchCategore from "@/pages/Categories/bags&Watchs/bags&WatchCategore/BagsWatchCategore";
 import Categore from "@/pages/Categories/Categore/Categore/Categore";
 import ComputersCategore from "@/pages/Categories/computerAccessories/ComputersCategore/ComputersCategore";
@@ -97,7 +98,7 @@ const routes = [
     // element: <BuyerLayout />,
     element: <ProtectedRoute><BuyerLayout /></ProtectedRoute>,
     children: [
-      { path: "", element: <Profile /> },
+      { path: "", element: <BuyerProfile /> },
       { path: "my-order", element: <MyOrder /> },
       { path: "my-order-details/:orderId", element: <MyOrderDetails /> },
       { path: "my-payment", element: <MyPayment /> },

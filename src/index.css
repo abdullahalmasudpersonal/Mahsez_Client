@@ -4,9 +4,18 @@
   box-sizing: border-box;
 }
 
-hr {
-  border: 0;
+/* html, body, #root {
+  height: 100%;
 }
+
+/* Ant Design Layout root-এও 100% */
+#root > .ant-layout {
+  height: 100%;
+} */
+
+/* hr {
+  border: 0;
+} */
 
 /* --------------Breadcrumb css --------------------- */
 .breadcrumb-bg {

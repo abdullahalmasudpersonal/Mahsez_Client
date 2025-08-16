@@ -17,7 +17,9 @@ const BuyerSideber = ({ isDrawer }: { isDrawer?: boolean }) => {
                         justifyContent: "center",
                         borderBottom: "1px solid rgba(136, 136, 136, 0.6)",
                         flexShrink: 0,
+                        cursor: 'pointer'
                     }}
+                    onClick={() => navigate("/")}
                 >
                     <Image preview={false} width={140} src={logo} />
                 </div>
