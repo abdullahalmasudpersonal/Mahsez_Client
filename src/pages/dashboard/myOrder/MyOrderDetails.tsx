@@ -134,7 +134,7 @@ const MyOrderDetails = () => {
 
   const navigate = useNavigate();
   const handleNavigateInvoice = async () => {
-    navigate("/dashboard/invoice");
+    navigate("/buyer/invoice");
   };
 
   return (
