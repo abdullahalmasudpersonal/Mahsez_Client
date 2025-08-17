@@ -3,6 +3,7 @@ import Sider from "antd/es/layout/Sider";
 import { useNavigate } from "react-router-dom";
 import logo from "@/assets/img/logo/mahsez.png";
 import { buyerMenus } from "./BuyerMenu";
+import './BuyerSideber.css';
 
 const BuyerSideber = ({ isDrawer }: { isDrawer?: boolean }) => {
     const navigate = useNavigate();
@@ -62,13 +63,13 @@ const BuyerSideber = ({ isDrawer }: { isDrawer?: boolean }) => {
                 <Image preview={false} width={140} height={55} src={logo} />
             </div>
 
-            <div className="admin-sidebar-menu admin-sidebar-menu-scroll" style={{ height: "calc(100vh - 90px)", overflowY: 'auto', padding: '10px 0' }} >
+            <div className="buyer-sidebar-menu buyer-sidebar-menu-scroll" style={{ height: "calc(100vh - 90px)", overflowY: 'auto', padding: '10px 0' }} >
                 <Menu
                     theme="dark"
                     mode="inline"
                     selectedKeys={[location.pathname]}
                     onClick={({ key }) => navigate(key)}
-                items={buyerMenus}
+                    items={buyerMenus}
                 />
             </div>
         </Sider>

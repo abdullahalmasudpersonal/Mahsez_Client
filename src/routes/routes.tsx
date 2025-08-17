@@ -18,6 +18,7 @@ import AllBuyer from "@/pages/admin/users/allBuyer/AllBuyer";
 import BlogDetails from "@/pages/Blogs/blogDetails/BlogDetails";
 import Blogs from "@/pages/Blogs/Blogs/Blogs";
 import BuyerPayment from "@/pages/buyer/payment/BuyerPayment";
+import SuccessPayment from "@/pages/buyer/payment/SuccessPayment";
 import BuyerProfile from "@/pages/buyer/profile/BuyerProfile";
 import BagsWatchCategore from "@/pages/Categories/bags&Watchs/bags&WatchCategore/BagsWatchCategore";
 import Categore from "@/pages/Categories/Categore/Categore/Categore";
@@ -34,7 +35,6 @@ import CheckOut from "@/pages/checkOut/CheckOut";
 import Invoice from "@/pages/dashboard/myOrder/Invoice";
 import MyOrder from "@/pages/dashboard/myOrder/MyOrder";
 import MyOrderDetails from "@/pages/dashboard/myOrder/MyOrderDetails";
-import SuccessPayment from "@/pages/dashboard/myPayment/SuccessPayment";
 import Profile from "@/pages/dashboard/Profile/Profile";
 import Home from "@/pages/Home/Home/Home";
 import Login from "@/pages/Logins/Login/Login";
@@ -44,8 +44,8 @@ import PrivacyPolicy from "@/pages/PrivacyPolicy/PrivacyPolicy";
 import ProductDetails from "@/pages/ProductDetails/ProductDetails/ProductDetails";
 import SearchBerResult from "@/pages/shared/navber/SearchBerResult/SearchBerResult";
 import Notfound from "@/pages/shared/Notfound/Notfound";
-import ProtectedRoute from "@/pages/shared/protectedRoute/ProtectedRoute";
-import RequireAdmin from "@/pages/shared/protectedRoute/RequireAdmin";
+import RequiredBuyer from "@/pages/shared/protectedRoute/RequiredBuyer";
+import RequireRole from "@/pages/shared/protectedRoute/RequireRole";
 import ShoppingCart from "@/pages/shoppingCart/ShoppingCart";
 import TermsCondition from "@/pages/Terms&Condition/Terms&Condition";
 
@@ -73,7 +73,7 @@ const routes = [
           { path: "product/:productId", element: <ProductDetails /> },
         ],
       },
-      { path: "checkout", element: (<ProtectedRoute><CheckOut /></ProtectedRoute>) },
+      { path: "checkout", element: (<RequiredBuyer><CheckOut /></RequiredBuyer>) },
       { path: "blogs", element: <Blogs /> },
       { path: "blog/:blogId", element: <BlogDetails /> },
       { path: "offers", element: <Offers /> },
@@ -96,7 +96,7 @@ const routes = [
   {
     path: "/buyer",
     // element: <BuyerLayout />,
-    element: <ProtectedRoute><BuyerLayout /></ProtectedRoute>,
+    element: <RequireRole role="buyer"><BuyerLayout /></RequireRole>,
     children: [
       { path: "", element: <BuyerProfile /> },
       { path: "my-order", element: <MyOrder /> },
@@ -109,7 +109,7 @@ const routes = [
   },
   {
     path: "/admin",
-    element: <RequireAdmin><AdminLayout /></RequireAdmin>,
+    element: <RequireRole role="admin"><AdminLayout /></RequireRole>,
     children: [
       { path: '', element: <HomeAdmin /> },
       { path: "product-list", element: <ListProducts /> },

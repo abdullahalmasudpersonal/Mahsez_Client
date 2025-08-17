@@ -19,7 +19,7 @@ const AdminDashboardNavber = ({ onMenuClick }: { onMenuClick: () => void }) => {
     const [updateAdminOnlineStatus] = useUpdateAdminOnlineStatusMutation();
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    console.log(userData)
+    // console.log(userData)
 
     const handleLogout = async () => {
         const userId = userData.data.id;

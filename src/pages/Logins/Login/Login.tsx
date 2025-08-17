@@ -18,8 +18,8 @@ import { RuleObject } from "antd/es/form";
 import { StoreValue } from "antd/es/form/interface";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
 import { verifyToken } from "@/utils/verifyToken";
-import { setUser, TUser } from "@/redux/features/auth/authSlice";
-import { useAppDispatch } from "@/redux/hooks";
+import {  setUser, TUser } from "@/redux/features/auth/authSlice";
+import { useAppDispatch} from "@/redux/hooks";
 import { toast } from "sonner";
 const { Title, Text } = Typography;
 const { useBreakpoint } = Grid;
@@ -44,7 +44,6 @@ const Login = () => {
   const location = useLocation();
   const [login] = useLoginMutation();
   const dispatch = useAppDispatch();
-  // const from = location.state?.from?.pathname || `${role}`;
   const [serverError, setServerError] = useState<string | null>(null);
 
   const passwordRules = [
@@ -82,6 +81,7 @@ const Login = () => {
       const toastId = toast.loading("Logging in...");
       toast.success("Logged in successfully!", { id: toastId, duration: 2000 });
       navigate(location.state?.from?.pathname || `/${user?.role}`, { replace: true });
+
     } catch (err) {
       const fieldErrors: { name: string | (string | number)[]; errors: string[] }[] = [];
 
@@ -239,7 +239,7 @@ const Login = () => {
               <Button onClick={fillAdminDemo} block>
                 Fill Admin Demo
               </Button>
-              <Button type="link" onClick={goWithoutLogin} block style={{marginTop:'10px'}}>
+              <Button type="link" onClick={goWithoutLogin} block style={{ marginTop: '10px' }}>
                 Continue Without Login
               </Button>
             </Space>

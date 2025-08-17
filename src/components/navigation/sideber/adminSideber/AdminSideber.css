@@ -1,4 +1,3 @@
-
 /* margin bottom for gap */
 .admin-sidebar-menu .ant-menu-item, .admin-sidebar-menu .ant-menu-submenu-title{
   font-size: 15px;
@@ -7,7 +6,6 @@
  }
  /* menu item bg color none */
 .admin-sidebar-menu .ant-menu .ant-menu {
-  /* background: none !important; */
   background: rgb(0, 28, 59) !important;
 }
 /* menu item & submenu item hover color set */
@@ -15,10 +13,9 @@
   background: rgba(24, 144, 255, 0.15) !important;
 }
 /* active item bgcolor & color set */
-:where(.ant-menu-dark) .ant-menu-item-selected {
-   color: white !important; 
-  background-color: rgba(24, 143, 255, 0.288) !important; 
-  border-radius: 8px;
+.admin-sidebar-menu .ant-menu-dark .ant-menu-item-selected {
+  color: rgb(255, 255, 255) !important; 
+  /* background-color: rgb(2, 62, 117) !important;  */
 }
 
 
