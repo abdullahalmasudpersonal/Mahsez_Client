@@ -29,7 +29,7 @@ const HomeMenu = () => {
         <div className='homeMenu'>
             {
                 menus.map((menu) => (
-                    <div className='menuItemDiv'>
+                    <div key={menu?.id} className='menuItemDiv'>
                         <Link to={menu.to} style={{textDecoration:'none'}}>
                             <div className='menuItem' key={menu.id}>
                                 <div>

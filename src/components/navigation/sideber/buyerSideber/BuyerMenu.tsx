@@ -1,35 +1,22 @@
-import { CreditCardOutlined, /* DashboardOutlined, SettingOutlined, */ ShoppingOutlined, UserOutlined } from "@ant-design/icons";
+import { CreditCardOutlined,  ShoppingOutlined, UserOutlined } from "@ant-design/icons";
 
 export const buyerMenus = [
-    // {
-    //     key: '',
-    //     icon: <DashboardOutlined />,
-    //     label: "Dashboard",
-    // },
     {
-        key: '',
+        key: '/buyer',
         icon: <UserOutlined />,
         label: "Profile",
     },
     {
-        key: 'my-order',
+        key: '/buyer/my-order',
         icon: <ShoppingOutlined />,
         label: "My Order",
+        // children:[
+        //     { key: '/buyer/my-order', label: "demo" },
+        // ]
     },
     {
-        key: 'my-payment',
+        key: '/buyer/my-payment',
         icon: <CreditCardOutlined />,
         label: "Payment",
     },
-    // {
-    //     key: '',
-    //     icon: <UserOutlined />,
-    //     label: "Profile",
-    // },
-    // {
-    //     key: '',
-    //     icon: <SettingOutlined />,
-    //     label: "Setting",
-    // },
-
 ]

@@ -2,7 +2,7 @@ import {  DashboardOutlined, ProductFilled, SettingOutlined, ShoppingOutlined } 
 
 export const adminMenus = [
   {
-    key: "",
+    key: "/admin",
     icon: <DashboardOutlined />,
     label: "Dashboard",
     // children: [

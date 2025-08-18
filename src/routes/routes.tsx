@@ -39,6 +39,7 @@ import Profile from "@/pages/dashboard/Profile/Profile";
 import Home from "@/pages/Home/Home/Home";
 import Login from "@/pages/Logins/Login/Login";
 import Register from "@/pages/Logins/Register/Register";
+import Unauthorized from "@/pages/Logins/Unauthorized";
 import Offers from "@/pages/Offers/Offers";
 import PrivacyPolicy from "@/pages/PrivacyPolicy/PrivacyPolicy";
 import ProductDetails from "@/pages/ProductDetails/ProductDetails/ProductDetails";
@@ -46,6 +47,7 @@ import SearchBerResult from "@/pages/shared/navber/SearchBerResult/SearchBerResu
 import Notfound from "@/pages/shared/Notfound/Notfound";
 import RequiredBuyer from "@/pages/shared/protectedRoute/RequiredBuyer";
 import RequireRole from "@/pages/shared/protectedRoute/RequireRole";
+// import RequireRole from "@/pages/shared/protectedRoute/RequireRole";
 import ShoppingCart from "@/pages/shoppingCart/ShoppingCart";
 import TermsCondition from "@/pages/Terms&Condition/Terms&Condition";
 
@@ -90,13 +92,15 @@ const routes = [
     children: [
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
+      { path: "unauthorized", element: <Unauthorized /> },
       { path: "*", element: <Notfound /> },
     ],
   },
   {
     path: "/buyer",
     // element: <BuyerLayout />,
-    element: <RequireRole role="buyer"><BuyerLayout /></RequireRole>,
+    element: <RequireRole allowedRoles={["buyer"]}><BuyerLayout /></RequireRole>,
+    // element: <RequireRole role="buyer"><BuyerLayout /></RequireRole>,
     children: [
       { path: "", element: <BuyerProfile /> },
       { path: "my-order", element: <MyOrder /> },
@@ -109,7 +113,9 @@ const routes = [
   },
   {
     path: "/admin",
-    element: <RequireRole role="admin"><AdminLayout /></RequireRole>,
+    // element: <AdminLayout />,
+    element: <RequireRole allowedRoles={["admin"]}><AdminLayout /></RequireRole>,
+    // element: <RequireRole role="admin"><AdminLayout /></RequireRole>,
     children: [
       { path: '', element: <HomeAdmin /> },
       { path: "product-list", element: <ListProducts /> },

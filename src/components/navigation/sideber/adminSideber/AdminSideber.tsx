@@ -23,13 +23,12 @@ const AdminSideber = ({ isDrawer }: { isDrawer?: boolean }) => {
         >
           <Image preview={false} width={140} src={logo} />
         </div>
-        <div style={{ flex: 1, overflowY: "auto" }} className="admin-sidebar-menu-scroll">
+        <div style={{ flex: 1, overflowY: "auto" }} className="admin-mobile-sideber-menu admin-sidebar-menu-scroll">
           <Menu theme="dark"
             mode="inline"
             items={adminMenus}
             selectedKeys={[location.pathname]}
             onClick={({ key }) => navigate(key)}
-            style={{ borderRight: 0 }}
           />
         </div>
       </div>
@@ -56,11 +55,10 @@ const AdminSideber = ({ isDrawer }: { isDrawer?: boolean }) => {
             position: 'sticky',
             top: '0',
             zIndex: 1,
-            cursor: 'pointer'
           }}
-          onClick={() => navigate("/")}
+         
         >
-          <Image preview={false} width={140} height={55} src={logo} />
+          <Image  onClick={() => navigate("/")} style={{cursor:'pointer'}} preview={false} width={140} height={55} src={logo} />
         </div>
 
         <div className="admin-sidebar-menu admin-sidebar-menu-scroll" style={{ height: "calc(100vh - 90px)", overflowY: 'auto', padding: '10px 0' }} >
