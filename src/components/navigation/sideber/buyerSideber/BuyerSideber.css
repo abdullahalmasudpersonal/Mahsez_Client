@@ -13,27 +13,32 @@
 /* menu item & submenu item hover color set */
 .buyer-sidebar-menu .ant-menu-item:hover,
 .buyer-sidebar-menu .ant-menu-submenu-title:hover {
+  color: rgb(255, 255, 255) !important;
   background: rgba(24, 144, 255, 0.15) !important;
 }
 /* active item bgcolor & color set */
-:where(.ant-menu-dark) .ant-menu-item-selected {
-  color: white !important;
-  background-color: rgba(24, 143, 255, 0.288) !important;
-  border-radius: 8px;
+.buyer-sidebar-menu .ant-menu-dark .ant-menu-item-selected {
+  color: rgb(255, 255, 255) !important;
+  /* background-color: rgb(92, 110, 128) !important;  */
 }
 
+/* ------------ buyer-mobile-sidebar-menu --------- */
+.buyer-mobile-sidebar-menu .ant-menu-item,
+.buyer-mobile-sidebar-menu .ant-menu-submenu-title {
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 2px;
+}
+.buyer-mobile-sidebar-menu .ant-menu .ant-menu {
+  background: rgb(0, 28, 59) !important;
+}
+.buyer-mobile-sidebar-menu .ant-menu-item:hover,
+.buyer-mobile-sidebar-menu .ant-menu-submenu-title:hover {
+  color: rgb(255, 255, 255) !important;
+  background: rgba(24, 144, 255, 0.15) !important;
+}
 
-
-
-
-
-
-
-
-
-
-
-/* scroll line customize */
+/*---------- scroll line customize -----------------*/
 .buyer-sidebar-menu-scroll::-webkit-scrollbar {
   width: 8px;
 }

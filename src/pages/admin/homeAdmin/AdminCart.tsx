@@ -99,7 +99,7 @@ const AdminCart = () => {
     <div>
       <Row gutter={[16, 16]}>
         {cardsData.map((card) => (
-          <Col xs={24} sm={24} md={12} lg={6}>
+          <Col key={card?.key} xs={24} sm={24} md={12} lg={6}>
             <Card
               style={{
                 borderRadius: "10px",

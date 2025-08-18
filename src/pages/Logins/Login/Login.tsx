@@ -18,9 +18,10 @@ import { RuleObject } from "antd/es/form";
 import { StoreValue } from "antd/es/form/interface";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
 import { verifyToken } from "@/utils/verifyToken";
-import {  setUser, TUser } from "@/redux/features/auth/authSlice";
-import { useAppDispatch} from "@/redux/hooks";
+import { setUser, TUser } from "@/redux/features/auth/authSlice";
+import { useAppDispatch } from "@/redux/hooks";
 import { toast } from "sonner";
+import socket from "@/utils/Socket";
 const { Title, Text } = Typography;
 const { useBreakpoint } = Grid;
 
@@ -78,10 +79,11 @@ const Login = () => {
       const res = await login(userInfo).unwrap();
       const user = verifyToken(res.data.accessToken) as TUser;
       dispatch(setUser({ user: user, token: res.data.accessToken }));
+      socket.emit("userOnline", user?.userId);
       const toastId = toast.loading("Logging in...");
       toast.success("Logged in successfully!", { id: toastId, duration: 2000 });
       navigate(location.state?.from?.pathname || `/${user?.role}`, { replace: true });
-
+      
     } catch (err) {
       const fieldErrors: { name: string | (string | number)[]; errors: string[] }[] = [];
 

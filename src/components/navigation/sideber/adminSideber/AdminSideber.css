@@ -1,28 +1,44 @@
-/* margin bottom for gap */
-.admin-sidebar-menu .ant-menu-item, .admin-sidebar-menu .ant-menu-submenu-title{
+/*------------- margin bottom for gap ----------------*/
+.admin-sidebar-menu .ant-menu-item,
+.admin-sidebar-menu .ant-menu-submenu-title {
   font-size: 15px;
   font-weight: 700;
-    border-radius: 2px;
- }
- /* menu item bg color none */
+  border-radius: 2px;
+}
+/* menu item bg color none */
 .admin-sidebar-menu .ant-menu .ant-menu {
   background: rgb(0, 28, 59) !important;
 }
 /* menu item & submenu item hover color set */
-.admin-sidebar-menu .ant-menu-item:hover, .admin-sidebar-menu .ant-menu-submenu-title:hover {
+.admin-sidebar-menu .ant-menu-item:hover,
+.admin-sidebar-menu .ant-menu-submenu-title:hover {
+  color: rgb(255, 255, 255) !important;
   background: rgba(24, 144, 255, 0.15) !important;
 }
 /* active item bgcolor & color set */
 .admin-sidebar-menu .ant-menu-dark .ant-menu-item-selected {
-  color: rgb(255, 255, 255) !important; 
+  color: rgb(255, 255, 255) !important;
   /* background-color: rgb(2, 62, 117) !important;  */
 }
 
-
-
-
-
-/* scroll line customize */
+/* ------------admin mobile sideber menu------------- */
+.admin-mobile-sideber-menu .ant-menu-item, 
+.admin-mobile-sideber-menu .ant-menu-submenu-title{
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 2px;
+}
+/* menu item bg color none */
+.admin-mobile-sideber-menu .ant-menu .ant-menu {
+  background: rgb(0, 28, 59) !important;
+}
+/* menu item & submenu item hover color set */
+.admin-mobile-sideber-menu .ant-menu-item:hover,
+.admin-mobile-sideber-menu .ant-menu-submenu-title:hover {
+  color: rgb(255, 255, 255) !important;
+  background: rgba(24, 144, 255, 0.15) !important;
+}
+/*----------------- scroll line customize ------------------*/
 .admin-sidebar-menu-scroll::-webkit-scrollbar {
   width: 8px;
 }

@@ -25,12 +25,10 @@ const AdminDashboardNavber = ({ onMenuClick }: { onMenuClick: () => void }) => {
         const userId = userData.data.id;
         socket.emit("userOffline", userId);
         if (user?.role === "admin") {
-            const res = await updateAdminOnlineStatus({ userId });
-            if (res?.data?.success === true) {
-                dispatch(logout());
-            }
+            await updateAdminOnlineStatus({ userId });
         }
-        navigate("/");
+        dispatch(logout());
+        navigate("/", { replace: true });
     };
 
     const menuItems: MenuProps['items'] = [
@@ -38,7 +36,7 @@ const AdminDashboardNavber = ({ onMenuClick }: { onMenuClick: () => void }) => {
             key: "user-info",
             label: (
                 <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
-                    <Avatar src={profileImg || undefined} size={74} style={{ backgroundColor: '#f56a00',border:'2px solid rgba(190, 190, 190, 1)', }} icon={<UserOutlined />} />
+                    <Avatar src={profileImg || undefined} size={74} style={{ backgroundColor: '#f56a00', border: '2px solid rgba(190, 190, 190, 1)', }} icon={<UserOutlined />} />
                     <Typography style={{ color: 'white', fontSize: '19px', fontWeight: 700, padding: '10px 0 0 0' }}>{name}</Typography>
                     <Typography style={{ color: 'white' }}><small>Admin</small></Typography>
                 </div>
@@ -94,7 +92,7 @@ const AdminDashboardNavber = ({ onMenuClick }: { onMenuClick: () => void }) => {
             <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
                 <Dropdown menu={{ items: menuItems, onClick: handleMenuClick, className: "adminNavberProfileDropdown", }} trigger={["click"]} >
                     <div style={{ display: "flex", alignItems: "center", cursor: "pointer" }}>
-                        <Avatar src={profileImg || undefined} style={{ backgroundColor: '#f56a00', verticalAlign: 'middle',border:'2px solid rgba(190, 190, 190, 1)' }} size="large" icon={<UserOutlined />} />
+                        <Avatar src={profileImg || undefined} style={{ backgroundColor: '#f56a00', verticalAlign: 'middle', border: '2px solid rgba(190, 190, 190, 1)' }} size="large" icon={<UserOutlined />} />
                     </div>
                 </Dropdown>
             </div>

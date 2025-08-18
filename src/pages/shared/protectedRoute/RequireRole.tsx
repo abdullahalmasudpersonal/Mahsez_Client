@@ -1,22 +1,31 @@
-import { ReactNode } from "react";
-import { useAppSelector, useAppDispatch } from "@/redux/hooks";
-import { selectCurrentUser, logout } from "@/redux/features/auth/authSlice";
+import { useAppSelector, } from "@/redux/hooks";
+import { selectCurrentUser, useCurrentToken } from "@/redux/features/auth/authSlice";
 import { useLocation, Navigate } from "react-router-dom";
 
-const RequireRole = ({ children, role }: { children: ReactNode; role: "admin" | "buyer" }) => {
+interface RequireRoleProps {
+  children: React.ReactNode;
+  allowedRoles: string[];
+}
+
+const RequireRole = ({ children, allowedRoles }: RequireRoleProps) => {
+  const token = useAppSelector(useCurrentToken);
   const user = useAppSelector(selectCurrentUser);
   const location = useLocation();
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
 
-  // // এখনো user লোড হয়নি
-  // if (user === null) {
-  //   return <div>Loading...</div>; // বা <Spin/> 
+  // const isLoading = !token && !user; 
+
+  //  if (isLoading) {
+  //   return <div>Loading...</div>; // অথবা spinner
   // }
 
-  // role mismatch হলে
-  if (user?.role !== role) {
-    dispatch(logout());
+
+  if (!token || !user) {
     return <Navigate to="/auth/login" state={{ from: location }} replace />;
+  }
+
+  if (!allowedRoles.includes(user.role)) {
+    return <Navigate to="/auth/unauthorized" replace />;
   }
 
   return children;

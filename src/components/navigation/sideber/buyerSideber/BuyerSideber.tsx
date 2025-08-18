@@ -1,12 +1,13 @@
 import { Image, Menu } from "antd";
 import Sider from "antd/es/layout/Sider";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import logo from "@/assets/img/logo/mahsez.png";
 import { buyerMenus } from "./BuyerMenu";
 import './BuyerSideber.css';
 
 const BuyerSideber = ({ isDrawer }: { isDrawer?: boolean }) => {
     const navigate = useNavigate();
+    const location = useLocation();
 
     if (isDrawer) {
         return (
@@ -24,13 +25,12 @@ const BuyerSideber = ({ isDrawer }: { isDrawer?: boolean }) => {
                 >
                     <Image preview={false} width={140} src={logo} />
                 </div>
-                <div style={{ flex: 1, overflowY: "auto" }} className="admin-sidebar-menu-scroll">
+                <div style={{ flex: 1, overflowY: "auto" }} className="buyer-mobile-sidebar-menu buyer-sidebar-menu-scroll">
                     <Menu theme="dark"
                         mode="inline"
                         items={buyerMenus}
                         selectedKeys={[location.pathname]}
                         onClick={({ key }) => navigate(key)}
-                        style={{ borderRight: 0 }}
                     />
                 </div>
             </div>
@@ -65,10 +65,10 @@ const BuyerSideber = ({ isDrawer }: { isDrawer?: boolean }) => {
 
             <div className="buyer-sidebar-menu buyer-sidebar-menu-scroll" style={{ height: "calc(100vh - 90px)", overflowY: 'auto', padding: '10px 0' }} >
                 <Menu
-                    theme="dark"
-                    mode="inline"
                     selectedKeys={[location.pathname]}
                     onClick={({ key }) => navigate(key)}
+                    mode="inline"
+                    theme="dark"
                     items={buyerMenus}
                 />
             </div>

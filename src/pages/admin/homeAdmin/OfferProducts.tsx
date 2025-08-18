@@ -57,8 +57,8 @@ const OfferProducts = () => {
       width: 300,
       render: (item) => (
         <div style={{ display: "flex", alignItems: "center" }}>
-          {item?.image?.slice(0, 1).map((img: string) => (
-            <img
+          {item?.image?.slice(0, 1).map((img: string, index:number) => (
+            <img key={index}
               src={
                 img.includes("res.cloudinary.com")
                   ? img.replace("/upload/", "/upload/f_auto,q_auto/w_50/")
