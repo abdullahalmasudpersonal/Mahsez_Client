@@ -206,7 +206,7 @@ const CreateProduct = () => {
         <h5 style={{ color: 'white', margin: "0", fontWeight: '700' }}>Create Product</h5>
       </div>
       <div style={{ padding: "20px 0", }}>
-        <Form form={form} layout="vertical" onFinish={handleSubmit} style={{ backgroundColor: '#4187ceff', padding: '20px', borderRadius: '5px', color:'white'}}>
+        <Form form={form} layout="vertical" onFinish={handleSubmit} style={{ backgroundColor: '#4187ceff', padding: '20px', borderRadius: '1px', color:'white'}}>
           <Row gutter={16}>
             <Col xs={24} md={12}>
               <Form.Item className="my-label"

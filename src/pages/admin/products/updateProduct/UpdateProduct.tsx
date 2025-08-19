@@ -259,17 +259,16 @@ const UpdateProduct = () => {
   };
 
   return (
-    <div className="dashboard-dev2">
+    <div>
       <PageTitle pageTitle="Create Product || Admin" />
-      <div className="pt-4 px-4">
-        <h4 className="fw-bold side-header">Update Product</h4>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px', backgroundColor: '#1c6fc2ff', borderRadius: '5px 5px 0 0' }}>
+        <h5 style={{ color: 'white', margin: "0", fontWeight: '700' }}>Update Product</h5>
       </div>
-      <hr />
-      <div style={{ padding: "5px 20px" }}>
-        <Form form={form} layout="vertical" onFinish={handleSubmit}>
+      <div style={{ paddingTop:'20px'  }}>
+        <Form form={form} layout="vertical" onFinish={handleSubmit} style={{backgroundColor:'#4187ceff',padding: '20px',borderRadius: '1px',}}>
           <Row gutter={16}>
             <Col xs={24} md={12}>
-              <Form.Item
+              <Form.Item className="my-label"
                 name="mainCategory"
                 label="Main Category"
                 rules={[{ required: true }]}
@@ -288,7 +287,7 @@ const UpdateProduct = () => {
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
-              <Form.Item
+              <Form.Item className="my-label"
                 label="Category"
                 name="category"
                 rules={[{ required: true }]}
@@ -309,7 +308,7 @@ const UpdateProduct = () => {
             </Col>
 
             <Col xs={24} md={12}>
-              <Form.Item
+              <Form.Item className="my-label"
                 label="Sub Category"
                 name="subCategory"
                 rules={[{ required: true }]}
@@ -330,7 +329,7 @@ const UpdateProduct = () => {
             </Col>
 
             <Col xs={24} md={12}>
-              <Form.Item
+              <Form.Item className="my-label"
                 label="Product Name"
                 name="name"
                 rules={[{ required: true }]}
@@ -340,7 +339,7 @@ const UpdateProduct = () => {
             </Col>
 
             <Col xs={24} md={12}>
-              <Form.Item
+              <Form.Item className="my-label"
                 label="Brand"
                 name="brand"
                 rules={[{ required: true }]}
@@ -359,7 +358,7 @@ const UpdateProduct = () => {
             </Col>
 
             <Col xs={24} md={12}>
-              <Form.Item
+              <Form.Item className="my-label"
                 label="Available Quantity"
                 name="availableQuantity"
                 rules={[{ required: true }]}
@@ -369,7 +368,7 @@ const UpdateProduct = () => {
             </Col>
 
             <Col xs={24} md={12}>
-              <Form.Item
+              <Form.Item className="my-label"
                 label="Stock Status"
                 name="stockStatus"
                 rules={[{ required: true }]}
@@ -382,7 +381,7 @@ const UpdateProduct = () => {
             </Col>
 
             <Col xs={24} md={12}>
-              <Form.Item
+              <Form.Item className="my-label"
                 label="Purchase Price"
                 name="purchaseprice"
                 rules={[{ required: true }]}
@@ -392,7 +391,7 @@ const UpdateProduct = () => {
             </Col>
 
             <Col xs={24} md={12}>
-              <Form.Item
+              <Form.Item className="my-label"
                 label="Price"
                 name="price"
                 rules={[{ required: true }]}
@@ -402,7 +401,7 @@ const UpdateProduct = () => {
             </Col>
 
             <Col xs={24} md={12}>
-              <Form.Item
+              <Form.Item className="my-label"
                 label="Regular Price"
                 name="regularPrice"
                 rules={[{ required: true }]}
@@ -412,13 +411,13 @@ const UpdateProduct = () => {
             </Col>
 
             <Col xs={24} md={12}>
-              <Form.Item name="offerPrice" label="Offer Price">
+              <Form.Item className="my-label" name="offerPrice" label="Offer Price">
                 <InputNumber style={{ width: "100%" }} min={0} />
               </Form.Item>
             </Col>
 
             <Col xs={24} md={12}>
-              <Form.Item name="size" label="Size" rules={[{ required: true }]}>
+              <Form.Item className="my-label" name="size" label="Size" rules={[{ required: true }]}>
                 <Select>
                   <Option value="S">S</Option>
                   <Option value="M">M</Option>
@@ -429,39 +428,39 @@ const UpdateProduct = () => {
             </Col>
 
             <Col xs={24}>
-              <Form.Item
+              <Form.Item className="my-label"
                 label="Features"
                 name="features"
                 rules={[{ required: true }]}
               >
-                <ReactQuill />
+                <ReactQuill style={{color:'white'}}  />
               </Form.Item>
             </Col>
 
             <Col xs={24}>
-              <Form.Item label="Features 2" name="features2">
-                <ReactQuill />
+              <Form.Item className="my-label" label="Features 2" name="features2">
+                <ReactQuill style={{color:'white'}}  />
               </Form.Item>
             </Col>
 
             <Col xs={24}>
-              <Form.Item
+              <Form.Item className="my-label"
                 label="Description"
                 name="description"
                 rules={[{ required: true }]}
               >
-                <ReactQuill />
+                <ReactQuill style={{color:'white'}}  />
               </Form.Item>
             </Col>
 
             <Col xs={24}>
-              <Form.Item label="Warranty" name="warranty">
-                <ReactQuill />
+              <Form.Item className="my-label" label="Warranty" name="warranty">
+                <ReactQuill style={{color:'white'}}  />
               </Form.Item>
             </Col>
 
             <Col xs={24}>
-              <Form.Item label="Image Upload" name="images">
+              <Form.Item className="my-label" label="Image Upload" name="images">
                 <Upload
                   accept="image/*"
                   listType="picture-card"
@@ -490,13 +489,12 @@ const UpdateProduct = () => {
             </Col>
 
             <Col xs={24}>
-              <Form.Item>
+              <Form.Item >
                 <Button
                   type="primary"
                   htmlType="submit"
                   style={{
-                    backgroundColor: "#ff6347",
-                    borderColor: "#ff6347",
+                    backgroundColor: "#003e70ff",
                     color: "#ffffff",
                     transition: "all 0.3s ease",
                   }}
