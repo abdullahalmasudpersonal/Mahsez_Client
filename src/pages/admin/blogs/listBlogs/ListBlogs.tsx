@@ -143,13 +143,13 @@ const ListBlogs = () => {
   ];
 
   return (
-    <div className="dashboard-dev2" style={{ overflowX: "auto" }}>
+    <div style={{ flex: 1 }}>
       <PageTitle pageTitle="Blog List || Admin" />
       <div className="py-4 px-4 d-flex justify-content-between align-items-center" style={{backgroundColor:'#033566ff',borderRadius:'5px 5px 0 0'}}>
-        <h5 className="fw-bold m-0 side-header" style={{color:'white'}}>
+        <h5 style={{ color: 'white', margin: "0", fontWeight: '700' }}>
           All Blog List ({blogsData?.data?.length})
         </h5>
-        <Row justify="end">
+        <Row>
           <Col>
             <Select
               defaultValue={10}

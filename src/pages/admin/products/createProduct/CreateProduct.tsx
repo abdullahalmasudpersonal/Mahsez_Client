@@ -200,270 +200,266 @@ const CreateProduct = () => {
   };
 
   return (
-    <>
-      <div className="dashboard-dev2">
-        <PageTitle pageTitle="Create Product || Admin" />
-        <div className="py-4 px-4" style={{ backgroundColor: '#002952ff', color: 'white', borderRadius: '5px 5px 0 0' }}>
-          <h4 className="fw-bold side-header m-0">Create Product</h4>
-        </div>
-        {/* <hr /> */}
-        <div style={{ padding: "20px", }}>
-          <Form form={form} layout="vertical" onFinish={handleSubmit} style={{ backgroundColor: '#033566ff', padding: '20px', borderRadius: '5px', }}>
-            <Row gutter={16}>
-              <Col xs={24} md={12}>
-                <Form.Item style={{ color: 'white' }} className="my-label"
-                  name="mainCategory"
-                  label="Main Category"
-                  rules={[{ required: true }]}
-                  labelCol={{ style: { color: 'white' } }}
-                >
-                  <Select
-                    placeholder="Main Category--"
-                    value={mainCategory}
-                    onChange={changeMainCategory}
-                  >
-                    {categoriesData.map((mainCat) => (
-                      <Option key={mainCat.name} value={mainCat.name}>
-                        {mainCat.name}
-                      </Option>
-                    ))}
-                  </Select>
-                </Form.Item>
-              </Col>
-              <Col xs={24} md={12}>
-                <Form.Item className="my-label"
-                  label="Category"
-                  name="category"
-                  rules={[{ required: true }]}
-                >
-                  <Select
-                    placeholder="   Category--"
-                    value={category}
-                    onChange={changeCategory}
-                    disabled={!categories.length}
-                  >
-                    {categories.map((cat) => (
-                      <Option key={cat.name} value={cat.name}>
-                        {cat.name}
-                      </Option>
-                    ))}
-                  </Select>
-                </Form.Item>
-              </Col>
-
-              <Col xs={24} md={12}>
-                <Form.Item className="my-label"
-                  label="Sub Category"
-                  name="subCategory"
-                  rules={[{ required: true }]}
-                >
-                  <Select
-                    placeholder="Sub Category--"
-                    value={subCategory}
-                    onChange={changeSubCategory}
-                    disabled={!subCategories.length}
-                  >
-                    {subCategories.map((subCat) => (
-                      <Option key={subCat} value={subCat}>
-                        {subCat}
-                      </Option>
-                    ))}
-                  </Select>
-                </Form.Item>
-              </Col>
-
-              <Col xs={24} md={12}>
-                <Form.Item className="my-label"
-                  label="Product Name"
-                  name="name"
-                  rules={[{ required: true }]}
-                >
-                  <Input />
-                </Form.Item>
-              </Col>
-
-              <Col xs={24} md={12}>
-                <Form.Item className="my-label"
-                  label="Brand"
-                  name="brand"
-                  rules={[{ required: true }]}
-                >
-                  <Select>
-                    <Option value="Mahsez">Mahsez</Option>
-                    <Option value="Alif">Alif</Option>
-                    <Option value="Al-Nuaim">Al-Nuaim</Option>
-                    <Option value="Manfare">Manfare</Option>
-                    <Option value="Leebas">Leebas</Option>
-                    <Option value="AKIJ">AKIJ</Option>
-                    <Option value="Morphy">Morphy</Option>
-                    <Option value="Lenovo">Lenovo</Option>
-                    <Option value="Asus">Asus</Option>
-                    <Option value="Walton">Walton</Option>
-                    <Option value="Sony">Sony</Option>
-                    <Option value="LG">LG</Option>
-                    <Option value="Smart">Smart</Option>
-                    <Option value="Deer">Deer</Option>
-                    <Option value="No Brand">No Brand</Option>
-                  </Select>
-                </Form.Item>
-              </Col>
-
-              <Col xs={24} md={12}>
-                <Form.Item className="my-label"
-                  label="Available Quantity"
-                  name="availableQuantity"
-                  rules={[{ required: true }]}
-                >
-                  <InputNumber min={0} style={{ width: "100%" }} />
-                </Form.Item>
-              </Col>
-
-              <Col xs={24} md={12}>
-                <Form.Item className="my-label"
-                  label="Stock Status"
-                  name="stockStatus"
-                  rules={[{ required: true }]}
-                >
-                  <Select>
-                    <Option value="In Stock">In Stock</Option>
-                    <Option value="Out Of Stock">Out Of Stock</Option>
-                  </Select>
-                </Form.Item>
-              </Col>
-
-              <Col xs={24} md={12}>
-                <Form.Item className="my-label"
-                  label="Purchase Price"
-                  name="purchaseprice"
-                  rules={[{ required: true }]}
-                >
-                  <InputNumber style={{ width: "100%" }} min={0} />
-                </Form.Item>
-              </Col>
-
-              <Col xs={24} md={12}>
-                <Form.Item className="my-label"
-                  label="Price"
-                  name="price"
-                  rules={[{ required: true }]}
-                >
-                  <InputNumber style={{ width: "100%" }} min={0} />
-                </Form.Item>
-              </Col>
-
-              <Col xs={24} md={12}>
-                <Form.Item className="my-label"
-                  label="Regular Price"
-                  name="regularPrice"
-                  rules={[{ required: true }]}
-                >
-                  <InputNumber style={{ width: "100%" }} min={0} />
-                </Form.Item>
-              </Col>
-
-              <Col xs={24} md={12}>
-                <Form.Item name="offerPrice" label="Offer Price" className="my-label">
-                  <InputNumber style={{ width: "100%" }} min={0} />
-                </Form.Item>
-              </Col>
-
-              <Col xs={24} md={12}>
-                <Form.Item className="my-label"
-                  name="size"
-                  label="Size"
-                  rules={[{ required: true }]}
-                >
-                  <Select>
-                    <Option value="S">S</Option>
-                    <Option value="M">M</Option>
-                    <Option value="L">L</Option>
-                    <Option value="No Size">No Size</Option>
-                  </Select>
-                </Form.Item>
-              </Col>
-
-              <Col xs={24}>
-                <Form.Item className="my-label"
-                  label="Features"
-                  name="features"
-                  rules={[{ required: true }]}
-                >
-                  <ReactQuill />
-                </Form.Item>
-              </Col>
-
-              <Col xs={24}>
-                <Form.Item label="Features 2" name="features2" className="my-label">
-                  <ReactQuill />
-                </Form.Item>
-              </Col>
-
-              <Col xs={24}>
-                <Form.Item className="my-label"
-                  label="Description"
-                  name="description"
-                  rules={[{ required: true }]}
-                >
-                  <ReactQuill />
-                </Form.Item>
-              </Col>
-
-              <Col xs={24}>
-                <Form.Item label="Description 2" name="description2" className="my-label">
-                  <ReactQuill />
-                </Form.Item>
-              </Col>
-
-              <Col xs={24}>
-                <Form.Item label="Image Upload" name="images" className="my-label">
-                  <Upload
-                    accept="image/*"
-                    listType="picture-card"
-                    fileList={fileList}
-                    onPreview={handlePreview}
-                    onChange={handleChange}
-                    beforeUpload={() => false}
-                    multiple
-                  >
-                    {fileList.length >= 8 ? null : uploadButton}
-                  </Upload>
-
-                  <Modal
-                    open={previewOpen}
-                    title={previewTitle}
-                    footer={null}
-                    onCancel={handleCancel}
-                  >
-                    <img
-                      alt="example"
-                      style={{ width: "100%" }}
-                      src={previewImage}
-                    />
-                  </Modal>
-                </Form.Item>
-              </Col>
-
-              <Col xs={24}>
-                <Form.Item >
-                  <Button
-                    type="primary"
-                    htmlType="submit"
-                    style={{
-                      backgroundColor: "#ff6347",
-                      borderColor: "#ff6347",
-                      color: "#ffffff",
-                      transition: "all 0.3s ease",
-                    }}
-                  >
-                    Save Product
-                  </Button>
-                </Form.Item>
-              </Col>
-            </Row>
-          </Form>
-        </div>
+    <div>
+      <PageTitle pageTitle="Create Product || Admin" />
+      <div style={{ padding: '20px', backgroundColor: '#1c6fc2ff', borderRadius: '5px 5px 0 0' }}>
+        <h5 style={{ color: 'white', margin: "0", fontWeight: '700' }}>Create Product</h5>
       </div>
-    </>
+      <div style={{ padding: "20px 0", }}>
+        <Form form={form} layout="vertical" onFinish={handleSubmit} style={{ backgroundColor: '#4187ceff', padding: '20px', borderRadius: '5px', color:'white'}}>
+          <Row gutter={16}>
+            <Col xs={24} md={12}>
+              <Form.Item className="my-label"
+                name="mainCategory"
+                label="Main Category"
+                rules={[{ required: true }]}
+              >
+                <Select
+                  placeholder="Main Category--"
+                  value={mainCategory}
+                  onChange={changeMainCategory}
+                >
+                  {categoriesData.map((mainCat) => (
+                    <Option key={mainCat.name} value={mainCat.name}>
+                      {mainCat.name}
+                    </Option>
+                  ))}
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item className="my-label"
+                label="Category"
+                name="category"
+                rules={[{ required: true }]}
+              >
+                <Select
+                  placeholder="Category--"
+                  value={category}
+                  onChange={changeCategory}
+                  disabled={!categories.length}
+                >
+                  {categories.map((cat) => (
+                    <Option key={cat.name} value={cat.name}>
+                      {cat.name}
+                    </Option>
+                  ))}
+                </Select>
+              </Form.Item>
+            </Col>
+
+            <Col xs={24} md={12}>
+              <Form.Item className="my-label"
+                label="Sub Category"
+                name="subCategory"
+                rules={[{ required: true }]}
+              >
+                <Select
+                  placeholder="Sub Category--"
+                  value={subCategory}
+                  onChange={changeSubCategory}
+                  disabled={!subCategories.length}
+                >
+                  {subCategories.map((subCat) => (
+                    <Option key={subCat} value={subCat}>
+                      {subCat}
+                    </Option>
+                  ))}
+                </Select>
+              </Form.Item>
+            </Col>
+
+            <Col xs={24} md={12}>
+              <Form.Item className="my-label"
+                label="Product Name"
+                name="name"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+
+            <Col xs={24} md={12}>
+              <Form.Item className="my-label"
+                label="Brand"
+                name="brand"
+                rules={[{ required: true }]}
+              >
+                <Select>
+                  <Option value="Mahsez">Mahsez</Option>
+                  <Option value="Alif">Alif</Option>
+                  <Option value="Al-Nuaim">Al-Nuaim</Option>
+                  <Option value="Manfare">Manfare</Option>
+                  <Option value="Leebas">Leebas</Option>
+                  <Option value="AKIJ">AKIJ</Option>
+                  <Option value="Morphy">Morphy</Option>
+                  <Option value="Lenovo">Lenovo</Option>
+                  <Option value="Asus">Asus</Option>
+                  <Option value="Walton">Walton</Option>
+                  <Option value="Sony">Sony</Option>
+                  <Option value="LG">LG</Option>
+                  <Option value="Smart">Smart</Option>
+                  <Option value="Deer">Deer</Option>
+                  <Option value="No Brand">No Brand</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+
+            <Col xs={24} md={12}>
+              <Form.Item className="my-label"
+                label="Available Quantity"
+                name="availableQuantity"
+                rules={[{ required: true }]}
+              >
+                <InputNumber min={0} style={{ width: "100%" }} />
+              </Form.Item>
+            </Col>
+
+            <Col xs={24} md={12}>
+              <Form.Item className="my-label"
+                label="Stock Status"
+                name="stockStatus"
+                rules={[{ required: true }]}
+              >
+                <Select>
+                  <Option value="In Stock">In Stock</Option>
+                  <Option value="Out Of Stock">Out Of Stock</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+
+            <Col xs={24} md={12}>
+              <Form.Item className="my-label"
+                label="Purchase Price"
+                name="purchaseprice"
+                rules={[{ required: true }]}
+              >
+                <InputNumber style={{ width: "100%" }} min={0} />
+              </Form.Item>
+            </Col>
+
+            <Col xs={24} md={12}>
+              <Form.Item className="my-label"
+                label="Price"
+                name="price"
+                rules={[{ required: true }]}
+              >
+                <InputNumber style={{ width: "100%" }} min={0} />
+              </Form.Item>
+            </Col>
+
+            <Col xs={24} md={12}>
+              <Form.Item className="my-label"
+                label="Regular Price"
+                name="regularPrice"
+                rules={[{ required: true }]}
+              >
+                <InputNumber style={{ width: "100%" }} min={0} />
+              </Form.Item>
+            </Col>
+
+            <Col xs={24} md={12}>
+              <Form.Item name="offerPrice" label="Offer Price" className="my-label">
+                <InputNumber style={{ width: "100%" }} min={0} />
+              </Form.Item>
+            </Col>
+
+            <Col xs={24} md={12}>
+              <Form.Item className="my-label"
+                name="size"
+                label="Size"
+                rules={[{ required: true }]}
+              >
+                <Select>
+                  <Option value="S">S</Option>
+                  <Option value="M">M</Option>
+                  <Option value="L">L</Option>
+                  <Option value="No Size">No Size</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+
+            <Col xs={24}>
+              <Form.Item className="my-label"
+                label="Features"
+                name="features"
+                rules={[{ required: true }]}
+              >
+                <ReactQuill style={{color:'white'}} />
+              </Form.Item>
+            </Col>
+
+            <Col xs={24}>
+              <Form.Item label="Features 2" name="features2" className="my-label">
+                <ReactQuill style={{color:'white'}} />
+              </Form.Item>
+            </Col>
+
+            <Col xs={24}>
+              <Form.Item className="my-label"
+                label="Description"
+                name="description"
+                rules={[{ required: true }]}
+              >
+                <ReactQuill style={{color:'white'}} />
+              </Form.Item>
+            </Col>
+
+            <Col xs={24}>
+              <Form.Item label="Description 2" name="description2" className="my-label">
+                <ReactQuill style={{color:'white'}} />
+              </Form.Item>
+            </Col>
+
+            <Col xs={24}>
+              <Form.Item label="Image Upload" name="images" className="my-label">
+                <Upload
+                  accept="image/*"
+                  listType="picture-card"
+                  fileList={fileList}
+                  onPreview={handlePreview}
+                  onChange={handleChange}
+                  beforeUpload={() => false}
+                  multiple
+                >
+                  {fileList.length >= 8 ? null : uploadButton}
+                </Upload>
+
+                <Modal
+                  open={previewOpen}
+                  title={previewTitle}
+                  footer={null}
+                  onCancel={handleCancel}
+                >
+                  <img
+                    alt="example"
+                    style={{ width: "100%" }}
+                    src={previewImage}
+                  />
+                </Modal>
+              </Form.Item>
+            </Col>
+
+            <Col xs={24}>
+              <Form.Item >
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  style={{
+                    backgroundColor: "#ff6347",
+                    borderColor: "#ff6347",
+                    color: "#ffffff",
+                    transition: "all 0.3s ease",
+                  }}
+                >
+                  Save Product
+                </Button>
+              </Form.Item>
+            </Col>
+          </Row>
+        </Form>
+      </div>
+    </div>
   );
 };
 

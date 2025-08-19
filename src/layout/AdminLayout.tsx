@@ -18,12 +18,19 @@ const AdminLayout = () => {
         <Layout style={{ minHeight: '100vh' }}>
 
             {screens.lg && <AdminSideber />}
-            <Layout style={{ marginLeft: screens.lg ? 255 : 0 }}>
-              
+            <Layout style={{ marginLeft: screens.lg ? 255 : 0, minHeight: '100vh', }}>
                 <Content style={{
-                    background: "radial-gradient(circle, #133c63ff 0%, #01203bff 50%, #001a33ff 100%)", padding: '84px 20px 20px 20px',
-                }}>  <AdminDashboardNavber onMenuClick={toggleDrawer} />
-                    <Outlet />
+                    background: "radial-gradient(circle, #011a31ff 0%, #034b8aff 50%, #011f3bff 100%)", minHeight: '100vh',
+                }}>
+                    <div style={{ height: '64px' }}>
+                        <AdminDashboardNavber onMenuClick={toggleDrawer} />
+                    </div>
+                    <div style={{
+                        minHeight: 'calc(100vh - 64px)', maxWidth: '1600px', margin: 'auto', padding: '20px 10px', display: 'flex',
+                        flexDirection: 'column'
+                    }}>
+                        <Outlet />
+                    </div>
                 </Content>
             </Layout>
             {/* মোবাইলে Drawer */}

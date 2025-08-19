@@ -3,10 +3,11 @@ import PageTitle from "@/pages/shared/PageTitle/PageTitle";
 import { useDeleteProductMutation, useGetProductsWithSearchFilterQuery } from "@/redux/features/product/productApi";
 import { TProduct } from "@/types/product.types";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
-import { Button, Col, Popconfirm, Row, Select, Table, TableColumnsType } from "antd";
+import { Button, Col, ConfigProvider, Popconfirm, Row, Select, Table, TableColumnsType } from "antd";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import './ProductList';
 
 const { Option } = Select;
 
@@ -66,11 +67,11 @@ const ProductList = () => {
         {
             title: "Product Name",
             key: "name",
-            width: 300, 
+            // width: 300,
             render: (item) => (
-                <div style={{ display: "flex", alignItems: "center" ,}}>
-                    {item?.image?.slice(0, 1).map((img: string) => (
-                        <img
+                <div style={{ display: "flex", alignItems: "center", }}>
+                    {item?.image?.slice(0, 1).map((img: string, index: number) => (
+                        <img key={index}
                             src={
                                 img.includes("res.cloudinary.com")
                                     ? img.replace("/upload/", "/upload/f_auto,q_auto/w_50/")
@@ -128,7 +129,7 @@ const ProductList = () => {
             dataIndex: "soldQuantity",
             key: "soldQuantity",
             align: "center",
-            width: 100,
+            width: 120,
         },
         {
             title: "Action",
@@ -171,11 +172,10 @@ const ProductList = () => {
         },
     ];
 
-
     return (
-        <div>
-            <PageTitle pageTitle="Payment " />
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px', backgroundColor: '#002952b2', borderRadius: '5px 5px 0 0' }}>
+        <div style={{ flex: 1 }}>
+            <PageTitle pageTitle="Products " />
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px', backgroundColor: '#1c6fc2ff', borderRadius: '5px 5px 0 0' }}>
                 <h5 style={{ color: 'white', margin: "0", fontWeight: '700' }}>  All Product List ({productData?.meta?.total})</h5>
                 <Row>
                     <Col>
@@ -195,21 +195,23 @@ const ProductList = () => {
             {loadingProduct ? (
                 <Loader />
             ) : (
-                <div style={{ paddingTop:'20px'}}>
-                    <Table
-                        columns={columns}
-                        dataSource={dataTable}
-                        pagination={{
-                            current: currentPage,
-                            pageSize: pageSize,
-                            total: productData?.meta?.total,
-                            showSizeChanger: false,
-                            onChange: handleTableChange,
-                        }}
-                        scroll={{ x: "max-content", y: 550 }}
-                        style={{ width: "100%",borderRadius:'none' }}
-                        sticky
-                    />
+                <div style={{  paddingTop: '20px',}}>
+                    <ConfigProvider theme={{ components: { Table: { headerBorderRadius: 0, } } }}>
+                        <Table
+                            columns={columns}
+                            dataSource={dataTable}
+                            pagination={{
+                                pageSize: pageSize,
+                                current: currentPage,
+                                onChange: handleTableChange,
+                                total: productData?.meta?.total,
+                                showSizeChanger: false,
+                            }}
+                            scroll={{ x: "max-content", y: 570, }}
+                            style={{ width: "100%",  }}
+                            sticky
+                        />
+                    </ConfigProvider>
                 </div>
             )
             }

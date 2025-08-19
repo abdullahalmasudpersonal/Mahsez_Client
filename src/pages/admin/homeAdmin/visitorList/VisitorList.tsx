@@ -1,11 +1,10 @@
-import { Col, Row, Select, Table, TableColumnsType } from "antd";
+import { Col, ConfigProvider, Row, Select, Table, TableColumnsType } from "antd";
 import PageTitle from "../../../shared/PageTitle/PageTitle";
 import { useState } from "react";
-
-import Loader2 from "../../../shared/loader/Loader2";
 import { useGetVisitorsWithFiltersQuery } from "../../../../redux/features/visitor/visitorApi";
 import { TVisitors } from "../../../../types/visitor.types";
 import { formatDate } from "../../../../utils/formatDate";
+import Loader from "@/pages/shared/loader/Loader";
 
 const { Option } = Select;
 
@@ -111,13 +110,13 @@ const VisitorList = () => {
   ];
 
   return (
-    <div className="dashboard-dev2" style={{ overflowX: "auto" }}>
+    <div style={{ flex: 1 }}>
       <PageTitle pageTitle="Visitors || Admin" />
-      <div className="py-4 px-4 d-flex justify-content-between align-items-center" style={{backgroundColor:'#033566ff',borderRadius:'5px 5px 0 0'}}>
-        <h4 className="fw-bold m-0" style={{color:'white'}}>
-          All Visitor List {visitorData?.meta?.total}
-        </h4>
-        <Row justify="end">
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px', backgroundColor: '#1c6fc2ff', borderRadius: '5px 5px 0 0' }}>
+        <h5 style={{ color: 'white', margin: "0", fontWeight: '700' }}>
+          All Visitor List ({visitorData?.meta?.total})
+        </h5>
+        <Row>
           <Col>
             <Select
               defaultValue={10}
@@ -132,26 +131,26 @@ const VisitorList = () => {
           </Col>
         </Row>
       </div>
-      <hr />
-
       {isLoading ? (
-        <Loader2 />
+        <Loader />
       ) : (
-        <div style={{ padding: "10px" }}>
-          <Table
-            columns={columns}
-            dataSource={dataTable}
-            pagination={{
-              current: currentPage,
-              pageSize: pageSize,
-              total: visitorData?.meta?.total,
-              showSizeChanger: false,
-              onChange: handleTableChange,
-            }}
-            scroll={{ x: "max-content", y: 550 }}
-            style={{ width: "100%" }}
-            sticky
-          />
+        <div style={{ paddingTop: '20px' }}>
+          <ConfigProvider theme={{ components: { Table: { headerBorderRadius: 0, } } }}>
+            <Table
+              columns={columns}
+              dataSource={dataTable}
+              pagination={{
+                current: currentPage,
+                pageSize: pageSize,
+                total: visitorData?.meta?.total,
+                showSizeChanger: false,
+                onChange: handleTableChange,
+              }}
+              scroll={{ x: "max-content", y: 570 }}
+              style={{ width: "100%" }}
+              sticky
+            />
+          </ConfigProvider>
         </div>
       )}
     </div>
