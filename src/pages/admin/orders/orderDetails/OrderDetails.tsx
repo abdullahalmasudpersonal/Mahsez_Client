@@ -1,6 +1,7 @@
 import {
   Button,
   Col,
+  ConfigProvider,
   Form,
   Row,
   Select,
@@ -160,9 +161,9 @@ const OrderDetails = () => {
       updateOrderStatusData = { fakeOrder: true };
     }
 
-     await updateOrderStatus({ updateOrderStatusData, orderNumber });
+    await updateOrderStatus({ updateOrderStatusData, orderNumber });
 
-  
+
   };
 
   return (
@@ -170,22 +171,22 @@ const OrderDetails = () => {
       <div className="dashboard-dev2" style={{ padding: "10px" }}>
         <PageTitle pageTitle="Order Details || Admin" />
         <Row>
-          {/* প্রথম ডিভ */}
           <Col xs={24} md={24} lg={16} className="orderInfoDiv">
             <Col
               style={{
                 padding: "10px",
-                color: "black",
                 borderRadius: "3px",
+                backgroundColor: '#003b63ff',
                 boxShadow:
                   "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
               }}
             >
-              <Col style={{ padding: "10px", textAlign: "center" }}>
-                <h5 style={{ marginBottom: "0" }}>Order Information</h5>
+              <Col style={{ padding: "10px", textAlign: "center", }}>
+                <h5 style={{ marginBottom: "0", color: 'white' }}>Order Information</h5>
                 <Typography
                   style={
                     {
+                      color: 'white'
                       // display: "inline-block",
                     }
                   }
@@ -195,6 +196,7 @@ const OrderDetails = () => {
                 <Typography
                   style={
                     {
+                      color: 'white'
                       // display: "inline-block",
                     }
                   }
@@ -220,28 +222,28 @@ const OrderDetails = () => {
                   width: "100%",
                   padding: "10px",
                   borderRadius: "3px",
-                  backgroundColor: "rgb(230, 230, 230)",
+                  backgroundColor: "rgba(17, 77, 117, 1)", color: 'white'
                 }}
               >
                 <Col xs={24} md={12} lg={12} style={{ paddingRight: "10px" }}>
                   <h6 style={{ marginBottom: "16px" }}>Shipping Address</h6>
                   <Typography
-                    style={{ fontWeight: "600", marginBottom: "5px" }}
+                    style={{ fontWeight: "600", marginBottom: "5px", color: 'white' }}
                   >
                     {name}
                   </Typography>
                   <Typography
-                    style={{ fontWeight: "600", marginBottom: "5px" }}
+                    style={{ fontWeight: "600", marginBottom: "5px", color: 'white' }}
                   >
                     {address}
                   </Typography>
                   <Typography
-                    style={{ fontWeight: "600", marginBottom: "5px" }}
+                    style={{ fontWeight: "600", marginBottom: "5px", color: 'white' }}
                   >
                     District: {district}
                   </Typography>
                   <Typography
-                    style={{ fontWeight: "700", marginBottom: "5px" }}
+                    style={{ fontWeight: "700", marginBottom: "5px", color: 'white' }}
                   >
                     Contact Number: {contactNumber}
                   </Typography>
@@ -261,13 +263,13 @@ const OrderDetails = () => {
                       <tr>
                         <td
                           className="ps-0 pb-0 border-0"
-                          style={{ background: "none" }}
+                          style={{ background: "none", color: 'white' }}
                         >
                           Sub-Total:
                         </td>
                         <td
                           className="ps-0 pb-0 border-0 text-end"
-                          style={{ background: "none" }}
+                          style={{ background: "none", color: 'white' }}
                         >
                           {subTotal}{" "}
                           <span
@@ -283,13 +285,13 @@ const OrderDetails = () => {
                       <tr>
                         <td
                           className="ps-0 pb-0 border-0"
-                          style={{ background: "none" }}
+                          style={{ background: "none", color: 'white' }}
                         >
                           Home Delivery:
                         </td>
                         <td
                           className="ps-0 pb-0 text-end border-0"
-                          style={{ background: "none" }}
+                          style={{ background: "none", color: 'white' }}
                         >
                           {deliveryCharge}
                           <span
@@ -305,13 +307,13 @@ const OrderDetails = () => {
                       <tr>
                         <td
                           className="ps-0 pb-0 border-0"
-                          style={{ background: "none" }}
+                          style={{ background: "none", color: 'white' }}
                         >
                           Total:
                         </td>
                         <td
                           className="ps-0 pb-0 border-0 text-end"
-                          style={{ background: "none" }}
+                          style={{ background: "none", color: 'white' }}
                         >
                           {grandTotal}
                           <span
@@ -327,13 +329,13 @@ const OrderDetails = () => {
                       <tr>
                         <td
                           className="ps-0 pb-0 border-0 "
-                          style={{ background: "none" }}
+                          style={{ background: "none", color: 'white' }}
                         >
                           Paid:
                         </td>
                         <td
                           className="ps-0 pb-1 border-0 text-end"
-                          style={{ color: "green", background: "none" }}
+                          style={{ color: "#96ff92ff", background: "none", }}
                         >
                           {paymentStatus === "UNPAID" ? 0 : grandTotal}
                           <span
@@ -351,7 +353,7 @@ const OrderDetails = () => {
                           className="ps-0 pb-0 "
                           style={{
                             background: "none",
-                            borderTop: "1px solid gray",
+                            borderTop: "1px solid gray", color: 'white'
                           }}
                         >
                           Deu:
@@ -359,7 +361,7 @@ const OrderDetails = () => {
                         <td
                           className="ps-0 pb-0 text-end  "
                           style={{
-                            color: "red",
+                            color: "#ff3c3cff",
                             background: "none",
                             borderTop: "1px solid gray",
                           }}
@@ -386,30 +388,33 @@ const OrderDetails = () => {
                 width: "100%",
                 marginTop: "20px",
                 borderRadius: "3px",
+                backgroundColor: '#003b63ff',
                 boxShadow:
                   "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
               }}
             >
-              <h5 style={{ paddingLeft: "15px", paddingTop: "20px" }}>
+              <h5 style={{ paddingLeft: "15px", paddingTop: "20px", paddingBottom: '10px', color: 'white' }}>
                 Products
               </h5>
-              <Table
-                columns={columns}
-                dataSource={dataTable}
-                pagination={false}
-                scroll={{ x: true }}
-                style={{ width: "100%" }}
-                sticky
-              />
+              <ConfigProvider theme={{ components: { Table: { headerBorderRadius: 0, } } }}>
+                <Table
+                  columns={columns}
+                  dataSource={dataTable}
+                  pagination={false}
+                  scroll={{ x: true }}
+                  style={{ width: "100%" }}
+                  sticky
+                />
+              </ConfigProvider>
+
             </Col>
           </Col>
 
-          {/* দ্বিতীয় ডিভ */}
           <Col xs={24} md={24} lg={8} className="orderHistoryDiv">
             <Col
               style={{
                 padding: "10px",
-                borderRadius: "3px",
+                borderRadius: "3px", backgroundColor:'rgba(18, 109, 170, 1)',
                 boxShadow:
                   "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
               }}
@@ -436,8 +441,7 @@ const OrderDetails = () => {
                     type="primary"
                     htmlType="submit"
                     style={{
-                      backgroundColor: "#ff6347",
-                      borderColor: "#ff6347",
+                      backgroundColor: "#05a300ff",
                       color: "#ffffff",
                       transition: "all 0.3s ease",
                     }}
@@ -447,7 +451,7 @@ const OrderDetails = () => {
                 </Form.Item>
               </Form>
 
-              <h5>Order History</h5>
+              <h5 style={{color:'white'}}>Order History</h5>
               <div className="mt-4 ps-2">
                 {/* {
                         orderDetails.deliveredOrderStatus ?
@@ -495,7 +499,7 @@ const OrderDetails = () => {
                 )} */}
 
                 {deliveredOrder ? (
-                  <div className="order-status-graph">
+                  <div className="order-status-graph" style={{color:'white'}}>
                     <h6>Delivered Order</h6>
                     <p className="m-0">{formatDate(deliveredOrderDate)}</p>
                   </div>
@@ -503,7 +507,7 @@ const OrderDetails = () => {
                   ""
                 )}
                 {confirmOrder ? (
-                  <div className="order-status-graph">
+                  <div className="order-status-graph" style={{color:'white'}}>
                     <h6>Confirm Order</h6>
                     <p className="m-0">{formatDate(confirmOrderDate)}</p>
                   </div>
@@ -511,7 +515,7 @@ const OrderDetails = () => {
                   ""
                 )}
                 {fakeOrder ? (
-                  <div className="order-status-graph">
+                  <div className="order-status-graph" style={{color:'white'}}>
                     <h6>Fake Order</h6>
                     <p className="m-0">{formatDate(fakeOrderDate)}</p>
                   </div>
@@ -519,14 +523,14 @@ const OrderDetails = () => {
                   ""
                 )}
                 {cancelOrder ? (
-                  <div className="order-status-graph">
+                  <div className="order-status-graph" style={{color:'white'}}>
                     <h6>Cancel Order</h6>
                     <p className="m-0">{formatDate(cancelOrderDate)}</p>
                   </div>
                 ) : (
                   ""
                 )}
-                <div className="order-status-graph">
+                <div className="order-status-graph" style={{color:'white'}}>
                   <h6>Pending</h6>
                   <p className="m-0">{formatDate(createdAt)}</p>
                 </div>

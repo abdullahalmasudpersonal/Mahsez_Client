@@ -1,5 +1,5 @@
 // import { useState } from "react";
-import { Row, Col, Card, Typography, Space } from "antd";
+import { Row, Col, Card, Typography, Space, Dropdown } from "antd";
 // import { ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons";
 import {
   useGetAllOrderQuery,
@@ -8,8 +8,10 @@ import {
 import Loader2 from "../../shared/loader/Loader2";
 import { TVisitors } from "../../../types/visitor.types";
 import { useGetVisitorsWithFiltersQuery } from "../../../redux/features/visitor/visitorApi";
+import { ArrowDownOutlined, ArrowUpOutlined, BarChartOutlined, MoreOutlined, RiseOutlined, ShoppingCartOutlined, TeamOutlined,  } from "@ant-design/icons";
 
-const { Title } = Typography;
+
+const { Title, Text } = Typography;
 
 const AdminCart = () => {
   // const [orderFilter, setOrderFilter] = useState("1");
@@ -22,18 +24,20 @@ const AdminCart = () => {
     0
   );
 
-  // const filters = [
-  //   { key: "1", label: "Today" },
-  //   { key: "7", label: "Last Week" },
-  //   { key: "30", label: "Last Month" },
-  //   { key: "365", label: "Current Year" },
-  // ];
+  const filters = [
+    { key: "1", label: "Today" },
+    { key: "7", label: "Last Week" },
+    { key: "30", label: "Last Month" },
+    { key: "365", label: "Current Year" },
+  ];
+
   // const [,  selectedFilters  setSelectedFilters] = useState({
   //   revenue: "1",
   //   orders: "1",
   //   growth: "1",
   //   conversion: "1",
   // });
+
   // const handleMenuClick = (key: string, filter: string) => {
   //   setSelectedFilters((prev) => ({ ...prev, [key]: filter }));
   // };
@@ -56,9 +60,9 @@ const AdminCart = () => {
       trend: "up",
       percentage: "+3.45%",
       description: "from last week",
-      image: "https://cdn-icons-png.flaticon.com/128/5444/5444712.png",
+      image: <ShoppingCartOutlined style={{ color: 'white',fontSize:22 }} />,
       gradient:
-        "linear-gradient(109.6deg, rgb(255, 194, 48) 11.2%, rgb(255, 124, 0) 100.2%)",
+        "linear-gradient(109.6deg, rgba(4, 72, 104, 1) 11.2%, rgba(2, 50, 95, 1) 100.2%)",
     },
     {
       key: "Amount",
@@ -67,9 +71,9 @@ const AdminCart = () => {
       trend: "down",
       percentage: "+3.45%",
       description: "from last week",
-      image: "https://cdn-icons-png.flaticon.com/128/1013/1013401.png",
+      image: <RiseOutlined  style={{ color: 'white',fontSize:22 }} />,
       gradient:
-        "radial-gradient(circle at 10% 20%, rgb(228, 118, 0) 0%, rgb(247, 189, 2) 90%)",
+        "radial-gradient(circle at 10% 20%, rgba(4, 73, 100, 1) 0%, rgba(8, 70, 112, 1) 90%)",
     },
     {
       key: "Revinew",
@@ -78,9 +82,9 @@ const AdminCart = () => {
       trend: "down",
       percentage: "+3.45%",
       description: "from last week",
-      image: "https://cdn-icons-png.flaticon.com/128/584/584558.png",
+      image: <BarChartOutlined style={{ color: 'white',fontSize:22 }} />,
       gradient:
-        "linear-gradient(109.6deg, rgb(255, 194, 48) 11.2%, rgb(255, 124, 0) 100.2%)",
+        "linear-gradient(109.6deg, rgba(10, 88, 133, 1) 11.2%, rgba(0, 67, 99, 1) 100.2%)",
     },
     {
       key: "Visitors",
@@ -89,9 +93,9 @@ const AdminCart = () => {
       trend: "up",
       percentage: "+3.45%",
       description: "from last week",
-      image: "https://cdn-icons-png.flaticon.com/128/681/681494.png",
+      image: <TeamOutlined style={{ color: 'white',fontSize:22 }} />,
       gradient:
-        "radial-gradient(circle at 10% 20%, rgb(255, 131, 61) 0%, rgb(249, 183, 23) 90%)",
+        "radial-gradient(circle at 10% 20%, rgba(13, 70, 109, 1) 0%, rgba(2, 94, 122, 1) 90%)",
     },
   ];
 
@@ -99,13 +103,13 @@ const AdminCart = () => {
     <div>
       <Row gutter={[16, 16]}>
         {cardsData.map((card) => (
-          <Col key={card?.key} xs={24} sm={24} md={12} lg={6}>
+          <Col key={card?.key} xs={24} sm={24} md={12} lg={12} xl={6}>
             <Card
               style={{
-                borderRadius: "10px",
+                borderRadius: "7px",
                 backgroundImage: card.gradient,
-                color: "black",
-                // boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+                border: '1px solid rgba(42, 116, 165, 0.57)',
+                boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
               }}
             >
               <Space
@@ -135,30 +139,31 @@ const AdminCart = () => {
                         alignItems: "center",
                       }}
                     >
-                      <img
+                      {/* <img
                         src={card.image}
                         alt="icon"
                         style={{
                           width: "22px",
-                          height: "22px",
+                          height: "22px", color:'white'
                         }}
-                      />
+                      /> */}
+                      {card.image}
                     </div>
                     <Title level={5} style={{ margin: " 0", color: "#fff" }}>
                       {card.title}
                     </Title>
                   </div>
 
-                  {/*  <Dropdown
+                  <Dropdown
                     placement="bottomRight"
                     menu={{
                       items: filters.map((filter) => ({
                         key: filter.key,
                         label: (
                           <span
-                            onClick={() =>
-                              handleMenuClick("cardKey", filter.key)
-                            }
+                          // onClick={() =>
+                          //   handleMenuClick("cardKey", filter.key)
+                          // }
                           >
                             {filter.label}
                           </span>
@@ -174,7 +179,7 @@ const AdminCart = () => {
                         color: "#fff",
                       }}
                     />
-                  </Dropdown> */}
+                  </Dropdown>
                 </Space>
 
                 <div
@@ -188,7 +193,7 @@ const AdminCart = () => {
                     {card.value}
                   </Title>
 
-                  {/* <Space
+                  <Space
                     align="center"
                     style={{ display: "grid", justifyItems: "end", gap: "0" }}
                   >
@@ -209,24 +214,12 @@ const AdminCart = () => {
                     <Typography style={{ color: "#fff" }}>
                       {card.description}
                     </Typography>
-                  </Space> */}
+                  </Space>
                 </div>
               </Space>
             </Card>
           </Col>
         ))}
-        {/*  <Col xs={24} sm={24} md={12} lg={6}>
-          <Card hoverable></Card>
-        </Col> */}
-        {/* <Col xs={24} sm={24} md={12} lg={6}>
-          <Card hoverable> </Card>
-        </Col>
-        <Col xs={24} sm={24} md={12} lg={6}>
-          <Card hoverable></Card>
-        </Col>
-        <Col xs={24} sm={24} md={12} lg={6}>
-          <Card hoverable></Card>
-        </Col> */}
       </Row>
     </div>
   );

@@ -8,10 +8,7 @@ import RecentOrder from "./RecentOrder";
 
 const HomeAdmin = () => {
   return (
-    <div
-      className="dashboard-dev2"
-      style={{ padding: "15px", backgroundColor: "rgb(247, 247, 247)" }}
-    >
+    <div>
       <AdminCart />
       <div
         style={{
