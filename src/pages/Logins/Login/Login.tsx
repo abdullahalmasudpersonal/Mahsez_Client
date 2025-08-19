@@ -67,6 +67,7 @@ const Login = () => {
     }
   }, [serverError]);
 
+  // const [loggedInUser, setLoggedInUser] = useState<TUser | null>(null);
 
   const handleFinish = async (data: { email: string, password: string }) => {
     setSubmitting(true);
@@ -82,8 +83,13 @@ const Login = () => {
       socket.emit("userOnline", user?.userId);
       const toastId = toast.loading("Logging in...");
       toast.success("Logged in successfully!", { id: toastId, duration: 2000 });
-      navigate(location.state?.from?.pathname || `/${user?.role}`, { replace: true });
-      
+      // navigate(location.state?.from?.pathname || `/${user.role}`, { replace: true });
+      const from = location.state?.from?.pathname;
+      if (from && from !== "/login") {
+        navigate(from, { replace: true });
+      } else {
+        navigate(`/${user.role}`, { replace: true });
+      }
     } catch (err) {
       const fieldErrors: { name: string | (string | number)[]; errors: string[] }[] = [];
 

@@ -19,7 +19,7 @@ const BuyerLayout = () => {
             {screens.lg && <BuyerSideber />}
             <Layout style={{ marginLeft: screens.lg ? 255 : 0, minHeight: '100vh', }}>
                 <Content style={{
-                    background: "radial-gradient(circle, #133c63ff 0%, #01203bff 50%, #001a33ff 100%)", minHeight: '100vh',
+                    background: "radial-gradient(circle, #011a31ff 0%, #034b8aff 50%, #011f3bff 100%)", minHeight: '100vh',
                 }}> <div style={{ height: '64px' }}>
                         <BuyerDashboardNavber onMenuClick={toggleDrawer} />
                     </div>
