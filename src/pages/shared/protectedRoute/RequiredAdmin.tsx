@@ -3,7 +3,7 @@ import { logout, selectCurrentUser } from "../../../redux/features/auth/authSlic
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const RequireAdmin = ({ children }: { children: ReactNode }) => {
+const RequiredAdmin = ({ children }: { children: ReactNode }) => {
   const user = useAppSelector(selectCurrentUser);
   const location = useLocation();
   const dispatch = useAppDispatch();
@@ -24,4 +24,4 @@ const RequireAdmin = ({ children }: { children: ReactNode }) => {
   return children;
 };
 
-export default RequireAdmin;
+export default RequiredAdmin;

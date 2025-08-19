@@ -107,13 +107,13 @@ const BuyerProfile = () => {
                     </div>) :
                         <>
                             <div className="coverPhoto"></div>
-                            <div className="topProfileData" data-aos="fade-zoom-in">
+                            <div className="topProfileData" >
                                 {profileImg ? (
                                     <img width="170px" height="170px" src={profileImg} alt="" />
                                 ) : (
                                     <img width="170px" height="170px" src={profile} alt="" />
                                 )}
-                                <h5 style={{ textAlign: 'center' }}>{name}</h5>
+                                <h5 style={{ textAlign: 'center',fontSize:'24px',color:'#ffffffff', WebkitTextStroke: "2px #000000ff",  }}>{name}</h5>
                             </div>
                             {/* <div style={{
                                 display: "grid", gap: "20px", 

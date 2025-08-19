@@ -17,7 +17,12 @@
 }
 .topProfileData {
   display: flex;
-  background-color: rgb(240, 240, 240);
+  /* background-color: rgb(253, 253, 253) !important; */
+  background: radial-gradient(
+    circle,
+    rgb(2, 78, 139) 42%,
+    rgb(1, 68, 122) 65%
+  ); 
   height: 100px;
 }
 .topProfileData img {

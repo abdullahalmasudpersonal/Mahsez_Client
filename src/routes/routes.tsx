@@ -11,7 +11,7 @@ import VisitorList from "@/pages/admin/homeAdmin/visitorList/VisitorList";
 import ListOrders from "@/pages/admin/orders/listOrders/ListOrders";
 import OrderDetails from "@/pages/admin/orders/orderDetails/OrderDetails";
 import CreateProduct from "@/pages/admin/products/createProduct/CreateProduct";
-import ListProducts from "@/pages/admin/products/listProducts/ListProducts";
+import ProductList from "@/pages/admin/products/productList/ProductList";
 import UpdateProduct from "@/pages/admin/products/updateProduct/UpdateProduct";
 import AllAdmin from "@/pages/admin/users/allAdmin/AllAdmin";
 import AllBuyer from "@/pages/admin/users/allBuyer/AllBuyer";
@@ -47,7 +47,6 @@ import SearchBerResult from "@/pages/shared/navber/SearchBerResult/SearchBerResu
 import Notfound from "@/pages/shared/Notfound/Notfound";
 import RequiredBuyer from "@/pages/shared/protectedRoute/RequiredBuyer";
 import RequireRole from "@/pages/shared/protectedRoute/RequireRole";
-// import RequireRole from "@/pages/shared/protectedRoute/RequireRole";
 import ShoppingCart from "@/pages/shoppingCart/ShoppingCart";
 import TermsCondition from "@/pages/Terms&Condition/Terms&Condition";
 
@@ -98,9 +97,7 @@ const routes = [
   },
   {
     path: "/buyer",
-    // element: <BuyerLayout />,
     element: <RequireRole allowedRoles={["buyer"]}><BuyerLayout /></RequireRole>,
-    // element: <RequireRole role="buyer"><BuyerLayout /></RequireRole>,
     children: [
       { path: "", element: <BuyerProfile /> },
       { path: "my-order", element: <MyOrder /> },
@@ -113,12 +110,10 @@ const routes = [
   },
   {
     path: "/admin",
-    // element: <AdminLayout />,
     element: <RequireRole allowedRoles={["admin"]}><AdminLayout /></RequireRole>,
-    // element: <RequireRole role="admin"><AdminLayout /></RequireRole>,
     children: [
       { path: '', element: <HomeAdmin /> },
-      { path: "product-list", element: <ListProducts /> },
+      { path: "product-list", element: <ProductList /> },
       { path: "product-create", element: <CreateProduct /> },
       { path: "update-product/:productId", element: <UpdateProduct /> },
       { path: "order-list", element: <ListOrders /> },
