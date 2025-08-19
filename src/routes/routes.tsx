@@ -3,18 +3,19 @@ import AuthLayout from "@/layout/AuthLayout";
 import BuyerLayout from "@/layout/BuyerLayout";
 import CommonLayout from "@/layout/CommonLayout";
 import AboutUs from "@/pages/AboutUs/AboutUs";
+import BlogList from "@/pages/admin/blogs/blogList/BlogList";
 import CreateBlog from "@/pages/admin/blogs/createBlog/CreateBlog";
-import ListBlogs from "@/pages/admin/blogs/listBlogs/ListBlogs";
 import UpdateBlog from "@/pages/admin/blogs/updateBlog/UpdateBlog";
 import HomeAdmin from "@/pages/admin/homeAdmin/HomeAdmin";
 import VisitorList from "@/pages/admin/homeAdmin/visitorList/VisitorList";
-import ListOrders from "@/pages/admin/orders/listOrders/ListOrders";
 import OrderDetails from "@/pages/admin/orders/orderDetails/OrderDetails";
+import OrderList from "@/pages/admin/orders/orderList/OrderList";
 import CreateProduct from "@/pages/admin/products/createProduct/CreateProduct";
 import ProductList from "@/pages/admin/products/productList/ProductList";
 import UpdateProduct from "@/pages/admin/products/updateProduct/UpdateProduct";
+import AdminList from "@/pages/admin/users/admin/AdminList";
 import AllAdmin from "@/pages/admin/users/allAdmin/AllAdmin";
-import AllBuyer from "@/pages/admin/users/allBuyer/AllBuyer";
+import BuyerList from "@/pages/admin/users/buyer/BuyerList";
 import BlogDetails from "@/pages/Blogs/blogDetails/BlogDetails";
 import Blogs from "@/pages/Blogs/Blogs/Blogs";
 import BuyerPayment from "@/pages/buyer/payment/BuyerPayment";
@@ -116,15 +117,15 @@ const routes = [
       { path: "product-list", element: <ProductList /> },
       { path: "product-create", element: <CreateProduct /> },
       { path: "update-product/:productId", element: <UpdateProduct /> },
-      { path: "order-list", element: <ListOrders /> },
+      { path: "order-list", element: <OrderList /> },
       { path: "order-details/:orderId", element: <OrderDetails /> },
-      { path: "blog-list", element: <ListBlogs /> },
+      { path: "blog-list", element: <BlogList /> },
       { path: "blog-create", element: <CreateBlog /> },
       { path: "blog-update/:blogId", element: <UpdateBlog /> },
       { path: "visitor-list", element: <VisitorList /> },
-      { path: "admin-list", element: <AllAdmin /> },
+      { path: "admin-list", element: <AdminList /> },
       { path: "admin-create", element: <AllAdmin /> },
-      { path: "buyer-list", element: <AllBuyer /> },
+      { path: "buyer-list", element: <BuyerList /> },
       // { path: "buyer-list", element: <AllBuyer /> },
       { path: 'profile', element: <Profile /> },
       { path: "*", element: <Notfound /> },
