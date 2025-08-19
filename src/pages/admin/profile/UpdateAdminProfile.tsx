@@ -20,7 +20,7 @@ type UpdateProfileProps = {
     setEdit: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const UpdateProfile = ({ setEdit }: UpdateProfileProps) => {
+const UpdateAdminProfile = ({ setEdit }: UpdateProfileProps) => {
     const [form] = Form.useForm();
     const [fileList, setFileList] = useState<UploadFile[]>([]);
     const { data: userData } = useGetMyProfileQuery({});
@@ -104,7 +104,7 @@ const UpdateProfile = ({ setEdit }: UpdateProfileProps) => {
         <Card
             title={<span style={{ color: "white" }}>Update Profile</span>}
             bordered={false}
-            style={{ maxWidth: 1200, margin: "20px auto", borderRadius: 2, backgroundColor: '#0b2644ff', border: '1px solid #1e3657ff' }}
+            style={{ maxWidth: 1600, margin: "20px auto", borderRadius: 2, backgroundColor: '#013661ff', border: '1px solid #1e3657ff' }}
         >
             <Form
                 form={form}
@@ -220,4 +220,4 @@ const UpdateProfile = ({ setEdit }: UpdateProfileProps) => {
     );
 };
 
-export default UpdateProfile;
+export default UpdateAdminProfile;

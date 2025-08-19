@@ -13,8 +13,8 @@ import OrderList from "@/pages/admin/orders/orderList/OrderList";
 import CreateProduct from "@/pages/admin/products/createProduct/CreateProduct";
 import ProductList from "@/pages/admin/products/productList/ProductList";
 import UpdateProduct from "@/pages/admin/products/updateProduct/UpdateProduct";
+import AdminProfile from "@/pages/admin/profile/AdminProfile";
 import AdminList from "@/pages/admin/users/admin/AdminList";
-import AllAdmin from "@/pages/admin/users/allAdmin/AllAdmin";
 import BuyerList from "@/pages/admin/users/buyer/BuyerList";
 import BlogDetails from "@/pages/Blogs/blogDetails/BlogDetails";
 import Blogs from "@/pages/Blogs/Blogs/Blogs";
@@ -36,7 +36,6 @@ import CheckOut from "@/pages/checkOut/CheckOut";
 import Invoice from "@/pages/dashboard/myOrder/Invoice";
 import MyOrder from "@/pages/dashboard/myOrder/MyOrder";
 import MyOrderDetails from "@/pages/dashboard/myOrder/MyOrderDetails";
-import Profile from "@/pages/dashboard/Profile/Profile";
 import Home from "@/pages/Home/Home/Home";
 import Login from "@/pages/Logins/Login/Login";
 import Register from "@/pages/Logins/Register/Register";
@@ -124,10 +123,10 @@ const routes = [
       { path: "blog-update/:blogId", element: <UpdateBlog /> },
       { path: "visitor-list", element: <VisitorList /> },
       { path: "admin-list", element: <AdminList /> },
-      { path: "admin-create", element: <AllAdmin /> },
+      { path: "admin-create", element: <AdminList /> },
       { path: "buyer-list", element: <BuyerList /> },
       // { path: "buyer-list", element: <AllBuyer /> },
-      { path: 'profile', element: <Profile /> },
+      { path: 'profile', element: <AdminProfile /> },
       { path: "*", element: <Notfound /> },
     ],
   },

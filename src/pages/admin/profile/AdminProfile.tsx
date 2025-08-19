@@ -1,17 +1,15 @@
-import Loader from "@/pages/shared/loader/Loader";
+import PageTitle from "@/pages/shared/PageTitle/PageTitle";
 import { useGetMyProfileQuery } from "@/redux/features/user/userApi";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Card, Descriptions, } from "antd";
 import { useEffect, useState } from "react";
-import profile from "@/assets/img/profile/profileAvater.jpg";
+import UpdateAdminProfile from "./UpdateAdminProfile";
+import Loader from "@/pages/shared/loader/Loader";
 import Title from "antd/es/typography/Title";
-import './BuyerProfile.css';
-import UpdateBuyerProfile from "./UpdateBuyerProfile";
-import PageTitle from "@/pages/shared/PageTitle/PageTitle";
+import profile from "@/assets/img/profile/profileAvater.jpg";
 
-
-const BuyerProfile = () => {
+const AdminProfile = () => {
     const [edit, setEdit] = useState(false);
     const [column, setColumn] = useState(window.innerWidth < 850 ? 1 : 2);
     const { data: userData, isLoading } = useGetMyProfileQuery({});
@@ -36,60 +34,10 @@ const BuyerProfile = () => {
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
-
-
-    // const handleDelete = (id: string) => {
-    //     message.success(`Device ${id} deleted!`);
-    //     // TODO: এখানে API কল যোগ করবে
-    // };
-    // const handleDeleteAll = () => {
-    //     message.success("All devices deleted!");
-    //     // TODO: এখানে API কল যোগ করবে
-    // };
-    // const columns = [
-    //     {
-    //         title: "Device",
-    //         dataIndex: "device",
-    //         key: "device",
-    //     },
-    //     {
-    //         title: "Location",
-    //         dataIndex: "location",
-    //         key: "location",
-    //     },
-    //     {
-    //         title: "Last Active",
-    //         dataIndex: "lastActive",
-    //         key: "lastActive",
-    //     },
-    //     {
-    //         title: "Action",
-    //         key: "action",
-    //         render: (_: any, record: any) => (
-    //             <Popconfirm
-    //                 title="Delete this device?"
-    //                 onConfirm={() => handleDelete(record.id)}
-    //                 okText="Yes"
-    //                 cancelText="No"
-    //             >
-    //                 <Button type="link" danger>
-    //                     Delete
-    //                 </Button>
-    //             </Popconfirm>
-    //         ),
-    //     },
-    // ];
-
-    // const deviceActivity = [
-    //     { device: "Windows PC", location: "Dhaka, Bangladesh", lastActive: "2025-08-15 14:22" },
-    //     { device: "Android Phone", location: "Chattogram, Bangladesh", lastActive: "2025-08-14 20:10" },
-    //     { device: "iPhone 13", location: "Rajshahi, Bangladesh", lastActive: "2025-08-13 09:45" },
-    // ];
-
     return (
         <div style={{ flex: 1, }}>
-             <PageTitle pageTitle="My Profile " />
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px', backgroundColor: '#002952b2', borderRadius: '5px 5px 0 0' }}>
+            <PageTitle pageTitle="My Profile " />
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px', backgroundColor: '#1c6fc2ff', borderRadius: '5px 5px 0 0' }}>
                 <h5 style={{ color: 'white', margin: "0", fontWeight: '700' }}>My Profile</h5>
                 <Button onClick={() => setEdit(!edit)}>
                     <FontAwesomeIcon icon={faEdit} />
@@ -98,7 +46,7 @@ const BuyerProfile = () => {
             </div>
             {
                 edit ? <div>
-                    <UpdateBuyerProfile setEdit={setEdit} />
+                    <UpdateAdminProfile setEdit={setEdit} />
                 </div > : (<>
                     {isLoading ? (<div
                         style={{
@@ -113,15 +61,10 @@ const BuyerProfile = () => {
                                 ) : (
                                     <img width="170px" height="170px" src={profile} alt="" />
                                 )}
-                                <h5 style={{ textAlign: 'center',fontSize:'24px',color:'#ffffffff', WebkitTextStroke: "2px #000000ff",  }}>{name}</h5>
+                                <h5 style={{ textAlign: 'center', fontSize: '24px', color: '#ffffffff', WebkitTextStroke: "2px #000000ff", }}>{name}</h5>
                             </div>
-                            {/* <div style={{
-                                display: "grid", gap: "20px", 
-                                // Responsive
-                                gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))"
-                            }}> */}
 
-                            <Card style={{ borderRadius: 2, marginTop: 20, backgroundColor: '#0b2644ff', border: '1px solid #2a405cff', }}>
+                            <Card style={{ borderRadius: 2, marginTop: 20, backgroundColor: '#002f55ff', border: '1px solid #2a405cff', }}>
                                 <Title level={4} style={{ marginBottom: 20, color: 'white', }}>
                                     Personal Information
                                 </Title>
@@ -182,4 +125,4 @@ const BuyerProfile = () => {
     );
 };
 
-export default BuyerProfile;
+export default AdminProfile;

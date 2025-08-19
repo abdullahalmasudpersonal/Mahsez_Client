@@ -446,8 +446,7 @@ const CreateProduct = () => {
                   type="primary"
                   htmlType="submit"
                   style={{
-                    backgroundColor: "#ff6347",
-                    borderColor: "#ff6347",
+                    backgroundColor: "#004196ff",
                     color: "#ffffff",
                     transition: "all 0.3s ease",
                   }}

@@ -86,23 +86,21 @@ const CreateBlog = () => {
   };
 
   return (
-    <div className="dashboard-dev2">
+    <div>
       <PageTitle pageTitle="Create Blog || Admin" />
-      <div className="py-4 px-4" style={{backgroundColor:'#033566ff',borderRadius:'5px 5px 0 0'}}>
-        <h5 className="fw-bold m-0" style={{color:'white'}}>Create Blog</h5>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px', backgroundColor: '#1c6fc2ff', borderRadius: '5px 5px 0 0' }}>
+        <h5 style={{ color: 'white', margin: "0", fontWeight: '700' }}>Create Blog</h5>
       </div>
-      {/* <hr /> */}
-      <div style={{ padding: "20px" ,}}>
+      <div style={{ paddingTop: "20px", }}>
         <Form
           form={form}
           layout="vertical"
           onFinish={onFinish}
-          style={{ maxWidth: "980px", margin: "0 auto",backgroundColor:'rgba(5, 43, 78, 1)', padding:'20px', borderRadius:'5px' }}
+          style={{ maxWidth: "980px", margin: "0 auto", backgroundColor: '#4187ceff', padding: '20px', borderRadius: '5px' }}
         >
           <Row gutter={16}>
-            {/* Title */}
             <Col xs={24} sm={24} md={24}>
-              <Form.Item
+              <Form.Item className="my-label"
                 label="Title"
                 name="title"
                 rules={[{ required: true, message: "Please enter the title" }]}
@@ -113,7 +111,7 @@ const CreateBlog = () => {
 
             {/* Description */}
             <Col xs={24} sm={24}>
-              <Form.Item
+              <Form.Item className="my-label"
                 label="Description"
                 name="description"
                 rules={[
@@ -126,7 +124,7 @@ const CreateBlog = () => {
 
             {/* Description2 (Array of Strings) */}
             <Col xs={24} sm={24}>
-              <Form.Item label="Description2 (Optional)" name="description2">
+              <Form.Item className="my-label" label="Description2 (Optional)" name="description2">
                 <Input.TextArea
                   placeholder="Enter multiple descriptions separated by commas"
                   rows={4}
@@ -136,14 +134,14 @@ const CreateBlog = () => {
 
             {/* Features */}
             <Col xs={24} sm={24}>
-              <Form.Item label="Features (Optional)" name="features">
+              <Form.Item className="my-label" label="Features (Optional)" name="features">
                 <Input.TextArea placeholder="Enter features" rows={4} />
               </Form.Item>
             </Col>
 
             {/* Features2 (Array of Strings) */}
             <Col xs={24} sm={24}>
-              <Form.Item label="Features2 (Optional)" name="features2">
+              <Form.Item className="my-label" label="Features2 (Optional)" name="features2">
                 <Input.TextArea
                   placeholder="Enter multiple features separated by commas"
                   rows={4}
@@ -193,7 +191,7 @@ const CreateBlog = () => {
                   type="primary"
                   icon={<UploadOutlined />}
                   style={{
-                    backgroundColor: "orange",
+                    backgroundColor: "#004196ff",
                     marginLeft: "28px",
                   }}
                 >
@@ -207,7 +205,7 @@ const CreateBlog = () => {
             <Button
               type="primary"
               htmlType="submit"
-              style={{ backgroundColor: "orange", padding: "10px 50px" }}
+              style={{ backgroundColor: "#004196ff", padding: "10px 50px" }}
             >
               Create Blog
             </Button>
