@@ -50,12 +50,19 @@ import RequireRole from "@/pages/shared/protectedRoute/RequireRole";
 import ShoppingCart from "@/pages/shoppingCart/ShoppingCart";
 import TermsCondition from "@/pages/Terms&Condition/Terms&Condition";
 
-const routes = [
+interface RouteType {
+  path?: string;
+  index?: true;
+  element: React.ReactNode;
+  children?: RouteType[];
+}
+
+const routes: RouteType[]  = [
   {
     path: "/",
     element: <CommonLayout />,
     children: [
-      { path: "", element: <Home /> },
+      { index: true, element: <Home />},
       {
         path: "categore",
         element: <Categore />,
@@ -99,7 +106,7 @@ const routes = [
     path: "/buyer",
     element: <RequireRole allowedRoles={["buyer"]}><BuyerLayout /></RequireRole>,
     children: [
-      { path: "", element: <BuyerProfile /> },
+      { index: true, element: <BuyerProfile /> },
       { path: "my-order", element: <MyOrder /> },
       { path: "my-order-details/:orderId", element: <MyOrderDetails /> },
       { path: "my-payment", element: <BuyerPayment /> },
@@ -112,7 +119,7 @@ const routes = [
     path: "/admin",
     element: <RequireRole allowedRoles={["admin"]}><AdminLayout /></RequireRole>,
     children: [
-      { path: '', element: <HomeAdmin /> },
+      { index: true, element: <HomeAdmin /> },
       { path: "product-list", element: <ProductList /> },
       { path: "product-create", element: <CreateProduct /> },
       { path: "update-product/:productId", element: <UpdateProduct /> },
@@ -125,7 +132,6 @@ const routes = [
       { path: "admin-list", element: <AdminList /> },
       { path: "admin-create", element: <AdminList /> },
       { path: "buyer-list", element: <BuyerList /> },
-      // { path: "buyer-list", element: <AllBuyer /> },
       { path: 'profile', element: <AdminProfile /> },
       { path: "*", element: <Notfound /> },
     ],

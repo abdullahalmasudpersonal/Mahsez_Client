@@ -117,11 +117,11 @@ const Navber = () => {
 
               {user ? (
                 <li style={{ cursor: "pointer" }} onClick={handleLogout}>
-                  SIGN OUT
+                  LOGOUT
                 </li>
               ) : (
                 <Link to="/auth/login" style={{ textDecoration: "none" }}>
-                  <li>SIGN IN</li>
+                  <li>LOGIN</li>
                 </Link>
               )}
             </ul>

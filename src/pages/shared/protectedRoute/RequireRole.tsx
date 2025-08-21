@@ -12,19 +12,16 @@ const RequireRole = ({ children, allowedRoles }: RequireRoleProps) => {
   const user = useAppSelector(selectCurrentUser);
   const location = useLocation();
 
-  if (!token || !user) {
+  if (!token || !user ) {
+    // if (location.pathname.startsWith("/admin") || location.pathname.startsWith("/buyer")) {
+    // return <Navigate to="/" replace />;
+    // }
     return <Navigate to="/auth/login" state={{ from: location }} replace />;
   }
-  
-  // setTimeout(() => {
-  //   if(!allowedRoles.includes(user.role)){
-  //     return <Navigate to="/auth/unauthorized" replace />;
-  //   }
-  // },3000)
 
-   if(!allowedRoles.includes(user.role)){
+  if(!allowedRoles.includes(user.role)){
       return <Navigate to="/auth/unauthorized" replace />;
-    }
+  }
 
   return children;
 };

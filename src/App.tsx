@@ -10,7 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 // aos css
 import "aos/dist/aos.css";
 //////////////// ant design & react-quill css /////////////////////////////
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, } from "react-router-dom";
 import "./index.css";
 import { useEffect } from "react";
 import Aos from "aos";
@@ -18,10 +18,15 @@ import socket from "./utils/Socket";
 import { useAppSelector } from "./redux/hooks";
 import { selectCurrentUser } from "./redux/features/auth/authSlice";
 import routes from "./routes/routes";
-// import ScrollManager from "./pages/shared/ScrollManager/ScrollManager";
-// import ScrollingBtn from "./pages/shared/ScrollingBtn/ScrollingBtn";
 
-function App() {
+interface RouteType {
+  path?: string;
+  index?: true;
+  element: React.ReactNode;
+  children?: RouteType[];
+}
+
+const App = () => {
   const user = useAppSelector(selectCurrentUser);
 
   // //////// must /////////////
@@ -33,26 +38,23 @@ function App() {
     socket.emit("userOnline", user?.userId);
   });
 
-  interface RouteType {
-    path?: string;
-    element: React.ReactNode;
-    children?: RouteType[];
-  }
   const renderRoutes = (routes: RouteType[]) =>
-    routes.map(({ path, element, children }, i) => (
-      <Route key={i} path={path} element={element}>
-        {children && renderRoutes(children)}
-      </Route>
-    ));
+    routes.map(({ path, index, element, children }, i) => {
+      if (index) {
+        return (
+          <Route key={i} index element={element} />
+        );
+      }
+      return (
+        <Route key={i} path={path} element={element}>
+          {children ? renderRoutes(children) : null}
+        </Route>
+      );
+    });
 
   return (
     <>
-
-      <div>
-         {/* <ScrollManager />
-         <ScrollingBtn /> */}
-        <Routes>{renderRoutes(routes)}</Routes>
-      </div>
+      <Routes>{renderRoutes(routes)}</Routes>
     </>
   );
 }
