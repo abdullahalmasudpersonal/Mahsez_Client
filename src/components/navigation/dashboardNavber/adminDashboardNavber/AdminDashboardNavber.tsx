@@ -28,7 +28,9 @@ const AdminDashboardNavber = ({ onMenuClick }: { onMenuClick: () => void }) => {
             await updateAdminOnlineStatus({ userId });
         }
         dispatch(logout());
-        navigate("/", { replace: true });
+        setTimeout(() => {
+            navigate("/", { replace: true });
+        }, 0);
     };
 
     const menuItems: MenuProps['items'] = [
@@ -54,7 +56,7 @@ const AdminDashboardNavber = ({ onMenuClick }: { onMenuClick: () => void }) => {
             handleLogout();
         }
         else if (e.key === "profile") {
-            navigate("/admin/profile");
+            navigate("/অadmin/profile");
         }
     };
 

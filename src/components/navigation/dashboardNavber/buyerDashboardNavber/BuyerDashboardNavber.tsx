@@ -27,7 +27,9 @@ const BuyerDashboardNavber = ({ onMenuClick }: { onMenuClick: () => void }) => {
             await updateAdminOnlineStatus({ userId });
         }
         dispatch(logout());
-        navigate("/", { replace: true });
+        setTimeout(() => {
+            navigate("/", { replace: true });
+        }, 0);
     };
 
     const menuItems: MenuProps['items'] = [

@@ -30,10 +30,10 @@ const AdminProfile = () => {
         const handleResize = () => {
             setColumn(window.innerWidth < 850 ? 1 : 2);
         };
-
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
+
     return (
         <div style={{ flex: 1, }}>
             <PageTitle pageTitle="My Profile " />
