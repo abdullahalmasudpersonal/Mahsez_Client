@@ -70,7 +70,7 @@ export const adminMenus = [
     label: "Admin",
     children: [
       { key: "/admin/admin-list", label: "List" },
-      // { key: "/admin/admin-create", label: "Create" },
+      { key: "/admin/admin-create", label: "Create" },
     ],
   },
 ];

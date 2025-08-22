@@ -2,8 +2,8 @@ import Loader from "@/pages/shared/loader/Loader";
 import PageTitle from "@/pages/shared/PageTitle/PageTitle";
 import { useDeleteBuyerMutation, useGetBuyersQuery } from "@/redux/features/buyer/buyerApi";
 import { TBuyer } from "@/types/buyer.types";
-import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
-import { Button, Col, ConfigProvider, Popconfirm, Row, Select, Table, TableColumnsType } from "antd";
+import { DeleteOutlined, EditOutlined, EyeOutlined, UserOutlined } from "@ant-design/icons";
+import { Avatar, Button, Col, ConfigProvider, Popconfirm, Row, Select, Table, TableColumnsType } from "antd";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -73,18 +73,7 @@ const BuyerList = () => {
             key: "name",
             render: (item) => (
                 <div style={{ display: "flex", alignItems: "center" }}>
-                    <img
-                        src={item.profileImg}
-                        alt="buyer image"
-                        style={{
-                            width: "50px",
-                            height: "55px",
-                            marginRight: "10px",
-                            borderRadius: "5px",
-                            boxShadow:
-                                "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
-                        }}
-                    />
+                    <Avatar src={item?.profileImg} size={50} style={{ backgroundColor: '#003953ff', border: '1px solid rgba(190, 190, 190, 1)', marginRight: '10px', boxShadow: "rgba(103, 115, 124, 0.89) 0px 1px 2px 0px, rgba(100, 109, 116, 0.62) 0px 1px 3px 1px", }} icon={<UserOutlined />} />
                     <span>{item.name}</span>
                 </div>
             ),
