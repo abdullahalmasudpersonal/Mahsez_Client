@@ -56,7 +56,7 @@ const AdminDashboardNavber = ({ onMenuClick }: { onMenuClick: () => void }) => {
             handleLogout();
         }
         else if (e.key === "profile") {
-            navigate("/অadmin/profile");
+            navigate("/admin/profile");
         }
     };
 

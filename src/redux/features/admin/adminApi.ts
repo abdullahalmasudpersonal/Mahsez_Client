@@ -3,6 +3,14 @@ import { tagTypes } from "../tagTypes";
 
 const adminApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
+    crateAdmin: builder.mutation({
+      query: (adminInfo) => ({
+        url: "",
+        method: "POST",
+        body: adminInfo,
+      }),
+      invalidatesTags: [tagTypes.admin],
+    }),
     getAdmins: builder.query({
       query: () => ({
         url: "/admin",
@@ -21,5 +29,5 @@ const adminApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetAdminsQuery, useUpdateAdminOnlineStatusMutation } =
+export const { useCrateAdminMutation,useGetAdminsQuery, useUpdateAdminOnlineStatusMutation } =
   adminApi;
