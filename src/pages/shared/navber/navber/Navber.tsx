@@ -18,7 +18,7 @@ import {
   selectCurrentUser,
   TUser,
 } from "../../../../redux/features/auth/authSlice";
-import profileImg from "../../../../../public/assets/img/profile/profile.png";
+import loadingProfileImg from "../../../../../public/assets/img/profile/profile.png";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
 import MobileSideber from "../MobileSideber/MobileSideber";
 import PcSearchBer from "../pcSearchBer/PcSearchBer";
@@ -26,17 +26,18 @@ import { Dropdown, MenuProps, Typography } from "antd";
 import { useUpdateBuyerOnlineStatusMutation } from "../../../../redux/features/buyer/buyerApi";
 import { useUpdateAdminOnlineStatusMutation } from "../../../../redux/features/admin/adminApi";
 import socket from "../../../../utils/Socket";
+import { useGetMyProfileQuery } from "@/redux/features/user/userApi";
 
 const Navber = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectCurrentUser);
+  const { data: userData } = useGetMyProfileQuery({});
   const { role } = (user as TUser) || {};
   const [shadow, setShadow] = useState(false);
-  // const navigate = useNavigate();
   const [updateBuyerOnlinestatus] = useUpdateBuyerOnlineStatusMutation();
   const [updateAdminOnlineStatus] = useUpdateAdminOnlineStatusMutation();
-
   const cartLength = useAppSelector((state) => state.shopping.cart.length);
+  const {profileImg} = userData?.data || {};
 
   const changeShadow = () => {
     if (window.scrollY >= 80) {
@@ -309,9 +310,9 @@ const Navber = () => {
                 <img
                   width="32px"
                   height="32px"
-                  src={profileImg}
+                  src={profileImg || loadingProfileImg}
                   alt=""
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer", borderRadius:'50%' }}
                 />
               </Dropdown>
             ) : (

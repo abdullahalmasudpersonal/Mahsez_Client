@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
@@ -7,9 +6,6 @@ import { useNavigate } from "react-router-dom";
 const PcSearchBer = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
-  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(e.target.value);
-  };
 
   const handleSearchSubmit = () => {
     if (searchTerm.trim()) {
@@ -25,7 +21,13 @@ const PcSearchBer = () => {
           placeholder="Looking your products"
           type="text"
           value={searchTerm}
-          onChange={handleSearchInputChange}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault(); 
+              handleSearchSubmit();
+            }
+          }}
         />
         <FontAwesomeIcon
           onClick={handleSearchSubmit}

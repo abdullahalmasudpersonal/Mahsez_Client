@@ -1,23 +1,23 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { EllipsisOutlined } from "@ant-design/icons";
-import { Dropdown } from "antd";
-import { useState } from "react";
+
+// import { EllipsisOutlined } from "@ant-design/icons";
+// import { Dropdown } from "antd";
+// import { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 
 const EarningsChart = () => {
   const options = {
     chart: {
       type: "bar" as const,
-      stacked: false,
+      // stacked: false,
       toolbar: { show: false },
     },
-    plotOptions: {
-      bar: {
-        horizontal: false,
-        columnWidth: "50%",
-        endingShape: "rounded",
-      },
-    },
+    // plotOptions: {
+    //   bar: {
+    //     horizontal: false,
+    //     columnWidth: "50%",
+    //     endingShape: "rounded",
+    //   },
+    // },
     xaxis: {
       categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"],
     },
@@ -26,14 +26,15 @@ const EarningsChart = () => {
     },
     colors: ["#3B82F6", "#A5B4FC"],
     legend: {
-      show: false,
+      show: true,
+      fontSize: "14px",
     },
     grid: {
-      borderColor: "#f1f1f1",
+      borderColor: "#f1f1f1ff",
     },
     tooltip: {
       y: {
-        formatter: (val: any) => `$${val.toLocaleString()}`,
+        formatter: (val: number) => `$${val.toLocaleString()}`,
       },
     },
   };
@@ -50,22 +51,22 @@ const EarningsChart = () => {
   ];
 
   //////////////////////////////////
-  const [, /* selectedFilters */ setSelectedFilters] = useState({
-    revenue: "1",
-    orders: "1",
-    growth: "1",
-    conversion: "1",
-  });
-  const filters = [
-    { key: "1", label: "Today" },
-    { key: "7", label: "Last Week" },
-    { key: "30", label: "Last Month" },
-    { key: "365", label: "Current Year" },
-  ];
+  // const [selectedFilters, setSelectedFilters] = useState({
+  //   revenue: "1",
+  //   orders: "1",
+  //   growth: "1",
+  //   conversion: "1",
+  // });
+  // const filters = [
+  //   { key: "1", label: "Today" },
+  //   { key: "7", label: "Last Week" },
+  //   { key: "30", label: "Last Month" },
+  //   { key: "365", label: "Current Year" },
+  // ];
 
-  const handleMenuClick = (key: string, filter: string) => {
-    setSelectedFilters((prev) => ({ ...prev, [key]: filter }));
-  };
+  // const handleMenuClick = (key: string, filter: string) => {
+  //   setSelectedFilters((prev) => ({ ...prev, [key]: filter }));
+  // };
 
   return (
     <div
@@ -74,7 +75,6 @@ const EarningsChart = () => {
         background: "white",
         borderRadius: "4px",
         boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
-        width: "50%",
       }}
     >
       <div
@@ -85,8 +85,8 @@ const EarningsChart = () => {
           marginBottom: "15px",
         }}
       >
-        <h4 style={{ margin: "0px" }}>Earnings</h4>
-        <Dropdown
+        <h5 style={{ margin: "0px" }}>Earnings</h5>
+        {/* <Dropdown
           placement="bottomRight"
           menu={{
             items: filters.map((filter) => ({
@@ -107,10 +107,10 @@ const EarningsChart = () => {
               color: "black",
             }}
           />
-        </Dropdown>
+        </Dropdown> */}
       </div>
 
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
+      {/* <div style={{ display: "flex", justifyContent: "space-between" }}>
         <div>
           <p style={{ color: "#3B82F6", fontWeight: "600", margin: "0" }}>
             <small>Revenue</small>
@@ -130,13 +130,12 @@ const EarningsChart = () => {
           </span>
           <span style={{ fontSize: "0.8rem", color: "green" }}>▲ 0.56%</span>
         </div>
-      </div>
+      </div> */}
 
       <ReactApexChart
         options={options}
         series={series}
         type="bar"
-        max-height={300}
       />
     </div>
   );
