@@ -254,7 +254,7 @@ const BuyerList = () => {
             <PageTitle pageTitle="Buyer List || Admin" />
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px', backgroundColor: '#1c6fc2ff', borderRadius: '5px 5px 0 0' }}>
                 <h5 style={{ color: 'white', margin: "0", fontWeight: '700' }}>
-                    All Buyer List ({buyersData?.data?.length})
+                    All Customer List ({buyersData?.data?.length})
                 </h5>
                 <Row>
                     <Col>

@@ -1,36 +1,15 @@
-import { useEffect } from "react";
 import Loader from "../../shared/loader/Loader";
 import { Table, TableColumnsType } from "antd";
 import { Link } from "react-router-dom";
 import { TProduct } from "../../../types/product.types";
-import { useGetProductsQuery } from "../../../redux/features/product/productApi";
+import { useGetProductsWithSearchFilterQuery } from "../../../redux/features/product/productApi";
 
 const OfferProducts = () => {
-  const { data: productData, isLoading: loadingProduct } = useGetProductsQuery(
-    {}
+  const { data: productData, isLoading: loadingProduct } = useGetProductsWithSearchFilterQuery(
+    { sort: "offerPrice", limit: 5 }
   );
 
-  useEffect(() => {
-    // এখানে CSS `ant-table-body`-তে অ্যাপ্লাই হবে।
-    const style = document.createElement("style");
-    style.innerHTML = `
-          .ant-table-body::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, এবং Edge এর জন্য scrollbar লুকাবে */
-          }
-          .ant-table-body {
-            scrollbar-width: none; /* Firefox এর জন্য scrollbar লুকাবে */
-            -ms-overflow-style: none; /* IE এর জন্য scrollbar লুকাবে */
-          }
-        `;
-    document.head.appendChild(style);
-    return () => {
-      document.head.removeChild(style);
-    };
-  }, []);
-
-  const dataTable = productData?.data
-    ?.slice(0, 5)
-    ?.map(
+  const dataTable = productData?.data?.map(
       ({
         _id,
         name,
@@ -38,7 +17,7 @@ const OfferProducts = () => {
         price,
         availableQuantity,
         brand,
-        image,
+        image,soldQuantity
       }: TProduct) => ({
         key: _id,
         name,
@@ -46,7 +25,7 @@ const OfferProducts = () => {
         price,
         brand,
         availableQuantity,
-        image,
+        image,soldQuantity
       })
     );
 
@@ -101,45 +80,30 @@ const OfferProducts = () => {
       align: "center",
       width: 100,
     },
-    {
+  {
       title: "Sales",
-      dataIndex: "sales",
-      key: "sales",
+      dataIndex: "soldQuantity",
+      key: "soldQuantity",
       align: "center",
       width: 100,
     },
   ];
 
   return (
-    <div
-      style={{
-        backgroundColor: "white",
-        borderRadius: "4px",
-        boxShadow:
-          "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
-        width: "50%",
-      }}
-    >
+    <div>
       {loadingProduct ? (
         <Loader />
       ) : (
         <div>
           <Table
-            title={() => <h5 style={{ margin: 0 }}>Offers Products</h5>}
+            title={() => (<div style={{ fontSize: "19px", fontWeight: "600", color: "rgb(88, 88, 88)" }}>Offers Products</div>)}
             columns={columns}
             dataSource={dataTable}
             pagination={false}
-            scroll={{ x: true }}
+            scroll={{ x: "max-content" }}
             style={{ overflowX: "auto" }}
             sticky
           />
-          <style>
-            {`
-        .ant-table-body::-webkit-scrollbar {
-          display: none; /* Chrome, Safari এবং Edge এর জন্য Scroll Bar লুকাবে */
-        }
-      `}
-          </style>
         </div>
       )}
     </div>

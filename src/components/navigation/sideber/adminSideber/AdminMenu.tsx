@@ -56,21 +56,21 @@ export const adminMenus = [
     ],
   },
   {
+    key: "customer",
+    icon: <SettingOutlined />,
+    label: "Customer",
+    children: [
+      { key: "/admin/buyer-list", label: "List" },
+      // { key: "/admin/buyer-list", label: "Create" },
+    ],
+  },
+   {
     key: "admin",
     icon: <SettingOutlined />,
     label: "Admin",
     children: [
       { key: "/admin/admin-list", label: "List" },
       // { key: "/admin/admin-create", label: "Create" },
-    ],
-  },
-  {
-    key: "buyer",
-    icon: <SettingOutlined />,
-    label: "Buyer",
-    children: [
-      { key: "/admin/buyer-list", label: "List" },
-      // { key: "/admin/buyer-list", label: "Create" },
     ],
   },
 ];

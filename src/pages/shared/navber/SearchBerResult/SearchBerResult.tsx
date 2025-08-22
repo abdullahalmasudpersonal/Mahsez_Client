@@ -9,22 +9,25 @@ import { Link, useLocation } from "react-router-dom";
 import NestedProduct from "../../../Categories/Categore/NestedPorduct/NestedProduct";
 // import { useSearchProductsQuery } from "../../../../redux/features/product/productApi";
 import { TProduct } from "../../../../types/product.types";
-import { useGetProductsQuery } from "../../../../redux/features/product/productApi";
+import { useGetProductsWithSearchFilterQuery } from "../../../../redux/features/product/productApi";
 import PageTitle from "../../PageTitle/PageTitle";
+import Loader2 from "../../loader/Loader2";
 
 const SearchBerResult = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const searchTerm = queryParams.get("searchTerm") || "";
+  const { data: productData, isLoading } = useGetProductsWithSearchFilterQuery({ searchTerm, limit: 12, page: 1, sort: "newest" }, { skip: !searchTerm });
 
-  const { data: productDta } = useGetProductsQuery(searchTerm, {
-    skip: !searchTerm,
-  });
+  // const { data: productDta } = useGetProductsWithSearchFilterQuery(searchTerm, {
+  //   skip: !searchTerm,
+  // });
 
 
   return (
     <div className="nestedProductsMain">
-      <PageTitle pageTitle={`${searchTerm} |`} />
+      <PageTitle pageTitle={`${searchTerm} `} />
+
       <div className="nestedProductsBreadcrumb">
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb mb-0 ">
@@ -57,23 +60,25 @@ const SearchBerResult = () => {
           </p>
         </div>
       </div>
+
       <div className="nestedProductsSortByViewPart">
         <div className="nestedProductsSearchResult">
-          {/* <p className="m-0">
-            {searchValuse ? <>{nestedProductsLength}</> : <>0</>} Products Found
+          <p className="m-0">
+            {searchTerm ? <>{productData?.data?.length}</> : <>0</>} Products Found
             In "
             <span
               data-toggle="tooltip"
               data-placement="right"
-              title={searchValuse}
+              title={searchTerm}
             >
-              {searchValuse.length > 30
-                ? searchValuse.slice(0, 30) + "..."
-                : searchValuse}
+              {searchTerm.length > 30
+                ? searchTerm.slice(0, 30) + "..."
+                : searchTerm}
             </span>
             "
-          </p> */}
+          </p>
         </div>
+
         {/* small display show filter */}
         <div className="nestedproductSmallScreenFilter">
           <button
@@ -131,16 +136,22 @@ const SearchBerResult = () => {
             />
           </p>
         </div>
+
       </div>
+
       <div className="nestedProducts">
-        {searchTerm ? (
-          productDta?.data?.map((nestedProduct: TProduct) => (
-            <NestedProduct {...nestedProduct}></NestedProduct>
-          ))
-        ) : (
-          <p className="">No Porducts Found</p>
-        )}
+        {
+          isLoading ? <div style={{height:'300px', paddingLeft:'200px', display:'flex', justifyContent:'center', alignItems:'center'}}><Loader2 /></div> : <>
+            {productData?.data?.length ?
+              productData?.data?.map((nestedProduct: TProduct) => (
+                <NestedProduct {...nestedProduct}></NestedProduct>
+              ))
+              :
+              <p>No products found.</p>}
+          </>
+        }
       </div>
+
     </div>
   );
 };

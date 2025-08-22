@@ -3,28 +3,10 @@ import { useGetProductsWithSearchFilterQuery } from "../../../redux/features/pro
 import Loader from "../../shared/loader/Loader";
 import { Link } from "react-router-dom";
 import { TProduct } from "../../../types/product.types";
-import { useEffect } from "react";
 
 const TopProducts = () => {
   const { data: productData, isLoading: loadingProduct } =
     useGetProductsWithSearchFilterQuery({ sort: "-soldQuantity", limit: 5 });
-
-  useEffect(() => {
-    const style = document.createElement("style");
-    style.innerHTML = `
-      .ant-table-body::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, এবং Edge এর জন্য scrollbar লুকাবে */
-      }
-      .ant-table-body {
-        scrollbar-width: none; /* Firefox এর জন্য scrollbar লুকাবে */
-        -ms-overflow-style: none; /* IE এর জন্য scrollbar লুকাবে */
-      }
-    `;
-    document.head.appendChild(style);
-    return () => {
-      document.head.removeChild(style);
-    };
-  }, []);
 
   const dataTable = productData?.data?.map(
     ({
@@ -55,8 +37,8 @@ const TopProducts = () => {
       width: 300,
       render: (item) => (
         <div style={{ display: "flex", alignItems: "center" }}>
-          {item?.image?.slice(0, 1).map((img: string,index:number) => (
-            <img  key={index} 
+          {item?.image?.slice(0, 1).map((img: string, index: number) => (
+            <img key={index}
               src={
                 img.includes("res.cloudinary.com")
                   ? img.replace("/upload/", "/upload/f_auto,q_auto/w_50/")
@@ -100,7 +82,7 @@ const TopProducts = () => {
       width: 100,
     },
     {
-      title: "sale",
+      title: "Sales",
       dataIndex: "soldQuantity",
       key: "soldQuantity",
       align: "center",
@@ -109,35 +91,20 @@ const TopProducts = () => {
   ];
 
   return (
-    <div
-      style={{
-        backgroundColor: "white",
-        borderRadius: "4px",
-        boxShadow:
-          "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
-        width: "50%",
-      }}
-    >
+    <div>
       {loadingProduct ? (
         <Loader />
       ) : (
         <div>
           <Table
-            title={() => <h5 style={{ margin: 0 }}>Top Products</h5>}
+            title={() => (<div style={{ fontSize: "19px", fontWeight: "600", color: "rgb(88, 88, 88)" }}>Top Products</div>)}
             columns={columns}
             dataSource={dataTable}
             pagination={false}
-            scroll={{ x: true }}
+            scroll={{ x: "max-content" }}
             style={{ overflowX: "auto" }}
             sticky
           />
-          <style>
-            {`
-          .ant-table-body::-webkit-scrollbar {
-            display: none; /* Chrome, Safari এবং Edge এর জন্য Scroll Bar লুকাবে */
-          }
-        `}
-          </style>
         </div>
       )}
     </div>

@@ -13,11 +13,13 @@ import {
 } from "../../redux/features/shoppingCart/shoppingCartSlice";
 import { useGetProductsQuery } from "../../redux/features/product/productApi";
 import { TProduct } from "../../types/product.types";
+import { toast } from "sonner";
 
 const ShoppingCart: React.FC = () => {
   const dispatch = useDispatch();
   const cart = useAppSelector((state) => state.shopping.cart);
   const { data: products } = useGetProductsQuery({});
+  const limit = 300000;
 
   const cartDetails = cart.map((cartItem) => {
     const product = products?.data.find(
@@ -34,6 +36,18 @@ const ShoppingCart: React.FC = () => {
   };
 
   const handleIncrement = (id: string) => {
+    const product = cartDetails.find((item) => item._id === id);
+    if (!product) return;
+
+    const productPrice = Number(product.offerPrice ? product.offerPrice : product.price);
+    const nextSubtotal = subTotal + productPrice;
+
+    if (nextSubtotal > limit) {
+      toast.error("❌ You cannot order more than 3 lakhs!", {
+        position: "top-center",
+      });
+      return; // dispatch হবে না
+    }
     dispatch(incrementQuantity(id));
   };
   const handleDecrement = (id: string) => {
@@ -50,7 +64,7 @@ const ShoppingCart: React.FC = () => {
   const delivaryCharge = 100;
   const grandTotal = subTotal + delivaryCharge;
 
-  const disabled = cartDetails?.length < 1;
+  const disabled = cartDetails?.length < 1 || subTotal > limit;
 
   return (
     <>
@@ -251,9 +265,9 @@ const ShoppingCart: React.FC = () => {
             <Link to="/checkout">
               <button
                 className={disabled ? "checkout-btn-disabled" : "checkout-btn"}
-                disabled={cartDetails?.length < 1}
+                disabled={disabled}
               >
-                Checkout
+                {subTotal > limit ? "Limit Exceeded" : "Checkout"}
               </button>
             </Link>
           </div>

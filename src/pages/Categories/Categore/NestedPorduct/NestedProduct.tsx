@@ -3,6 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import "../NestedPorductsCSS/NestedProduct.css";
 import { TProduct } from "../../../../types/product.types";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { toast } from "sonner";
+import { addToCart, removeProduct } from "@/redux/features/shoppingCart/shoppingCartSlice";
+import { useState } from "react";
 
 const NestedProduct = (product: TProduct) => {
   const {
@@ -15,9 +19,38 @@ const NestedProduct = (product: TProduct) => {
     offerPrice,
   } = product;
   const navigate = useNavigate();
-
+  const dispatch = useAppDispatch();
+  const [quantity] = useState(1);
   const navigateToProductDetails = (_id: string) => {
     navigate(`/categore/product/${_id}`);
+  };
+
+  const cart = useAppSelector((state) => state.shopping.cart);
+  const isInCart = cart.some((item: { _id: string }) => item._id === _id);
+
+  const handleCartToggle = () => {
+    if (isInCart) {
+      // Remove from cart
+      dispatch(removeProduct(_id));
+      toast.success("Product removed from cart!", {
+        position: "top-right",
+        duration: 1500,
+      });
+    } else {
+      // Add to cart
+      if (quantity < availableQuantity && quantity <= 10) {
+        dispatch(addToCart({ _id, quantity }));
+        toast.success("Product added to cart!", {
+          position: "top-right",
+          duration: 1500,
+        });
+      } else {
+        toast.error("Cannot add more products!", {
+          position: "top-right",
+          duration: 1500,
+        });
+      }
+    }
   };
 
   return (
@@ -142,9 +175,11 @@ const NestedProduct = (product: TProduct) => {
           </div>
         ) : (
           <div className="nestedProductAddCart">
-            <button /* onClick={() => handleAddToCard(nestedProduct)} */>
-              <FontAwesomeIcon icon={faShoppingCart} />
-              &nbsp; Add to Cart
+            <button style={{backgroundColor: isInCart ? "rgba(255, 72, 0, 1)" : "",}}
+              className={`${isInCart ? `remove-from-cart` : "add-to-cart"}`}
+              onClick={handleCartToggle}
+            >   <FontAwesomeIcon icon={faShoppingCart} /> &nbsp;
+              {isInCart ? "Remove from Cart" : "Add to Cart"}
             </button>
           </div>
         )}

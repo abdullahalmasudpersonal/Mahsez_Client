@@ -300,6 +300,7 @@ const CreateProduct = () => {
                   <Option value="LG">LG</Option>
                   <Option value="Smart">Smart</Option>
                   <Option value="Deer">Deer</Option>
+                  <Option value="Pond's">Pond's</Option>
                   <Option value="No Brand">No Brand</Option>
                 </Select>
               </Form.Item>

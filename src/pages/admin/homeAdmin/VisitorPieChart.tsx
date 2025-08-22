@@ -27,19 +27,18 @@ const VisitorPieChart = () => {
   return (
     <div
       style={{
-        width: "50%",
+        // maxHeight:'400px',
         backgroundColor: "white",
         borderRadius: "4px",
+        padding: "20px",
         boxShadow:
           "rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em",
       }}
     >
       <h5
-        style={{
+        style={{ 
           textAlign: "center",
-          marginBottom: "20px",
           fontWeight: "600",
-          marginTop: "20px",
         }}
       >
         Visitor Sources
@@ -48,7 +47,6 @@ const VisitorPieChart = () => {
         options={options}
         series={series}
         type="pie"
-        height={320}
       />
     </div>
   );
