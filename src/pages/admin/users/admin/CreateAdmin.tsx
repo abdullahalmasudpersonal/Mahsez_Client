@@ -1,4 +1,5 @@
 import PageTitle from "@/pages/shared/PageTitle/PageTitle";
+import { useCrateAdminMutation } from "@/redux/features/admin/adminApi";
 import { UploadOutlined } from "@ant-design/icons";
 import { Button, Col, Form, Input, message, Row, Select, Upload } from "antd";
 
@@ -6,6 +7,7 @@ const { Option } = Select;
 const genderOptions = ["male", "female", "other"];
 const CreateAdmin = () => {
     const [form] = Form.useForm();
+    const [createAdmin] = useCrateAdminMutation();
 
     const onFinish = (values: any) => {
         console.log("✅ Form Data: ", values);
