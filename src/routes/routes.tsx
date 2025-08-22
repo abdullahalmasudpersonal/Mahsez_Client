@@ -15,6 +15,7 @@ import ProductList from "@/pages/admin/products/productList/ProductList";
 import UpdateProduct from "@/pages/admin/products/updateProduct/UpdateProduct";
 import AdminProfile from "@/pages/admin/profile/AdminProfile";
 import AdminList from "@/pages/admin/users/admin/AdminList";
+import CreateAdmin from "@/pages/admin/users/admin/CreateAdmin";
 import BuyerList from "@/pages/admin/users/buyer/BuyerList";
 import BlogDetails from "@/pages/Blogs/blogDetails/BlogDetails";
 import Blogs from "@/pages/Blogs/Blogs/Blogs";
@@ -130,7 +131,7 @@ const routes: RouteType[]  = [
       { path: "blog-update/:blogId", element: <UpdateBlog /> },
       { path: "visitor-list", element: <VisitorList /> },
       { path: "admin-list", element: <AdminList /> },
-      { path: "admin-create", element: <AdminList /> },
+      { path: "admin-create", element: <CreateAdmin /> },
       { path: "buyer-list", element: <BuyerList /> },
       { path: 'profile', element: <AdminProfile /> },
       { path: "*", element: <Notfound /> },
