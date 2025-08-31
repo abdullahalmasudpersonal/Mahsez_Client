@@ -5,7 +5,7 @@ const adminApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     crateAdmin: builder.mutation({
       query: (adminInfo) => ({
-        url: "",
+        url: "/user/create-admin",
         method: "POST",
         body: adminInfo,
       }),
