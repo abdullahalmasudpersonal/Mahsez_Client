@@ -159,7 +159,6 @@ const UpdateBlog = () => {
               </Form.Item>
             </Col>
 
-            {/* Features2 (Array of Strings) */}
             <Col xs={24} sm={24}>
               <Form.Item className="my-label" label="Features2 (Optional)" name="features2">
                 <Input.TextArea
