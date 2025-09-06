@@ -3,7 +3,7 @@ import Sider from "antd/es/layout/Sider";
 import logo from "@/assets/img/logo/mahsez.png";
 import { useLocation, useNavigate } from "react-router-dom";
 import { adminMenus } from "./AdminMenu";
-import './AdminSideber.css'
+import './AdminSideber.css';
 
 const AdminSideber = ({ isDrawer }: { isDrawer?: boolean }) => {
   const navigate = useNavigate();

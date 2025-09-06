@@ -499,7 +499,7 @@ const UpdateProduct = () => {
                     transition: "all 0.3s ease",
                   }}
                 >
-                  Save Product
+                  Update Product
                 </Button>
               </Form.Item>
             </Col>
