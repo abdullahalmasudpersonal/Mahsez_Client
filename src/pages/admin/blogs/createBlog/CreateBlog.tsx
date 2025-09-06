@@ -78,7 +78,7 @@ const CreateBlog = () => {
       toast.success(res?.message, { position: "top-right" });
       form.resetFields();
       setFileList([]);
-      navigate(`/admin/list-blogs`);
+      navigate(`/admin/blog-list`);
     } else {
       toast.error(res?.message, { position: "top-right" });
       console.log(res.message);

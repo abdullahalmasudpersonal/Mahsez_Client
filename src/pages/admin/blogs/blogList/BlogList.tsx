@@ -31,7 +31,7 @@ const BlogList = () => {
     };
 
     const navigateToEditBlog = (id: string) => {
-        navigate(`/admin/update-blog/${id}`);
+        navigate(`/admin/blog-update/${id}`);
     };
 
     const handleTableChange = (page: number, pageSize: number) => {
