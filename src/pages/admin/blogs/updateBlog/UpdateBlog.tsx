@@ -109,17 +109,18 @@ const UpdateBlog = () => {
       <div  style={{ padding: '20px', backgroundColor: '#1c6fc2ff', borderRadius: '5px 5px 0 0' }}>
         <h5 style={{ color: 'white', margin: "0", fontWeight: '700' }}>Update Blog</h5>
       </div>
-      <div>
+
+      <div style={{ paddingTop:'20px'  }}>
         <Form
           form={form}
           layout="vertical"
           onFinish={onFinish}
-          style={{ maxWidth: "980px", margin: "0 auto" }}
+           style={{ maxWidth: "980px", margin: "0 auto", backgroundColor: '#4187ceff', padding: '20px', borderRadius: '5px' }}
         >
           <Row gutter={16}>
             {/* Title */}
             <Col xs={24} sm={24} md={24}>
-              <Form.Item
+              <Form.Item className="my-label"
                 label="Title"
                 name="title"
                 rules={[{ required: true, message: "Please enter the title" }]}
@@ -130,7 +131,7 @@ const UpdateBlog = () => {
 
             {/* Description */}
             <Col xs={24} sm={24}>
-              <Form.Item
+              <Form.Item className="my-label"
                 label="Description"
                 name="description"
                 rules={[
@@ -143,7 +144,7 @@ const UpdateBlog = () => {
 
             {/* Description2 (Array of Strings) */}
             <Col xs={24} sm={24}>
-              <Form.Item label="Description2 (Optional)" name="description2">
+              <Form.Item className="my-label" label="Description2 (Optional)" name="description2">
                 <Input.TextArea
                   placeholder="Enter multiple descriptions separated by commas"
                   rows={4}
@@ -153,14 +154,14 @@ const UpdateBlog = () => {
 
             {/* Features */}
             <Col xs={24} sm={24}>
-              <Form.Item label="Features (Optional)" name="features">
+              <Form.Item className="my-label" label="Features (Optional)" name="features">
                 <Input.TextArea placeholder="Enter features" rows={4} />
               </Form.Item>
             </Col>
 
             {/* Features2 (Array of Strings) */}
             <Col xs={24} sm={24}>
-              <Form.Item label="Features2 (Optional)" name="features2">
+              <Form.Item className="my-label" label="Features2 (Optional)" name="features2">
                 <Input.TextArea
                   placeholder="Enter multiple features separated by commas"
                   rows={4}
