@@ -248,7 +248,7 @@ const UpdateProduct = () => {
         toast.success(res?.message, { position: "top-right" });
         form.resetFields();
         setFileList([]);
-        navigate("/admin/list-products");
+        navigate("/admin/product-list");
       } else {
         toast.error(res?.message, { position: "top-right" });
       }
