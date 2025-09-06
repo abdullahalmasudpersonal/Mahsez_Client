@@ -104,12 +104,11 @@ const UpdateBlog = () => {
   };
 
   return (
-    <div className="dashboard-dev2">
+    <div >
       <PageTitle pageTitle="Update Blog || Admin" />
-      <div className="pt-4 px-4">
-        <h5 className="fw-bold ">Update Blog</h5>
+      <div  style={{ padding: '20px', backgroundColor: '#1c6fc2ff', borderRadius: '5px 5px 0 0' }}>
+        <h5 style={{ color: 'white', margin: "0", fontWeight: '700' }}>Update Blog</h5>
       </div>
-      <hr />
       <div>
         <Form
           form={form}

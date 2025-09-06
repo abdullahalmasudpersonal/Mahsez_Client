@@ -261,7 +261,7 @@ const UpdateProduct = () => {
   return (
     <div>
       <PageTitle pageTitle="Create Product || Admin" />
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px', backgroundColor: '#1c6fc2ff', borderRadius: '5px 5px 0 0' }}>
+      <div style={{ padding: '20px', backgroundColor: '#1c6fc2ff', borderRadius: '5px 5px 0 0' }}>
         <h5 style={{ color: 'white', margin: "0", fontWeight: '700' }}>Update Product</h5>
       </div>
       <div style={{ paddingTop:'20px'  }}>
