@@ -197,6 +197,7 @@ const UpdateProduct = () => {
 
     setFileList([...compressedFileList]);
   };
+
   const uploadButton = (
     <div>
       <PlusOutlined />
@@ -229,6 +230,9 @@ const UpdateProduct = () => {
       .filter((file) => !file.originFileObj && file.url)
       .map((file) => file.url);
     const newImages = fileList.filter((file) => file.originFileObj);
+
+    console.log(existingImages,'existing image')
+    
     const formData = new FormData();
     formData.append("data", JSON.stringify(productData));
     existingImages.forEach((url) => {

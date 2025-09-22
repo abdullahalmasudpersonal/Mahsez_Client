@@ -19,6 +19,7 @@ const UpdateBlog = () => {
   const [fileList, setFileList] = useState<UploadFile[]>([]);
   const [updateBlog] = useUpdateBlogMutation();
   const { data: blogData } = useGetSingleBlogQuery(blogId);
+  const [loading, setLoading] = useState(false);
   const { _id, title, description, description2, features, features2, image } =
     blogData?.data || {};
 
@@ -78,44 +79,52 @@ const UpdateBlog = () => {
   };
 
   const onFinish = async (values: TBlog) => {
-    const blogData = {
-      title: values?.title,
-      description: values?.description,
-      description2: values?.description2,
-      features: values?.features,
-      features2: values?.features2,
-    };
+    setLoading(true);
 
-    const formData = new FormData();
-    formData.append("data", JSON.stringify(blogData));
-    fileList.forEach((file) => {
-      formData.append("file", file.originFileObj as File);
-    });
-    const res = await updateBlog({ formData, _id }).unwrap();
-    if (res?.success === true) {
-      toast.success(res?.message, { position: "top-right" });
-      form.resetFields();
-      setFileList([]);
-      navigate(`/admin/list-blogs`);
-    } else {
-      toast.error(res?.message, { position: "top-right" });
-      console.log(res.message);
+    try {
+      const blogData = {
+        title: values?.title,
+        description: values?.description,
+        description2: values?.description2,
+        features: values?.features,
+        features2: values?.features2,
+      };
+
+      const formData = new FormData();
+      formData.append("data", JSON.stringify(blogData));
+      fileList.forEach((file) => {
+        formData.append("file", file.originFileObj as File);
+      });
+      const res = await updateBlog({ formData, _id }).unwrap();
+      if (res?.success === true) {
+        toast.success(res?.message, { position: "top-right" });
+        form.resetFields();
+        setFileList([]);
+        navigate(`/admin/blog-list`);
+      } else {
+        toast.error(res?.message, { position: "top-right" });
+        console.log(res.message);
+      }
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div >
       <PageTitle pageTitle="Update Blog || Admin" />
-      <div  style={{ padding: '20px', backgroundColor: '#1c6fc2ff', borderRadius: '5px 5px 0 0' }}>
+      <div style={{ padding: '20px', backgroundColor: '#1c6fc2ff', borderRadius: '5px 5px 0 0' }}>
         <h5 style={{ color: 'white', margin: "0", fontWeight: '700' }}>Update Blog</h5>
       </div>
 
-      <div style={{ paddingTop:'20px'  }}>
+      <div style={{ paddingTop: '20px' }}>
         <Form
           form={form}
           layout="vertical"
           onFinish={onFinish}
-           style={{ maxWidth: "980px", margin: "0 auto", backgroundColor: '#4187ceff', padding: '20px', borderRadius: '5px' }}
+          style={{ maxWidth: "980px", margin: "0 auto", backgroundColor: '#4187ceff', padding: '20px', borderRadius: '5px' }}
         >
           <Row gutter={16}>
             {/* Title */}
@@ -219,12 +228,12 @@ const UpdateBlog = () => {
           </Row>
           <hr />
           <Form.Item style={{ textAlign: "center" }}>
-            <Button
+            <Button disabled={loading}
               type="primary"
               htmlType="submit"
               style={{ backgroundColor: "orange", padding: "10px 50px" }}
             >
-              Update Blog
+              {loading ? 'Updating...' : "Update Blog"}
             </Button>
           </Form.Item>
         </Form>

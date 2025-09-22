@@ -2,7 +2,7 @@ import Loader from "@/pages/shared/loader/Loader";
 import { useGetMyProfileQuery } from "@/redux/features/user/userApi";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Card, Descriptions, } from "antd";
+import {  Button, Card, Descriptions, } from "antd";
 import { useEffect, useState } from "react";
 import profile from "@/assets/img/profile/profileAvater.jpg";
 import Title from "antd/es/typography/Title";
@@ -10,11 +10,11 @@ import './BuyerProfile.css';
 import UpdateBuyerProfile from "./UpdateBuyerProfile";
 import PageTitle from "@/pages/shared/PageTitle/PageTitle";
 
-
 const BuyerProfile = () => {
     const [edit, setEdit] = useState(false);
     const [column, setColumn] = useState(window.innerWidth < 850 ? 1 : 2);
     const { data: userData, isLoading } = useGetMyProfileQuery({});
+    
     const {
         name,
         email,
@@ -113,13 +113,8 @@ const BuyerProfile = () => {
                                 ) : (
                                     <img width="170px" height="170px" src={profile} alt="" />
                                 )}
-                                <h5 style={{ textAlign: 'center',fontSize:'24px',color:'#ffffffff', WebkitTextStroke: "2px #000000ff",  }}>{name}</h5>
+                                <h5 style={{ textAlign: 'center',fontSize:'24px',color:'#ffffffff',  }}>{name}</h5>
                             </div>
-                            {/* <div style={{
-                                display: "grid", gap: "20px", 
-                                // Responsive
-                                gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))"
-                            }}> */}
 
                             <Card style={{ borderRadius: 2, marginTop: 20, backgroundColor: '#0b2644ff', border: '1px solid #2a405cff', }}>
                                 <Title level={4} style={{ marginBottom: 20, color: 'white', }}>

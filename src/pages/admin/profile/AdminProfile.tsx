@@ -61,7 +61,7 @@ const AdminProfile = () => {
                                 ) : (
                                     <img width="170px" height="170px" src={profile} alt="" />
                                 )}
-                                <h5 style={{ textAlign: 'center', fontSize: '24px', color: '#ffffffff', WebkitTextStroke: "2px #000000ff", }}>{name}</h5>
+                                <h5 style={{ textAlign: 'center', fontSize: '24px', color: '#ffffffff', }}>{name}</h5>
                             </div>
 
                             <Card style={{ borderRadius: 2, marginTop: 20, backgroundColor: '#002f55ff', border: '1px solid #2a405cff', }}>

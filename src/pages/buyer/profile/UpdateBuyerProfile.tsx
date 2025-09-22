@@ -25,6 +25,8 @@ const UpdateBuyerProfile = ({ setEdit }: UpdateProfileProps) => {
     const [fileList, setFileList] = useState<UploadFile[]>([]);
     const { data: userData } = useGetMyProfileQuery({});
     const [updateMyProfileData] = useUpdateMyProfileMutation();
+    const [loading, setLoading] = useState(false);
+
     const {
         name,
         profileImg,
@@ -66,6 +68,8 @@ const UpdateBuyerProfile = ({ setEdit }: UpdateProfileProps) => {
     };
 
     const handleFinish = async (values: FieldValues) => {
+        setLoading(true);
+
         const profileData = {
             name: values?.name,
             contactNo: values?.contactNo,
@@ -97,6 +101,8 @@ const UpdateBuyerProfile = ({ setEdit }: UpdateProfileProps) => {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
             toast.error(error?.data?.message || "Network error", { position: "top-right" });
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -208,11 +214,11 @@ const UpdateBuyerProfile = ({ setEdit }: UpdateProfileProps) => {
                 </Row>
 
                 <div style={{ textAlign: "center", marginTop: 20 }}>
-                    <Button
+                    <Button disabled={loading}
                         type="primary"
                         htmlType="submit"
                     >
-                        Update Profile
+                        {loading ? 'Updating...':'Update Profile'}
                     </Button>
                 </div>
             </Form>
