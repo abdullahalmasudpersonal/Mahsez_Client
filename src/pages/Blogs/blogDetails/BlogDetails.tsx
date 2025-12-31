@@ -7,8 +7,8 @@ const BlogDetails = () => {
   const { data: blogData } = useGetSingleBlogQuery(blogId);
   const { title } = blogData?.data || {};
   return (
-    <div className="container-xxl mb-5 mt-4 p-0">
-      <h5>Blog Details {title}</h5>
+    <div className="container-xxl mb-4 mt-4 px-1">
+      <h5>Blog Details: {title}</h5>
     </div>
   );
 };
